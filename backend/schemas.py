@@ -45,6 +45,12 @@ class ItemUpdate(BaseModel):
     quantity: Optional[float] = None
     note: Optional[str] = None
 
+class ItemUpdate(BaseModel):
+    status: Optional[str] = None
+    quantity: Optional[float] = None
+    note: Optional[str] = None
+    category: Optional[str] = None
+
 class ItemResponse(ItemBase):
     id: str
     list_id: str

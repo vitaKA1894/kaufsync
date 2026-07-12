@@ -235,12 +235,12 @@ async def create_item(
     db.commit()
     db.refresh(new_item)
 
-    # WEBSOCKET BROADCAST
+    # WEBSOCKET BROADCAST - Jetzt inklusive Kategorie
     await manager.broadcast(list_id, {
         "event": "ITEM_UPDATED",
         "payload": {
             "list_id": list_id,
-            "item": { "id": new_item.id, "name": new_item.name, "status": new_item.status, "quantity": new_item.quantity, "unit": new_item.unit }
+            "item": { "id": new_item.id, "name": new_item.name, "status": new_item.status, "quantity": new_item.quantity, "unit": new_item.unit, "category": new_item.category }
         }
     })
     
@@ -260,18 +260,19 @@ async def update_item(
     if item_data.status is not None: db_item.status = item_data.status
     if item_data.quantity is not None: db_item.quantity = item_data.quantity
     if item_data.note is not None: db_item.note = item_data.note
+    if hasattr(item_data, 'category') and item_data.category is not None: db_item.category = item_data.category
     
     db_item.last_modified_by = current_user.id # Letzte Änderung an User binden
         
     db.commit()
     db.refresh(db_item)
 
-    # WEBSOCKET BROADCAST
+    # WEBSOCKET BROADCAST - Jetzt inklusive Kategorie
     await manager.broadcast(db_item.list_id, {
         "event": "ITEM_UPDATED",
         "payload": {
             "list_id": db_item.list_id,
-            "item": { "id": db_item.id, "name": db_item.name, "status": db_item.status, "quantity": db_item.quantity, "unit": db_item.unit }
+            "item": { "id": db_item.id, "name": db_item.name, "status": db_item.status, "quantity": db_item.quantity, "unit": db_item.unit, "category": db_item.category }
         }
     })
     

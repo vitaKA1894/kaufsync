@@ -12,9 +12,52 @@ const newItemName = ref('');
 const errorMessage = ref('');
 const successMessage = ref('');
 const showShareSheet = ref(false);
+const showSortSheet = ref(false);
 
 let ws = null;
 const isOnline = ref(navigator.onLine);
+
+// --- KATEGORIE DEFINITIONEN ---
+// Wir nutzen ausschließlich die globalen --ks- CSS Variablen für die Farbgebung.
+const predefinedCategories = [
+  { name: 'Obst & Gemüse', color: 'var(--ks-success)', bg: 'var(--ks-success-bg)' },
+  { name: 'Kühlregal', color: 'var(--ks-primary)', bg: 'var(--ks-primary-container)' },
+  { name: 'Backwaren', color: 'var(--ks-warning)', bg: 'var(--ks-warning-bg)' },
+  { name: 'Fleisch & Fisch', color: 'var(--ks-error)', bg: 'var(--ks-error-bg)' },
+  { name: 'Getränke', color: 'var(--ks-secondary)', bg: 'rgba(194, 231, 255, 0.14)' },
+  { name: 'Drogerie', color: 'var(--ks-text)', bg: 'var(--ks-surface-4)' },
+  { name: 'Allgemein', color: 'var(--ks-text-muted)', bg: 'var(--ks-surface-3)' }
+];
+
+const selectedCategory = ref(predefinedCategories[6]); // Default: Allgemein
+const categoryOrder = ref([]); // Speichert die Sortierreihenfolge für diese spezifische Liste
+
+// Lädt die gespeicherte Sortierung oder setzt die Standard-Reihenfolge
+const loadCategoryOrder = () => {
+  const saved = localStorage.getItem(`ks_sort_${listId}`);
+  if (saved) {
+    categoryOrder.value = JSON.parse(saved);
+  } else {
+    categoryOrder.value = predefinedCategories.map(c => c.name);
+  }
+};
+
+const saveCategoryOrder = () => {
+  localStorage.setItem(`ks_sort_${listId}`, JSON.stringify(categoryOrder.value));
+};
+
+const moveCategory = (index, direction) => {
+  if (direction === -1 && index > 0) {
+    const temp = categoryOrder.value[index];
+    categoryOrder.value[index] = categoryOrder.value[index - 1];
+    categoryOrder.value[index - 1] = temp;
+  } else if (direction === 1 && index < categoryOrder.value.length - 1) {
+    const temp = categoryOrder.value[index];
+    categoryOrder.value[index] = categoryOrder.value[index + 1];
+    categoryOrder.value[index + 1] = temp;
+  }
+  saveCategoryOrder();
+};
 
 const updateOnlineStatus = () => {
   isOnline.value = navigator.onLine;
@@ -63,6 +106,8 @@ const setupWebSocket = () => {
           items.value[index].status = incomingItem.status;
           items.value[index].quantity = incomingItem.quantity;
           items.value[index].name = incomingItem.name;
+          // Kategorie Fallback, falls via WS nicht gesendet
+          if (incomingItem.category) items.value[index].category = incomingItem.category;
         } else {
           items.value.push(incomingItem);
         }
@@ -77,15 +122,53 @@ const setupWebSocket = () => {
 
 const addItem = async () => {
   if (newItemName.value.trim() === '') return;
+  
+  // Optimistisches Update für flüssigere UX
+  const tempId = 'temp-' + Date.now();
+  const newItem = {
+    id: tempId,
+    name: newItemName.value,
+    quantity: 1,
+    unit: 'Stk',
+    category: selectedCategory.value.name,
+    status: 'active'
+  };
+  
+  items.value.push(newItem);
+  const itemNameBackup = newItemName.value;
+  newItemName.value = '';
+
   try {
     const token = localStorage.getItem('token');
     const response = await fetch(`http://localhost:8000/api/lists/${listId}/items`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
-      body: JSON.stringify({ name: newItemName.value, quantity: 1, unit: 'Stk' })
+      body: JSON.stringify({ 
+        name: itemNameBackup, 
+        quantity: 1, 
+        unit: 'Stk',
+        category: selectedCategory.value.name 
+      })
     });
-    if (response.ok) newItemName.value = '';
-  } catch (error) { errorMessage.value = error.message; }
+    
+    if (response.ok) {
+      const savedItem = await response.json();
+      
+      // FIX: Wir entfernen das Temp-Item
+      items.value = items.value.filter(i => i.id !== tempId);
+      
+      // Prüfen, ob der WebSocket das neue Item evtl. schon hinzugefügt hat
+      const alreadyAddedViaWS = items.value.some(i => i.id === savedItem.id);
+      if (!alreadyAddedViaWS) {
+        items.value.push(savedItem);
+      }
+    } else {
+      throw new Error('API Fehler');
+    }
+  } catch (error) { 
+    items.value = items.value.filter(i => i.id !== tempId);
+    errorMessage.value = "Fehler beim Hinzufügen."; 
+  }
 };
 
 const processOfflineQueue = async () => {
@@ -130,14 +213,20 @@ const toggleItemStatus = async (item) => {
 };
 
 const deleteItem = async (itemId) => {
+  // Optimistic delete
+  const previousItems = [...items.value];
+  items.value = items.value.filter(i => i.id !== itemId);
+  
   try {
     const token = localStorage.getItem('token');
-    await fetch(`http://localhost:8000/api/items/${itemId}`, {
+    const response = await fetch(`http://localhost:8000/api/items/${itemId}`, {
       method: 'DELETE',
       headers: { 'Authorization': `Bearer ${token}` }
     });
+    if (!response.ok) throw new Error();
   } catch (error) {
-    errorMessage.value = error.message;
+    items.value = previousItems;
+    errorMessage.value = "Fehler beim Löschen.";
   }
 };
 
@@ -156,10 +245,41 @@ const getInitials = (name) => {
   return name.substring(0, 2).toUpperCase();
 };
 
-const activeItems = computed(() => items.value.filter(i => i.status === 'active'));
+const getCategoryDef = (catName) => {
+  return predefinedCategories.find(c => c.name === catName) || predefinedCategories[6];
+};
+
+// Berechnete Eigenschaften für Gruppierung
+const groupedActiveItems = computed(() => {
+  const activeItems = items.value.filter(i => i.status === 'active');
+  const groups = {};
+  
+  activeItems.forEach(item => {
+    const catName = item.category || 'Allgemein';
+    if (!groups[catName]) {
+      groups[catName] = { 
+        name: catName, 
+        def: getCategoryDef(catName), 
+        items: [] 
+      };
+    }
+    groups[catName].items.push(item);
+  });
+
+  // Sortiere die Gruppen basierend auf der benutzerdefinierten Reihenfolge
+  return Object.values(groups).sort((a, b) => {
+    let indexA = categoryOrder.value.indexOf(a.name);
+    let indexB = categoryOrder.value.indexOf(b.name);
+    if (indexA === -1) indexA = 999;
+    if (indexB === -1) indexB = 999;
+    return indexA - indexB;
+  });
+});
+
 const completedItems = computed(() => items.value.filter(i => i.status === 'completed'));
 
 onMounted(() => {
+  loadCategoryOrder();
   loadItems();
   setupWebSocket();
   processOfflineQueue();
@@ -175,7 +295,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="page-shell" @click="showShareSheet = false">
+  <div class="page-shell list-view-layout" @click="showShareSheet = false; showSortSheet = false;">
 
     <header class="page-topbar" style="justify-content: space-between;">
       <div style="display: flex; align-items: center; gap: 12px; flex: 1; min-width: 0;">
@@ -184,13 +304,19 @@ onUnmounted(() => {
         </button>
         <h1 class="list-title">{{ currentList ? currentList.name : 'Laden...' }}</h1>
       </div>
-      <button v-if="currentList" class="ks-icon-btn" @click.stop="showShareSheet = !showShareSheet" aria-label="Teilen">
-        <svg viewBox="0 0 24 24"><path d="M18 22q-1.25 0-2.125-.875T15 19q0-.15.025-.325.025-.175.075-.325L7.05 13.7q-.425.4-.95.65-.525.25-1.1.25-1.25 0-2.125-.875T2 11.4q0-1.25.875-2.125T5 8.4q.575 0 1.1.25.525.25.95.65l8.05-4.65q-.05-.15-.075-.325Q15 4.15 15 4q0-1.25.875-2.125T18 1q1.25 0 2.125.875T21 4q0 1.25-.875 2.125T18 7q-.575 0-1.1-.25-.525-.25-.95-.65L7.9 10.75q.05.15.075.325.025.175.025.325 0 .15-.025.325-.025.175-.075.325l8.05 4.65q.425-.4.95-.65.525-.25 1.1-.25 1.25 0 2.125.875T21 19q0 1.25-.875 2.125T18 22Z"/></svg>
-      </button>
+      <div style="display: flex; gap: 8px;">
+        <button class="ks-icon-btn" @click.stop="showSortSheet = !showSortSheet" aria-label="Kategorien sortieren">
+           <svg viewBox="0 0 24 24"><path d="M3 18v-2h6v2H3Zm0-5v-2h12v2H3Zm0-5V6h18v2H3Z"/></svg>
+        </button>
+        <button v-if="currentList" class="ks-icon-btn" @click.stop="showShareSheet = !showShareSheet" aria-label="Teilen">
+          <svg viewBox="0 0 24 24"><path d="M18 22q-1.25 0-2.125-.875T15 19q0-.15.025-.325.025-.175.075-.325L7.05 13.7q-.425.4-.95.65-.525.25-1.1.25-1.25 0-2.125-.875T2 11.4q0-1.25.875-2.125T5 8.4q.575 0 1.1.25.525.25.95.65l8.05-4.65q-.05-.15-.075-.325Q15 4.15 15 4q0-1.25.875-2.125T18 1q1.25 0 2.125.875T21 4q0 1.25-.875 2.125T18 7q-.575 0-1.1-.25-.525-.25-.95-.65L7.9 10.75q.05.15.075.325.025.175.025.325 0 .15-.025.325-.025.175-.075.325l8.05 4.65q.425-.4.95-.65.525-.25 1.1-.25 1.25 0 2.125.875T21 19q0 1.25-.875 2.125T18 22Z"/></svg>
+        </button>
+      </div>
     </header>
 
+    <!-- SHARE SHEET -->
     <transition name="scrim-fade">
-      <div v-if="showShareSheet" class="ks-sheet-scrim" @click="showShareSheet = false"></div>
+      <div v-if="showShareSheet || showSortSheet" class="ks-sheet-scrim" @click="showShareSheet = false; showSortSheet = false;"></div>
     </transition>
 
     <transition name="sheet-slide">
@@ -205,6 +331,33 @@ onUnmounted(() => {
       </div>
     </transition>
 
+    <!-- SORTIER SHEET -->
+    <transition name="sheet-slide">
+      <div v-if="showSortSheet" class="ks-sheet" @click.stop>
+        <div class="ks-sheet__handle"></div>
+        <h3 class="sheet-heading">Laufweg im Supermarkt</h3>
+        <p class="sheet-support">Sortiere die Kategorien, damit sie deinem Weg durch den Markt entsprechen.</p>
+        
+        <div class="sort-list">
+          <div v-for="(catName, index) in categoryOrder" :key="catName" class="sort-item">
+            <div class="sort-info">
+               <span class="sort-color-dot" :style="{ background: getCategoryDef(catName).color }"></span>
+               <span>{{ catName }}</span>
+            </div>
+            <div class="sort-actions">
+              <button class="ks-icon-btn small-btn" :disabled="index === 0" @click="moveCategory(index, -1)">
+                <svg viewBox="0 0 24 24"><path d="M11 19V7.825L8.4 10.4L7 9l5-5 5 5-1.4 1.4-2.6-2.575V19h-2Z"/></svg>
+              </button>
+              <button class="ks-icon-btn small-btn" :disabled="index === categoryOrder.length - 1" @click="moveCategory(index, 1)">
+                <svg viewBox="0 0 24 24"><path d="M11 5v11.175l-2.6-2.6L7 15l5 5 5-5-1.4-1.4-2.6 2.6V5h-2Z"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+        <button class="ks-btn-filled full-width" style="margin-top: 16px;" @click="showSortSheet = false">Fertig</button>
+      </div>
+    </transition>
+
     <div class="ks-snackbar-stack">
       <div v-if="!isOnline" class="ks-snackbar ks-snackbar--warning">Offline. Änderungen werden später synchronisiert.</div>
       <transition-group name="toast">
@@ -213,65 +366,116 @@ onUnmounted(() => {
       </transition-group>
     </div>
 
-    <section class="items-section">
-      <h2 class="section-label">Zu kaufen ({{ activeItems.length }})</h2>
-      <div class="ks-grid">
-        <div v-for="item in activeItems" :key="item.id" class="grid-card active" @click="toggleItemStatus(item)">
-          <div class="card-icon-area">
-             <span class="initials">{{ getInitials(item.name) }}</span>
+    <!-- GRUPPIERTE AKTIVE ARTIKEL -->
+    <div class="list-scroll-area">
+      <template v-if="groupedActiveItems.length > 0">
+        <section v-for="group in groupedActiveItems" :key="group.name" class="items-section">
+          
+          <div class="category-header">
+            <span class="category-badge" :style="{ background: group.def.bg, color: group.def.color }">
+              {{ group.name }}
+            </span>
+            <span class="category-count">{{ group.items.length }}</span>
           </div>
-          <div class="card-text-area">
-            <span class="item-name">{{ item.name }}</span>
-            <span class="item-meta">{{ item.quantity }} {{ item.unit }}</span>
+
+          <div class="ks-grid">
+            <div v-for="item in group.items" :key="item.id" class="grid-card active" @click="toggleItemStatus(item)">
+              <div class="card-icon-area" :style="{ background: group.def.bg, color: group.def.color }">
+                 <span class="initials">{{ getInitials(item.name) }}</span>
+              </div>
+              <div class="card-text-area">
+                <span class="item-name">{{ item.name }}</span>
+                <span class="item-meta">{{ item.quantity }} {{ item.unit }}</span>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-      <div v-if="activeItems.length === 0" class="empty-state">
+        </section>
+      </template>
+
+      <div v-if="groupedActiveItems.length === 0 && completedItems.length === 0" class="empty-state">
         <svg viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4Z"/></svg>
-        <p>Alles erledigt!</p>
+        <p>Deine Liste ist leer!</p>
       </div>
-    </section>
 
-    <section v-if="completedItems.length > 0" class="items-section">
-      <h2 class="section-label">Erledigt</h2>
-      <div class="ks-grid">
-        <div v-for="item in completedItems" :key="item.id" class="grid-card completed" @click="toggleItemStatus(item)">
-          <div class="card-icon-area">
-             <span class="initials">{{ getInitials(item.name) }}</span>
-          </div>
-          <div class="card-text-area">
-            <span class="item-name">{{ item.name }}</span>
-          </div>
-          <button class="delete-btn" @click.stop="deleteItem(item.id)" aria-label="Löschen">
-            <svg viewBox="0 0 24 24"><path d="M7 21q-.825 0-1.412-.587Q5 19.825 5 19V6H4V4h5V3h6v1h5v2h-1v13q0 .825-.587 1.413Q17.825 21 17 21Zm2-4h2V8H9Zm4 0h2V8h-2Z"/></svg>
-          </button>
+      <!-- ERLEDIGTE ARTIKEL -->
+      <section v-if="completedItems.length > 0" class="items-section completed-section">
+        <div class="category-header">
+          <span class="category-badge completed-badge">Erledigt</span>
+          <span class="category-count">{{ completedItems.length }}</span>
         </div>
-      </div>
-    </section>
+        
+        <div class="ks-grid">
+          <div v-for="item in completedItems" :key="item.id" class="grid-card completed" @click="toggleItemStatus(item)">
+            <div class="card-icon-area">
+               <svg viewBox="0 0 24 24" style="width: 24px; height: 24px; fill: currentColor;"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4Z"/></svg>
+            </div>
+            <div class="card-text-area">
+              <span class="item-name">{{ item.name }}</span>
+            </div>
+            <button class="delete-btn" @click.stop="deleteItem(item.id)" aria-label="Löschen">
+              <svg viewBox="0 0 24 24"><path d="M7 21q-.825 0-1.412-.587Q5 19.825 5 19V6H4V4h5V3h6v1h5v2h-1v13q0 .825-.587 1.413Q17.825 21 17 21Zm2-4h2V8H9Zm4 0h2V8h-2Z"/></svg>
+            </button>
+          </div>
+        </div>
+      </section>
+    </div>
 
-    <div class="floating-input-bar">
-      <input
-        v-model="newItemName"
-        type="text"
-        placeholder="Artikel hinzufügen…"
-        @keyup.enter="addItem"
-      />
-      <button class="add-btn" @click="addItem" aria-label="Hinzufügen">
-        <svg viewBox="0 0 24 24"><path d="M11 19v-6H5v-2h6V5h2v6h6v2h-6v6Z"/></svg>
-      </button>
+    <!-- FLOATING INPUT BAR MIT KATEGORIE-CHIPS -->
+    <div class="input-container">
+      <div class="category-selector">
+        <button 
+          v-for="cat in predefinedCategories" :key="cat.name"
+          class="ks-chip"
+          :class="{ 'chip-active': selectedCategory.name === cat.name }"
+          :style="selectedCategory.name === cat.name ? { background: cat.bg, color: cat.color, borderColor: cat.color } : {}"
+          @click="selectedCategory = cat"
+        >
+          {{ cat.name }}
+        </button>
+      </div>
+
+      <div class="floating-input-bar">
+        <input
+          v-model="newItemName"
+          type="text"
+          placeholder="Artikel hinzufügen…"
+          @keyup.enter="addItem"
+        />
+        <button class="add-btn" @click="addItem" aria-label="Hinzufügen">
+          <svg viewBox="0 0 24 24"><path d="M11 19v-6H5v-2h6V5h2v6h6v2h-6v6Z"/></svg>
+        </button>
+      </div>
     </div>
 
   </div>
 </template>
 
 <style scoped>
+/* Um Platz für die doppelte Input-Bar (Chips + Input) zu machen */
+.list-view-layout {
+  padding-bottom: 160px; 
+}
+
 .list-title { margin: 0; font-size: 20px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
 .items-section { margin-bottom: 32px; }
-.section-label {
-  font-size: 14px; font-weight: 600; letter-spacing: 0.5px;
-  text-transform: uppercase; color: var(--ks-text-muted);
-  margin: 0 0 16px 4px;
+
+.category-header {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 16px; padding-left: 4px;
+}
+
+.category-badge {
+  padding: 6px 12px; border-radius: var(--ks-radius-xs);
+  font-size: 13px; font-weight: 700; letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+.category-count {
+  font-size: 14px; color: var(--ks-text-muted); font-weight: 500;
+}
+
+.completed-badge {
+  background: var(--ks-surface-3); color: var(--ks-text-muted);
 }
 
 .ks-grid {
@@ -284,25 +488,40 @@ onUnmounted(() => {
   display: flex; flex-direction: column;
   border-radius: var(--ks-radius-sm); padding: 12px 8px;
   cursor: pointer; text-align: center;
-  transition: transform 0.1s, opacity 0.2s;
+  transition: transform 0.1s, opacity 0.2s, background 0.2s;
   position: relative;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  background: var(--ks-surface-2);
+  border: 1px solid var(--ks-border);
 }
 .grid-card:active { transform: scale(0.95); }
+.grid-card:hover { background: var(--ks-surface-3); }
 
-.grid-card.active { background: var(--ks-primary); color: var(--ks-on-primary); }
-.grid-card.completed { background: var(--ks-surface-3); color: var(--ks-text-muted); opacity: 0.7; }
+/* Erledigte Artikel Styles */
+.completed-section { opacity: 0.7; }
+.grid-card.completed { 
+  background: transparent; 
+  border-color: rgba(255,255,255,0.04);
+}
+.grid-card.completed .card-icon-area {
+  background: var(--ks-surface-4); color: var(--ks-text-muted);
+}
+.grid-card.completed .item-name {
+  text-decoration: line-through; color: var(--ks-text-muted); font-weight: 500;
+}
 
-.card-icon-area { display: flex; align-items: center; justify-content: center; height: 50px; margin-bottom: 8px; }
-.initials { font-size: 32px; font-weight: 700; opacity: 0.9; }
+.card-icon-area { 
+  display: flex; align-items: center; justify-content: center; 
+  height: 50px; margin-bottom: 12px; border-radius: var(--ks-radius-xs);
+}
+.initials { font-size: 24px; font-weight: 700; }
 
 .card-text-area { display: flex; flex-direction: column; }
 .item-name { 
   font-size: 14px; font-weight: 600; 
   display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; 
-  overflow: hidden; line-height: 1.2;
+  overflow: hidden; line-height: 1.3; color: var(--ks-text);
 }
-.item-meta { font-size: 12px; opacity: 0.8; margin-top: 4px; }
+.item-meta { font-size: 12px; color: var(--ks-text-muted); margin-top: 4px; }
 
 .delete-btn {
   position: absolute; top: -8px; right: -8px;
@@ -318,16 +537,33 @@ onUnmounted(() => {
 .empty-state { text-align: center; padding: 40px 0; color: var(--ks-text-muted); }
 .empty-state svg { width: 40px; height: 40px; opacity: 0.5; margin-bottom: 8px; fill: currentColor; margin-inline: auto; }
 
-.floating-input-bar {
+/* Input Bereich mit Chips */
+.input-container {
   position: fixed;
-  bottom: 24px; left: 16px; right: 16px;
-  max-width: var(--ks-page-width); margin: 0 auto;
+  bottom: 0; left: 0; right: 0;
+  background: linear-gradient(0deg, var(--ks-bg) 70%, transparent);
+  padding: 0 16px 24px;
+  display: flex; flex-direction: column; gap: 12px;
+  z-index: 40; pointer-events: none; /* Container ist klick-durchlässig */
+}
+.input-container > * { pointer-events: auto; /* Kinder sind klickbar */ }
+
+.category-selector {
+  display: flex; overflow-x: auto; gap: 8px; padding-bottom: 4px;
+  -ms-overflow-style: none; scrollbar-width: none;
+  max-width: var(--ks-page-width); margin: 0 auto; width: 100%;
+}
+.category-selector::-webkit-scrollbar { display: none; }
+.ks-chip { flex-shrink: 0; transition: all 0.2s ease; cursor: pointer; }
+.ks-chip.chip-active { border-width: 2px; font-weight: 600; }
+
+.floating-input-bar {
+  max-width: var(--ks-page-width); margin: 0 auto; width: 100%;
   background: var(--ks-surface-4);
   border-radius: 32px;
   padding: 6px 6px 6px 20px;
   display: flex; align-items: center;
   box-shadow: var(--ks-shadow-2);
-  z-index: 40;
 }
 .floating-input-bar input {
   flex: 1; background: transparent; border: none;
@@ -344,8 +580,9 @@ onUnmounted(() => {
 }
 .add-btn svg { width: 24px; height: 24px; fill: currentColor; }
 
+/* Modal & Sheets */
 .sheet-heading { font-size: 20px; font-weight: 500; margin: 0 0 8px; color: var(--ks-text); }
-.sheet-support { font-size: 14px; color: var(--ks-text-muted); margin: 0 0 20px; }
+.sheet-support { font-size: 14px; color: var(--ks-text-muted); margin: 0 0 20px; line-height: 1.4; }
 
 .code-box {
   width: 100%; background: var(--ks-surface-3); border: none;
@@ -355,4 +592,21 @@ onUnmounted(() => {
 }
 .code-box .code { font-size: 24px; font-family: monospace; font-weight: 700; letter-spacing: 4px; }
 .code-box svg { width: 24px; height: 24px; fill: currentColor; opacity: 0.6; }
+
+/* Sort List */
+.sort-list {
+  display: flex; flex-direction: column; gap: 8px;
+  max-height: 50vh; overflow-y: auto;
+}
+.sort-item {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 16px; background: rgba(255,255,255,0.03);
+  border-radius: var(--ks-radius-xs); border: 1px solid var(--ks-border);
+}
+.sort-info { display: flex; align-items: center; gap: 12px; font-weight: 500; }
+.sort-color-dot { width: 12px; height: 12px; border-radius: 50%; }
+.sort-actions { display: flex; gap: 4px; }
+.small-btn { width: 36px; height: 36px; }
+.small-btn:disabled { opacity: 0.2; pointer-events: none; }
+.full-width { width: 100%; }
 </style>
