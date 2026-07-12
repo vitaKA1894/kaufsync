@@ -1,0 +1,351 @@
+<script setup>
+import { ref, onMounted, watch } from 'vue';
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+const shoppingLists = ref([]);
+const errorMessage = ref('');
+const successMessage = ref('');
+
+const showActionSheet = ref(false);
+const activeModal = ref(null);
+
+const showOptionsSheet = ref(false);
+const selectedListForOptions = ref(null);
+
+const newListName = ref('');
+const selectedIcon = ref(''); 
+const shareCodeInput = ref('');
+
+// --- ECHTE WIKIPEDIA LOGOS (Alphabetisch sortiert) ---
+const predefinedStores = [
+  { name: 'Aldi', icon: 'https://commons.wikimedia.org/wiki/Special:FilePath/ALDI_SUD.svg' },
+  { name: 'dm', icon: 'https://commons.wikimedia.org/wiki/Special:FilePath/Dm_Logo.svg' },
+  { name: 'Edeka', icon: 'https://commons.wikimedia.org/wiki/Special:FilePath/Logo_Edeka.svg' },
+  { name: 'Kaufland', icon: 'https://commons.wikimedia.org/wiki/Special:FilePath/Kaufland_Logo.svg' },
+  { name: 'Lidl', icon: 'https://commons.wikimedia.org/wiki/Special:FilePath/Lidl-Logo.svg' },
+  { name: 'Metro', icon: 'https://commons.wikimedia.org/wiki/Special:FilePath/Metro_Deutschland_Logo_2024.svg' },
+  { name: 'Netto', icon: 'https://commons.wikimedia.org/wiki/Special:FilePath/Netto_Logo.svg' },
+  { name: 'Penny', icon: 'https://commons.wikimedia.org/wiki/Special:FilePath/Penny-Markt.svg' },
+  { name: 'REWE', icon: 'https://commons.wikimedia.org/wiki/Special:FilePath/Logo_REWE.svg' },
+  { name: 'Rossmann', icon: 'https://commons.wikimedia.org/wiki/Special:FilePath/Logo_rossmann_2024.svg' },
+  { name: 'Selgros', icon: 'https://commons.wikimedia.org/wiki/Special:FilePath/Logo_selgros_2024.svg' }
+];
+
+const fallbackCartIcon = 'mdi-cart';
+
+watch(newListName, (newVal) => {
+  const matchedStore = predefinedStores.find(s => s.name.toLowerCase() === newVal.trim().toLowerCase());
+  if (matchedStore) selectedIcon.value = matchedStore.icon;
+  else selectedIcon.value = fallbackCartIcon;
+});
+
+const selectPreset = (store) => {
+  newListName.value = store.name;
+  selectedIcon.value = store.icon;
+};
+
+// Modals
+const openActionSheet = () => showActionSheet.value = true;
+const closeActionSheet = () => { showActionSheet.value = false; showOptionsSheet.value = false; };
+const openModal = (mode) => { activeModal.value = mode; showActionSheet.value = false; };
+const closeModal = () => { activeModal.value = null; newListName.value = ''; selectedIcon.value = fallbackCartIcon; shareCodeInput.value = ''; };
+
+const openOptions = (list) => {
+  selectedListForOptions.value = list;
+  showOptionsSheet.value = true;
+};
+
+const goToProfile = () => router.push('/profile');
+
+const loadLists = async () => {
+  try {
+    const token = localStorage.getItem('token');
+    const response = await fetch('http://localhost:8000/api/lists', { headers: { 'Authorization': `Bearer ${token}` } });
+    if (!response.ok) throw new Error('Fehler beim Laden');
+    const data = await response.json();
+    shoppingLists.value = data;
+  } catch (error) {
+    if (error?.message?.includes('eingeloggt')) router.push('/login');
+  }
+};
+
+const createNewList = async () => {
+  if (!newListName.value.trim()) return;
+  errorMessage.value = '';
+  try {
+    const token = localStorage.getItem('token');
+    const finalIcon = selectedIcon.value || fallbackCartIcon;
+    
+    const response = await fetch('http://localhost:8000/api/lists', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
+      body: JSON.stringify({ name: newListName.value.trim(), icon_name: finalIcon })
+    });
+    if (!response.ok) throw new Error();
+    const created = await response.json();
+    shoppingLists.value.push(created);
+    closeModal();
+  } catch { errorMessage.value = "Liste konnte nicht erstellt werden."; }
+};
+
+const joinList = async () => {
+  if (!shareCodeInput.value.trim()) return;
+  try {
+    const token = localStorage.getItem('token');
+    const response = await fetch('http://localhost:8000/api/lists/join', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
+      body: JSON.stringify({ share_code: shareCodeInput.value.trim() })
+    });
+    if (!response.ok) throw new Error();
+    const joined = await response.json();
+    shoppingLists.value.push(joined);
+    successMessage.value = `Beigetreten: ${joined.name}`;
+    closeModal();
+    setTimeout(() => successMessage.value = '', 3000);
+  } catch { errorMessage.value = "Code ungültig oder Fehler beim Beitreten."; }
+};
+
+const deleteList = async () => {
+  if (!selectedListForOptions.value) return;
+  try {
+    const token = localStorage.getItem('token');
+    const response = await fetch(`http://localhost:8000/api/lists/${selectedListForOptions.value.id}`, {
+      method: 'DELETE',
+      headers: { 'Authorization': `Bearer ${token}` }
+    });
+    if (!response.ok) throw new Error();
+    
+    shoppingLists.value = shoppingLists.value.filter(l => l.id !== selectedListForOptions.value.id);
+    successMessage.value = "Liste entfernt.";
+    closeActionSheet();
+    setTimeout(() => successMessage.value = '', 3000);
+  } catch {
+    errorMessage.value = "Fehler beim Löschen.";
+  }
+};
+
+onMounted(loadLists);
+</script>
+
+<template>
+  <div class="page-shell" @click="closeActionSheet">
+
+    <header class="page-topbar" style="justify-content: space-between;">
+      <h1 style="margin: 0; font-size: 22px;">Meine Listen</h1>
+      <button class="ks-icon-btn" @click.stop="goToProfile" aria-label="Profil">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 4c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm0 14c-2.03 0-4.43-.82-6.14-2.88C7.55 15.8 9.68 15 12 15s4.45.8 6.14 2.12C16.43 19.18 14.03 20 12 20z"/></svg>
+      </button>
+    </header>
+
+    <div class="ks-snackbar-stack">
+      <transition-group name="toast">
+        <div v-if="errorMessage" key="err" class="ks-snackbar ks-snackbar--error">{{ errorMessage }}</div>
+        <div v-if="successMessage" key="succ" class="ks-snackbar ks-snackbar--success">{{ successMessage }}</div>
+      </transition-group>
+    </div>
+
+    <div class="list-stack">
+      <button 
+        v-for="list in shoppingLists" :key="list.id" 
+        class="page-panel list-card" 
+        @click="router.push(`/list/${list.id}`)"
+        @contextmenu.prevent="openOptions(list)"
+      >
+        <div class="card-leading">
+          <div class="card-icon-circle" :class="{ 'has-image': list.icon_name && list.icon_name !== 'mdi-cart' }">
+            <img v-if="list.icon_name && list.icon_name !== 'mdi-cart'" :src="list.icon_name" :alt="list.name" class="store-logo-img" />
+            <svg v-else viewBox="0 0 24 24"><path d="M7 22q-.825 0-1.412-.587Q5 20.825 5 20t.588-1.412Q6.175 18 7 18t1.413.588Q9 19.175 9 20t-.587 1.413Q7.825 22 7 22Zm10 0q-.825 0-1.412-.587Q15 20.825 15 20t.588-1.412Q16.175 18 17 18t1.413.588Q19 19.175 19 20t-.587 1.413Q17.825 22 17 22ZM6.15 6l1.4 3h9.75l1.65-3ZM5.2 4h15.35q.575 0 .875.5.3.5.025 1L18.3 10.45q-.275.5-.737.775-.463.275-1.013.275H7.15L6 13h12v2H6q-1.15 0-1.725-1.012-.575-1.013-.025-2.038L5.6 9.6 2 2h2Z"/></svg>
+          </div>
+          <span class="card-title">{{ list.name }}</span>
+        </div>
+        <div class="options-trigger" @click.stop="openOptions(list)">
+          <svg viewBox="0 0 24 24" style="width:20px;height:20px;fill:var(--ks-text-muted);"><path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg>
+        </div>
+      </button>
+    </div>
+
+    <div v-if="shoppingLists.length === 0" class="empty-state">
+      <p>Noch keine Listen vorhanden</p>
+    </div>
+
+    <div class="ks-fab-bar">
+      <button class="ks-fab" @click.stop="openActionSheet">
+        <svg viewBox="0 0 24 24"><path d="M11 19v-6H5v-2h6V5h2v6h6v2h-6v6Z"/></svg>
+        Liste erstellen / beitreten
+      </button>
+    </div>
+
+    <transition name="scrim-fade">
+      <div v-if="showActionSheet || showOptionsSheet" class="ks-sheet-scrim" @click="closeActionSheet"></div>
+    </transition>
+
+    <transition name="sheet-slide">
+      <div v-if="showActionSheet && !showOptionsSheet" class="ks-sheet" @click.stop>
+        <div class="ks-sheet__handle"></div>
+        <button class="sheet-item" @click="openModal('create')">
+          <span class="sheet-icon primary"><svg viewBox="0 0 24 24"><path d="M11 19v-6H5v-2h6V5h2v6h6v2h-6v6Z"/></svg></span>
+          <div class="sheet-text">
+            <span class="sheet-title">Neue Liste erstellen</span>
+          </div>
+        </button>
+        <button class="sheet-item" @click="openModal('join')">
+          <span class="sheet-icon secondary">
+            <svg viewBox="0 0 24 24"><path d="M12.65 10A5.99 5.99 0 0 0 7 6c-3.31 0-6 2.69-6 6s2.69 6 6 6a5.99 5.99 0 0 0 5.65-4H17v4h4v-4h2v-4H12.65zM7 14c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/></svg>
+          </span>
+          <div class="sheet-text">
+            <span class="sheet-title">Per Code beitreten</span>
+          </div>
+        </button>
+      </div>
+    </transition>
+
+    <transition name="sheet-slide">
+      <div v-if="showOptionsSheet" class="ks-sheet" @click.stop>
+        <div class="ks-sheet__handle"></div>
+        <div style="padding: 0 12px 16px;">
+          <h3 style="margin: 0; font-size: 16px; color: var(--ks-text-muted);">{{ selectedListForOptions?.name }}</h3>
+        </div>
+        <button class="sheet-item" @click="deleteList" style="color: var(--ks-error);">
+          <span class="sheet-icon" style="background: var(--ks-error-bg);"><svg viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg></span>
+          <div class="sheet-text">
+            <span class="sheet-title">Liste löschen / verlassen</span>
+          </div>
+        </button>
+      </div>
+    </transition>
+
+    <transition name="dialog-fade">
+      <div v-if="activeModal" class="ks-dialog-scrim" @click.self="closeModal">
+        <div class="ks-dialog">
+          
+          <template v-if="activeModal === 'create'">
+            <h2 style="margin: 0 0 16px; font-size: 20px;">Wähle Supermarkt</h2>
+            
+            <div class="preset-grid">
+              <button 
+                v-for="store in predefinedStores" 
+                :key="store.name"
+                class="preset-btn"
+                :class="{ 'active': newListName.toLowerCase() === store.name.toLowerCase() }"
+                @click="selectPreset(store)"
+              >
+                <div class="store-svg-container">
+                  <img :src="store.icon" :alt="store.name" />
+                </div>
+                <span>{{ store.name }}</span>
+              </button>
+            </div>
+
+            <div class="ks-field" style="margin-bottom: 24px;">
+              <input v-model="newListName" type="text" placeholder=" " @keyup.enter="createNewList" />
+              <label>Oder eigenen Namen eingeben</label>
+            </div>
+            <div class="ks-btn-row">
+              <button class="ks-btn-text" @click="closeModal">Abbrechen</button>
+              <button class="ks-btn-filled" @click="createNewList">Erstellen</button>
+            </div>
+          </template>
+
+          <template v-else-if="activeModal === 'join'">
+            <h2 style="margin: 0 0 20px; font-size: 20px;">Code einlösen</h2>
+            <div class="ks-field" style="margin-bottom: 24px;">
+              <input v-model="shareCodeInput" type="text" maxlength="6" placeholder=" " class="code-input" @keyup.enter="joinList" />
+              <label>6-stelliger Code</label>
+            </div>
+            <div class="ks-btn-row">
+              <button class="ks-btn-text" @click="closeModal">Abbrechen</button>
+              <button class="ks-btn-filled" @click="joinList">Beitreten</button>
+            </div>
+          </template>
+          
+        </div>
+      </div>
+    </transition>
+
+  </div>
+</template>
+
+<style scoped>
+.list-stack { display: flex; flex-direction: column; gap: 12px; }
+
+.list-card {
+  padding: 16px; display: flex; align-items: center; justify-content: space-between;
+  cursor: pointer; text-align: left; transition: filter 0.15s; border-radius: 16px; position: relative;
+}
+.list-card:hover { filter: brightness(1.1); }
+
+.card-leading { display: flex; align-items: center; gap: 16px; min-width: 0; }
+
+.card-icon-circle {
+  width: 42px; height: 42px; border-radius: 50%;
+  background: var(--ks-surface-3); color: var(--ks-primary);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  overflow: hidden;
+}
+.card-icon-circle.has-image { background: #ffffff; border: 1px solid var(--ks-border); }
+.card-icon-circle svg { width: 22px; height: 22px; }
+.store-logo-img { width: 100%; height: 100%; object-fit: contain; padding: 4px; }
+
+.card-title { font-size: 17px; font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+.options-trigger {
+  padding: 8px; margin: -8px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+}
+.options-trigger:hover { background: rgba(255,255,255,0.05); }
+
+/* --- 5 LOGOS WIEDERHERGESTELLT --- */
+.preset-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px 6px;
+  margin-bottom: 24px;
+  max-height: 280px;
+  /* Scrollen verhindern, falls möglich */
+  overflow: visible; 
+  padding: 4px;
+}
+.preset-grid::-webkit-scrollbar { display: none; }
+
+.preset-btn {
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  background: transparent; border: 2px solid transparent; border-radius: 12px;
+  padding: 6px 2px; cursor: pointer; width: 100%;
+  transition: all 0.2s ease;
+}
+
+.store-svg-container {
+  /* Größe 50px für die breitere Ansicht */
+  width: 50px; height: 50px; background: white; border-radius: 12px; padding: 6px; 
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2); display: flex; align-items: center; justify-content: center;
+}
+.store-svg-container img { width: 100%; height: 100%; object-fit: contain; }
+
+.preset-btn span { font-size: 12px; color: var(--ks-text-soft); text-align: center; word-break: break-word; line-height: 1.2; }
+.preset-btn:hover { background: rgba(255,255,255,0.06); }
+.preset-btn.active { background: var(--ks-primary-container); border-color: var(--ks-primary); }
+.preset-btn.active span { color: var(--ks-primary); font-weight: 600; }
+/* --------------------------------------- */
+
+.empty-state { text-align: center; margin-top: 60px; color: var(--ks-text-muted); }
+
+.sheet-item {
+  width: 100%; background: transparent; border: none; padding: 16px 12px;
+  display: flex; align-items: center; gap: 16px; text-align: left;
+  color: var(--ks-text); border-radius: 12px; cursor: pointer;
+}
+.sheet-item:hover { background: rgba(255,255,255,0.06); }
+
+.sheet-icon {
+  width: 44px; height: 44px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.sheet-icon svg { width: 24px; height: 24px; fill: currentColor; }
+.sheet-icon.primary { background: var(--ks-primary); color: var(--ks-on-primary); }
+.sheet-icon.secondary { background: var(--ks-secondary); color: var(--ks-on-secondary); }
+
+.sheet-text { display: flex; flex-direction: column; }
+.sheet-title { font-size: 16px; font-weight: 500; }
+.code-input { text-transform: uppercase; letter-spacing: 3px; font-weight: 600; }
+</style>
