@@ -18,7 +18,6 @@ let ws = null;
 const isOnline = ref(navigator.onLine);
 
 // --- KATEGORIE DEFINITIONEN ---
-// Wir nutzen ausschließlich die globalen --ks- CSS Variablen für die Farbgebung.
 const predefinedCategories = [
   { name: 'Obst & Gemüse', color: 'var(--ks-success)', bg: 'var(--ks-success-bg)' },
   { name: 'Kühlregal', color: 'var(--ks-primary)', bg: 'var(--ks-primary-container)' },
@@ -29,21 +28,68 @@ const predefinedCategories = [
   { name: 'Allgemein', color: 'var(--ks-text-muted)', bg: 'var(--ks-surface-3)' }
 ];
 
-const selectedCategory = ref(predefinedCategories[6]); // Default: Allgemein
-const categoryOrder = ref([]); // Speichert die Sortierreihenfolge für diese spezifische Liste
+// --- MARKT SPEZIFISCHE DEFAULTS (JSON-Konfiguration) ---
+const chainsConfig = {
+  aldi: { marketType: "discounter", defaultOrder: ["Obst & Gemüse", "Backwaren", "Allgemein", "Getränke", "Kühlregal", "Fleisch & Fisch", "Drogerie"] },
+  lidl: { marketType: "discounter", defaultOrder: ["Obst & Gemüse", "Backwaren", "Allgemein", "Getränke", "Kühlregal", "Fleisch & Fisch", "Drogerie"] },
+  netto: { marketType: "discounter", defaultOrder: ["Obst & Gemüse", "Backwaren", "Allgemein", "Getränke", "Kühlregal", "Fleisch & Fisch", "Drogerie"] },
+  penny: { marketType: "discounter", defaultOrder: ["Obst & Gemüse", "Backwaren", "Allgemein", "Getränke", "Kühlregal", "Fleisch & Fisch", "Drogerie"] },
+  rewe: { marketType: "supermarket", defaultOrder: ["Obst & Gemüse", "Backwaren", "Allgemein", "Getränke", "Kühlregal", "Fleisch & Fisch", "Drogerie"] },
+  edeka: { marketType: "supermarket", defaultOrder: ["Obst & Gemüse", "Backwaren", "Allgemein", "Getränke", "Kühlregal", "Fleisch & Fisch", "Drogerie"] },
+  kaufland: { marketType: "supermarket", defaultOrder: ["Obst & Gemüse", "Backwaren", "Allgemein", "Getränke", "Kühlregal", "Fleisch & Fisch", "Drogerie"] },
+  dm: { 
+    marketType: "drugstore", 
+    defaultOrder: ["Drogerie", "Allgemein", "Getränke", "Kühlregal", "Backwaren", "Obst & Gemüse", "Fleisch & Fisch"], 
+    categoryMeta: { "Obst & Gemüse": { deprioritized: true }, "Fleisch & Fisch": { deprioritized: true }, "Backwaren": { deprioritized: true }, "Kühlregal": { deprioritized: true } } 
+  },
+  rossmann: { 
+    marketType: "drugstore", 
+    defaultOrder: ["Drogerie", "Allgemein", "Getränke", "Kühlregal", "Backwaren", "Obst & Gemüse", "Fleisch & Fisch"], 
+    categoryMeta: { "Obst & Gemüse": { deprioritized: true }, "Fleisch & Fisch": { deprioritized: true }, "Backwaren": { deprioritized: true }, "Kühlregal": { deprioritized: true } } 
+  },
+  metro: { marketType: "wholesale", defaultOrder: ["Obst & Gemüse", "Fleisch & Fisch", "Kühlregal", "Backwaren", "Allgemein", "Getränke", "Drogerie"] },
+  selgros: { marketType: "wholesale", defaultOrder: ["Obst & Gemüse", "Fleisch & Fisch", "Kühlregal", "Backwaren", "Allgemein", "Getränke", "Drogerie"] }
+};
 
-// Lädt die gespeicherte Sortierung oder setzt die Standard-Reihenfolge
+const selectedCategory = ref(predefinedCategories[6]); // Default: Allgemein
+const categoryOrder = ref([]); 
+const isCustomOrder = ref(false); // Flag, um zu wissen ob der User überschrieben hat
+
+// Ermittelt anhand des Listennamens die zugehörige Kette (z.B. "dm Einkauf" -> "dm")
+const currentChainKey = computed(() => {
+  if (!currentList.value) return null;
+  const name = currentList.value.name.toLowerCase();
+  return Object.keys(chainsConfig).find(key => name.includes(key)) || null;
+});
+
+// Lädt Sortierung: Prio 1 = User Override (LocalStorage), Prio 2 = Markt-Default, Prio 3 = Fallback
 const loadCategoryOrder = () => {
   const saved = localStorage.getItem(`ks_sort_${listId}`);
   if (saved) {
     categoryOrder.value = JSON.parse(saved);
+    isCustomOrder.value = true;
   } else {
-    categoryOrder.value = predefinedCategories.map(c => c.name);
+    isCustomOrder.value = false;
+    const chainKey = currentChainKey.value;
+    if (chainKey && chainsConfig[chainKey]) {
+      categoryOrder.value = [...chainsConfig[chainKey].defaultOrder];
+    } else {
+      categoryOrder.value = predefinedCategories.map(c => c.name);
+    }
   }
 };
 
 const saveCategoryOrder = () => {
   localStorage.setItem(`ks_sort_${listId}`, JSON.stringify(categoryOrder.value));
+  isCustomOrder.value = true;
+};
+
+const resetCategoryOrder = () => {
+  localStorage.removeItem(`ks_sort_${listId}`);
+  loadCategoryOrder();
+  showSortSheet.value = false;
+  successMessage.value = "Sortierung auf Markt-Standard zurückgesetzt.";
+  setTimeout(() => successMessage.value = '', 3000);
 };
 
 const moveCategory = (index, direction) => {
@@ -89,6 +135,9 @@ const loadItems = async () => {
     } else {
       errorMessage.value = "Offline: Konnte Liste nicht laden.";
     }
+  } finally {
+    // Wenn Liste geladen ist (egal ob API oder Cache), initialisiere die Sortierung
+    loadCategoryOrder();
   }
 };
 
@@ -249,7 +298,18 @@ const getCategoryDef = (catName) => {
   return predefinedCategories.find(c => c.name === catName) || predefinedCategories[6];
 };
 
-// Berechnete Eigenschaften für Gruppierung
+// Sortiert die Auswahl-Chips für die Eingabezeile nach demselben Laufweg wie die Liste
+const sortedCategoryChips = computed(() => {
+  return [...predefinedCategories].sort((a, b) => {
+    let indexA = categoryOrder.value.indexOf(a.name);
+    let indexB = categoryOrder.value.indexOf(b.name);
+    if (indexA === -1) indexA = 999;
+    if (indexB === -1) indexB = 999;
+    return indexA - indexB;
+  });
+});
+
+// Berechnete Eigenschaften für Gruppierung der Listenansicht
 const groupedActiveItems = computed(() => {
   const activeItems = items.value.filter(i => i.status === 'active');
   const groups = {};
@@ -266,7 +326,7 @@ const groupedActiveItems = computed(() => {
     groups[catName].items.push(item);
   });
 
-  // Sortiere die Gruppen basierend auf der benutzerdefinierten Reihenfolge
+  // Sortiere die Gruppen basierend auf dem aktiven Markt-Default oder User-Override
   return Object.values(groups).sort((a, b) => {
     let indexA = categoryOrder.value.indexOf(a.name);
     let indexB = categoryOrder.value.indexOf(b.name);
@@ -279,8 +339,7 @@ const groupedActiveItems = computed(() => {
 const completedItems = computed(() => items.value.filter(i => i.status === 'completed'));
 
 onMounted(() => {
-  loadCategoryOrder();
-  loadItems();
+  loadItems(); // loadItems ruft am Ende loadCategoryOrder() auf
   setupWebSocket();
   processOfflineQueue();
   window.addEventListener('online', updateOnlineStatus);
@@ -354,7 +413,11 @@ onUnmounted(() => {
             </div>
           </div>
         </div>
+
         <button class="ks-btn-filled full-width" style="margin-top: 16px;" @click="showSortSheet = false">Fertig</button>
+        <button v-if="isCustomOrder" class="ks-btn-text full-width" style="margin-top: 8px; color: var(--ks-error)" @click="resetCategoryOrder">
+          Auf Markt-Standard zurücksetzen
+        </button>
       </div>
     </transition>
 
@@ -424,7 +487,7 @@ onUnmounted(() => {
     <div class="input-container">
       <div class="category-selector">
         <button 
-          v-for="cat in predefinedCategories" :key="cat.name"
+          v-for="cat in sortedCategoryChips" :key="cat.name"
           class="ks-chip"
           :class="{ 'chip-active': selectedCategory.name === cat.name }"
           :style="selectedCategory.name === cat.name ? { background: cat.bg, color: cat.color, borderColor: cat.color } : {}"
