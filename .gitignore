@@ -1,0 +1,16 @@
+# Frontend (Vue/Vite)
+node_modules/
+dist/
+.env
+
+# Backend (Python/FastAPI)
+__pycache__/
+venv/
+env/
+*.pyc
+*.db
+*.sqlite3
+
+# OS generierte Dateien
+.DS_Store
+Thumbs.db
