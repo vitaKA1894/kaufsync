@@ -4,6 +4,7 @@ import { useRouter } from 'vue-router';
 
 const router = useRouter();
 const shoppingLists = ref([]);
+const invitations = ref([]);
 const errorMessage = ref('');
 const successMessage = ref('');
 
@@ -70,6 +71,41 @@ const loadLists = async () => {
   }
 };
 
+const loadInvitations = async () => {
+  try {
+    const token = localStorage.getItem('token');
+    const response = await fetch('http://localhost:8000/api/invitations', { headers: { 'Authorization': `Bearer ${token}` } });
+    if (!response.ok) throw new Error('Fehler beim Laden von Einladungen');
+    const data = await response.json();
+    invitations.value = data;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+const respondToInvitation = async (inviteId, action) => {
+  try {
+    const token = localStorage.getItem('token');
+    const response = await fetch(`http://localhost:8000/api/invitations/${inviteId}/respond?action=${action}`, {
+      method: 'POST',
+      headers: { 'Authorization': `Bearer ${token}` }
+    });
+
+    if (!response.ok) throw new Error('Fehler beim Antworten auf die Einladung');
+
+    successMessage.value = action === 'accept' ? 'Einladung angenommen' : 'Einladung abgelehnt';
+    setTimeout(() => successMessage.value = '', 3000);
+
+    await loadInvitations();
+    if (action === 'accept') {
+      await loadLists();
+    }
+  } catch (error) {
+    errorMessage.value = error.message;
+    setTimeout(() => errorMessage.value = '', 3000);
+  }
+};
+
 const createNewList = async () => {
   if (!newListName.value.trim()) return;
   errorMessage.value = '';
@@ -126,7 +162,10 @@ const deleteList = async () => {
   }
 };
 
-onMounted(loadLists);
+onMounted(() => {
+  loadLists();
+  loadInvitations();
+});
 </script>
 
 <template>
@@ -145,6 +184,34 @@ onMounted(loadLists);
         <div v-if="successMessage" key="succ" class="ks-snackbar ks-snackbar--success">{{ successMessage }}</div>
       </transition-group>
     </div>
+
+    <!-- Einladungen anzeigen -->
+    <div v-if="invitations.length > 0" class="invitations-section">
+      <h3 class="section-title">Einladungen</h3>
+      <div class="list-stack">
+        <div v-for="invite in invitations" :key="invite.id" class="page-panel list-card invite-card">
+          <div class="card-leading">
+            <div class="card-icon-circle secondary-icon">
+              <svg viewBox="0 0 24 24"><path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"/></svg>
+            </div>
+            <div class="invite-info">
+              <span class="card-title">{{ invite.list_name }}</span>
+              <span class="invite-sender">von {{ invite.inviter_name }}</span>
+            </div>
+          </div>
+          <div class="invite-actions">
+            <button class="ks-icon-btn action-btn accept" @click.stop="respondToInvitation(invite.id, 'accept')" aria-label="Annehmen">
+              <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+            </button>
+            <button class="ks-icon-btn action-btn decline" @click.stop="respondToInvitation(invite.id, 'decline')" aria-label="Ablehnen">
+              <svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3 v-if="invitations.length > 0 && shoppingLists.length > 0" class="section-title mt-4">Meine Listen</h3>
 
     <div class="list-stack">
       <button 
@@ -348,4 +415,19 @@ onMounted(loadLists);
 .sheet-text { display: flex; flex-direction: column; }
 .sheet-title { font-size: 16px; font-weight: 500; }
 .code-input { text-transform: uppercase; letter-spacing: 3px; font-weight: 600; }
+
+.section-title { font-size: 18px; font-weight: 600; margin: 16px 0 8px; color: var(--ks-text); }
+.mt-4 { margin-top: 16px; }
+
+.invite-card { cursor: default; }
+.invite-card:hover { filter: none; }
+.secondary-icon { background: var(--ks-secondary-container); color: var(--ks-secondary); }
+.invite-info { display: flex; flex-direction: column; }
+.invite-sender { font-size: 13px; color: var(--ks-text-muted); }
+
+.invite-actions { display: flex; gap: 8px; }
+.action-btn { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+.action-btn.accept { background: var(--ks-primary-container); color: var(--ks-primary); }
+.action-btn.decline { background: var(--ks-error-bg); color: var(--ks-error); }
+.action-btn:hover { filter: brightness(0.9); }
 </style>

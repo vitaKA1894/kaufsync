@@ -81,3 +81,22 @@ class ListResponse(ListBase):
 # --- JOIN LIST SCHEMAS ---
 class JoinListRequest(BaseModel):
     share_code: str
+
+# --- INVITATION SCHEMAS ---
+class InviteUserRequest(BaseModel):
+    invitee_id: str
+
+class ListInvitationResponse(BaseModel):
+    id: str
+    list_id: str
+    inviter_id: str
+    invitee_id: str
+    status: str
+    created_at: datetime
+
+    # Optional fields for frontend display
+    list_name: Optional[str] = None
+    inviter_name: Optional[str] = None
+
+    class Config:
+        from_attributes = True

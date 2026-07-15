@@ -56,3 +56,17 @@ class Item(Base):
     last_modified_by = Column(String, ForeignKey("users.id"), nullable=True)
     
     shopping_list = relationship("List", back_populates="items")
+
+class ListInvitation(Base):
+    __tablename__ = "list_invitations"
+    id = Column(String, primary_key=True, default=generate_uuid)
+    list_id = Column(String, ForeignKey("lists.id"))
+    inviter_id = Column(String, ForeignKey("users.id"))
+    invitee_id = Column(String, ForeignKey("users.id"))
+    status = Column(String, default="pending") # "pending", "accepted", "declined"
+    created_at = Column(DateTime, default=datetime.utcnow)
+
+    # Beziehungen
+    list = relationship("List")
+    inviter = relationship("User", foreign_keys=[inviter_id])
+    invitee = relationship("User", foreign_keys=[invitee_id])
