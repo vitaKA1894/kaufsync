@@ -14,6 +14,10 @@ const successMessage = ref('');
 const showShareSheet = ref(false);
 const showSortSheet = ref(false);
 
+const searchQuery = ref('');
+const searchResults = ref([]);
+const isSearching = ref(false);
+
 let ws = null;
 const isOnline = ref(navigator.onLine);
 
@@ -290,6 +294,61 @@ const copyToClipboard = async () => {
   }
 };
 
+const searchUsers = async () => {
+  if (searchQuery.value.length < 2) {
+    searchResults.value = [];
+    return;
+  }
+  isSearching.value = true;
+  try {
+    const token = localStorage.getItem('token');
+    const response = await fetch(`http://localhost:8000/api/users/search?q=${encodeURIComponent(searchQuery.value)}`, {
+      headers: { 'Authorization': `Bearer ${token}` }
+    });
+    if (response.ok) {
+      searchResults.value = await response.json();
+    }
+  } catch (error) {
+    console.error('Fehler bei der Benutzersuche', error);
+  } finally {
+    isSearching.value = false;
+  }
+};
+
+let searchTimeout;
+const debouncedSearch = () => {
+  clearTimeout(searchTimeout);
+  searchTimeout = setTimeout(searchUsers, 300);
+};
+
+const inviteUser = async (userId) => {
+  try {
+    const token = localStorage.getItem('token');
+    const listId = route.params.id;
+    const response = await fetch(`http://localhost:8000/api/lists/${listId}/invite`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ invitee_id: userId })
+    });
+
+    if (response.ok) {
+      successMessage.value = "Einladung versendet!";
+      searchQuery.value = '';
+      searchResults.value = [];
+      setTimeout(() => successMessage.value = '', 3000);
+    } else {
+      const data = await response.json();
+      throw new Error(data.detail || "Fehler beim Einladen");
+    }
+  } catch (error) {
+    errorMessage.value = error.message;
+    setTimeout(() => errorMessage.value = '', 3000);
+  }
+};
+
 const getInitials = (name) => {
   return name.substring(0, 2).toUpperCase();
 };
@@ -382,11 +441,38 @@ onUnmounted(() => {
       <div v-if="showShareSheet" class="ks-sheet" @click.stop>
         <div class="ks-sheet__handle"></div>
         <h3 class="sheet-heading">Liste teilen</h3>
-        <p class="sheet-support">Gib diesen Code an Familienmitglieder, damit sie beitreten können.</p>
-        <button class="code-box" @click="copyToClipboard">
-          <span class="code">{{ currentList?.share_code }}</span>
-          <svg viewBox="0 0 24 24"><path d="M9 18q-.825 0-1.412-.587Q7 16.825 7 16V4q0-.825.588-1.412Q8.175 2 9 2h9q.825 0 1.413.588Q20 3.175 20 4v12q0 .825-.587 1.413Q18.825 18 18 18Zm0-2h9V4H9v12Zm-4 6q-.825 0-1.412-.587Q3 20.825 3 20V6h2v14h11v2Z"/></svg>
-        </button>
+
+        <div class="share-section">
+          <p class="section-label">Per Code einladen</p>
+          <button class="code-box" @click="copyToClipboard">
+            <span class="code">{{ currentList?.share_code }}</span>
+            <svg viewBox="0 0 24 24"><path d="M9 18q-.825 0-1.412-.587Q7 16.825 7 16V4q0-.825.588-1.412Q8.175 2 9 2h9q.825 0 1.413.588Q20 3.175 20 4v12q0 .825-.587 1.413Q18.825 18 18 18Zm0-2h9V4H9v12Zm-4 6q-.825 0-1.412-.587Q3 20.825 3 20V6h2v14h11v2Z"/></svg>
+          </button>
+        </div>
+
+        <div class="share-section mt-4">
+          <p class="section-label">Benutzer suchen</p>
+          <div class="search-box">
+            <input
+              v-model="searchQuery"
+              @input="debouncedSearch"
+              type="text"
+              placeholder="Name oder E-Mail"
+              class="search-input"
+            />
+          </div>
+
+          <div v-if="searchResults.length > 0" class="search-results">
+            <div v-for="user in searchResults" :key="user.id" class="user-result-item">
+              <div class="user-info">
+                <span class="user-name">{{ user.display_name }}</span>
+                <span class="user-email">{{ user.email }}</span>
+              </div>
+              <button class="ks-btn-filled" @click="inviteUser(user.id)">Einladen</button>
+            </div>
+          </div>
+          <p v-else-if="searchQuery.length >= 2 && !isSearching" class="no-results">Keine Benutzer gefunden</p>
+        </div>
       </div>
     </transition>
 
@@ -672,4 +758,17 @@ onUnmounted(() => {
 .small-btn { width: 36px; height: 36px; }
 .small-btn:disabled { opacity: 0.2; pointer-events: none; }
 .full-width { width: 100%; }
+
+.share-section { margin-top: 16px; }
+.section-label { font-size: 14px; font-weight: 500; color: var(--ks-text-muted); margin-bottom: 8px; }
+.mt-4 { margin-top: 24px; }
+.search-box { background: var(--ks-surface-2); border-radius: 12px; padding: 4px 12px; display: flex; align-items: center; }
+.search-input { width: 100%; background: transparent; border: none; padding: 12px 0; color: var(--ks-text); outline: none; }
+.search-input::placeholder { color: var(--ks-text-muted); }
+.search-results { margin-top: 12px; display: flex; flex-direction: column; gap: 8px; max-height: 200px; overflow-y: auto; }
+.user-result-item { display: flex; align-items: center; justify-content: space-between; padding: 12px; background: var(--ks-surface-3); border-radius: 12px; }
+.user-info { display: flex; flex-direction: column; flex: 1; min-width: 0; padding-right: 12px; }
+.user-name { font-weight: 500; color: var(--ks-text); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.user-email { font-size: 12px; color: var(--ks-text-muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.no-results { color: var(--ks-text-muted); font-size: 14px; margin-top: 12px; text-align: center; }
 </style>

@@ -109,6 +109,24 @@ class PasswordUpdate(schemas.BaseModel):
     old_password: str
     new_password: str
 
+@app.get("/api/users/search", response_model=list[schemas.UserResponse])
+def search_users(
+    q: str,
+    db: Session = Depends(get_db),
+    current_user: models.User = Depends(auth.get_current_user)
+):
+    """Sucht Benutzer nach E-Mail oder Anzeigename, exklusive dem aktuellen Benutzer."""
+    if not q or len(q) < 2:
+        return []
+
+    search_term = f"%{q}%"
+    users = db.query(models.User).filter(
+        (models.User.id != current_user.id) &
+        ((models.User.email.ilike(search_term)) | (models.User.display_name.ilike(search_term)))
+    ).limit(10).all()
+
+    return users
+
 @app.get("/api/users/me", response_model=schemas.UserResponse)
 def get_current_user_profile(current_user: models.User = Depends(auth.get_current_user)):
     """Gibt die Profildaten des aktuell eingeloggten Nutzers zurück."""
@@ -171,6 +189,24 @@ def get_lists(
         (models.List.members.any(id=current_user.id))
     ).all()
 
+@app.get("/api/invitations", response_model=list[schemas.ListInvitationResponse])
+def get_invitations(
+    db: Session = Depends(get_db),
+    current_user: models.User = Depends(auth.get_current_user)
+):
+    """Gibt alle offenen Einladungen für den aktuellen Benutzer zurück."""
+    invitations = db.query(models.ListInvitation).filter(
+        models.ListInvitation.invitee_id == current_user.id,
+        models.ListInvitation.status == "pending"
+    ).all()
+
+    # Optional fields anreichern
+    for inv in invitations:
+        inv.list_name = inv.list.name
+        inv.inviter_name = inv.inviter.display_name
+
+    return invitations
+
 @app.delete("/api/lists/{list_id}")
 def delete_list(
     list_id: str,
@@ -214,6 +250,87 @@ def join_list(
     db.commit()
     db.refresh(db_list)
     return db_list
+
+@app.post("/api/lists/{list_id}/invite", response_model=schemas.ListInvitationResponse)
+def invite_user(
+    list_id: str,
+    invite_data: schemas.InviteUserRequest,
+    db: Session = Depends(get_db),
+    current_user: models.User = Depends(auth.get_current_user)
+):
+    """Lädt einen Benutzer in eine Liste ein."""
+    db_list = db.query(models.List).filter(models.List.id == list_id).first()
+    if not db_list:
+        raise HTTPException(status_code=404, detail="Liste nicht gefunden")
+
+    # Nur Mitglieder oder Besitzer dürfen einladen
+    if db_list.created_by != current_user.id and current_user not in db_list.members:
+        raise HTTPException(status_code=403, detail="Keine Berechtigung")
+
+    invitee = db.query(models.User).filter(models.User.id == invite_data.invitee_id).first()
+    if not invitee:
+        raise HTTPException(status_code=404, detail="Benutzer nicht gefunden")
+
+    # Prüfen, ob der Benutzer bereits Mitglied ist
+    if invitee.id == db_list.created_by or invitee in db_list.members:
+        raise HTTPException(status_code=400, detail="Benutzer ist bereits Mitglied dieser Liste")
+
+    # Prüfen, ob es bereits eine offene Einladung gibt
+    existing_invite = db.query(models.ListInvitation).filter(
+        models.ListInvitation.list_id == list_id,
+        models.ListInvitation.invitee_id == invitee.id,
+        models.ListInvitation.status == "pending"
+    ).first()
+
+    if existing_invite:
+        raise HTTPException(status_code=400, detail="Es gibt bereits eine offene Einladung für diesen Benutzer")
+
+    new_invite = models.ListInvitation(
+        list_id=list_id,
+        inviter_id=current_user.id,
+        invitee_id=invitee.id
+    )
+
+    db.add(new_invite)
+    db.commit()
+    db.refresh(new_invite)
+
+    new_invite.list_name = db_list.name
+    new_invite.inviter_name = current_user.display_name
+
+    return new_invite
+
+@app.post("/api/invitations/{invite_id}/respond")
+def respond_to_invitation(
+    invite_id: str,
+    action: str, # "accept" oder "decline"
+    db: Session = Depends(get_db),
+    current_user: models.User = Depends(auth.get_current_user)
+):
+    """Nimmt eine Einladung an oder lehnt sie ab."""
+    invite = db.query(models.ListInvitation).filter(
+        models.ListInvitation.id == invite_id,
+        models.ListInvitation.invitee_id == current_user.id
+    ).first()
+
+    if not invite:
+        raise HTTPException(status_code=404, detail="Einladung nicht gefunden")
+
+    if invite.status != "pending":
+        raise HTTPException(status_code=400, detail="Einladung wurde bereits beantwortet")
+
+    if action == "accept":
+        invite.status = "accepted"
+        db_list = db.query(models.List).filter(models.List.id == invite.list_id).first()
+        if db_list and current_user not in db_list.members:
+            db_list.members.append(current_user)
+    elif action == "decline":
+        invite.status = "declined"
+    else:
+        raise HTTPException(status_code=400, detail="Ungültige Aktion")
+
+    db.commit()
+    return {"status": "ok", "message": f"Einladung {'angenommen' if action == 'accept' else 'abgelehnt'}"}
 
 @app.post("/api/lists/{list_id}/items", response_model=schemas.ItemResponse)
 async def create_item(
