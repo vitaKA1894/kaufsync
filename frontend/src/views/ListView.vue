@@ -262,6 +262,17 @@ const toggleItemStatus = async (item) => {
   }
 };
 
+const clearCompleted = async () => {
+  const completedIds = completedItems.value.map(item => item.id);
+  if (completedIds.length === 0) return;
+
+  if (confirm(`Möchtest du wirklich alle ${completedIds.length} erledigten Artikel löschen?`)) {
+    for (const id of completedIds) {
+      await deleteItem(id);
+    }
+  }
+};
+
 const deleteItem = async (itemId) => {
   // Optimistic delete
   const previousItems = [...items.value];
@@ -464,9 +475,14 @@ onUnmounted(() => {
 
       <!-- ERLEDIGTE ARTIKEL -->
       <section v-if="completedItems.length > 0" class="items-section completed-section">
-        <div class="category-header">
-          <span class="category-badge completed-badge">Erledigt</span>
-          <span class="category-count">{{ completedItems.length }}</span>
+        <div class="category-header" style="justify-content: space-between;">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <span class="category-badge completed-badge">Erledigt</span>
+            <span class="category-count">{{ completedItems.length }}</span>
+          </div>
+          <button class="clear-completed-btn" @click="clearCompleted" aria-label="Alle erledigten löschen">
+            Alle löschen <svg viewBox="0 0 24 24"><path d="M7 21q-.825 0-1.412-.587Q5 19.825 5 19V6H4V4h5V3h6v1h5v2h-1v13q0 .825-.587 1.413Q17.825 21 17 21Zm2-4h2V8H9Zm4 0h2V8h-2Z"/></svg>
+          </button>
         </div>
         
         <div class="ks-grid">
@@ -543,6 +559,19 @@ onUnmounted(() => {
 .completed-badge {
   background: var(--ks-surface-3); color: var(--ks-text-muted);
 }
+.clear-completed-btn {
+  background: transparent;
+  border: 1px solid var(--ks-border);
+  color: var(--ks-error);
+  padding: 4px 10px;
+  border-radius: var(--ks-radius-xs);
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+}
+.clear-completed-btn svg { width: 14px; height: 14px; fill: currentColor; }
 
 .ks-grid {
   display: grid;
@@ -593,14 +622,15 @@ onUnmounted(() => {
 
 .delete-btn {
   position: absolute; top: -8px; right: -8px;
-  width: 32px; height: 32px; border: none; border-radius: 50%;
+  width: 36px; height: 36px; border: none; border-radius: 50%;
   background: var(--ks-surface-4); color: var(--ks-error);
-  display: none; align-items: center; justify-content: center;
+  display: flex; align-items: center; justify-content: center;
   box-shadow: 0 2px 4px rgba(0,0,0,0.3); cursor: pointer;
+  z-index: 2; /* ensure it's on top of the card */
 }
-.delete-btn svg { width: 16px; height: 16px; fill: currentColor; }
+.delete-btn svg { width: 18px; height: 18px; fill: currentColor; }
 .grid-card:hover .delete-btn { display: flex; }
-@media (hover: none) { .delete-btn { display: flex; opacity: 0.8; } }
+@media (hover: none) { .delete-btn { opacity: 1; } }
 
 .empty-state { text-align: center; padding: 40px 0; color: var(--ks-text-muted); }
 .empty-state svg { width: 40px; height: 40px; opacity: 0.5; margin-bottom: 8px; fill: currentColor; margin-inline: auto; }
@@ -610,19 +640,19 @@ onUnmounted(() => {
   position: fixed;
   bottom: 0; left: 0; right: 0;
   background: linear-gradient(0deg, var(--ks-bg) 70%, transparent);
-  padding: 0 16px 24px;
+  padding: 0 16px max(24px, env(safe-area-inset-bottom));
   display: flex; flex-direction: column; gap: 12px;
   z-index: 40; pointer-events: none; /* Container ist klick-durchlässig */
 }
 .input-container > * { pointer-events: auto; /* Kinder sind klickbar */ }
 
 .category-selector {
-  display: flex; overflow-x: auto; gap: 8px; padding-bottom: 4px;
+  display: flex; overflow-x: auto; gap: 12px; padding-bottom: 4px;
   -ms-overflow-style: none; scrollbar-width: none;
   max-width: var(--ks-page-width); margin: 0 auto; width: 100%;
 }
 .category-selector::-webkit-scrollbar { display: none; }
-.ks-chip { flex-shrink: 0; transition: all 0.2s ease; cursor: pointer; }
+.ks-chip { flex-shrink: 0; transition: all 0.2s ease; cursor: pointer; min-height: 40px; }
 .ks-chip.chip-active { border-width: 2px; font-weight: 600; }
 
 .floating-input-bar {
