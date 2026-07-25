@@ -1,7 +1,7 @@
 <script setup>
 import { ref, onMounted, onUnmounted, computed } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-import { getIcon } from '../utils/foodIcons';
+import CategoryIcon from '../components/CategoryIcon.vue';
 
 const route = useRoute();
 const router = useRouter();
@@ -542,8 +542,7 @@ onUnmounted(() => {
           <div class="ks-grid">
             <div v-for="item in group.items" :key="item.id" class="grid-card active" @click="toggleItemStatus(item)">
               <div class="card-icon-area" :style="{ background: group.def.bg, color: group.def.color }">
-                 <span v-if="!getIcon(item.name)" class="initials">{{ getInitials(item.name) }}</span>
-                 <span v-else class="icon-svg" v-html="getIcon(item.name)"></span>
+                 <CategoryIcon class="icon-svg" :name="item.name" :category="item.category" />
               </div>
               <div class="card-text-area">
                 <span class="item-name">{{ item.name }}</span>
@@ -574,8 +573,7 @@ onUnmounted(() => {
         <div class="ks-grid">
           <div v-for="item in completedItems" :key="item.id" class="grid-card completed" @click="toggleItemStatus(item)">
             <div class="card-icon-area">
-               <span v-if="getIcon(item.name)" class="icon-svg" v-html="getIcon(item.name)" style="opacity: 0.5;"></span>
-               <svg v-else viewBox="0 0 24 24" style="width: 24px; height: 24px; fill: currentColor;"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4Z"/></svg>
+               <CategoryIcon class="icon-svg" :name="item.name" :category="item.category" style="opacity: 0.5;" />
             </div>
             <div class="card-text-area">
               <span class="item-name">{{ item.name }}</span>
@@ -696,7 +694,7 @@ onUnmounted(() => {
 }
 .initials { font-size: 24px; font-weight: 700; }
 .icon-svg { display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; }
-.icon-svg :deep(svg) { width: 100%; height: 100%; fill: currentColor; }
+.icon-svg :deep(svg) { width: 100%; height: 100%; }
 
 .card-text-area { display: flex; flex-direction: column; }
 .item-name { 
