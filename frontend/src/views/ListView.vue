@@ -802,14 +802,8 @@ onUnmounted(() => {
 .search-input::placeholder { color: var(--ks-text-muted); }
 .search-results { margin-top: 12px; display: flex; flex-direction: column; gap: 8px; max-height: 200px; overflow-y: auto; }
 .user-result-item { display: flex; align-items: center; justify-content: space-between; padding: 12px; background: var(--ks-surface-3); border-radius: 12px; }
-<<<<<<< HEAD
-.user-info { display: flex; flex-direction: column; }
-.user-name { font-weight: 500; color: var(--ks-text); }
-.user-email { font-size: 12px; color: var(--ks-text-muted); }
-=======
 .user-info { display: flex; flex-direction: column; flex: 1; min-width: 0; padding-right: 12px; }
 .user-name { font-weight: 500; color: var(--ks-text); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .user-email { font-size: 12px; color: var(--ks-text-muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
->>>>>>> origin/jules-2397432817224700005-67731e44
 .no-results { color: var(--ks-text-muted); font-size: 14px; margin-top: 12px; text-align: center; }
 </style>
