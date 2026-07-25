@@ -83,11 +83,12 @@ const iconComponent = computed(() => {
 
   const searchNames = [lowerName, searchName, searchName2, searchName3, searchName4];
 
-  // Check item names first
-  for (const [key, icon] of Object.entries(itemIconMap)) {
+  // Check item names first (sort by length descending to match more specific words first, e.g. "eier" before "ei", and avoid "ei" matching "bier")
+  const sortedItemKeys = Object.keys(itemIconMap).sort((a, b) => b.length - a.length);
+  for (const key of sortedItemKeys) {
     for (const name of searchNames) {
       if (name.includes(key)) {
-        return icon;
+        return itemIconMap[key];
       }
     }
   }
@@ -95,9 +96,10 @@ const iconComponent = computed(() => {
   // Check categories next
   if (props.category) {
     const lowerCategory = props.category.toLowerCase();
-    for (const [key, icon] of Object.entries(categoryIconMap)) {
+    const sortedCategoryKeys = Object.keys(categoryIconMap).sort((a, b) => b.length - a.length);
+    for (const key of sortedCategoryKeys) {
       if (lowerCategory.includes(key)) {
-        return icon;
+        return categoryIconMap[key];
       }
     }
   }
