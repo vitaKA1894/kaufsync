@@ -2,8 +2,9 @@
 import { computed } from 'vue';
 import {
   Apple, Banana, Croissant, Beer, Wine, Trash2, Sparkles, Bath, ShoppingBag,
-  Wheat, Milk, Coffee, Beef, Fish, Droplets, Egg, Carrot, Grape, Pizza, Store,
-  Drumstick, Leaf, Candy, IceCream, Utensils
+  Wheat, Milk, Coffee, Beef, Fish, Droplets, Egg, Carrot, Grape, Pizza,
+  Drumstick, Leaf, Candy, IceCream, Utensils, EggFried, Cherry, Cookie, Cake,
+  Soup, CupSoda, GlassWater, SprayCan, Toilet, Paperclip
 } from '@lucide/vue';
 
 const props = defineProps({
@@ -30,36 +31,84 @@ const props = defineProps({
 });
 
 const itemIconMap = {
+  // Obst & Gemüse
   'apfel': Apple,
+  'äpfel': Apple,
   'banane': Banana,
-  'brot': Wheat,
-  'brötchen': Wheat,
-  'croissant': Croissant,
-  'milch': Milk,
-  'kaffee': Coffee,
-  'fleisch': Beef,
-  'wurst': Beef,
-  'fisch': Fish,
-  'wasser': Droplets,
-  'cola': Beer,
-  'bier': Beer,
-  'wein': Wine,
-  'ei': Egg,
-  'eier': Egg,
+  'bananen': Banana,
   'möhre': Carrot,
   'karotte': Carrot,
   'traube': Grape,
+  'kirsche': Cherry,
+  'salat': Leaf,
+  'gemüse': Leaf,
+  'obst': Apple,
+  'zitrone': Apple, // fallback
+  'kartoffel': Leaf,
+  'zwiebel': Leaf,
+  'tomate': Carrot,
+  'paprika': Carrot,
+
+  // Backwaren
+  'brot': Wheat,
+  'brötchen': Wheat,
+  'croissant': Croissant,
+  'brezel': Croissant, // fallback
+  'kuchen': Cake,
+  'torte': Cake,
+  'keks': Cookie,
+
+  // Kühlregal
+  'milch': Milk,
+  'käse': EggFried, // fallback
+  'joghurt': Milk,
+  'butter': Milk,
+  'ei': Egg,
+  'eier': Egg,
+  'sahne': Milk,
+
+  // Fleisch & Fisch
+  'fleisch': Beef,
+  'wurst': Beef,
+  'salami': Beef,
+  'hähnchen': Drumstick,
+  'fisch': Fish,
+  'lachs': Fish,
+
+  // Getränke
+  'wasser': GlassWater,
+  'cola': CupSoda,
+  'bier': Beer,
+  'wein': Wine,
+  'kaffee': Coffee,
+  'tee': Coffee,
+  'saft': GlassWater,
+
+  // Süßigkeiten & Snacks
+  'schokolade': Candy,
+  'eis': IceCream,
+  'chips': Candy,
+  'nuss': Cookie,
   'pizza': Pizza,
+
+  // Vorrat & Fertig
+  'suppe': Soup,
+  'nudel': Wheat,
+  'reis': Wheat,
+
+  // Drogerie & Haushalt
   'müllbeutel': Trash2,
   'waschmittel': Sparkles,
+  'putzmittel': SprayCan,
   'shampoo': Bath,
+  'duschgel': Bath,
   'zahncreme': Bath,
+  'zahnpasta': Bath,
   'seife': Bath,
-  'klopapier': Bath,
-  'hähnchen': Drumstick,
-  'salat': Leaf,
-  'schokolade': Candy,
-  'eis': IceCream
+  'klopapier': Toilet,
+  'toilettenpapier': Toilet,
+  'tampon': Bath,
+  'windel': Bath
 };
 
 const categoryIconMap = {
@@ -79,9 +128,8 @@ const iconComponent = computed(() => {
   const searchName = lowerName.endsWith('en') ? lowerName.slice(0, -2) : (lowerName.endsWith('n') ? lowerName.slice(0, -1) : lowerName);
   const searchName2 = lowerName.endsWith('s') ? lowerName.slice(0, -1) : lowerName;
   const searchName3 = lowerName.endsWith('er') ? lowerName.slice(0, -2) : lowerName;
-  const searchName4 = lowerName.replace('ä', 'a').replace('ö', 'o').replace('ü', 'u');
 
-  const searchNames = [lowerName, searchName, searchName2, searchName3, searchName4];
+  const searchNames = [lowerName, searchName, searchName2, searchName3];
 
   // Check item names first (sort by length descending to match more specific words first, e.g. "eier" before "ei", and avoid "ei" matching "bier")
   const sortedItemKeys = Object.keys(itemIconMap).sort((a, b) => b.length - a.length);

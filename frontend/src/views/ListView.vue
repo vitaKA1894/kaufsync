@@ -724,7 +724,7 @@ onUnmounted(() => {
   position: fixed;
   bottom: 0; left: 0; right: 0;
   background: linear-gradient(0deg, var(--ks-bg) 70%, transparent);
-  padding: 0 16px max(24px, env(safe-area-inset-bottom));
+  padding: 0 0 max(24px, env(safe-area-inset-bottom));
   display: flex; flex-direction: column; gap: 12px;
   z-index: 40; pointer-events: none; /* Container ist klick-durchlässig */
 }
@@ -732,15 +732,16 @@ onUnmounted(() => {
 
 .category-selector {
   display: flex; overflow-x: auto; gap: 12px; padding-bottom: 4px;
+  padding-inline: 16px;
   -ms-overflow-style: none; scrollbar-width: none;
-  max-width: var(--ks-page-width); margin: 0 auto; width: 100%;
+  max-width: var(--ks-page-width); margin: 0 auto; width: 100%; box-sizing: border-box;
 }
 .category-selector::-webkit-scrollbar { display: none; }
 .ks-chip { flex-shrink: 0; transition: all 0.2s ease; cursor: pointer; min-height: 40px; }
 .ks-chip.chip-active { border-width: 2px; font-weight: 600; }
 
 .floating-input-bar {
-  max-width: var(--ks-page-width); margin: 0 auto; width: 100%;
+  max-width: calc(var(--ks-page-width) - 32px); margin: 0 auto; width: calc(100% - 32px);
   background: var(--ks-surface-4);
   border-radius: 32px;
   padding: 6px 6px 6px 20px;
