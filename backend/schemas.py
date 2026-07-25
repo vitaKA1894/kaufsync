@@ -72,7 +72,9 @@ class ListResponse(ListBase):
     id: str
     created_at: datetime
     created_by: str
-    share_code: str  
+    share_code: str
+    members: List[UserResponse] = []
+    creator: Optional[UserResponse] = None
     items: List[ItemResponse] = []  # KORRIGIERT: List statt ListType
     
     class Config:

@@ -143,6 +143,11 @@ const joinList = async () => {
   } catch { errorMessage.value = "Code ungültig oder Fehler beim Beitreten."; }
 };
 
+const getInitial = (name) => {
+  if (!name) return '?';
+  return name.charAt(0).toUpperCase();
+};
+
 const deleteList = async () => {
   if (!selectedListForOptions.value) return;
   try {
@@ -225,7 +230,17 @@ onMounted(() => {
             <img v-if="list.icon_name && list.icon_name !== 'mdi-cart'" :src="list.icon_name" :alt="list.name" class="store-logo-img" />
             <svg v-else viewBox="0 0 24 24"><path d="M7 22q-.825 0-1.412-.587Q5 20.825 5 20t.588-1.412Q6.175 18 7 18t1.413.588Q9 19.175 9 20t-.587 1.413Q7.825 22 7 22Zm10 0q-.825 0-1.412-.587Q15 20.825 15 20t.588-1.412Q16.175 18 17 18t1.413.588Q19 19.175 19 20t-.587 1.413Q17.825 22 17 22ZM6.15 6l1.4 3h9.75l1.65-3ZM5.2 4h15.35q.575 0 .875.5.3.5.025 1L18.3 10.45q-.275.5-.737.775-.463.275-1.013.275H7.15L6 13h12v2H6q-1.15 0-1.725-1.012-.575-1.013-.025-2.038L5.6 9.6 2 2h2Z"/></svg>
           </div>
-          <span class="card-title">{{ list.name }}</span>
+          <div style="display: flex; flex-direction: column; gap: 4px;">
+            <span class="card-title">{{ list.name }}</span>
+            <div class="member-indicators" v-if="list.creator || (list.members && list.members.length > 0)">
+              <div class="member-avatar creator" v-if="list.creator" :title="list.creator.display_name">
+                {{ getInitial(list.creator.display_name) }}
+              </div>
+              <div class="member-avatar" v-for="member in list.members" :key="member.id" :title="member.display_name">
+                {{ getInitial(member.display_name) }}
+              </div>
+            </div>
+          </div>
         </div>
         <div class="options-trigger" @click.stop="openOptions(list)">
           <svg viewBox="0 0 24 24" style="width:20px;height:20px;fill:var(--ks-text-muted);"><path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg>
@@ -356,6 +371,11 @@ onMounted(() => {
 .store-logo-img { width: 100%; height: 100%; object-fit: contain; padding: 4px; }
 
 .card-title { font-size: 17px; font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+.member-indicators { display: flex; align-items: center; }
+.member-avatar { width: 20px; height: 20px; border-radius: 50%; background: var(--ks-surface-4); color: var(--ks-text); display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: bold; border: 1.5px solid var(--ks-surface-1); margin-left: -6px; }
+.member-avatar:first-child { margin-left: 0; }
+.member-avatar.creator { background: var(--ks-primary); color: var(--ks-on-primary); }
 
 .options-trigger {
   padding: 8px; margin: -8px; border-radius: 50%; display: flex; align-items: center; justify-content: center;

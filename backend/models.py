@@ -41,6 +41,7 @@ class List(Base):
     # Beziehungen
     items = relationship("Item", back_populates="shopping_list", cascade="all, delete-orphan")
     members = relationship("User", secondary=list_members, backref="shared_lists") # NEU
+    creator = relationship("User", foreign_keys=[created_by])
 
 class Item(Base):
     __tablename__ = "items"
