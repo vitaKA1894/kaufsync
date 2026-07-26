@@ -64,12 +64,13 @@ const itemIconMap = {
 
 const categoryIconMap = {
   'obst & gemüse': Carrot,
-  'kühlregal': Milk,
-  'backwaren': Wheat,
+  'brot & backwaren': Wheat,
   'fleisch & fisch': Beef,
-  'getränke': Beer,
-  'drogerie': Bath,
-  'allgemein': ShoppingBag
+  'milchprodukte & tiefkühlkost': Milk,
+  'vorratskammer': ShoppingBag,
+  'getränke & genussmittel': Beer,
+  'drogerie, haushalt & tierbedarf': Bath,
+  'sonstiges': Sparkles
 };
 
 const iconComponent = computed(() => {

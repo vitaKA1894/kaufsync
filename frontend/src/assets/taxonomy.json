@@ -1,0 +1,6965 @@
+[
+  {
+    "id": "455cd713-86fd-43ba-8b1b-b010dbba8cea",
+    "name": "Apfel",
+    "aliases": [
+      "Äpfel"
+    ],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "1kg Netz",
+        "2kg Netz"
+      ],
+      "constellations": [
+        "Bio",
+        "Regional",
+        "Braeburn",
+        "Elstar",
+        "Pink Lady",
+        "Streuobst",
+        "Lose"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "d2ca7ad4-1116-46d9-ac13-2f434a2f8dd6",
+    "name": "Banane",
+    "aliases": [
+      "Bananen"
+    ],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "Staude",
+        "1kg"
+      ],
+      "constellations": [
+        "Bio",
+        "Fairtrade",
+        "Chiquita",
+        "Essreif"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "5fb82042-2a88-4c62-a2a9-2d997289ece8",
+    "name": "Birne",
+    "aliases": [
+      "Birnen"
+    ],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "500g",
+        "1kg"
+      ],
+      "constellations": [
+        "Bio",
+        "Regional",
+        "Abate Fetel",
+        "Conference",
+        "Lose"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "b438e1d4-3952-4bd2-ad19-0f3ac1d00f1c",
+    "name": "Erdbeeren",
+    "aliases": [],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "250g Schale",
+        "500g Schale"
+      ],
+      "constellations": [
+        "Bio",
+        "Regional",
+        "Süß",
+        "Gewaschen"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "bc82bebd-75a6-4d99-8ec6-fbc66e71d93c",
+    "name": "Himbeeren",
+    "aliases": [],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "125g Schale",
+        "250g Schale"
+      ],
+      "constellations": [
+        "Bio",
+        "Regional"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "22cea1aa-ea4f-41e4-816c-80ac29d4c8e5",
+    "name": "Heidelbeeren",
+    "aliases": [
+      "Blaubeeren"
+    ],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "125g",
+        "300g",
+        "500g Schale"
+      ],
+      "constellations": [
+        "Bio",
+        "Kulturheidelbeeren",
+        "Waldheidelbeeren"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "52cf5933-94a2-4a34-8f8e-adbfaf4974d8",
+    "name": "Brombeeren",
+    "aliases": [],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "125g Schale"
+      ],
+      "constellations": [
+        "Bio",
+        "Regional"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "34ef71c9-2ae9-49dd-90ca-e46ad136a5c9",
+    "name": "Johannisbeeren",
+    "aliases": [],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "250g Schale"
+      ],
+      "constellations": [
+        "Rot",
+        "Schwarz",
+        "Bio"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "81dddf90-e8cf-4574-b283-1b3f8a37268c",
+    "name": "Weintrauben",
+    "aliases": [
+      "Trauben"
+    ],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1",
+        "500g Schale",
+        "1kg"
+      ],
+      "constellations": [
+        "Hell",
+        "Dunkel",
+        "Kernlos",
+        "Bio",
+        "Süß"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "6190fcce-0dea-4307-bf71-d8d5505d0484",
+    "name": "Wassermelone",
+    "aliases": [],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1",
+        "1/2 Stück",
+        "1/4 Stück"
+      ],
+      "constellations": [
+        "Kernarm",
+        "Bio",
+        "Mini-Melone"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "e1ba60cb-9d2e-42a6-846b-d04f968fca2b",
+    "name": "Zuckermelone (Galia",
+    "aliases": [
+      "Honig)"
+    ],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1",
+        "2"
+      ],
+      "constellations": [
+        "Essreif",
+        "Bio"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "d6896d9b-1773-44bb-90a1-9ab525c8d3e7",
+    "name": "Orange",
+    "aliases": [
+      "Apfelsine"
+    ],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "1kg Netz",
+        "2kg Netz",
+        "3kg"
+      ],
+      "constellations": [
+        "Bio",
+        "Saftorangen",
+        "Unbehandelte Schale"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "5007fc10-5c56-420b-be4b-aae523401944",
+    "name": "Mandarine",
+    "aliases": [
+      "Clementine"
+    ],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "1kg Netz",
+        "1",
+        "5kg Netz"
+      ],
+      "constellations": [
+        "Bio",
+        "Kernlos",
+        "Blattmandarinen"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "0fe1aaf9-26e4-44be-9c62-93618aed14a7",
+    "name": "Zitrone",
+    "aliases": [],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "3er Netz",
+        "500g"
+      ],
+      "constellations": [
+        "Bio",
+        "Unbehandelte Schale",
+        "Saft"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "cfd7e508-db8a-4731-99ab-6b5d494f3357",
+    "name": "Limette",
+    "aliases": [],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "4er Netz"
+      ],
+      "constellations": [
+        "Bio",
+        "Unbehandelte Schale"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "01d42916-2d1b-4424-b55a-085d57376554",
+    "name": "Grapefruit",
+    "aliases": [
+      "Pampelmuse"
+    ],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3"
+      ],
+      "constellations": [
+        "Bio",
+        "Rosa",
+        "Weiß"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "afef5946-ebbd-4c88-9543-c9cea5f2d55a",
+    "name": "Pfirsich",
+    "aliases": [],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "500g Schale"
+      ],
+      "constellations": [
+        "Plattpfirsich",
+        "Bio",
+        "Regional",
+        "Lose"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "8be2cb8e-3a32-4448-ac30-c9b0cd7470c2",
+    "name": "Nektarine",
+    "aliases": [],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "500g Schale"
+      ],
+      "constellations": [
+        "Weißfleischig",
+        "Gelbfleischig",
+        "Bio"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "fd06b56f-afe7-40ff-be87-dc956e84da88",
+    "name": "Pflaume",
+    "aliases": [
+      "Zwetschge"
+    ],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "500g",
+        "1kg"
+      ],
+      "constellations": [
+        "Bio",
+        "Regional"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "da286c49-76b6-44ed-aee8-6145ea11e46e",
+    "name": "Süßkirschen",
+    "aliases": [],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1",
+        "500g Schale",
+        "1kg"
+      ],
+      "constellations": [
+        "Bio",
+        "Regional",
+        "Knorpelkirschen"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "2a13ac48-9934-44ab-aa56-3904848757a7",
+    "name": "Kiwi",
+    "aliases": [],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "4er Pack",
+        "1kg Korb"
+      ],
+      "constellations": [
+        "Bio",
+        "Gold (Gelb)",
+        "Grün",
+        "Essreif"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "eaeaa69c-059b-4f6e-a17a-2bfb7b8c78ad",
+    "name": "Mango",
+    "aliases": [],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3"
+      ],
+      "constellations": [
+        "Essreif",
+        "Bio",
+        "Flugmango"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "ead6cfa6-ed7f-48a5-8e09-3ef0aa0106a3",
+    "name": "Avocado",
+    "aliases": [],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "2er Netz"
+      ],
+      "constellations": [
+        "Hass",
+        "Essreif",
+        "Bio",
+        "Fuerte"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "e0f30693-5028-4aae-8c95-4985b271426b",
+    "name": "Ananas",
+    "aliases": [],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1",
+        "2"
+      ],
+      "constellations": [
+        "Extra Sweet",
+        "Essreif",
+        "Geschält (To-Go)"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "066c2a80-9735-45ae-89b7-ccbea90dd8ee",
+    "name": "Granatapfel",
+    "aliases": [],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3"
+      ],
+      "constellations": [
+        "Essreif",
+        "Bio"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "9dd088ea-51a7-4a16-8023-8960d6f16612",
+    "name": "Papaya",
+    "aliases": [],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1",
+        "2"
+      ],
+      "constellations": [
+        "Essreif"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "1592d899-ed89-477f-990a-8f70ea5abb5c",
+    "name": "Feige (frisch)",
+    "aliases": [],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "constellations": [
+        "Bio",
+        "Blau",
+        "Grün"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "352a3ace-aa90-4f73-92fd-99afd20904c0",
+    "name": "Kaki",
+    "aliases": [
+      "Persimon"
+    ],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "constellations": [
+        "Bio",
+        "Kernlos"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "11aa5bf9-a636-4574-8e20-4d044706c109",
+    "name": "Tomate",
+    "aliases": [
+      "Rispentomaten"
+    ],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "500g Rispe",
+        "1kg"
+      ],
+      "constellations": [
+        "Bio",
+        "Regional",
+        "Holland",
+        "Lose"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "b4162f0f-f5fd-4100-831f-fe4e7d0d23d2",
+    "name": "Cherrytomaten",
+    "aliases": [],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "250g Schale",
+        "500g Schale"
+      ],
+      "constellations": [
+        "Bio",
+        "Datteltomaten",
+        "Süß",
+        "Snacktomaten"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "5869c4dd-0d86-4a7d-9dc1-d13aba8e21f8",
+    "name": "Fleischtomaten",
+    "aliases": [],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "constellations": [
+        "Bio",
+        "Ochsenherz"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "40e5b4c0-2952-4700-9755-0c65e911eb1b",
+    "name": "Salatgurke",
+    "aliases": [],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3"
+      ],
+      "constellations": [
+        "Bio",
+        "Regional",
+        "Minigurken",
+        "Snackgurken"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "5e462805-30fa-4d1e-b34b-92754d7cdbbe",
+    "name": "Paprika",
+    "aliases": [],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "3er Mix (500g)"
+      ],
+      "constellations": [
+        "Rot",
+        "Gelb",
+        "Grün",
+        "Spitzpaprika",
+        "Bio",
+        "Lose"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "a4fd25d4-4976-41d5-98fe-c340f0c42e7b",
+    "name": "Kartoffeln",
+    "aliases": [],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1kg",
+        "1",
+        "5kg",
+        "2kg",
+        "2",
+        "5kg",
+        "5kg Sack"
+      ],
+      "constellations": [
+        "Bio",
+        "Festkochend",
+        "Vorwiegend festk.",
+        "Mehlig"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "9e022680-e729-49ce-841a-2ee039989e56",
+    "name": "Süßkartoffel",
+    "aliases": [],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "1kg",
+        "Lose"
+      ],
+      "constellations": [
+        "Bio"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "63de1a2f-f126-41d2-9980-5cf1a516bec5",
+    "name": "Zwiebeln",
+    "aliases": [],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "1kg Netz",
+        "2kg Netz"
+      ],
+      "constellations": [
+        "Gemüsezwiebeln",
+        "Rote Zwiebeln",
+        "Bio",
+        "Schalotten"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "cb4dffb2-411a-4569-93b2-31d3e20f055e",
+    "name": "Knoblauch",
+    "aliases": [],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3 Knollen",
+        "3er Netz",
+        "200g"
+      ],
+      "constellations": [
+        "Bio",
+        "Frischer Knoblauch",
+        "Solo-Knoblauch"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "df0a94c0-7ec1-4717-847c-ab9be01eaa09",
+    "name": "Karotten",
+    "aliases": [
+      "Möhren"
+    ],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "1kg Bund",
+        "1kg Sack",
+        "2kg Sack"
+      ],
+      "constellations": [
+        "Bio",
+        "Bundmöhren (mit Grün)",
+        "Waschmöhren"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "42814715-a82b-4398-ad8a-0d0fb187d818",
+    "name": "Eisbergsalat",
+    "aliases": [],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1",
+        "2"
+      ],
+      "constellations": [
+        "Bio",
+        "Regional"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "f1582936-ce24-4607-bf13-5161a47058d3",
+    "name": "Kopfsalat",
+    "aliases": [],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1",
+        "2"
+      ],
+      "constellations": [
+        "Bio",
+        "Freiland",
+        "Gewächshaus"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "982c1093-7b44-4938-b3c4-e8f4b496dd44",
+    "name": "Lollo Rosso",
+    "aliases": [
+      "Lollo Bionda"
+    ],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1",
+        "2"
+      ],
+      "constellations": [
+        "Bio",
+        "Regional"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "93c2b7c7-12b5-4853-a611-a4cf6affafb8",
+    "name": "Rucola",
+    "aliases": [
+      "Rauke"
+    ],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "125g Schale"
+      ],
+      "constellations": [
+        "Bio",
+        "Gewaschen"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "20b55012-3518-4584-bc5f-0dc837d84ee3",
+    "name": "Feldsalat",
+    "aliases": [],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "150g Schale"
+      ],
+      "constellations": [
+        "Bio",
+        "Gewaschen",
+        "Wurzel-frei"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "3a524213-4d08-46cf-a0d6-576476c9bac7",
+    "name": "Romana-Salat",
+    "aliases": [
+      "Salatherzen"
+    ],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "2er Pack",
+        "3er Pack"
+      ],
+      "constellations": [
+        "Bio",
+        "Mini-Romana"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "f464ee53-54a1-4cb0-89e3-a5ff453489fc",
+    "name": "Spinat (frisch)",
+    "aliases": [],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "500g Beutel",
+        "250g"
+      ],
+      "constellations": [
+        "Babyspinat",
+        "Bio",
+        "Gewaschen"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "15810aac-3cc9-4830-bb90-24e4ad4c453d",
+    "name": "Zucchini",
+    "aliases": [],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "500g",
+        "1kg"
+      ],
+      "constellations": [
+        "Bio",
+        "Regional",
+        "Grün",
+        "Gelb"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "91fe6a5e-4522-410e-a01c-0494d2eb923f",
+    "name": "Aubergine",
+    "aliases": [],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3"
+      ],
+      "constellations": [
+        "Bio",
+        "Regional"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "a95eecbf-e9a7-4d3d-aa87-bffa2071b3b7",
+    "name": "Brokkoli",
+    "aliases": [],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "500g"
+      ],
+      "constellations": [
+        "Bio",
+        "Regional"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "069ab45f-5e5e-4e4f-8541-5822ebaa1f95",
+    "name": "Blumenkohl",
+    "aliases": [
+      "Karfiol"
+    ],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1",
+        "2"
+      ],
+      "constellations": [
+        "Bio",
+        "Regional"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "7c531cc0-c324-49c0-a300-a39d1951cb31",
+    "name": "Kohlrabi",
+    "aliases": [],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "constellations": [
+        "Bio",
+        "Mit Laub"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "dfd22b13-a5b8-4f32-abca-64ade9696b3b",
+    "name": "Rotkohl",
+    "aliases": [
+      "Blaukraut (frisch)"
+    ],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1",
+        "2"
+      ],
+      "constellations": [
+        "Bio",
+        "Regional"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "9f94b158-20f4-4a5d-9f7f-f54beb35d93d",
+    "name": "Weißkohl",
+    "aliases": [],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1",
+        "2"
+      ],
+      "constellations": [
+        "Bio",
+        "Regional"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "12e4c7df-3d49-42f2-9de5-acd72bd15517",
+    "name": "Spitzkohl",
+    "aliases": [],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1",
+        "2"
+      ],
+      "constellations": [
+        "Bio",
+        "Regional"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "773efb6a-fb4f-47b4-a0d3-351697a6cc25",
+    "name": "Wirsing",
+    "aliases": [],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1",
+        "2"
+      ],
+      "constellations": [
+        "Bio",
+        "Regional"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "6df21a1e-e838-4bdd-8b4f-287588047124",
+    "name": "Rosenkohl (frisch)",
+    "aliases": [],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "500g Netz",
+        "750g"
+      ],
+      "constellations": [
+        "Bio",
+        "Regional"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "3c9fbb64-e5b3-498d-9ada-625e3c4dbfb0",
+    "name": "Grünkohl (frisch)",
+    "aliases": [],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1",
+        "500g Beutel",
+        "1kg Sack"
+      ],
+      "constellations": [
+        "Bio",
+        "Gerupft",
+        "Am Strunk"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "70b4158d-1a47-4cbb-a6fd-32be6c41174b",
+    "name": "Lauch",
+    "aliases": [
+      "Porree"
+    ],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3 Stangen"
+      ],
+      "constellations": [
+        "Bio",
+        "Regional"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "c05bb7fb-dfd4-4daf-9e53-03893e192c75",
+    "name": "Knollensellerie",
+    "aliases": [],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1",
+        "2"
+      ],
+      "constellations": [
+        "Bio"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "ecf6ce45-32c5-40e3-ae7b-6d95ff857dfb",
+    "name": "Staudensellerie",
+    "aliases": [],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1",
+        "2"
+      ],
+      "constellations": [
+        "Bio",
+        "Regional"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "5646e63e-5f28-4bc2-b08c-32345b423cc3",
+    "name": "Radieschen",
+    "aliases": [],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3 Bund"
+      ],
+      "constellations": [
+        "Bio",
+        "Regional"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "ec0e9122-8c8e-45b1-8749-67d58908f915",
+    "name": "Rettich (Weiß",
+    "aliases": [
+      "Schwarz)"
+    ],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1",
+        "2"
+      ],
+      "constellations": [
+        "Bio",
+        "Regional"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "7db6d1e1-d842-4f28-9139-5515bbe7b135",
+    "name": "Rote Bete (frisch)",
+    "aliases": [],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "500g",
+        "1kg"
+      ],
+      "constellations": [
+        "Bio",
+        "Gekocht (vakuum)"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "667c3163-ab7d-44c9-9bc9-fe0ebd9e97cf",
+    "name": "Spargel",
+    "aliases": [],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "500g Bund",
+        "1kg"
+      ],
+      "constellations": [
+        "Weiß",
+        "Grün",
+        "Regional",
+        "Bio",
+        "Geschält"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "bf6651b7-5f3d-403d-8a00-9de6877e5d64",
+    "name": "Fenchel",
+    "aliases": [],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3"
+      ],
+      "constellations": [
+        "Bio"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "1413c58b-456c-475d-b878-b8169dc6926f",
+    "name": "Kürbis",
+    "aliases": [],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1",
+        "2"
+      ],
+      "constellations": [
+        "Hokkaido",
+        "Butternut",
+        "Bio",
+        "Regional"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "05ef31cc-4918-4271-9e32-0ab1aab9df74",
+    "name": "Champignons (Pilze)",
+    "aliases": [],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "250g Schale",
+        "400g Schale"
+      ],
+      "constellations": [
+        "Weiß",
+        "Braun",
+        "Bio",
+        "Riesenchampignons"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "ea5b4a23-8b2b-4bb2-b741-c228cb79f177",
+    "name": "Pfifferlinge (frisch)",
+    "aliases": [],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "200g",
+        "400g Korb"
+      ],
+      "constellations": [
+        "Bio",
+        "Saison"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "da2a1c58-4ed8-4b07-8624-656d05b9f950",
+    "name": "Kräuter (Petersilie",
+    "aliases": [
+      "Schnittlauch)"
+    ],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3 Bund",
+        "1 Topf"
+      ],
+      "constellations": [
+        "Glatt",
+        "Kraus",
+        "Bio",
+        "Regional"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "1fef8658-c008-405c-8ae8-12d46aa3f40f",
+    "name": "Kräuter (Basilikum",
+    "aliases": [
+      "Minze)"
+    ],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3 Bund",
+        "1 Topf"
+      ],
+      "constellations": [
+        "Bio"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "9e333578-7487-45ea-99f3-0ab93460a447",
+    "name": "Ingwer (frisch)",
+    "aliases": [],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "100g",
+        "250g"
+      ],
+      "constellations": [
+        "Bio"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "101cd5e4-52b6-4fe8-87dc-0622cc554ac3",
+    "name": "Kurkuma (frisch)",
+    "aliases": [],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "100g"
+      ],
+      "constellations": [
+        "Bio"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "b05f76ba-aad2-4111-bcfc-f2bc93aa8daa",
+    "name": "Chili",
+    "aliases": [
+      "Peperoni (frisch)"
+    ],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "50g Schale"
+      ],
+      "constellations": [
+        "Rot",
+        "Grün",
+        "Bio",
+        "Scharf"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "3d3c0e29-c31f-4782-bcb1-2eb4df43932b",
+    "name": "Brot (Allgemein)",
+    "aliases": [],
+    "category": "Brot & Backwaren",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "500g",
+        "750g",
+        "1kg"
+      ],
+      "constellations": [
+        "Laib",
+        "Geschnitten",
+        "Frisch",
+        "Aufback"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "73f0a607-3780-4558-9423-392060ef65c2",
+    "name": "Vollkornbrot",
+    "aliases": [
+      "Schwarzbrot"
+    ],
+    "category": "Brot & Backwaren",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "500g Packung"
+      ],
+      "constellations": [
+        "Bio",
+        "Sauerteig",
+        "Abgepackt",
+        "Ohne Hefe"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "b53a90ff-ecbb-420c-8557-938a2a7b3138",
+    "name": "Weizenmischbrot",
+    "aliases": [
+      "Graubrot"
+    ],
+    "category": "Brot & Backwaren",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "500g",
+        "750g",
+        "1kg"
+      ],
+      "constellations": [
+        "Laib",
+        "Geschnitten",
+        "Frisch (Bäcker)"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "e2b57651-ed1a-4dd4-a959-29c1d90ab32b",
+    "name": "Toastbrot",
+    "aliases": [],
+    "category": "Brot & Backwaren",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "250g",
+        "500g",
+        "750g"
+      ],
+      "constellations": [
+        "Vollkorn",
+        "Buttertoast",
+        "Sandwich",
+        "Dreikorn"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "897bc9a7-8f56-4fa8-acf3-9d370754cb26",
+    "name": "Brötchen",
+    "aliases": [
+      "Semmeln"
+    ],
+    "category": "Brot & Backwaren",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "8",
+        "10",
+        "5er Pack"
+      ],
+      "constellations": [
+        "Weizen",
+        "Körner",
+        "Aufbackbrötchen",
+        "Frisch",
+        "Bio"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "b7439c4d-939f-4049-8934-e884f144fb32",
+    "name": "Laugengebäck (Brezel",
+    "aliases": [
+      "Stange)"
+    ],
+    "category": "Brot & Backwaren",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "2er Pack",
+        "TK 10er"
+      ],
+      "constellations": [
+        "Frisch",
+        "Tiefkühl zum Aufbacken",
+        "Bäcker",
+        "Salz"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "c2cc226b-3995-4b68-acf3-116baab90f61",
+    "name": "Croissant",
+    "aliases": [],
+    "category": "Brot & Backwaren",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "4er Pack",
+        "6er Pack"
+      ],
+      "constellations": [
+        "Butter",
+        "Schoko",
+        "Lauge",
+        "Frisch",
+        "Aufback"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "af568f64-955d-445a-b821-e0a300f64282",
+    "name": "Baguette",
+    "aliases": [
+      "Ciabatta"
+    ],
+    "category": "Brot & Backwaren",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "2er Pack"
+      ],
+      "constellations": [
+        "Französisch",
+        "Aufback",
+        "Knoblauch",
+        "Vollkorn"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "68e08829-3969-4325-9f22-1b562898e862",
+    "name": "Fladenbrot",
+    "aliases": [],
+    "category": "Brot & Backwaren",
+    "tags": {
+      "quantities": [
+        "1",
+        "2"
+      ],
+      "constellations": [
+        "Sesam",
+        "Schwarzkümmel",
+        "Frisch"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "853bc27a-40a8-4407-a485-9e938fcfbb8b",
+    "name": "Wrap",
+    "aliases": [
+      "Tortilla"
+    ],
+    "category": "Brot & Backwaren",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "6er Pack",
+        "8er Pack"
+      ],
+      "constellations": [
+        "Weizen",
+        "Vollkorn",
+        "Mais",
+        "Glutenfrei"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "8f856d36-c2db-46b6-b2ab-8b807b68aada",
+    "name": "Knäckebrot",
+    "aliases": [],
+    "category": "Brot & Backwaren",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "200g",
+        "250g Packung"
+      ],
+      "constellations": [
+        "Roggen",
+        "Sesam",
+        "Bio",
+        "Ballaststoffreich"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "b9b54f51-c784-4949-a785-8d53b953ff2c",
+    "name": "Pumpernickel",
+    "aliases": [],
+    "category": "Brot & Backwaren",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "250g",
+        "500g"
+      ],
+      "constellations": [
+        "Bio",
+        "Dose",
+        "Packung"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "9b8b7af3-55de-4f58-a92d-ccca455bc9e9",
+    "name": "Zwieback",
+    "aliases": [],
+    "category": "Brot & Backwaren",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "225g",
+        "500g"
+      ],
+      "constellations": [
+        "Vollkorn",
+        "Zuckerfrei",
+        "Bio"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "4c6bcbbd-ef69-4d92-8e91-cdba0f69b302",
+    "name": "Reiswaffeln",
+    "aliases": [
+      "Maiswaffeln"
+    ],
+    "category": "Brot & Backwaren",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "100g",
+        "130g Rolle"
+      ],
+      "constellations": [
+        "Bio",
+        "Ungesalzen",
+        "Mit Schokolade"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "7528fc58-bae6-457f-b82a-6107f1648d35",
+    "name": "Kuchen",
+    "aliases": [
+      "Torte"
+    ],
+    "category": "Brot & Backwaren",
+    "tags": {
+      "quantities": [
+        "1 Stück",
+        "Ganzer Kuchen",
+        "400g"
+      ],
+      "constellations": [
+        "Rührkuchen",
+        "Tiefkühl",
+        "Obstboden"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "d8192e2d-6e63-489f-802a-d899b637485a",
+    "name": "Hackfleisch (Gemischt)",
+    "aliases": [],
+    "category": "Fleisch & Fisch",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "300g",
+        "400g",
+        "500g",
+        "1kg"
+      ],
+      "constellations": [
+        "Rind & Schwein",
+        "Bio",
+        "Haltungsform 4",
+        "SB",
+        "Theke"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "eef9e848-049f-4938-af97-3cd72852ebbc",
+    "name": "Rinderhackfleisch",
+    "aliases": [],
+    "category": "Fleisch & Fisch",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "400g",
+        "500g"
+      ],
+      "constellations": [
+        "Bio",
+        "Mager",
+        "Haltungsform 4",
+        "SB",
+        "Theke"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "d2005cfb-0ba4-4e0f-bfc5-d63850d5d432",
+    "name": "Schweineschnitzel",
+    "aliases": [],
+    "category": "Fleisch & Fisch",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "400g",
+        "500g",
+        "2 Stk"
+      ],
+      "constellations": [
+        "Bio",
+        "SB-Packung",
+        "Theke",
+        "Paniert"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "7bf90fc3-a811-41ab-9469-46b521f8c480",
+    "name": "Schweinefilet",
+    "aliases": [],
+    "category": "Fleisch & Fisch",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "500g",
+        "1kg"
+      ],
+      "constellations": [
+        "Am Stück",
+        "Medaillons",
+        "Bio"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "9ff1bf6e-838c-4952-ac94-1f7b7853771d",
+    "name": "Schweinebraten",
+    "aliases": [],
+    "category": "Fleisch & Fisch",
+    "tags": {
+      "quantities": [
+        "1",
+        "1kg",
+        "1",
+        "5kg"
+      ],
+      "constellations": [
+        "Krustenbraten",
+        "Nacken",
+        "Bio"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "dc394736-12e0-443c-bd32-c93df819d9c0",
+    "name": "Rindersteak",
+    "aliases": [
+      "Rumpsteak"
+    ],
+    "category": "Fleisch & Fisch",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "200g",
+        "400g"
+      ],
+      "constellations": [
+        "Dry Aged",
+        "Bio",
+        "Theke",
+        "SB"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "4a963c54-dbb0-4619-9648-05f371117aa8",
+    "name": "Rindergulasch",
+    "aliases": [],
+    "category": "Fleisch & Fisch",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "400g",
+        "500g",
+        "1kg"
+      ],
+      "constellations": [
+        "Handgeschnitten",
+        "Bio",
+        "Theke"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "bce8e2bd-65b0-49a7-98a5-bff5eea24566",
+    "name": "Rinderbraten",
+    "aliases": [],
+    "category": "Fleisch & Fisch",
+    "tags": {
+      "quantities": [
+        "1",
+        "1kg",
+        "1",
+        "5kg"
+      ],
+      "constellations": [
+        "Schulter",
+        "Tafelspitz",
+        "Bio"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "a5a3cf5f-9fc0-4092-ab87-bba61512eba6",
+    "name": "Hähnchenbrustfilet",
+    "aliases": [],
+    "category": "Fleisch & Fisch",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "400g",
+        "600g",
+        "1kg"
+      ],
+      "constellations": [
+        "Bio",
+        "Natur",
+        "Mariniert",
+        "Haltungsform 4",
+        "Theke"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "44b8a5e3-0f16-447b-986c-f2351b446f0b",
+    "name": "Hähnchenschenkel",
+    "aliases": [
+      "Keulen"
+    ],
+    "category": "Fleisch & Fisch",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "600g",
+        "1kg"
+      ],
+      "constellations": [
+        "Bio",
+        "Gewürzt",
+        "Ohne Knochen"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "8ee1a24e-4d07-4151-82fd-245804c2255c",
+    "name": "Hähnchen (Ganzes Tier)",
+    "aliases": [],
+    "category": "Fleisch & Fisch",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "1kg",
+        "1",
+        "2kg"
+      ],
+      "constellations": [
+        "Bio",
+        "TK",
+        "Frisch",
+        "Kikok"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "596c517f-15cd-4228-b409-45468f0a88c5",
+    "name": "Putenbrust",
+    "aliases": [
+      "Putenschnitzel"
+    ],
+    "category": "Fleisch & Fisch",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "400g",
+        "500g"
+      ],
+      "constellations": [
+        "Bio",
+        "Natur",
+        "SB",
+        "Theke"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "edad5289-c1c0-4287-942a-b1bf361f59ba",
+    "name": "Entenbrust",
+    "aliases": [
+      "Gans"
+    ],
+    "category": "Fleisch & Fisch",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "400g",
+        "1kg",
+        "Ganzer Vogel"
+      ],
+      "constellations": [
+        "TK",
+        "Frisch",
+        "Weihnachten (Saison)"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "32c616f8-2091-4f52-9f22-3165fb8b31e4",
+    "name": "Lammkeule",
+    "aliases": [
+      "Lammfilet"
+    ],
+    "category": "Fleisch & Fisch",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "300g",
+        "1kg"
+      ],
+      "constellations": [
+        "Neuseeland",
+        "Bio",
+        "Theke"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "bcc9dd5a-5c64-4373-b923-b67a54d22baa",
+    "name": "Bratwurst",
+    "aliases": [],
+    "category": "Fleisch & Fisch",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "4er Pack",
+        "5er Pack",
+        "400g"
+      ],
+      "constellations": [
+        "Schwein",
+        "Geflügel",
+        "Nürnberger",
+        "Thüringer",
+        "Grill"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "510d0752-a0cc-48be-ada2-5c9533965a98",
+    "name": "Salami (Aufschnitt)",
+    "aliases": [],
+    "category": "Fleisch & Fisch",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "100g",
+        "150g",
+        "200g"
+      ],
+      "constellations": [
+        "Bio",
+        "Geflügel",
+        "Paprika",
+        "Theke",
+        "SB",
+        "Luftgetrocknet"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "d5860341-9694-40f6-a601-aa0a52fa1cd4",
+    "name": "Kochschinken",
+    "aliases": [],
+    "category": "Fleisch & Fisch",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "100g",
+        "150g",
+        "200g"
+      ],
+      "constellations": [
+        "Bio",
+        "Hauchdünn",
+        "Theke",
+        "SB"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "a3bb17c0-f29c-4499-bcb6-0661df386f1b",
+    "name": "Rohschinken",
+    "aliases": [
+      "Parmaschinken"
+    ],
+    "category": "Fleisch & Fisch",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "80g",
+        "100g"
+      ],
+      "constellations": [
+        "Luftgetrocknet",
+        "Geräuchert",
+        "Serrano",
+        "Schwarzwälder"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "b0a14c9d-68e3-4de8-a033-ea12c7775c9c",
+    "name": "Leberwurst",
+    "aliases": [],
+    "category": "Fleisch & Fisch",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "125g",
+        "150g",
+        "250g"
+      ],
+      "constellations": [
+        "Kalb",
+        "Pfälzer",
+        "Bio",
+        "Grob",
+        "Fein",
+        "Im Naturdarm"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "86ffa6b5-102a-47c6-a982-d10de80672c7",
+    "name": "Fleischwurst",
+    "aliases": [
+      "Lyoner"
+    ],
+    "category": "Fleisch & Fisch",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "1 Ring",
+        "200g",
+        "400g"
+      ],
+      "constellations": [
+        "Geflügel",
+        "Mit Knoblauch",
+        "Theke",
+        "Bio"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "5cf5ea22-e93a-4f5e-9f1a-f4f10430c97e",
+    "name": "Mortadella",
+    "aliases": [],
+    "category": "Fleisch & Fisch",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "100g",
+        "150g"
+      ],
+      "constellations": [
+        "Geflügel",
+        "Pistazien",
+        "Bärchenwurst"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "dc7b3405-a437-4aac-9108-d8e8588375e5",
+    "name": "Speck",
+    "aliases": [
+      "Bacon"
+    ],
+    "category": "Fleisch & Fisch",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "100g",
+        "150g",
+        "Würfel"
+      ],
+      "constellations": [
+        "Geräuchert",
+        "Frühstücksspeck",
+        "SB"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "2c3dd39c-b293-48fb-a118-8032413fd617",
+    "name": "Wiener Würstchen",
+    "aliases": [],
+    "category": "Fleisch & Fisch",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "4er",
+        "6er Pack",
+        "Glas"
+      ],
+      "constellations": [
+        "Geflügel",
+        "Bio",
+        "Knackwurst",
+        "Kalb"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "fcd3c33e-e742-4181-849f-8f5236d165b4",
+    "name": "Bockwurst",
+    "aliases": [],
+    "category": "Fleisch & Fisch",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "4er Pack",
+        "Glas"
+      ],
+      "constellations": [
+        "Bio",
+        "Geflügel"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "0777ae9e-ae1d-4a51-b12f-c051f3134454",
+    "name": "Teewurst",
+    "aliases": [],
+    "category": "Fleisch & Fisch",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "125g"
+      ],
+      "constellations": [
+        "Grob",
+        "Fein",
+        "Rügenwalder (Marke)"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "3543e448-a940-4f28-a02e-74d54552998b",
+    "name": "Mettwurst",
+    "aliases": [
+      "Zwiebelmettwurst"
+    ],
+    "category": "Fleisch & Fisch",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "150g",
+        "200g"
+      ],
+      "constellations": [
+        "Bio",
+        "Geflügel"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "58c89285-fa25-4d43-8d57-3cd1f409d5bb",
+    "name": "Lachsfilet (Frisch",
+    "aliases": [
+      "TK)"
+    ],
+    "category": "Fleisch & Fisch",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "200g",
+        "250g",
+        "500g"
+      ],
+      "constellations": [
+        "Bio",
+        "ASC",
+        "MSC",
+        "Norwegen",
+        "Wildlachs"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "290ace6b-e513-4daf-ad00-4faf2da8aa79",
+    "name": "Räucherlachs",
+    "aliases": [],
+    "category": "Fleisch & Fisch",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "100g",
+        "200g"
+      ],
+      "constellations": [
+        "Bio",
+        "MSC",
+        "Graved Lachs",
+        "Stremellachs"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "98579c0d-2980-4d2c-9466-b5fd2421c02e",
+    "name": "Forelle",
+    "aliases": [],
+    "category": "Fleisch & Fisch",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "4 Stk"
+      ],
+      "constellations": [
+        "Frisch",
+        "Geräuchert",
+        "Bio"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "38ac5daf-5430-4783-ace8-ea179b04dbfc",
+    "name": "Kabeljau",
+    "aliases": [
+      "Dorsch"
+    ],
+    "category": "Fleisch & Fisch",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "250g",
+        "400g"
+      ],
+      "constellations": [
+        "Frisch",
+        "TK",
+        "MSC"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "39bfcf48-c301-441a-a0c9-e195629957e2",
+    "name": "Seelachs",
+    "aliases": [],
+    "category": "Fleisch & Fisch",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "400g",
+        "800g (TK)"
+      ],
+      "constellations": [
+        "MSC",
+        "Paniert",
+        "Natur"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "07c42e02-228c-4832-9d72-4c2ef56696b2",
+    "name": "Fischstäbchen",
+    "aliases": [],
+    "category": "Fleisch & Fisch",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "10er",
+        "15er Pack (450g)"
+      ],
+      "constellations": [
+        "TK",
+        "MSC",
+        "Omega-3",
+        "Lachs",
+        "Iglo (Marke)"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "5a156b74-ed44-48f0-ac04-02871b736bb1",
+    "name": "Schlemmerfilet (Bordelaise)",
+    "aliases": [],
+    "category": "Fleisch & Fisch",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "400g"
+      ],
+      "constellations": [
+        "TK",
+        "MSC",
+        "Iglo",
+        "Frosta"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "52ace1b8-b676-4a45-b378-be8fd4ffa52f",
+    "name": "Garnelen",
+    "aliases": [
+      "Shrimps"
+    ],
+    "category": "Fleisch & Fisch",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "100g",
+        "250g",
+        "500g"
+      ],
+      "constellations": [
+        "TK",
+        "Frisch",
+        "Bio",
+        "ASC",
+        "Mariniert",
+        "Geschält"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "42ce2d01-7c92-42d6-bb71-7fab3c973a97",
+    "name": "Tintenfisch",
+    "aliases": [
+      "Calamari"
+    ],
+    "category": "Fleisch & Fisch",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "500g"
+      ],
+      "constellations": [
+        "TK",
+        "Ringe",
+        "Natur"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "1cee61e1-313f-4b0d-b2a9-e2c3710903f2",
+    "name": "Muscheln (Miesmuscheln)",
+    "aliases": [],
+    "category": "Fleisch & Fisch",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "1kg",
+        "2kg"
+      ],
+      "constellations": [
+        "Frisch",
+        "Vakuum",
+        "Saison"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "6800336b-060e-4ae1-9186-e1d5c0eb9c85",
+    "name": "Milch (Kuhmilch)",
+    "aliases": [],
+    "category": "Milch & Tiefkühl",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "6",
+        "12",
+        "1l"
+      ],
+      "constellations": [
+        "0",
+        "1%",
+        "0",
+        "7%",
+        "1",
+        "5%",
+        "3",
+        "5%",
+        "3",
+        "8%",
+        "Bio",
+        "haltbar (H-Milch)",
+        "Frisch",
+        "Laktosefrei"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "0ad2099e-3ab3-4028-9870-2f0f0be98997",
+    "name": "Pflanzliche Milch (Drink)",
+    "aliases": [],
+    "category": "Milch & Tiefkühl",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "6",
+        "12",
+        "1l"
+      ],
+      "constellations": [
+        "Soja",
+        "Hafer",
+        "Reis",
+        "Mandel",
+        "Kokos",
+        "Bio",
+        "Barista",
+        "Ungesüßt",
+        "Alpro/Oatly"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "175c0d2b-160c-4a60-b50f-78fe1d135556",
+    "name": "Joghurt (Natur)",
+    "aliases": [],
+    "category": "Milch & Tiefkühl",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "150g",
+        "500g Becher"
+      ],
+      "constellations": [
+        "0",
+        "1%",
+        "1",
+        "5%",
+        "3",
+        "5%",
+        "10% (Griechisch)",
+        "Bio",
+        "Laktosefrei",
+        "Vegan (Soja/Hafer)"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "bd7c7ca9-e5cb-4f3f-8fd2-f61eb5235823",
+    "name": "Fruchtjoghurt",
+    "aliases": [],
+    "category": "Milch & Tiefkühl",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "150g",
+        "250g"
+      ],
+      "constellations": [
+        "Erdbeer",
+        "Kirsch",
+        "Pfirsich",
+        "Stracciatella",
+        "Bio",
+        "Vegan"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "f3d62d66-ca14-452a-979d-759d1d3d7f73",
+    "name": "Quark",
+    "aliases": [
+      "Speisequark"
+    ],
+    "category": "Milch & Tiefkühl",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "250g",
+        "500g"
+      ],
+      "constellations": [
+        "Magerstufe (0",
+        "2%)",
+        "20%",
+        "40% Fett",
+        "Bio",
+        "Laktosefrei"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "d57eae06-031a-4cc2-b1bf-4b1837d81279",
+    "name": "Kräuterquark",
+    "aliases": [],
+    "category": "Milch & Tiefkühl",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "150g",
+        "200g"
+      ],
+      "constellations": [
+        "Milram (Marke)",
+        "Bio"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "1665f09a-e1e6-48b5-8859-b388e6fbcc61",
+    "name": "Sahne",
+    "aliases": [
+      "Schlagsahne"
+    ],
+    "category": "Milch & Tiefkühl",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "200g",
+        "250g Becher"
+      ],
+      "constellations": [
+        "Min. 30% Fett",
+        "Bio",
+        "Laktosefrei",
+        "haltbar (H-Sahne)",
+        "Vegan"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "bdba576c-69c2-4450-a926-ae386687e689",
+    "name": "Saure Sahne",
+    "aliases": [],
+    "category": "Milch & Tiefkühl",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "200g Becher"
+      ],
+      "constellations": [
+        "10% Fett",
+        "Bio"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "9b473410-16c9-4d14-a372-3fa82ed237cc",
+    "name": "Schmand",
+    "aliases": [],
+    "category": "Milch & Tiefkühl",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "200g Becher"
+      ],
+      "constellations": [
+        "24% Fett",
+        "Bio"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "6f035143-c971-4947-b895-a65fac2ef0bd",
+    "name": "Crème Fraîche",
+    "aliases": [],
+    "category": "Milch & Tiefkühl",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "150g Becher"
+      ],
+      "constellations": [
+        "Natur (30%)",
+        "Kräuter",
+        "Bio"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "204a033c-a04d-41ee-bf97-06e89fd9d27f",
+    "name": "Mascarpone",
+    "aliases": [],
+    "category": "Milch & Tiefkühl",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "250g",
+        "500g"
+      ],
+      "constellations": [
+        "Bio",
+        "Italienisch"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "4af0a802-e326-4f67-bd59-9d923f1b3874",
+    "name": "Buttermilch",
+    "aliases": [],
+    "category": "Milch & Tiefkühl",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "500g Becher",
+        "1l"
+      ],
+      "constellations": [
+        "Natur",
+        "Frucht (Erdbeer",
+        "Zitrone)",
+        "Bio"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "06ac8f78-f9f0-4ae1-b620-5198c288040e",
+    "name": "Kefir",
+    "aliases": [],
+    "category": "Milch & Tiefkühl",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "500g Becher"
+      ],
+      "constellations": [
+        "Natur",
+        "Bio"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "d8626447-b88e-4f0b-a182-679bc25b5ffc",
+    "name": "Pudding (Kühlregal)",
+    "aliases": [],
+    "category": "Milch & Tiefkühl",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "150g",
+        "200g",
+        "500g"
+      ],
+      "constellations": [
+        "Schoko",
+        "Vanille",
+        "High Protein",
+        "Grießpudding"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "0482f5ad-1d27-46fd-b3ec-384e6725a5a9",
+    "name": "Gouda",
+    "aliases": [],
+    "category": "Milch & Tiefkühl",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "150g",
+        "200g",
+        "400g"
+      ],
+      "constellations": [
+        "Jung",
+        "Mittelalt",
+        "Alt",
+        "Scheiben",
+        "Am Stück",
+        "Gerieben",
+        "Bio"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "0f942f6b-dbeb-47ca-953f-f0504cf94cdd",
+    "name": "Emmentaler",
+    "aliases": [],
+    "category": "Milch & Tiefkühl",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "150g",
+        "200g",
+        "400g"
+      ],
+      "constellations": [
+        "Scheiben",
+        "Am Stück",
+        "Gerieben",
+        "Bio"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "65e31584-acdf-4689-84d4-8b45b83dc947",
+    "name": "Edamer",
+    "aliases": [
+      "Butterkäse"
+    ],
+    "category": "Milch & Tiefkühl",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "150g",
+        "200g",
+        "400g"
+      ],
+      "constellations": [
+        "Scheiben",
+        "Am Stück",
+        "Bio"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "53bb3f3f-3b68-4cb2-a90f-8cf4715b77f6",
+    "name": "Mozzarella",
+    "aliases": [],
+    "category": "Milch & Tiefkühl",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "125g (Kugel)",
+        "200g"
+      ],
+      "constellations": [
+        "Kuhmilch",
+        "Büffelmozzarella",
+        "Bio",
+        "Gerieben (Pizzakäse)"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "42adf4ee-2820-4923-acde-69afee16a82f",
+    "name": "Feta",
+    "aliases": [
+      "Schafskäse"
+    ],
+    "category": "Milch & Tiefkühl",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "200g",
+        "250g"
+      ],
+      "constellations": [
+        "Schafmilch",
+        "Bio",
+        "Griechisch"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "a9f1a3d4-f6f0-4b67-a975-79e2cde0780a",
+    "name": "Hirtenkäse",
+    "aliases": [],
+    "category": "Milch & Tiefkühl",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "200g",
+        "250g"
+      ],
+      "constellations": [
+        "Kuhmilch (Feta-Art)",
+        "Leicht"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "fb2dd3b9-45fc-4b94-8d8d-a3f907d23a84",
+    "name": "Camembert",
+    "aliases": [
+      "Brie"
+    ],
+    "category": "Milch & Tiefkühl",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "125g",
+        "200g",
+        "250g"
+      ],
+      "constellations": [
+        "Rahmstufe",
+        "Französisch",
+        "Bio",
+        "Rustique"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "3c82837c-d027-4565-96fe-156b6597b539",
+    "name": "Parmesan",
+    "aliases": [],
+    "category": "Milch & Tiefkühl",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "150g",
+        "200g"
+      ],
+      "constellations": [
+        "Am Stück",
+        "Gerieben",
+        "24 Monate gereift"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "150fd77e-b057-4a0e-865d-331b07587d81",
+    "name": "Frischkäse",
+    "aliases": [],
+    "category": "Milch & Tiefkühl",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "150g",
+        "200g",
+        "300g"
+      ],
+      "constellations": [
+        "Natur",
+        "Kräuter",
+        "Laktosefrei",
+        "Bio",
+        "Philadelphia",
+        "Vegan"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "99f012ae-6a5e-4da4-91bc-61d3bb8dfbff",
+    "name": "Harzer Käse",
+    "aliases": [
+      "Handkäse"
+    ],
+    "category": "Milch & Tiefkühl",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "200g Rolle"
+      ],
+      "constellations": [
+        "Proteinreich",
+        "Fettarm",
+        "Kümmel"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "d2406cb5-37b2-4030-9a19-6606f4fa0ad1",
+    "name": "Hüttenkäse",
+    "aliases": [],
+    "category": "Milch & Tiefkühl",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "200g Becher"
+      ],
+      "constellations": [
+        "Proteinreich",
+        "Fettarm",
+        "Bio"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "27dea475-4876-4b84-85b5-0319cc9edbb1",
+    "name": "Eier (Hühnereier)",
+    "aliases": [],
+    "category": "Milch & Tiefkühl",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "6er Pack",
+        "10er Pack"
+      ],
+      "constellations": [
+        "Bio (0)",
+        "Freiland (1)",
+        "Bodenhaltung (2)",
+        "Größe M",
+        "L"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "0b382e29-cb15-4d3c-a0b3-d6d6a838d76a",
+    "name": "Butter",
+    "aliases": [],
+    "category": "Milch & Tiefkühl",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "250g",
+        "500g"
+      ],
+      "constellations": [
+        "Süßrahm",
+        "Sauerrahm",
+        "Mildgesäuert",
+        "Bio",
+        "Streichzart"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "a5456f2e-5829-413e-bf34-82e4ca429cb8",
+    "name": "Margarine",
+    "aliases": [],
+    "category": "Milch & Tiefkühl",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "250g",
+        "500g",
+        "750g"
+      ],
+      "constellations": [
+        "Vegan",
+        "Lätta/Rama (Marke)",
+        "Omega-3"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "b50a417f-6293-4633-841b-0fc600c5bf12",
+    "name": "Tofu (Natur",
+    "aliases": [
+      "Geräuchert)"
+    ],
+    "category": "Milch & Tiefkühl",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "200g",
+        "400g"
+      ],
+      "constellations": [
+        "Vegan",
+        "Bio",
+        "Taifun (Marke)",
+        "Seidentofu"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "798c13fc-eb82-491f-8de2-ea676edbbb86",
+    "name": "Veganes Hack",
+    "aliases": [],
+    "category": "Milch & Tiefkühl",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "250g",
+        "275g",
+        "400g"
+      ],
+      "constellations": [
+        "Vegan",
+        "Bio",
+        "Erbsenprotein",
+        "Sojaprotein"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "f4a17693-032b-4574-af81-f85706c2426c",
+    "name": "Vegane Wurst",
+    "aliases": [
+      "Schnitzel"
+    ],
+    "category": "Milch & Tiefkühl",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "150g",
+        "2 Stk"
+      ],
+      "constellations": [
+        "Vegan",
+        "Rügenwalder (Marke)"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "976e3469-075d-422b-8f61-8e5316932760",
+    "name": "Blätterteig",
+    "aliases": [],
+    "category": "Milch & Tiefkühl",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "1 Rolle",
+        "275g"
+      ],
+      "constellations": [
+        "Frischteig",
+        "Vegan",
+        "Butter"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "f934fdef-d154-4676-8a4d-896ae23ae0b8",
+    "name": "Pizzateig",
+    "aliases": [
+      "Flammkuchenteig"
+    ],
+    "category": "Milch & Tiefkühl",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "1 Rolle",
+        "400g"
+      ],
+      "constellations": [
+        "Frischteig",
+        "XXL",
+        "Mit Tomatensauce (Set)"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "ca40515b-1720-4bb8-9726-7e8d2edfdb50",
+    "name": "Tiefkühl-Pizza",
+    "aliases": [],
+    "category": "Milch & Tiefkühl",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "2er Pack",
+        "3er"
+      ],
+      "constellations": [
+        "Salami",
+        "Margherita",
+        "Speciale",
+        "Wagner",
+        "Dr. Oetker",
+        "Vegan"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "e1364d62-6971-462a-bd39-68a7b781280f",
+    "name": "Pommes Frites (TK)",
+    "aliases": [],
+    "category": "Milch & Tiefkühl",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "750g",
+        "1kg"
+      ],
+      "constellations": [
+        "Feinschnitt",
+        "Wellenschnitt",
+        "Backofen-Pommes"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "7499f12c-33aa-48b3-b473-af2af62152e0",
+    "name": "Tiefkühl-Gemüse (Erbsen",
+    "aliases": [
+      "Spinat)"
+    ],
+    "category": "Milch & Tiefkühl",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "400g",
+        "750g",
+        "1kg"
+      ],
+      "constellations": [
+        "Bio",
+        "Iglo",
+        "Rahmspinat",
+        "Junge Erbsen"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "61517e04-9b58-4b7b-a873-330efc06079c",
+    "name": "Tiefkühl-Kräuter",
+    "aliases": [],
+    "category": "Milch & Tiefkühl",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "50g",
+        "75g"
+      ],
+      "constellations": [
+        "8-Kräuter",
+        "Petersilie",
+        "Schnittlauch",
+        "Bio"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "498a807f-1a2b-497a-82b1-b406c18251f2",
+    "name": "Tiefkühl-Beeren",
+    "aliases": [],
+    "category": "Milch & Tiefkühl",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "300g",
+        "500g"
+      ],
+      "constellations": [
+        "Bio",
+        "Waldbeeren",
+        "Ungesüßt"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "9fe58540-2754-4080-96fc-c73c0fe4f78a",
+    "name": "Speiseeis",
+    "aliases": [
+      "Eiscreme"
+    ],
+    "category": "Milch & Tiefkühl",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "500ml",
+        "1l",
+        "3er Pack"
+      ],
+      "constellations": [
+        "Vanille",
+        "Schoko",
+        "Magnum",
+        "Ben & Jerry's",
+        "Vegan"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "568cc1ba-4d7c-47eb-ade6-c533a3cc5b2e",
+    "name": "Eiswürfel",
+    "aliases": [],
+    "category": "Milch & Tiefkühl",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "1kg",
+        "2kg Sack"
+      ],
+      "constellations": [
+        "Crushed Ice",
+        "Würfel"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "f1bdcff3-6672-4739-89b3-7afcaae6ebd3",
+    "name": "Nudeln",
+    "aliases": [
+      "Pasta (Hartweizen)"
+    ],
+    "category": "Vorratskammer",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "500g",
+        "1kg"
+      ],
+      "constellations": [
+        "Spaghetti",
+        "Fusilli",
+        "Penne",
+        "Farfalle",
+        "Barilla (Marke)"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "9f1cd3d1-aa86-4ac0-90f1-9be7fb7813d4",
+    "name": "Nudeln (Vollkorn",
+    "aliases": [
+      "Dinkel)"
+    ],
+    "category": "Vorratskammer",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "500g"
+      ],
+      "constellations": [
+        "Bio",
+        "Spaghetti",
+        "Penne"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "c249ba48-95b7-4e0f-b294-e7d6c40eb23e",
+    "name": "Reis",
+    "aliases": [],
+    "category": "Vorratskammer",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "500g",
+        "1kg",
+        "2kg"
+      ],
+      "constellations": [
+        "Basmati",
+        "Jasmin",
+        "Parboiled",
+        "Vollkorn",
+        "Kochbeutel",
+        "Bio"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "198dd5a8-fb1b-4fb2-827e-a10ed5fc95c1",
+    "name": "Milchreis",
+    "aliases": [
+      "Risottoreis"
+    ],
+    "category": "Vorratskammer",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "500g",
+        "1kg"
+      ],
+      "constellations": [
+        "Arborio",
+        "Bio"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "8f7bd564-2489-49ec-ae0f-3d2d9ce5ea7b",
+    "name": "Mehl (Weizen)",
+    "aliases": [],
+    "category": "Vorratskammer",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "1kg",
+        "2",
+        "5kg"
+      ],
+      "constellations": [
+        "Typ 405",
+        "Typ 550",
+        "Typ 1050",
+        "Bio"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "afe8d104-7f15-4e21-a516-1004aeae9dd9",
+    "name": "Mehl (Dinkel",
+    "aliases": [
+      "Roggen)"
+    ],
+    "category": "Vorratskammer",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "1kg"
+      ],
+      "constellations": [
+        "Dinkel Typ 630",
+        "Roggen Typ 1150",
+        "Vollkornmehl",
+        "Bio"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "eb5d005d-7ae1-44db-b1f1-d6ef5c5faa7d",
+    "name": "Zucker",
+    "aliases": [],
+    "category": "Vorratskammer",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "500g",
+        "1kg"
+      ],
+      "constellations": [
+        "Raffinade",
+        "Rohrrohzucker (Bio)",
+        "Puderzucker",
+        "Würfelzucker"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "3c513c49-ab4f-4b4e-9290-9124fdd5365d",
+    "name": "Haferflocken",
+    "aliases": [],
+    "category": "Vorratskammer",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "500g",
+        "1kg"
+      ],
+      "constellations": [
+        "Zart",
+        "Kernig",
+        "Bio",
+        "Glutenfrei",
+        "Kölln (Marke)"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "0e90a2c2-0c0c-44f9-85a5-2ee2de72afbc",
+    "name": "Linsen",
+    "aliases": [],
+    "category": "Vorratskammer",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "500g (Getrocknet)",
+        "400g (Dose)"
+      ],
+      "constellations": [
+        "Rote Linsen",
+        "Tellerlinsen",
+        "Belugalinsen",
+        "Bio"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "03a7a72b-5e3d-41fb-b77d-3ca18a8d66c2",
+    "name": "Kichererbsen",
+    "aliases": [],
+    "category": "Vorratskammer",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "500g (Getr.)",
+        "400g (Dose)"
+      ],
+      "constellations": [
+        "Bio",
+        "Vorgekocht"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "f624aff6-109f-4e60-8d58-3434ec92ebfc",
+    "name": "Bohnen (Getrocknet",
+    "aliases": [
+      "Dose)"
+    ],
+    "category": "Vorratskammer",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "400g (Dose)"
+      ],
+      "constellations": [
+        "Kidneybohnen",
+        "Weiße Bohnen",
+        "Schwarze Bohnen",
+        "Bio"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "049c801b-b116-47b5-96d3-3cb78944c1fb",
+    "name": "Quinoa",
+    "aliases": [
+      "Amaranth"
+    ],
+    "category": "Vorratskammer",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "500g"
+      ],
+      "constellations": [
+        "Bio",
+        "Weiß",
+        "Tricolor"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "1b266121-7a40-4dd2-b941-9c33de753482",
+    "name": "Couscous",
+    "aliases": [
+      "Bulgur"
+    ],
+    "category": "Vorratskammer",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "500g"
+      ],
+      "constellations": [
+        "Bio"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "75684091-8a29-4dbc-b30d-fc393a894230",
+    "name": "Sojagranulat",
+    "aliases": [
+      "Sojaschnetzel"
+    ],
+    "category": "Vorratskammer",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "250g",
+        "500g"
+      ],
+      "constellations": [
+        "Bio",
+        "Getrocknet"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "5c0239c7-528d-4fb2-86fc-be5bd9aba522",
+    "name": "Kartoffelpüree-Pulver",
+    "aliases": [],
+    "category": "Vorratskammer",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3x3 Portionen"
+      ],
+      "constellations": [
+        "Bio",
+        "Pfanni (Marke)"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "7b03a05d-65e0-446c-abe1-8cafc4c011ab",
+    "name": "Paniermehl",
+    "aliases": [
+      "Semmelbrösel"
+    ],
+    "category": "Vorratskammer",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "400g",
+        "500g"
+      ],
+      "constellations": [
+        "Bio"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "de293f9d-a83d-49a8-8196-8ced649a3d67",
+    "name": "Grieß",
+    "aliases": [
+      "Polenta"
+    ],
+    "category": "Vorratskammer",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "500g"
+      ],
+      "constellations": [
+        "Weichweizengrieß",
+        "Hartweizengrieß",
+        "Maisgrieß",
+        "Bio"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "0dc64de5-c9d1-4a5e-b3a9-80cf29d36572",
+    "name": "Salz",
+    "aliases": [],
+    "category": "Vorratskammer",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "500g",
+        "1kg"
+      ],
+      "constellations": [
+        "Jodsalz",
+        "Meersalz",
+        "Fluorid",
+        "Grob (Mühle)",
+        "Bad Reichenhaller"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "86312162-3e43-482e-aaab-dfd5e684bd74",
+    "name": "Pfeffer",
+    "aliases": [],
+    "category": "Vorratskammer",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "50g",
+        "100g (Mühle)"
+      ],
+      "constellations": [
+        "Schwarz",
+        "Weiß",
+        "Bunt",
+        "Ganze Körner",
+        "Gemahlen"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "621b2001-cfd4-4594-ba0d-579bf102e04f",
+    "name": "Paprikapulver",
+    "aliases": [],
+    "category": "Vorratskammer",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "40g",
+        "50g",
+        "100g"
+      ],
+      "constellations": [
+        "Edelsüß",
+        "Rosenscharf",
+        "Geräuchert (Smoked)"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "1997a93b-a804-4ea6-8e4b-96722c15e0f9",
+    "name": "Currypulver",
+    "aliases": [],
+    "category": "Vorratskammer",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "40g",
+        "50g"
+      ],
+      "constellations": [
+        "Mild",
+        "Scharf",
+        "Bio",
+        "Englisch"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "fcfa3fbb-e671-48ff-8144-a99ffdcece44",
+    "name": "Oregano",
+    "aliases": [
+      "Basilikum (Getr.)"
+    ],
+    "category": "Vorratskammer",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "15g",
+        "20g (Glas)"
+      ],
+      "constellations": [
+        "Gerebelt",
+        "Bio"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "291e2053-1a47-4c2f-8466-a649a91b19a4",
+    "name": "Brühe (Gemüse, Huhn, Rind)",
+    "aliases": [],
+    "category": "Vorratskammer",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "Glas",
+        "Würfel"
+      ],
+      "constellations": [
+        "Bio",
+        "Hefeextraktfrei",
+        "Maggi/Knorr (Marke)",
+        "Pulver"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "1a37e9e0-f747-4699-97a1-8f00b45675dd",
+    "name": "Olivenöl",
+    "aliases": [],
+    "category": "Vorratskammer",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "500ml",
+        "750ml"
+      ],
+      "constellations": [
+        "Nativ Extra",
+        "Bio",
+        "Italienisch",
+        "Spanisch",
+        "Griechisch"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "60d94b2b-2983-43fb-9d1f-f642d7ff443a",
+    "name": "Sonnenblumenöl",
+    "aliases": [
+      "Rapsöl"
+    ],
+    "category": "Vorratskammer",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "750ml",
+        "1l"
+      ],
+      "constellations": [
+        "Raffiniert (zum Braten)",
+        "Kaltgepresst"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "c4cdad23-7589-4166-bd4f-89b600c93bcd",
+    "name": "Essig (Balsamico)",
+    "aliases": [],
+    "category": "Vorratskammer",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "500ml"
+      ],
+      "constellations": [
+        "Aceto Balsamico di Modena",
+        "Bianco",
+        "Bio",
+        "Crema"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "71523695-966a-4a2c-b4c5-06291a316ba2",
+    "name": "Ketchup",
+    "aliases": [],
+    "category": "Vorratskammer",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "500ml",
+        "800ml"
+      ],
+      "constellations": [
+        "Tomatenketchup",
+        "Curryketchup",
+        "Bio",
+        "Heinz (Marke)"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "c8609149-d49f-4790-bdc1-0342c5a9be4e",
+    "name": "Mayonnaise",
+    "aliases": [
+      "Remoulade"
+    ],
+    "category": "Vorratskammer",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "250ml",
+        "500ml"
+      ],
+      "constellations": [
+        "80% Fett",
+        "Salatmayonnaise (50%)",
+        "Vegan",
+        "Thomy (Marke)"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "9daab298-56aa-4521-b11d-190d2be1a8f3",
+    "name": "Senf",
+    "aliases": [],
+    "category": "Vorratskammer",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "200ml (Tube/Glas)"
+      ],
+      "constellations": [
+        "Mittelscharf",
+        "Scharf",
+        "Süß",
+        "Dijon",
+        "Bautz'ner"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "296297bf-fb0d-4023-b658-adbf3e86cda7",
+    "name": "Sojasauce",
+    "aliases": [],
+    "category": "Vorratskammer",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "150ml",
+        "250ml"
+      ],
+      "constellations": [
+        "Bio",
+        "Weniger Salz",
+        "Kikkoman (Marke)"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "621b4b55-d0af-43f0-97c7-ebe8774bf887",
+    "name": "Tomatenmark",
+    "aliases": [],
+    "category": "Vorratskammer",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "200g (Tube)"
+      ],
+      "constellations": [
+        "3-fach konzentriert",
+        "2-fach",
+        "Bio",
+        "Oro di Parma"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "dfef37d5-c466-4e93-b7d7-3ab197838c93",
+    "name": "Passierte Tomaten (Passata)",
+    "aliases": [],
+    "category": "Vorratskammer",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "500g (Tetrapak)"
+      ],
+      "constellations": [
+        "Bio",
+        "Mit Kräutern"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "edeb9222-632f-4b60-931b-dea0bbbd698e",
+    "name": "Stückige Tomaten",
+    "aliases": [],
+    "category": "Vorratskammer",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "400g (Dose)"
+      ],
+      "constellations": [
+        "Bio",
+        "Mutti (Marke)"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "1f13a446-cb99-4eaf-a9be-ad4cf3cdade3",
+    "name": "Pesto",
+    "aliases": [],
+    "category": "Vorratskammer",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "190g (Glas)"
+      ],
+      "constellations": [
+        "Verde (Basilikum)",
+        "Rosso (Tomate)",
+        "Barilla (Marke)",
+        "Bio"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "1f7b0180-bd91-48dc-8903-846bd495f713",
+    "name": "Backpulver",
+    "aliases": [
+      "Hefe"
+    ],
+    "category": "Vorratskammer",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "3er Pack",
+        "4er"
+      ],
+      "constellations": [
+        "Trockenhefe",
+        "Frische Hefe",
+        "Bio"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "98721ba9-75a2-4403-9393-3df64258ee7e",
+    "name": "Mais (Dose)",
+    "aliases": [],
+    "category": "Vorratskammer",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "300g",
+        "3x 150g"
+      ],
+      "constellations": [
+        "Bio",
+        "Supersweet"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "6a33bfa2-9d86-4b72-8f13-c09c80e425e3",
+    "name": "Gewürzgurken",
+    "aliases": [
+      "Essiggurken"
+    ],
+    "category": "Vorratskammer",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "720ml (Glas)"
+      ],
+      "constellations": [
+        "Cornichons",
+        "Mild",
+        "Scharf",
+        "Kühne (Marke)"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "0fc187fe-7aa1-4b6c-9bcc-ad334869fe7c",
+    "name": "Thunfisch (Konserve)",
+    "aliases": [],
+    "category": "Vorratskammer",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "150g"
+      ],
+      "constellations": [
+        "In Sonnenblumenöl",
+        "Im eigenen Saft",
+        "MSC"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "7d1a193f-a5b0-4834-a972-e6d671bf537d",
+    "name": "Müsli",
+    "aliases": [],
+    "category": "Vorratskammer",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "500g",
+        "750g"
+      ],
+      "constellations": [
+        "Schoko",
+        "Früchte",
+        "Knusper/Crunchy",
+        "Ohne Zuckerzusatz",
+        "Bio"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "68e7bfb9-7ad3-4677-94e3-3be94327a47c",
+    "name": "Cornflakes",
+    "aliases": [
+      "Cerealien"
+    ],
+    "category": "Vorratskammer",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "500g"
+      ],
+      "constellations": [
+        "Kellogg's",
+        "Smacks",
+        "Choco Krispies",
+        "Bio"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "82990530-c120-4e0b-ad2a-047a380b95ee",
+    "name": "Marmelade",
+    "aliases": [
+      "Konfitüre"
+    ],
+    "category": "Vorratskammer",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "340g",
+        "450g (Glas)"
+      ],
+      "constellations": [
+        "Erdbeer",
+        "Himbeer",
+        "Aprikose",
+        "Bio",
+        "Weniger Zucker"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "08a8d6d1-fbdb-4a08-9c6c-c134ac69a7f2",
+    "name": "Honig",
+    "aliases": [],
+    "category": "Vorratskammer",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "500g (Glas/Spender)"
+      ],
+      "constellations": [
+        "Blütenhonig",
+        "Waldhonig",
+        "Bio",
+        "Fairtrade"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "1f333d92-8a2b-48e1-99e3-f12ab49036da",
+    "name": "Nuss-Nougat-Creme (Nutella)",
+    "aliases": [],
+    "category": "Vorratskammer",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "450g",
+        "750g",
+        "1kg"
+      ],
+      "constellations": [
+        "Nutella",
+        "Bio",
+        "Vegan",
+        "Ohne Palmöl",
+        "Nudossi"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "5bb0795c-556f-4c24-9909-f962309f9acb",
+    "name": "Schokolade (Tafel)",
+    "aliases": [],
+    "category": "Vorratskammer",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "100g",
+        "300g"
+      ],
+      "constellations": [
+        "Vollmilch",
+        "Zartbitter",
+        "Weiß",
+        "Vegan",
+        "Milka",
+        "Ritter Sport"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "2864249a-03da-4213-b8e3-0dce92e7bbf3",
+    "name": "Gummibärchen",
+    "aliases": [
+      "Fruchtgummi"
+    ],
+    "category": "Vorratskammer",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "175g",
+        "200g",
+        "300g"
+      ],
+      "constellations": [
+        "Haribo",
+        "Katjes",
+        "Vegan",
+        "Sauer",
+        "Lakritz"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "766ef682-1c30-4716-9a96-58a836b2a5b2",
+    "name": "Kekse",
+    "aliases": [
+      "Plätzchen"
+    ],
+    "category": "Vorratskammer",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "150g",
+        "200g",
+        "300g"
+      ],
+      "constellations": [
+        "Butterkeks",
+        "Schokokeks",
+        "Prinzenrolle",
+        "Leibniz",
+        "Oreo"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "f29f645b-09a0-4a16-8f51-d1d2db786fae",
+    "name": "Chips",
+    "aliases": [
+      "Kartoffelchips"
+    ],
+    "category": "Vorratskammer",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "150g",
+        "175g"
+      ],
+      "constellations": [
+        "Paprika",
+        "Salt & Vinegar",
+        "Funny Frisch",
+        "Pringles",
+        "Chio"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "5bfa52e5-07d0-4105-81ad-fc1aea74f23f",
+    "name": "Erdnüsse",
+    "aliases": [],
+    "category": "Vorratskammer",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "150g",
+        "200g (Dose)"
+      ],
+      "constellations": [
+        "Geröstet",
+        "Gesalzen",
+        "Ungesalzen",
+        "Bio",
+        "Ültje"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "8326a88c-f514-408f-a723-5cf535859c47",
+    "name": "Cashewkerne",
+    "aliases": [
+      "Pistazien"
+    ],
+    "category": "Vorratskammer",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "150g",
+        "200g"
+      ],
+      "constellations": [
+        "Geröstet",
+        "Gesalzen",
+        "Natur",
+        "Bio"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "58cc0da4-9f06-49bc-a5d7-a291e2a3c522",
+    "name": "Mineralwasser",
+    "aliases": [],
+    "category": "Getränke",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "6er Träger",
+        "12er Kasten",
+        "1l",
+        "1",
+        "5l"
+      ],
+      "constellations": [
+        "Sprudel (Classic)",
+        "Medium",
+        "Still (Naturelle)",
+        "PET",
+        "Glas",
+        "Bio"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "819da2e1-7fa6-4ba1-8ad0-b28c965838ae",
+    "name": "Apfelsaft",
+    "aliases": [],
+    "category": "Getränke",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "1l",
+        "6er Kasten"
+      ],
+      "constellations": [
+        "Naturtrüb",
+        "Klar",
+        "Direktsaft",
+        "Konzentrat",
+        "Bio",
+        "Schorle"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "f2e7841e-0302-44ac-9e72-1ea666c948a7",
+    "name": "Orangensaft",
+    "aliases": [],
+    "category": "Getränke",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "1l",
+        "6er Kasten"
+      ],
+      "constellations": [
+        "Direktsaft",
+        "Mit Fruchtfleisch",
+        "Bio",
+        "Hohes C",
+        "Valensina"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "0a1680c5-f11b-493b-8a5b-a538123c235d",
+    "name": "Cola",
+    "aliases": [],
+    "category": "Getränke",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "6er Träger",
+        "1l",
+        "1",
+        "5l",
+        "0",
+        "33l Dose"
+      ],
+      "constellations": [
+        "Coca-Cola (Marke)",
+        "Pepsi",
+        "Zero",
+        "Light",
+        "Zuckerfrei"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "ed7ebcc2-cd9a-476d-ac79-6dc9a621b52a",
+    "name": "Limonade (Fanta",
+    "aliases": [
+      "Sprite)"
+    ],
+    "category": "Getränke",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "6er Träger",
+        "1l",
+        "1",
+        "5l"
+      ],
+      "constellations": [
+        "Orange",
+        "Zitrone",
+        "Zero"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "fc02a237-795b-4397-92c6-710159dd6b02",
+    "name": "Eistee",
+    "aliases": [],
+    "category": "Getränke",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "1l",
+        "1",
+        "5l (Tetrapak)"
+      ],
+      "constellations": [
+        "Pfirsich",
+        "Zitrone",
+        "Lipton",
+        "Pfanner",
+        "Volvic"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "b0254a4b-1983-4416-9e4d-c5de6e866053",
+    "name": "Kaffee",
+    "aliases": [],
+    "category": "Getränke",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "500g",
+        "1kg"
+      ],
+      "constellations": [
+        "Ganze Bohnen",
+        "Gemahlen",
+        "Bio",
+        "Fairtrade",
+        "Entkoffeiniert"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "17ec2a35-bbc2-48bb-a742-6b7cb8a5f95d",
+    "name": "Kaffeepads",
+    "aliases": [
+      "Kapseln"
+    ],
+    "category": "Getränke",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "16er",
+        "36er Pack"
+      ],
+      "constellations": [
+        "Senseo",
+        "Nespresso-kompatibel",
+        "Bio"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "a59139be-a7df-4153-991c-ccb414575da6",
+    "name": "Tee (Beutel",
+    "aliases": [
+      "Lose)"
+    ],
+    "category": "Getränke",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "20er Packung",
+        "100g"
+      ],
+      "constellations": [
+        "Kamille",
+        "Pfefferminz",
+        "Schwarztee",
+        "Grüntee",
+        "Bio"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "62acecf5-8b6e-4d29-8e75-26482d9842df",
+    "name": "Kakao",
+    "aliases": [
+      "Kaba (Pulver)"
+    ],
+    "category": "Getränke",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "400g",
+        "500g",
+        "800g"
+      ],
+      "constellations": [
+        "Bio",
+        "Fairtrade",
+        "Nesquik",
+        "Kaba"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "97212e47-7cd1-4752-9a08-755021641434",
+    "name": "Bier",
+    "aliases": [],
+    "category": "Getränke",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "6er Träger",
+        "20er Kasten",
+        "24er",
+        "0",
+        "5l",
+        "0",
+        "33l"
+      ],
+      "constellations": [
+        "Pils",
+        "Helles",
+        "Weizen",
+        "Alkoholfrei",
+        "Radler",
+        "Export"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "c8a7f715-fc08-41f5-8a41-396b26959151",
+    "name": "Wein (Weißwein)",
+    "aliases": [],
+    "category": "Getränke",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "6",
+        "0",
+        "75l"
+      ],
+      "constellations": [
+        "Trocken",
+        "Halbtrocken",
+        "Lieblich",
+        "Riesling",
+        "Grauburgunder",
+        "Bio"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "7cc10388-105a-44bd-8c7b-b5ec985c2e57",
+    "name": "Wein (Rotwein)",
+    "aliases": [],
+    "category": "Getränke",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "6",
+        "0",
+        "75l"
+      ],
+      "constellations": [
+        "Trocken",
+        "Halbtrocken",
+        "Merlot",
+        "Dornfelder",
+        "Bio"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "b0bb417a-a1e2-4db1-bf38-6162404f041a",
+    "name": "Sekt",
+    "aliases": [
+      "Schaumwein"
+    ],
+    "category": "Getränke",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "6",
+        "0",
+        "75l"
+      ],
+      "constellations": [
+        "Brut",
+        "Trocken",
+        "Halbtrocken",
+        "Rotkäppchen",
+        "Freixenet",
+        "Alkoholfrei"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "901b74ea-01a4-4ea7-9bcc-72f2d2c1d0d4",
+    "name": "Wodka",
+    "aliases": [
+      "Rum",
+      "Gin"
+    ],
+    "category": "Getränke",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "0",
+        "7l"
+      ],
+      "constellations": [
+        "Absolut",
+        "Havana Club",
+        "Bombay",
+        "Gordon's"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "e114e9d7-0722-4c9c-9649-9951d6e155fa",
+    "name": "Windeln",
+    "aliases": [],
+    "category": "Drogerie & Haushalt",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "Mega-Pack",
+        "Jumbo-Pack"
+      ],
+      "constellations": [
+        "Größe 1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "Pampers",
+        "Babylove",
+        "Pants"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "1130d07a-3a99-44a6-a84f-c7df822924d4",
+    "name": "Feuchttücher (Baby)",
+    "aliases": [],
+    "category": "Drogerie & Haushalt",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "4er Pack",
+        "80er"
+      ],
+      "constellations": [
+        "Sensitiv",
+        "Wasserstoff",
+        "Bio"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "60dfa9f9-e3b4-473a-b64c-ff65bdd77b30",
+    "name": "Babynahrung (Gläschen",
+    "aliases": [
+      "Pulver)"
+    ],
+    "category": "Drogerie & Haushalt",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "190g",
+        "600g"
+      ],
+      "constellations": [
+        "Bio",
+        "Pre",
+        "Folgemilch 1",
+        "Ab 4. Monat",
+        "Hipp"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "46540766-6300-46db-b616-ce34b090b706",
+    "name": "Duschgel",
+    "aliases": [],
+    "category": "Drogerie & Haushalt",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "250ml",
+        "300ml"
+      ],
+      "constellations": [
+        "pH-hautneutral",
+        "Männer",
+        "Naturkosmetik",
+        "Bio",
+        "Nivea",
+        "Balea"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "19904d14-cb09-4df8-ba27-32f2354bba07",
+    "name": "Shampoo",
+    "aliases": [],
+    "category": "Drogerie & Haushalt",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "250ml",
+        "300ml"
+      ],
+      "constellations": [
+        "Für trockenes Haar",
+        "Anti-Schuppen",
+        "Naturkosmetik"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "72b0aeaf-e9fc-44be-9aa9-1466e58514c5",
+    "name": "Seife (Flüssig",
+    "aliases": [
+      "Stück)"
+    ],
+    "category": "Drogerie & Haushalt",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "300ml (Spender)",
+        "500ml (Nachfüll)",
+        "100g"
+      ],
+      "constellations": [
+        "Arztseife",
+        "Sensitiv",
+        "Bio"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "df6d9a92-2e5d-4087-9297-7ae5c9700e29",
+    "name": "Deodorant (Deo)",
+    "aliases": [],
+    "category": "Drogerie & Haushalt",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "150ml (Spray)",
+        "50ml (Roll-on)"
+      ],
+      "constellations": [
+        "Ohne Aluminium",
+        "Naturkosmetik",
+        "Nivea",
+        "Rexona"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "0af5942e-a040-482f-b3af-e434d4e858b0",
+    "name": "Rasierklingen",
+    "aliases": [
+      "Einwegrasierer"
+    ],
+    "category": "Drogerie & Haushalt",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "4er",
+        "8er Pack"
+      ],
+      "constellations": [
+        "Männer",
+        "Frauen",
+        "Gillette",
+        "Venus"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "6a38e91b-e157-4fe7-8bf0-17ca0e221c00",
+    "name": "Zahnpasta",
+    "aliases": [],
+    "category": "Drogerie & Haushalt",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "75ml",
+        "100ml"
+      ],
+      "constellations": [
+        "Mit Fluorid",
+        "Ohne Fluorid",
+        "Sensitiv",
+        "Weißmachend",
+        "Elmex"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "06b8733d-a7e0-4ccf-ad6c-82108aba8575",
+    "name": "Zahnbürste",
+    "aliases": [
+      "Aufsteckbürsten"
+    ],
+    "category": "Drogerie & Haushalt",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "2er Pack",
+        "4er Pack"
+      ],
+      "constellations": [
+        "Weich",
+        "Mittel",
+        "Hart",
+        "Elektrisch",
+        "Oral-B"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "ed255c93-9da3-4243-a077-f910c322a520",
+    "name": "Toilettenpapier",
+    "aliases": [],
+    "category": "Drogerie & Haushalt",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "8 Rollen",
+        "10 Rollen",
+        "16 Rollen"
+      ],
+      "constellations": [
+        "3-lagig",
+        "4-lagig",
+        "5-lagig",
+        "Recycling",
+        "Zewa"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "00f01808-93e2-46ef-94b9-ba7f4496a204",
+    "name": "Küchenrolle",
+    "aliases": [
+      "Haushaltspapier"
+    ],
+    "category": "Drogerie & Haushalt",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "4 Rollen",
+        "8 Rollen"
+      ],
+      "constellations": [
+        "3-lagig",
+        "Recycling",
+        "Zewa",
+        "Küchentücher"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "4ed3cf87-688d-463e-9093-55dd04c8d97d",
+    "name": "Taschentücher",
+    "aliases": [],
+    "category": "Drogerie & Haushalt",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "10x10er",
+        "30x10er",
+        "Box (100er)"
+      ],
+      "constellations": [
+        "4-lagig",
+        "Recycling",
+        "Balsam",
+        "Tempo"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "28ed56ad-0acd-431e-895c-d82fd438a425",
+    "name": "Tampons",
+    "aliases": [
+      "Binden"
+    ],
+    "category": "Drogerie & Haushalt",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "16er",
+        "32er",
+        "56er Pack"
+      ],
+      "constellations": [
+        "Normal",
+        "Super",
+        "Nacht",
+        "Bio-Baumwolle",
+        "O.b.",
+        "Always"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "2c297613-c8cb-4d01-8903-899d86388cc1",
+    "name": "Waschmittel (Flüssig",
+    "aliases": [
+      "Pulver)"
+    ],
+    "category": "Drogerie & Haushalt",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "20 Wl",
+        "40 Wl",
+        "80 Wl",
+        "100 Wl"
+      ],
+      "constellations": [
+        "Color",
+        "Vollwaschmittel",
+        "Sensitiv",
+        "Pods/Caps",
+        "Ariel",
+        "Persil"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "91a07a6b-ec5f-4a03-9a5d-b63237e3a334",
+    "name": "Weichspüler",
+    "aliases": [],
+    "category": "Drogerie & Haushalt",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "1l",
+        "1",
+        "5l"
+      ],
+      "constellations": [
+        "Sensitiv",
+        "Lenor",
+        "Vernel"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "6a078549-33f5-4d61-bb20-d4adee127d57",
+    "name": "Spülmittel (Hand)",
+    "aliases": [],
+    "category": "Drogerie & Haushalt",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "500ml",
+        "900ml"
+      ],
+      "constellations": [
+        "Konzentrat",
+        "Balsam",
+        "Öko",
+        "Pril",
+        "Fairy"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "992e564c-ccac-470c-8ac4-5c57621920e8",
+    "name": "Spülmaschinentabs",
+    "aliases": [],
+    "category": "Drogerie & Haushalt",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "40er",
+        "60er",
+        "100er Pack"
+      ],
+      "constellations": [
+        "All-in-One",
+        "Classic",
+        "Öko",
+        "Somat",
+        "Finish"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "b46a373a-81e9-4b9c-8901-5f983a28903d",
+    "name": "Allzweckreiniger",
+    "aliases": [
+      "Glasreiniger"
+    ],
+    "category": "Drogerie & Haushalt",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "1l",
+        "500ml",
+        "750ml (Spray)"
+      ],
+      "constellations": [
+        "Öko",
+        "Citrus",
+        "Streifenfrei"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "6bbae751-7de1-4489-b1ed-0acd5a125586",
+    "name": "Müllbeutel",
+    "aliases": [],
+    "category": "Drogerie & Haushalt",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "10l",
+        "20l",
+        "35l",
+        "60l",
+        "120l"
+      ],
+      "constellations": [
+        "Mit Zugband",
+        "Kompostierbar (Bio)",
+        "20er Rolle",
+        "Reißfest"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "9d0fbbbf-5341-4e81-9f6f-904d77243f85",
+    "name": "Alufolie",
+    "aliases": [
+      "Frischhaltefolie"
+    ],
+    "category": "Drogerie & Haushalt",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "20m",
+        "30m",
+        "50m"
+      ],
+      "constellations": [
+        "Recycling-Alu",
+        "Extra stark",
+        "PVC-frei"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "10dc07b0-2e75-4d74-ba77-3bafaa23cfa7",
+    "name": "Backpapier",
+    "aliases": [],
+    "category": "Drogerie & Haushalt",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "30 Zuschnitte",
+        "1 Rolle"
+      ],
+      "constellations": [
+        "Ungebleicht",
+        "Kompostierbar",
+        "Dauerbackfolie"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "3d851a06-c170-4a34-9c0d-48ed57cf0660",
+    "name": "Schwamm",
+    "aliases": [
+      "Spültuch"
+    ],
+    "category": "Drogerie & Haushalt",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "3er",
+        "6er Pack"
+      ],
+      "constellations": [
+        "Öko",
+        "Kratzfrei",
+        "Topfreiniger",
+        "Microfaser"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "0078589f-546f-42c8-9738-f3ad29c5eda8",
+    "name": "Batterien (AA",
+    "aliases": [
+      "AAA)"
+    ],
+    "category": "Drogerie & Haushalt",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "4er",
+        "8er Pack"
+      ],
+      "constellations": [
+        "Alkaline",
+        "Akkus (Wiederaufladbar)",
+        "Varta",
+        "Duracell"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "cc15c094-0821-4932-a3a0-684aab68b7d6",
+    "name": "Katzenfutter (Nass",
+    "aliases": [
+      "Trocken)"
+    ],
+    "category": "Drogerie & Haushalt",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "6",
+        "12",
+        "100g",
+        "400g",
+        "1kg"
+      ],
+      "constellations": [
+        "Gelee",
+        "Sauce",
+        "Bio",
+        "Getreidefrei",
+        "Adult",
+        "Senior",
+        "Kitten"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "94bf961b-fe86-4cb8-a149-7b48f521f4d0",
+    "name": "Katzenstreu",
+    "aliases": [],
+    "category": "Drogerie & Haushalt",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "10l",
+        "20l"
+      ],
+      "constellations": [
+        "Klumpstreu",
+        "Silikat",
+        "Naturfaser (z.B. Cats Best)",
+        "Staubarm"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "23da7684-2a0f-4ebb-858d-96f8be363bc4",
+    "name": "Hundefutter (Nass",
+    "aliases": [
+      "Trocken)"
+    ],
+    "category": "Drogerie & Haushalt",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "6",
+        "400g",
+        "800g",
+        "5kg"
+      ],
+      "constellations": [
+        "Rind",
+        "Geflügel",
+        "Getreidefrei",
+        "Adult",
+        "Puppy",
+        "Senior"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "e6a04ee7-1011-4f53-9137-da9e26e0955c",
+    "name": "Leckerlis (Hund",
+    "aliases": [
+      "Katze)"
+    ],
+    "category": "Drogerie & Haushalt",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "50g",
+        "100g",
+        "200g"
+      ],
+      "constellations": [
+        "Zahnpflege (Dentastix)",
+        "Kausnack",
+        "Sticks"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "7c5cc988-7265-4502-bc47-a4679d0d5c2c",
+    "name": "Pflaster",
+    "aliases": [
+      "Verbandszeug"
+    ],
+    "category": "Drogerie & Haushalt",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "1 Packung"
+      ],
+      "constellations": [
+        "Wasserfest",
+        "Sensitiv",
+        "Kinderpflaster"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "8101d82c-56ad-4c55-9404-2622b656f521",
+    "name": "Vitamine",
+    "aliases": [
+      "Nahrungsergänzung"
+    ],
+    "category": "Drogerie & Haushalt",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "30 Stk",
+        "60 Stk",
+        "Brausetabletten"
+      ],
+      "constellations": [
+        "Vitamin C",
+        "Magnesium",
+        "Zink",
+        "Multivitamin"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "1f9f4318-21ce-46fb-84ae-4a0f3f40035b",
+    "name": "Zeitschriften",
+    "aliases": [
+      "Magazine"
+    ],
+    "category": "Sonstiges",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3"
+      ],
+      "constellations": [
+        "Fernsehzeitung",
+        "Klatsch",
+        "Rätselheft"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "10bd6d15-51a5-4e75-8b2f-6436cef76bc8",
+    "name": "Tageszeitung",
+    "aliases": [],
+    "category": "Sonstiges",
+    "tags": {
+      "quantities": [
+        "1",
+        "2"
+      ],
+      "constellations": [
+        "Lokal",
+        "Überregional"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "769c2936-3080-43bc-817a-1e0a5facf03d",
+    "name": "Briefmarken",
+    "aliases": [],
+    "category": "Sonstiges",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "10er Set"
+      ],
+      "constellations": [
+        "Standardbrief",
+        "Postkarte"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "4a8c4c7c-c271-4b62-803d-58526462cb38",
+    "name": "Gutscheinkarten",
+    "aliases": [
+      "Giftcards"
+    ],
+    "category": "Sonstiges",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "15€",
+        "25€",
+        "50€"
+      ],
+      "constellations": [
+        "Amazon",
+        "iTunes",
+        "Google Play",
+        "PlayStation",
+        "Wunschgutschein"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "9889b789-84fa-4e69-81af-43e9303cdbfe",
+    "name": "Tabakwaren",
+    "aliases": [
+      "Zigaretten"
+    ],
+    "category": "Sonstiges",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "1 Schachtel"
+      ],
+      "constellations": [
+        "Filter",
+        "Stopftabak"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "65428e32-37ab-4e3e-afdf-d5621e192bf8",
+    "name": "Blumenstrauß",
+    "aliases": [
+      "Topfpflanze"
+    ],
+    "category": "Sonstiges",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3"
+      ],
+      "constellations": [
+        "Fairtrade",
+        "Regional",
+        "Orchidee",
+        "Rosen"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "04aaf738-6e07-4f7c-913f-56719b357226",
+    "name": "Müllmarken",
+    "aliases": [
+      "Wertstoffsäcke"
+    ],
+    "category": "Sonstiges",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "1 Rolle"
+      ],
+      "constellations": [
+        "Gelber Sack",
+        "Restmüll"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "a665a72f-6580-4554-826d-cfcf119d2d91",
+    "name": "Saisonartikel (Weihnachten",
+    "aliases": [
+      "Ostern)"
+    ],
+    "category": "Sonstiges",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "constellations": [
+        "Deko",
+        "Baumschmuck",
+        "Ostereierfarben"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "c940c1d6-21a9-4e29-b92f-9cae1b652e6f",
+    "name": "Brennholz",
+    "aliases": [
+      "Grillkohle"
+    ],
+    "category": "Sonstiges",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "2",
+        "5kg",
+        "5kg"
+      ],
+      "constellations": [
+        "Briketts",
+        "Holzkohle",
+        "FSC-Zertifiziert"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  },
+  {
+    "id": "419f1ac2-41a8-4d5b-afb6-a7262f83af29",
+    "name": "Streusalz",
+    "aliases": [],
+    "category": "Sonstiges",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "5kg",
+        "10kg"
+      ],
+      "constellations": [],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    }
+  }
+]
