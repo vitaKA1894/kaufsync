@@ -2,6 +2,7 @@
 import { ref, onMounted, onUnmounted, computed } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import CategoryIcon from '../components/CategoryIcon.vue';
+import AddItemModal from '../components/AddItemModal.vue';
 
 const route = useRoute();
 const router = useRouter();
@@ -10,6 +11,7 @@ const listId = route.params.id;
 const items = ref([]);
 const currentList = ref(null);
 const newItemName = ref('');
+const isAddModalOpen = ref(false);
 const errorMessage = ref('');
 const successMessage = ref('');
 const showShareSheet = ref(false);
@@ -25,38 +27,39 @@ const isOnline = ref(navigator.onLine);
 // --- KATEGORIE DEFINITIONEN ---
 const predefinedCategories = [
   { name: 'Obst & Gemüse', color: 'var(--ks-success)', bg: 'var(--ks-success-bg)' },
-  { name: 'Kühlregal', color: 'var(--ks-primary)', bg: 'var(--ks-primary-container)' },
-  { name: 'Backwaren', color: 'var(--ks-warning)', bg: 'var(--ks-warning-bg)' },
+  { name: 'Brot & Backwaren', color: 'var(--ks-warning)', bg: 'var(--ks-warning-bg)' },
   { name: 'Fleisch & Fisch', color: 'var(--ks-error)', bg: 'var(--ks-error-bg)' },
-  { name: 'Getränke', color: 'var(--ks-secondary)', bg: 'rgba(194, 231, 255, 0.14)' },
-  { name: 'Drogerie', color: 'var(--ks-text)', bg: 'var(--ks-surface-4)' },
-  { name: 'Allgemein', color: 'var(--ks-text-muted)', bg: 'var(--ks-surface-3)' }
+  { name: 'Milchprodukte & Tiefkühlkost', color: 'var(--ks-primary)', bg: 'var(--ks-primary-container)' },
+  { name: 'Vorratskammer', color: 'var(--ks-text)', bg: 'var(--ks-surface-3)' },
+  { name: 'Getränke & Genussmittel', color: 'var(--ks-secondary)', bg: 'rgba(194, 231, 255, 0.14)' },
+  { name: 'Drogerie, Haushalt & Tierbedarf', color: 'var(--ks-text)', bg: 'var(--ks-surface-4)' },
+  { name: 'Sonstiges', color: 'var(--ks-text-muted)', bg: 'var(--ks-surface-3)' }
 ];
 
 // --- MARKT SPEZIFISCHE DEFAULTS (JSON-Konfiguration) ---
 const chainsConfig = {
-  aldi: { marketType: "discounter", defaultOrder: ["Obst & Gemüse", "Backwaren", "Allgemein", "Getränke", "Kühlregal", "Fleisch & Fisch", "Drogerie"] },
-  lidl: { marketType: "discounter", defaultOrder: ["Obst & Gemüse", "Backwaren", "Allgemein", "Getränke", "Kühlregal", "Fleisch & Fisch", "Drogerie"] },
-  netto: { marketType: "discounter", defaultOrder: ["Obst & Gemüse", "Backwaren", "Allgemein", "Getränke", "Kühlregal", "Fleisch & Fisch", "Drogerie"] },
-  penny: { marketType: "discounter", defaultOrder: ["Obst & Gemüse", "Backwaren", "Allgemein", "Getränke", "Kühlregal", "Fleisch & Fisch", "Drogerie"] },
-  rewe: { marketType: "supermarket", defaultOrder: ["Obst & Gemüse", "Backwaren", "Allgemein", "Getränke", "Kühlregal", "Fleisch & Fisch", "Drogerie"] },
-  edeka: { marketType: "supermarket", defaultOrder: ["Obst & Gemüse", "Backwaren", "Allgemein", "Getränke", "Kühlregal", "Fleisch & Fisch", "Drogerie"] },
-  kaufland: { marketType: "supermarket", defaultOrder: ["Obst & Gemüse", "Backwaren", "Allgemein", "Getränke", "Kühlregal", "Fleisch & Fisch", "Drogerie"] },
+  aldi: { marketType: "discounter", defaultOrder: ["Obst & Gemüse", "Brot & Backwaren", "Fleisch & Fisch", "Milchprodukte & Tiefkühlkost", "Vorratskammer", "Getränke & Genussmittel", "Drogerie, Haushalt & Tierbedarf", "Sonstiges"] },
+  lidl: { marketType: "discounter", defaultOrder: ["Obst & Gemüse", "Brot & Backwaren", "Fleisch & Fisch", "Milchprodukte & Tiefkühlkost", "Vorratskammer", "Getränke & Genussmittel", "Drogerie, Haushalt & Tierbedarf", "Sonstiges"] },
+  netto: { marketType: "discounter", defaultOrder: ["Obst & Gemüse", "Brot & Backwaren", "Fleisch & Fisch", "Milchprodukte & Tiefkühlkost", "Vorratskammer", "Getränke & Genussmittel", "Drogerie, Haushalt & Tierbedarf", "Sonstiges"] },
+  penny: { marketType: "discounter", defaultOrder: ["Obst & Gemüse", "Brot & Backwaren", "Fleisch & Fisch", "Milchprodukte & Tiefkühlkost", "Vorratskammer", "Getränke & Genussmittel", "Drogerie, Haushalt & Tierbedarf", "Sonstiges"] },
+  rewe: { marketType: "supermarket", defaultOrder: ["Obst & Gemüse", "Brot & Backwaren", "Fleisch & Fisch", "Milchprodukte & Tiefkühlkost", "Vorratskammer", "Getränke & Genussmittel", "Drogerie, Haushalt & Tierbedarf", "Sonstiges"] },
+  edeka: { marketType: "supermarket", defaultOrder: ["Obst & Gemüse", "Brot & Backwaren", "Fleisch & Fisch", "Milchprodukte & Tiefkühlkost", "Vorratskammer", "Getränke & Genussmittel", "Drogerie, Haushalt & Tierbedarf", "Sonstiges"] },
+  kaufland: { marketType: "supermarket", defaultOrder: ["Obst & Gemüse", "Brot & Backwaren", "Fleisch & Fisch", "Milchprodukte & Tiefkühlkost", "Vorratskammer", "Getränke & Genussmittel", "Drogerie, Haushalt & Tierbedarf", "Sonstiges"] },
   dm: { 
     marketType: "drugstore", 
-    defaultOrder: ["Drogerie", "Allgemein", "Getränke", "Kühlregal", "Backwaren", "Obst & Gemüse", "Fleisch & Fisch"], 
-    categoryMeta: { "Obst & Gemüse": { deprioritized: true }, "Fleisch & Fisch": { deprioritized: true }, "Backwaren": { deprioritized: true }, "Kühlregal": { deprioritized: true } } 
+    defaultOrder: ["Drogerie, Haushalt & Tierbedarf", "Sonstiges", "Getränke & Genussmittel", "Milchprodukte & Tiefkühlkost", "Brot & Backwaren", "Obst & Gemüse", "Fleisch & Fisch"],
+    categoryMeta: { "Obst & Gemüse": { deprioritized: true }, "Fleisch & Fisch": { deprioritized: true }, "Brot & Backwaren": { deprioritized: true }, "Milchprodukte & Tiefkühlkost": { deprioritized: true } }
   },
   rossmann: { 
     marketType: "drugstore", 
-    defaultOrder: ["Drogerie", "Allgemein", "Getränke", "Kühlregal", "Backwaren", "Obst & Gemüse", "Fleisch & Fisch"], 
-    categoryMeta: { "Obst & Gemüse": { deprioritized: true }, "Fleisch & Fisch": { deprioritized: true }, "Backwaren": { deprioritized: true }, "Kühlregal": { deprioritized: true } } 
+    defaultOrder: ["Drogerie, Haushalt & Tierbedarf", "Sonstiges", "Getränke & Genussmittel", "Milchprodukte & Tiefkühlkost", "Brot & Backwaren", "Obst & Gemüse", "Fleisch & Fisch"],
+    categoryMeta: { "Obst & Gemüse": { deprioritized: true }, "Fleisch & Fisch": { deprioritized: true }, "Brot & Backwaren": { deprioritized: true }, "Milchprodukte & Tiefkühlkost": { deprioritized: true } }
   },
-  metro: { marketType: "wholesale", defaultOrder: ["Obst & Gemüse", "Fleisch & Fisch", "Kühlregal", "Backwaren", "Allgemein", "Getränke", "Drogerie"] },
-  selgros: { marketType: "wholesale", defaultOrder: ["Obst & Gemüse", "Fleisch & Fisch", "Kühlregal", "Backwaren", "Allgemein", "Getränke", "Drogerie"] }
+  metro: { marketType: "wholesale", defaultOrder: ["Obst & Gemüse", "Fleisch & Fisch", "Milchprodukte & Tiefkühlkost", "Brot & Backwaren", "Vorratskammer", "Getränke & Genussmittel", "Drogerie, Haushalt & Tierbedarf", "Sonstiges"] },
+  selgros: { marketType: "wholesale", defaultOrder: ["Obst & Gemüse", "Fleisch & Fisch", "Milchprodukte & Tiefkühlkost", "Brot & Backwaren", "Vorratskammer", "Getränke & Genussmittel", "Drogerie, Haushalt & Tierbedarf", "Sonstiges"] }
 };
 
-const selectedCategory = ref(predefinedCategories[6]); // Default: Allgemein
+const selectedCategory = ref(predefinedCategories[7]); // Default: Sonstiges
 const categoryOrder = ref([]); 
 const isCustomOrder = ref(false); // Flag, um zu wissen ob der User überschrieben hat
 
@@ -174,23 +177,20 @@ const setupWebSocket = () => {
   }
 };
 
-const addItem = async () => {
-  if (newItemName.value.trim() === '') return;
-  
-  // Optimistisches Update für flüssigere UX
+const handleAddItem = async (itemPayload) => {
+  // Optimistisches Update
   const tempId = 'temp-' + Date.now();
   const newItem = {
     id: tempId,
-    name: newItemName.value,
+    name: itemPayload.name,
     quantity: 1,
     unit: 'Stk',
-    category: selectedCategory.value.name,
+    category: itemPayload.category,
+    tags: itemPayload.tags,
     status: 'active'
   };
   
   items.value.push(newItem);
-  const itemNameBackup = newItemName.value;
-  newItemName.value = '';
 
   try {
     const token = localStorage.getItem('token');
@@ -198,20 +198,17 @@ const addItem = async () => {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
       body: JSON.stringify({ 
-        name: itemNameBackup, 
+        name: itemPayload.name,
         quantity: 1, 
         unit: 'Stk',
-        category: selectedCategory.value.name 
+        category: itemPayload.category,
+        tags: itemPayload.tags
       })
     });
     
     if (response.ok) {
       const savedItem = await response.json();
-      
-      // FIX: Wir entfernen das Temp-Item
       items.value = items.value.filter(i => i.id !== tempId);
-      
-      // Prüfen, ob der WebSocket das neue Item evtl. schon hinzugefügt hat
       const alreadyAddedViaWS = items.value.some(i => i.id === savedItem.id);
       if (!alreadyAddedViaWS) {
         items.value.push(savedItem);
@@ -547,6 +544,9 @@ onUnmounted(() => {
               <div class="card-text-area">
                 <span class="item-name">{{ item.name }}</span>
                 <span class="item-meta">{{ item.quantity }} {{ item.unit }}</span>
+                <div v-if="item.tags" class="item-tags">
+                  <span v-for="tag in (typeof item.tags === 'string' ? JSON.parse(item.tags) : item.tags)" :key="tag" class="tag-pill">{{ tag }}</span>
+                </div>
               </div>
             </div>
           </div>
@@ -586,32 +586,20 @@ onUnmounted(() => {
       </section>
     </div>
 
-    <!-- FLOATING INPUT BAR MIT KATEGORIE-CHIPS -->
+    <!-- Add Item Trigger -->
     <div class="input-container">
-      <div class="category-selector">
-        <button 
-          v-for="cat in sortedCategoryChips" :key="cat.name"
-          class="ks-chip"
-          :class="{ 'chip-active': selectedCategory.name === cat.name }"
-          :style="selectedCategory.name === cat.name ? { background: cat.bg, color: cat.color, borderColor: cat.color } : {}"
-          @click="selectedCategory = cat"
-        >
-          {{ cat.name }}
+        <button class="add-trigger-btn" @click="isAddModalOpen = true">
+            <svg viewBox="0 0 24 24"><path d="M11 19v-6H5v-2h6V5h2v6h6v2h-6v6Z"/></svg>
+            Neuen Artikel hinzufügen
         </button>
-      </div>
-
-      <div class="floating-input-bar">
-        <input
-          v-model="newItemName"
-          type="text"
-          placeholder="Artikel hinzufügen…"
-          @keyup.enter="addItem"
-        />
-        <button class="add-btn" @click="addItem" aria-label="Hinzufügen">
-          <svg viewBox="0 0 24 24"><path d="M11 19v-6H5v-2h6V5h2v6h6v2h-6v6Z"/></svg>
-        </button>
-      </div>
     </div>
+
+    <!-- Modal -->
+    <AddItemModal
+        :is-open="isAddModalOpen"
+        @close="isAddModalOpen = false"
+        @add="handleAddItem"
+    />
 
   </div>
 </template>
@@ -703,6 +691,8 @@ onUnmounted(() => {
   overflow: hidden; line-height: 1.3; color: var(--ks-text);
 }
 .item-meta { font-size: 12px; color: var(--ks-text-muted); margin-top: 4px; }
+.item-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px; justify-content: center; }
+.tag-pill { font-size: 10px; background: var(--ks-surface-4); padding: 2px 6px; border-radius: 8px; color: var(--ks-text-muted); }
 
 .delete-btn {
   position: absolute; top: -8px; right: -8px;
@@ -719,48 +709,27 @@ onUnmounted(() => {
 .empty-state { text-align: center; padding: 40px 0; color: var(--ks-text-muted); }
 .empty-state svg { width: 40px; height: 40px; opacity: 0.5; margin-bottom: 8px; fill: currentColor; margin-inline: auto; }
 
-/* Input Bereich mit Chips */
 .input-container {
   position: fixed;
   bottom: 0; left: 0; right: 0;
   background: linear-gradient(0deg, var(--ks-bg) 70%, transparent);
   padding: 0 16px max(24px, env(safe-area-inset-bottom));
-  display: flex; flex-direction: column; gap: 12px;
-  z-index: 40; pointer-events: none; /* Container ist klick-durchlässig */
+  display: flex; justify-content: center;
+  z-index: 40; pointer-events: none;
 }
-.input-container > * { pointer-events: auto; /* Kinder sind klickbar */ }
+.input-container > * { pointer-events: auto; }
 
-.category-selector {
-  display: flex; overflow-x: auto; gap: 12px; padding-bottom: 4px;
-  -ms-overflow-style: none; scrollbar-width: none;
-  max-width: var(--ks-page-width); margin: 0 auto; width: 100%;
+.add-trigger-btn {
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    width: 100%; max-width: var(--ks-page-width);
+    background: var(--ks-primary);
+    color: var(--ks-on-primary);
+    border: none; border-radius: 32px;
+    padding: 16px; font-size: 16px; font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 12px var(--ks-primary-container);
 }
-.category-selector::-webkit-scrollbar { display: none; }
-.ks-chip { flex-shrink: 0; transition: all 0.2s ease; cursor: pointer; min-height: 40px; }
-.ks-chip.chip-active { border-width: 2px; font-weight: 600; }
-
-.floating-input-bar {
-  max-width: var(--ks-page-width); margin: 0 auto; width: 100%;
-  background: var(--ks-surface-4);
-  border-radius: 32px;
-  padding: 6px 6px 6px 20px;
-  display: flex; align-items: center;
-  box-shadow: var(--ks-shadow-2);
-}
-.floating-input-bar input {
-  flex: 1; background: transparent; border: none;
-  color: var(--ks-text); font-size: 16px;
-  outline: none; padding: 12px 0;
-}
-.floating-input-bar input::placeholder { color: var(--ks-text-muted); }
-.add-btn {
-  width: 46px; height: 46px; flex-shrink: 0; margin-left: 8px;
-  background: var(--ks-primary); color: var(--ks-on-primary);
-  border: none; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  cursor: pointer; box-shadow: 0 2px 8px var(--ks-primary-container);
-}
-.add-btn svg { width: 24px; height: 24px; fill: currentColor; }
+.add-trigger-btn svg { width: 24px; height: 24px; fill: currentColor; }
 
 /* Modal & Sheets */
 .sheet-heading { font-size: 20px; font-weight: 500; margin: 0 0 8px; color: var(--ks-text); }

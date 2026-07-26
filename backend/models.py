@@ -53,6 +53,7 @@ class Item(Base):
     unit = Column(String, default="Stk")
     note = Column(String, nullable=True)
     status = Column(String, default="active")
+    tags = Column(String, nullable=True)
     created_at = Column(DateTime, default=datetime.utcnow)
     last_modified_by = Column(String, ForeignKey("users.id"), nullable=True)
     

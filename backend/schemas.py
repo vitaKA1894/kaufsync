@@ -36,6 +36,7 @@ class ItemBase(BaseModel):
     quantity: float = 1.0
     unit: Optional[str] = "Stk"
     note: Optional[str] = None
+    tags: Optional[str] = None
 
 class ItemCreate(ItemBase):
     pass
@@ -44,12 +45,8 @@ class ItemUpdate(BaseModel):
     status: Optional[str] = None
     quantity: Optional[float] = None
     note: Optional[str] = None
-
-class ItemUpdate(BaseModel):
-    status: Optional[str] = None
-    quantity: Optional[float] = None
-    note: Optional[str] = None
     category: Optional[str] = None
+    tags: Optional[str] = None
 
 class ItemResponse(ItemBase):
     id: str
