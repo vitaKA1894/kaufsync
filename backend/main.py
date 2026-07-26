@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from typing import List, Dict
 from datetime import timedelta
 from sqlalchemy.orm import Session
+from sqlalchemy import text
 from pydantic import BaseModel
 
 import models, schemas, auth
@@ -10,6 +11,13 @@ from database import engine, get_db
 
 # Erstellt alle Tabellen in der Datenbank
 models.Base.metadata.create_all(bind=engine)
+
+# Auto-migrate: Add 'tags' column to existing databases if it doesn't exist
+try:
+    with engine.begin() as conn:
+        conn.execute(text("ALTER TABLE items ADD COLUMN tags VARCHAR"))
+except Exception:
+    pass # Column already exists or table doesn't exist
 
 app = FastAPI(title="KaufSync API", version="1.0.0")
 
