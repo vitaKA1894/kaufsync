@@ -213,10 +213,18 @@ const setupWebSocket = () => {
           items.value[index].status = incomingItem.status;
           items.value[index].quantity = incomingItem.quantity;
           items.value[index].name = incomingItem.name;
+          items.value[index].unit = incomingItem.unit;
+          items.value[index].tags = incomingItem.tags;
           // Kategorie Fallback, falls via WS nicht gesendet
           if (incomingItem.category) items.value[index].category = incomingItem.category;
         } else {
-          items.value.push(incomingItem);
+          // If the item starts with "temp-", it's an optimistic addition
+          const tempIndex = items.value.findIndex(i => i.id.startsWith('temp-') && i.name === incomingItem.name);
+          if (tempIndex !== -1) {
+              items.value[tempIndex] = incomingItem;
+          } else {
+              items.value.push(incomingItem);
+          }
         }
       } else if (data.event === 'ITEM_DELETED') {
         items.value = items.value.filter(i => i.id !== data.payload.item_id);
@@ -437,7 +445,7 @@ const getInitials = (name) => {
 };
 
 const getCategoryDef = (catName) => {
-  return predefinedCategories.find(c => c.name === catName) || predefinedCategories[6];
+  return predefinedCategories.find(c => c.name === catName) || predefinedCategories[7];
 };
 
 // Sortiert die Auswahl-Chips für die Eingabezeile nach demselben Laufweg wie die Liste
@@ -457,7 +465,7 @@ const groupedActiveItems = computed(() => {
   const groups = {};
   
   activeItems.forEach(item => {
-    const catName = item.category || 'Allgemein';
+    const catName = item.category || 'Sonstiges';
     if (!groups[catName]) {
       groups[catName] = { 
         name: catName, 

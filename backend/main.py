@@ -375,6 +375,8 @@ async def update_item(
     if not db_item:
         raise HTTPException(status_code=404, detail="Item nicht gefunden")
     
+    if item_data.name is not None: db_item.name = item_data.name
+    if item_data.unit is not None: db_item.unit = item_data.unit
     if item_data.status is not None: db_item.status = item_data.status
     if item_data.quantity is not None: db_item.quantity = item_data.quantity
     if item_data.note is not None: db_item.note = item_data.note

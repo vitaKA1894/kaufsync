@@ -32,7 +32,7 @@ class LoginRequest(BaseModel):
 # --- ITEM SCHEMAS ---
 class ItemBase(BaseModel):
     name: str
-    category: Optional[str] = "Allgemein"
+    category: Optional[str] = "Sonstiges"
     quantity: float = 1.0
     unit: Optional[str] = "Stk"
     note: Optional[str] = None
@@ -42,6 +42,8 @@ class ItemCreate(ItemBase):
     pass
 
 class ItemUpdate(BaseModel):
+    name: Optional[str] = None
+    unit: Optional[str] = None
     status: Optional[str] = None
     quantity: Optional[float] = None
     note: Optional[str] = None
