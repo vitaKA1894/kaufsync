@@ -26,15 +26,43 @@ const isOnline = ref(navigator.onLine);
 
 // --- KATEGORIE DEFINITIONEN ---
 const predefinedCategories = [
-  { name: 'Obst & Gemüse', color: 'var(--ks-success)', bg: 'var(--ks-success-bg)' },
-  { name: 'Brot & Backwaren', color: 'var(--ks-warning)', bg: 'var(--ks-warning-bg)' },
-  { name: 'Fleisch & Fisch', color: 'var(--ks-error)', bg: 'var(--ks-error-bg)' },
-  { name: 'Milchprodukte & Tiefkühlkost', color: 'var(--ks-primary)', bg: 'var(--ks-primary-container)' },
-  { name: 'Vorratskammer', color: 'var(--ks-text)', bg: 'var(--ks-surface-3)' },
-  { name: 'Getränke & Genussmittel', color: 'var(--ks-secondary)', bg: 'rgba(194, 231, 255, 0.14)' },
-  { name: 'Drogerie, Haushalt & Tierbedarf', color: 'var(--ks-text)', bg: 'var(--ks-surface-4)' },
+  { name: 'Obst & Gemüse', color: '#1B5E20', bg: '#C8E6C9' },
+  { name: 'Brot & Backwaren', color: '#F57F17', bg: '#FFF9C4' },
+  { name: 'Fleisch & Fisch', color: '#B71C1C', bg: '#FFCDD2' },
+  { name: 'Milchprodukte & Tiefkühlkost', color: '#01579B', bg: '#B3E5FC' },
+  { name: 'Vorratskammer', color: '#E65100', bg: '#FFE0B2' },
+  { name: 'Getränke & Genussmittel', color: '#1A237E', bg: '#C5CAE9' },
+  { name: 'Drogerie, Haushalt & Tierbedarf', color: '#006064', bg: '#B2EBF2' },
   { name: 'Sonstiges', color: 'var(--ks-text-muted)', bg: 'var(--ks-surface-3)' }
 ];
+
+const getTagStyle = (tag) => {
+  const t = tag.toLowerCase();
+  if (t === 'bio') return { bg: '#E8F5E9', color: '#2E7D32' };
+  if (t === 'vegan') return { bg: '#F1F8E9', color: '#33691E' };
+  if (t === 'angebot' || t === 'dringend') return { bg: '#FFEBEE', color: '#C62828' };
+  if (t === 'regional') return { bg: '#FFF3E0', color: '#EF6C00' };
+  if (t === "wenn's passt") return { bg: '#E3F2FD', color: '#1565C0' };
+  return { bg: 'var(--ks-surface-4)', color: 'var(--ks-text-muted)' };
+};
+
+const formatQuantity = (item) => {
+  if (!item.quantity) return '';
+  const q = item.quantity;
+  const u = item.unit || 'Stk';
+  // Avoid printing "1 Stk" if they chose custom units, print nicely
+  const qStr = (q % 1 === 0) ? q.toString() : q.toString();
+  return `${qStr} ${u}`.trim();
+};
+
+const parseTags = (tagsStr) => {
+  if (!tagsStr) return [];
+  try {
+    return typeof tagsStr === 'string' ? JSON.parse(tagsStr) : tagsStr;
+  } catch (e) {
+    return [];
+  }
+};
 
 // --- MARKT SPEZIFISCHE DEFAULTS (JSON-Konfiguration) ---
 const chainsConfig = {
@@ -183,8 +211,8 @@ const handleAddItem = async (itemPayload) => {
   const newItem = {
     id: tempId,
     name: itemPayload.name,
-    quantity: 1,
-    unit: 'Stk',
+    quantity: itemPayload.quantity || 1,
+    unit: itemPayload.unit || 'Stk',
     category: itemPayload.category,
     tags: itemPayload.tags,
     status: 'active'
@@ -199,8 +227,8 @@ const handleAddItem = async (itemPayload) => {
       headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
       body: JSON.stringify({ 
         name: itemPayload.name,
-        quantity: 1, 
-        unit: 'Stk',
+        quantity: itemPayload.quantity || 1,
+        unit: itemPayload.unit || 'Stk',
         category: itemPayload.category,
         tags: itemPayload.tags
       })
@@ -538,14 +566,21 @@ onUnmounted(() => {
 
           <div class="ks-grid">
             <div v-for="item in group.items" :key="item.id" class="grid-card active" @click="toggleItemStatus(item)">
+              <div class="quantity-badge" v-if="formatQuantity(item)">
+                {{ formatQuantity(item) }}
+              </div>
               <div class="card-icon-area" :style="{ background: group.def.bg, color: group.def.color }">
                  <CategoryIcon class="icon-svg" :name="item.name" :category="item.category" />
               </div>
               <div class="card-text-area">
                 <span class="item-name">{{ item.name }}</span>
-                <span class="item-meta">{{ item.quantity }} {{ item.unit }}</span>
-                <div v-if="item.tags" class="item-tags">
-                  <span v-for="tag in (typeof item.tags === 'string' ? JSON.parse(item.tags) : item.tags)" :key="tag" class="tag-pill">{{ tag }}</span>
+                <div v-if="parseTags(item.tags).length > 0" class="item-tags">
+                  <span
+                    v-for="tag in parseTags(item.tags)"
+                    :key="tag"
+                    class="tag-pill"
+                    :style="{ background: getTagStyle(tag).bg, color: getTagStyle(tag).color }"
+                  >{{ tag }}</span>
                 </div>
               </div>
             </div>
@@ -684,13 +719,26 @@ onUnmounted(() => {
 .icon-svg { display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; }
 .icon-svg :deep(svg) { width: 100%; height: 100%; }
 
+.quantity-badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: var(--ks-surface-1);
+  color: var(--ks-text);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  z-index: 2;
+}
+
 .card-text-area { display: flex; flex-direction: column; }
 .item-name { 
   font-size: 14px; font-weight: 600; 
   display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; 
   overflow: hidden; line-height: 1.3; color: var(--ks-text);
 }
-.item-meta { font-size: 12px; color: var(--ks-text-muted); margin-top: 4px; }
 .item-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px; justify-content: center; }
 .tag-pill { font-size: 10px; background: var(--ks-surface-4); padding: 2px 6px; border-radius: 8px; color: var(--ks-text-muted); }
 
