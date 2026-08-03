@@ -44,6 +44,28 @@ function runTests() {
         throw new Error("Fuzzy search failed for 'tomta'");
     }
 
+    // Edge Cases
+    assertEqual(searchTaxonomy(null).length, 0, "Null query should return 0 results");
+    assertEqual(searchTaxonomy(undefined).length, 0, "Undefined query should return 0 results");
+    assertEqual(searchTaxonomy("").length, 0, "Empty string query should return 0 results");
+    assertEqual(searchTaxonomy("a").length, 0, "1-character query should return 0 results");
+    assertEqual(searchTaxonomy("ab").length, 0, "2-character query should return 0 results");
+
+    // Case insensitivity
+    const upperCaseResults = searchTaxonomy("MILCH");
+    if (upperCaseResults.length === 0 || !upperCaseResults[0].name.toLowerCase().includes("milch")) {
+         throw new Error("Case insensitivity search failed for 'MILCH'");
+    }
+
+    // Special characters
+    assertEqual(searchTaxonomy("!!!").length, 0, "Special characters only query should return 0 results");
+
+    // Exact alias match
+    const aliasResults = searchTaxonomy("Frischhaltefolie");
+    if (aliasResults.length === 0 || !aliasResults[0].aliases.includes("Frischhaltefolie")) {
+         throw new Error("Exact alias search failed for 'Frischhaltefolie'");
+    }
+
     console.log("Search tests passed!");
 
     // Basic debounce test (synchronous check is hard without proper test runner,
