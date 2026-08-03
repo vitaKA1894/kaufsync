@@ -1,0 +1,18 @@
+INFO:     Started server process [782297]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     127.0.0.1:48358 - "OPTIONS /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48368 - "POST /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48368 - "OPTIONS /api/lists HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48358 - "OPTIONS /api/invitations HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48368 - "GET /api/invitations HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48372 - "GET /api/lists HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48376 - "WebSocket /ws/d4f22984-7f88-44b3-9278-ecc0fd19ed6e" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:48372 - "GET /api/lists HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48372 - "OPTIONS /api/lists/d4f22984-7f88-44b3-9278-ecc0fd19ed6e/items HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48382 - "POST /api/lists/d4f22984-7f88-44b3-9278-ecc0fd19ed6e/items HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48382 - "POST /api/lists/d4f22984-7f88-44b3-9278-ecc0fd19ed6e/items HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48382 - "POST /api/lists/d4f22984-7f88-44b3-9278-ecc0fd19ed6e/items HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48382 - "POST /api/lists/d4f22984-7f88-44b3-9278-ecc0fd19ed6e/items HTTP/1.1" 200 OK

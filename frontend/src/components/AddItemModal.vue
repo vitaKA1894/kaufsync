@@ -305,6 +305,21 @@ watch(() => props.isOpen, (newVal) => {
                 <span class="result-category">{{ item.category }}</span>
               </div>
 
+              <!-- Also show Frequent items below Search Results -->
+              <div v-if="results.length > 0 && frequentItems.length > 0" style="margin-top: 16px;">
+                <p class="history-label">Häufig gekauft</p>
+                <div
+                  v-for="item in frequentItems"
+                  :key="item.id"
+                  class="result-item"
+                  @click="selectItem(item)"
+                >
+                  <CategoryIcon :name="item.name" :category="item.category" class="result-icon" />
+                  <div class="result-text">{{ item.name }}</div>
+                  <span class="result-category">{{ item.category }}</span>
+                </div>
+              </div>
+
               <div v-if="query.length >= 3 && results.length === 0" class="no-results">
                   Keine Vorschläge gefunden. Drücke Enter, um "{{ query }}" als eigenen Artikel hinzuzufügen.
               </div>
