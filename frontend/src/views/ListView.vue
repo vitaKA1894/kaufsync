@@ -12,6 +12,7 @@ const items = ref([]);
 const currentList = ref(null);
 const newItemName = ref('');
 const isAddModalOpen = ref(false);
+const itemToEdit = ref(null);
 const errorMessage = ref('');
 const successMessage = ref('');
 const showShareSheet = ref(false);
@@ -23,6 +24,27 @@ const isSearching = ref(false);
 
 let ws = null;
 const isOnline = ref(navigator.onLine);
+
+// --- LONG PRESS GESTURE ---
+let pressTimer = null;
+let longPressTriggered = false;
+
+const startPress = (item, event) => {
+  if (event.type === 'mousedown' && event.button !== 0) return; // Only left click
+  longPressTriggered = false;
+  pressTimer = setTimeout(() => {
+    longPressTriggered = true;
+    itemToEdit.value = item;
+    isAddModalOpen.value = true;
+  }, 500); // 500ms for long press
+};
+
+const cancelPress = () => {
+  if (pressTimer !== null) {
+    clearTimeout(pressTimer);
+    pressTimer = null;
+  }
+};
 
 // --- KATEGORIE DEFINITIONEN ---
 const predefinedCategories = [
@@ -205,6 +227,26 @@ const setupWebSocket = () => {
   }
 };
 
+const handleUpdateItem = async (updatedPayload) => {
+  const index = items.value.findIndex(i => i.id === updatedPayload.id);
+  if (index !== -1) {
+    const originalItem = { ...items.value[index] };
+    items.value[index] = { ...items.value[index], ...updatedPayload };
+    try {
+      const token = localStorage.getItem('token');
+      const response = await fetch(`http://localhost:8000/api/items/${updatedPayload.id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
+        body: JSON.stringify(updatedPayload)
+      });
+      if (!response.ok) throw new Error('API Fehler');
+    } catch (error) {
+      items.value[index] = originalItem;
+      errorMessage.value = "Offline: Konnte Artikel nicht aktualisieren.";
+    }
+  }
+};
+
 const handleAddItem = async (itemPayload) => {
   // Optimistisches Update
   const tempId = 'temp-' + Date.now();
@@ -273,6 +315,10 @@ const processOfflineQueue = async () => {
 };
 
 const toggleItemStatus = async (item) => {
+  if (longPressTriggered) {
+    longPressTriggered = false;
+    return;
+  }
   const newStatus = item.status === 'active' ? 'completed' : 'active';
   item.status = newStatus;
 
@@ -565,15 +611,20 @@ onUnmounted(() => {
           </div>
 
           <div class="ks-grid">
-            <div v-for="item in group.items" :key="item.id" class="grid-card active" @click="toggleItemStatus(item)">
-              <div class="quantity-badge" v-if="formatQuantity(item)">
-                {{ formatQuantity(item) }}
-              </div>
+            <div v-for="item in group.items" :key="item.id" class="grid-card active"
+                 @click="toggleItemStatus(item)"
+                 @mousedown="startPress(item, $event)"
+                 @touchstart="startPress(item, $event)"
+                 @mouseup="cancelPress"
+                 @mouseleave="cancelPress"
+                 @touchend="cancelPress"
+                 @touchmove="cancelPress">
               <div class="card-icon-area" :style="{ background: group.def.bg, color: group.def.color }">
                  <CategoryIcon class="icon-svg" :name="item.name" :category="item.category" />
               </div>
               <div class="card-text-area">
                 <span class="item-name">{{ item.name }}</span>
+                <span class="item-quantity" v-if="formatQuantity(item)">{{ formatQuantity(item) }}</span>
                 <div v-if="parseTags(item.tags).length > 0" class="item-tags">
                   <span
                     v-for="tag in parseTags(item.tags)"
@@ -612,6 +663,7 @@ onUnmounted(() => {
             </div>
             <div class="card-text-area">
               <span class="item-name">{{ item.name }}</span>
+              <span class="item-quantity" v-if="formatQuantity(item)">{{ formatQuantity(item) }}</span>
             </div>
             <button class="delete-btn" @click.stop="deleteItem(item.id)" aria-label="Löschen">
               <svg viewBox="0 0 24 24"><path d="M7 21q-.825 0-1.412-.587Q5 19.825 5 19V6H4V4h5V3h6v1h5v2h-1v13q0 .825-.587 1.413Q17.825 21 17 21Zm2-4h2V8H9Zm4 0h2V8h-2Z"/></svg>
@@ -632,8 +684,10 @@ onUnmounted(() => {
     <!-- Modal -->
     <AddItemModal
         :is-open="isAddModalOpen"
-        @close="isAddModalOpen = false"
+        :edit-item="itemToEdit"
+        @close="isAddModalOpen = false; itemToEdit = null"
         @add="handleAddItem"
+        @update="handleUpdateItem"
     />
 
   </div>
@@ -719,18 +773,10 @@ onUnmounted(() => {
 .icon-svg { display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; }
 .icon-svg :deep(svg) { width: 100%; height: 100%; }
 
-.quantity-badge {
-  position: absolute;
-  top: 8px;
-  left: 8px;
-  background: var(--ks-surface-1);
-  color: var(--ks-text);
-  font-size: 11px;
-  font-weight: 700;
-  padding: 2px 6px;
-  border-radius: 12px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
-  z-index: 2;
+.item-quantity {
+  font-size: 13px;
+  color: var(--ks-text-muted);
+  margin-top: 4px;
 }
 
 .card-text-area { display: flex; flex-direction: column; }
@@ -744,15 +790,13 @@ onUnmounted(() => {
 
 .delete-btn {
   position: absolute; top: -8px; right: -8px;
-  width: 36px; height: 36px; border: none; border-radius: 50%;
+  width: 44px; height: 44px; border: none; border-radius: 50%;
   background: var(--ks-surface-4); color: var(--ks-error);
   display: flex; align-items: center; justify-content: center;
   box-shadow: 0 2px 4px rgba(0,0,0,0.3); cursor: pointer;
   z-index: 2; /* ensure it's on top of the card */
 }
-.delete-btn svg { width: 18px; height: 18px; fill: currentColor; }
-.grid-card:hover .delete-btn { display: flex; }
-@media (hover: none) { .delete-btn { opacity: 1; } }
+.delete-btn svg { width: 22px; height: 22px; fill: currentColor; }
 
 .empty-state { text-align: center; padding: 40px 0; color: var(--ks-text-muted); }
 .empty-state svg { width: 40px; height: 40px; opacity: 0.5; margin-bottom: 8px; fill: currentColor; margin-inline: auto; }

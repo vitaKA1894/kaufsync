@@ -4,10 +4,11 @@ import { searchTaxonomy, debounce } from '../utils/search';
 import CategoryIcon from './CategoryIcon.vue';
 
 const props = defineProps({
-  isOpen: Boolean
+  isOpen: Boolean,
+  editItem: { type: Object, default: null }
 });
 
-const emit = defineEmits(['close', 'add']);
+const emit = defineEmits(['close', 'add', 'update']);
 
 const query = ref('');
 const results = ref([]);
@@ -104,9 +105,15 @@ const selectItem = (item) => {
 };
 
 const toggleTag = (tag) => {
+  const isQuantTag = enhancedQuantities.value.includes(tag);
+
   if (activeTags.value.includes(tag)) {
     activeTags.value = activeTags.value.filter(t => t !== tag);
   } else {
+    if (isQuantTag) {
+      // Remove any existing quantity tags before adding the new one
+      activeTags.value = activeTags.value.filter(t => !enhancedQuantities.value.includes(t));
+    }
     activeTags.value.push(tag);
   }
 };
@@ -157,25 +164,21 @@ const confirmSelection = () => {
       }
   }
 
-  if (!selectedItem.value) {
-    // Custom item without tags
-    if (query.value.trim() !== '') {
-        emit('add', {
-            name: query.value,
-            category: 'Sonstiges',
-            tags: JSON.stringify(activeTags.value),
-            quantity: quantity,
-            unit: unit
-        });
-    }
+  const payload = {
+    name: selectedItem.value ? selectedItem.value.name : query.value,
+    category: selectedItem.value ? selectedItem.value.category : 'Sonstiges',
+    tags: JSON.stringify(activeTags.value),
+    quantity: quantity,
+    unit: unit
+  };
+
+  if (props.editItem) {
+    emit('update', { id: props.editItem.id, ...payload });
   } else {
-    emit('add', {
-      name: selectedItem.value.name,
-      category: selectedItem.value.category,
-      tags: JSON.stringify(activeTags.value),
-      quantity: quantity,
-      unit: unit
-    });
+    // Only emit add if we have a valid item or query
+    if (selectedItem.value || query.value.trim() !== '') {
+      emit('add', payload);
+    }
   }
   closeModal();
 };
@@ -210,10 +213,35 @@ onMounted(() => {
 import { watch } from 'vue';
 watch(() => props.isOpen, (newVal) => {
     if (newVal) {
-        frequentItems.value = calculateFrequentItems();
-        nextTick(() => {
-            inputRef.value?.focus();
-        });
+        if (props.editItem) {
+            // Edit Mode Init
+            selectItem(props.editItem);
+
+            // Re-map tags
+            let tags = [];
+            try { tags = typeof props.editItem.tags === 'string' ? JSON.parse(props.editItem.tags) : []; } catch(e){}
+            activeTags.value = tags;
+
+            // Re-map quantity
+            if (props.editItem.quantity) {
+                const combinedQty = props.editItem.unit === 'Stk'
+                    ? props.editItem.quantity.toString()
+                    : `${props.editItem.quantity} ${props.editItem.unit}`;
+
+                if (enhancedQuantities.value.includes(combinedQty)) {
+                    activeTags.value.push(combinedQty);
+                } else {
+                    showManualAmount.value = true;
+                    manualAmount.value = combinedQty;
+                }
+            }
+        } else {
+            // Add Mode Init
+            frequentItems.value = calculateFrequentItems();
+            nextTick(() => {
+                inputRef.value?.focus();
+            });
+        }
     } else {
         // Reset when closed
         query.value = '';
@@ -360,7 +388,9 @@ watch(() => props.isOpen, (newVal) => {
            </div>
 
            <div class="modal-footer">
-               <button class="ks-btn-filled full-width" @click="confirmSelection">Zur Liste hinzufügen</button>
+               <button class="ks-btn-filled full-width" @click="confirmSelection">
+                   {{ editItem ? 'Speichern' : 'Zur Liste hinzufügen' }}
+               </button>
            </div>
         </div>
 
@@ -413,6 +443,11 @@ watch(() => props.isOpen, (newVal) => {
 
 .close-btn {
   margin-left: 8px;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .close-btn svg { width: 24px; height: 24px; fill: currentColor; }
 
@@ -427,7 +462,7 @@ watch(() => props.isOpen, (newVal) => {
 .result-item {
   display: flex;
   align-items: center;
-  padding: 12px;
+  padding: 16px;
   background: var(--ks-surface-2);
   border-radius: 12px;
   cursor: pointer;
