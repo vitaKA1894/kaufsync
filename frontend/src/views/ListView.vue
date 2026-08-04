@@ -1,8 +1,9 @@
 <script setup>
-import { ref, onMounted, onUnmounted, computed } from 'vue';
+import { ref, onMounted, onUnmounted, computed, nextTick, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import CategoryIcon from '../components/CategoryIcon.vue';
 import AddItemModal from '../components/AddItemModal.vue';
+import Sortable from 'sortablejs';
 
 const route = useRoute();
 const router = useRouter();
@@ -17,6 +18,8 @@ const errorMessage = ref('');
 const successMessage = ref('');
 const showShareSheet = ref(false);
 const showSortSheet = ref(false);
+const sortListRef = ref(null);
+let sortableInstance = null;
 
 const searchQuery = ref('');
 const searchResults = ref([]);
@@ -150,18 +153,33 @@ const resetCategoryOrder = () => {
   setTimeout(() => successMessage.value = '', 3000);
 };
 
-const moveCategory = (index, direction) => {
-  if (direction === -1 && index > 0) {
-    const temp = categoryOrder.value[index];
-    categoryOrder.value[index] = categoryOrder.value[index - 1];
-    categoryOrder.value[index - 1] = temp;
-  } else if (direction === 1 && index < categoryOrder.value.length - 1) {
-    const temp = categoryOrder.value[index];
-    categoryOrder.value[index] = categoryOrder.value[index + 1];
-    categoryOrder.value[index + 1] = temp;
+watch(showSortSheet, async (newVal) => {
+  if (newVal) {
+    await nextTick();
+    if (sortListRef.value && !sortableInstance) {
+      sortableInstance = new Sortable(sortListRef.value, {
+        handle: '.drag-handle',
+        animation: 150,
+        onEnd: (evt) => {
+          const itemEl = evt.item;
+          const oldIndex = evt.oldIndex;
+          const newIndex = evt.newIndex;
+
+          const temp = categoryOrder.value[oldIndex];
+          categoryOrder.value.splice(oldIndex, 1);
+          categoryOrder.value.splice(newIndex, 0, temp);
+          saveCategoryOrder();
+        }
+      });
+    }
+  } else {
+    if (sortableInstance) {
+      sortableInstance.destroy();
+      sortableInstance = null;
+    }
   }
-  saveCategoryOrder();
-};
+});
+
 
 const updateOnlineStatus = () => {
   isOnline.value = navigator.onLine;
@@ -574,19 +592,16 @@ onUnmounted(() => {
         <h3 class="sheet-heading">Laufweg im Supermarkt</h3>
         <p class="sheet-support">Sortiere die Kategorien, damit sie deinem Weg durch den Markt entsprechen.</p>
         
-        <div class="sort-list">
-          <div v-for="(catName, index) in categoryOrder" :key="catName" class="sort-item">
+        <div class="sort-list" ref="sortListRef">
+          <div v-for="(catName, index) in categoryOrder" :key="catName" class="sort-item" :data-id="catName">
             <div class="sort-info">
                <span class="sort-color-dot" :style="{ background: getCategoryDef(catName).color }"></span>
                <span>{{ catName }}</span>
             </div>
             <div class="sort-actions">
-              <button class="ks-icon-btn small-btn" :disabled="index === 0" @click="moveCategory(index, -1)">
-                <svg viewBox="0 0 24 24"><path d="M11 19V7.825L8.4 10.4L7 9l5-5 5 5-1.4 1.4-2.6-2.575V19h-2Z"/></svg>
-              </button>
-              <button class="ks-icon-btn small-btn" :disabled="index === categoryOrder.length - 1" @click="moveCategory(index, 1)">
-                <svg viewBox="0 0 24 24"><path d="M11 5v11.175l-2.6-2.6L7 15l5 5 5-5-1.4-1.4-2.6 2.6V5h-2Z"/></svg>
-              </button>
+              <span class="drag-handle" style="cursor: grab; display: flex; align-items: center; justify-content: center; width: 32px; height: 32px;">
+                 <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M3 15v-2h18v2H3Zm0-4V9h18v2H3Z"/></svg>
+              </span>
             </div>
           </div>
         </div>
