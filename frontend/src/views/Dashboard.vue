@@ -6,6 +6,7 @@ const router = useRouter();
 const shoppingLists = ref([]);
 const invitations = ref([]);
 const errorMessage = ref('');
+const currentUser = ref(null);
 const successMessage = ref('');
 
 const showActionSheet = ref(false);
@@ -167,9 +168,21 @@ const deleteList = async () => {
   }
 };
 
+const loadUserProfile = async () => {
+  try {
+    const token = localStorage.getItem('token');
+    const response = await fetch('http://localhost:8000/api/users/me', { headers: { 'Authorization': `Bearer ${token}` } });
+    if (!response.ok) throw new Error('Fehler beim Laden des Profils');
+    currentUser.value = await response.json();
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 onMounted(() => {
   loadLists();
   loadInvitations();
+  loadUserProfile();
 });
 </script>
 
@@ -178,8 +191,11 @@ onMounted(() => {
 
     <header class="page-topbar" style="justify-content: space-between;">
       <h1 style="margin: 0; font-size: 22px;">Meine Listen</h1>
-      <button class="ks-icon-btn" @click.stop="goToProfile" aria-label="Profil">
-        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 4c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm0 14c-2.03 0-4.43-.82-6.14-2.88C7.55 15.8 9.68 15 12 15s4.45.8 6.14 2.12C16.43 19.18 14.03 20 12 20z"/></svg>
+      <button class="ks-icon-btn profile-btn" @click.stop="goToProfile" aria-label="Profil">
+        <div v-if="currentUser" class="member-avatar creator" style="width: 32px; height: 32px; font-size: 14px;">
+          {{ getInitial(currentUser.display_name) }}
+        </div>
+        <svg v-else viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 4c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm0 14c-2.03 0-4.43-.82-6.14-2.88C7.55 15.8 9.68 15 12 15s4.45.8 6.14 2.12C16.43 19.18 14.03 20 12 20z"/></svg>
       </button>
     </header>
 
@@ -372,6 +388,7 @@ onMounted(() => {
 
 .card-title { font-size: 17px; font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
+.profile-btn { padding: 4px; display: flex; align-items: center; justify-content: center; }
 .member-indicators { display: flex; align-items: center; }
 .member-avatar { width: 20px; height: 20px; border-radius: 50%; background: var(--ks-surface-4); color: var(--ks-text); display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: bold; border: 1.5px solid var(--ks-surface-1); margin-left: -6px; }
 .member-avatar:first-child { margin-left: 0; }
