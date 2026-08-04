@@ -261,21 +261,6 @@ watch(() => props.isOpen, (newVal) => {
 
         <!-- STEP 1: Search -->
         <div v-if="!selectedItem" class="search-step">
-          <div class="modal-header">
-            <input
-              ref="inputRef"
-              v-model="query"
-              @input="handleInput"
-              type="text"
-              class="modal-input"
-              placeholder="Artikel suchen..."
-              @keyup.enter="confirmSelection"
-            />
-            <button class="close-btn ks-icon-btn" @click="closeModal">
-                <svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
-            </button>
-          </div>
-
           <div class="results-list">
             <!-- Frequent Items View -->
             <div v-if="query.length === 0 && frequentItems.length > 0">
@@ -324,6 +309,21 @@ watch(() => props.isOpen, (newVal) => {
                   Keine Vorschläge gefunden. Drücke Enter, um "{{ query }}" als eigenen Artikel hinzuzufügen.
               </div>
             </template>
+          </div>
+
+          <div class="modal-header">
+            <input
+              ref="inputRef"
+              v-model="query"
+              @input="handleInput"
+              type="text"
+              class="modal-input"
+              placeholder="Artikel suchen..."
+              @keyup.enter="confirmSelection"
+            />
+            <button class="close-btn ks-icon-btn" @click="closeModal">
+                <svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+            </button>
           </div>
         </div>
 
@@ -436,10 +436,18 @@ watch(() => props.isOpen, (newVal) => {
   flex-direction: column;
 }
 
+.search-step {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0; /* Important for flex child to scroll */
+}
+
 .modal-header {
   display: flex;
   align-items: center;
-  margin-bottom: 16px;
+  margin-top: 16px;
+  padding-bottom: env(safe-area-inset-bottom);
 }
 
 .modal-input {
@@ -471,7 +479,7 @@ watch(() => props.isOpen, (newVal) => {
   flex-direction: column;
   overflow-y: auto;
   gap: 8px;
-  padding-bottom: env(safe-area-inset-bottom);
+  flex: 1;
 }
 
 .result-item {
