@@ -1,5 +1,7 @@
+import os
 from fastapi import FastAPI, Depends, HTTPException, WebSocket, WebSocketDisconnect, Response
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse
 from typing import List, Dict
 from datetime import timedelta
 from sqlalchemy.orm import Session
@@ -423,3 +425,39 @@ async def delete_item(
     })
     
     return {"status": "ok", "message": "Item gelöscht"}
+
+import pathlib
+
+# --- STATIC FILES & SPA FALLBACK ---
+@app.get("/{full_path:path}")
+async def serve_static(full_path: str):
+    """
+    Catch-all Route für das Ausliefern der Vue.js SPA und statischer Dateien.
+    Alle Anfragen, die nicht von der API (/api/...) oder WebSockets (/ws/...)
+    gefangen werden, landen hier.
+    """
+    # Verhindere, dass API oder WS Routen als statische Dateien oder index.html beantwortet werden
+    if full_path.startswith("api/") or full_path.startswith("ws/"):
+        raise HTTPException(status_code=404, detail="Not found")
+
+    static_dir = pathlib.Path("static").resolve()
+    # Sichere Pfad-Auflösung gegen Path-Traversal
+    # .resolve() entfernt /../ und macht den Pfad absolut.
+    file_path = (static_dir / full_path).resolve()
+
+    # Sicherstellen, dass die Datei auch WIRKLICH im static_dir liegt
+    try:
+        file_path.relative_to(static_dir)
+    except ValueError:
+        raise HTTPException(status_code=404, detail="Not found")
+
+    # Prüfen, ob die Datei existiert (z.B. /assets/main.js) und kein Verzeichnis ist
+    if full_path and file_path.is_file():
+        return FileResponse(file_path)
+
+    # Ansonsten immer die index.html ausliefern (Vue Router History-Modus Fallback)
+    index_path = static_dir / "index.html"
+    if index_path.is_file():
+        return FileResponse(index_path)
+
+    raise HTTPException(status_code=404, detail="Static files not found")

@@ -40,7 +40,7 @@ const submitForm = async () => {
     : { email: formData.value.email, password: formData.value.password, display_name: formData.value.displayName };
 
   try {
-    const response = await fetch(`http://localhost:8000${endpoint}`, {
+    const response = await fetch(`${endpoint}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
