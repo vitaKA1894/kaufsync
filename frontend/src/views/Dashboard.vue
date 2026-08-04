@@ -63,7 +63,7 @@ const goToProfile = () => router.push('/profile');
 const loadLists = async () => {
   try {
     const token = localStorage.getItem('token');
-    const response = await fetch('http://localhost:8000/api/lists', { headers: { 'Authorization': `Bearer ${token}` } });
+    const response = await fetch('/api/lists', { headers: { 'Authorization': `Bearer ${token}` } });
     if (!response.ok) throw new Error('Fehler beim Laden');
     const data = await response.json();
     shoppingLists.value = data;
@@ -75,7 +75,7 @@ const loadLists = async () => {
 const loadInvitations = async () => {
   try {
     const token = localStorage.getItem('token');
-    const response = await fetch('http://localhost:8000/api/invitations', { headers: { 'Authorization': `Bearer ${token}` } });
+    const response = await fetch('/api/invitations', { headers: { 'Authorization': `Bearer ${token}` } });
     if (!response.ok) throw new Error('Fehler beim Laden von Einladungen');
     const data = await response.json();
     invitations.value = data;
@@ -87,7 +87,7 @@ const loadInvitations = async () => {
 const respondToInvitation = async (inviteId, action) => {
   try {
     const token = localStorage.getItem('token');
-    const response = await fetch(`http://localhost:8000/api/invitations/${inviteId}/respond?action=${action}`, {
+    const response = await fetch(`/api/invitations/${inviteId}/respond?action=${action}`, {
       method: 'POST',
       headers: { 'Authorization': `Bearer ${token}` }
     });
@@ -114,7 +114,7 @@ const createNewList = async () => {
     const token = localStorage.getItem('token');
     const finalIcon = selectedIcon.value || fallbackCartIcon;
     
-    const response = await fetch('http://localhost:8000/api/lists', {
+    const response = await fetch('/api/lists', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
       body: JSON.stringify({ name: newListName.value.trim(), icon_name: finalIcon })
@@ -130,7 +130,7 @@ const joinList = async () => {
   if (!shareCodeInput.value.trim()) return;
   try {
     const token = localStorage.getItem('token');
-    const response = await fetch('http://localhost:8000/api/lists/join', {
+    const response = await fetch('/api/lists/join', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
       body: JSON.stringify({ share_code: shareCodeInput.value.trim() })
@@ -153,7 +153,7 @@ const deleteList = async () => {
   if (!selectedListForOptions.value) return;
   try {
     const token = localStorage.getItem('token');
-    const response = await fetch(`http://localhost:8000/api/lists/${selectedListForOptions.value.id}`, {
+    const response = await fetch(`/api/lists/${selectedListForOptions.value.id}`, {
       method: 'DELETE',
       headers: { 'Authorization': `Bearer ${token}` }
     });
@@ -171,7 +171,7 @@ const deleteList = async () => {
 const loadUserProfile = async () => {
   try {
     const token = localStorage.getItem('token');
-    const response = await fetch('http://localhost:8000/api/users/me', { headers: { 'Authorization': `Bearer ${token}` } });
+    const response = await fetch('/api/users/me', { headers: { 'Authorization': `Bearer ${token}` } });
     if (!response.ok) throw new Error('Fehler beim Laden des Profils');
     currentUser.value = await response.json();
   } catch (error) {

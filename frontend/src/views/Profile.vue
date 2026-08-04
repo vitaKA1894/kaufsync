@@ -22,7 +22,7 @@ const isLoading = ref(false);
 const loadUserProfile = async () => {
   try {
     const token = localStorage.getItem('token');
-    const response = await fetch('http://localhost:8000/api/users/me', {
+    const response = await fetch('/api/users/me', {
       headers: { 'Authorization': `Bearer ${token}` }
     });
     
@@ -43,7 +43,7 @@ const updateProfile = async () => {
   
   try {
     const token = localStorage.getItem('token');
-    const response = await fetch('http://localhost:8000/api/users/me', {
+    const response = await fetch('/api/users/me', {
       method: 'PUT',
       headers: { 
         'Content-Type': 'application/json',
@@ -79,7 +79,7 @@ const changePassword = async () => {
   isLoading.value = true;
   try {
     const token = localStorage.getItem('token');
-    const response = await fetch('http://localhost:8000/api/users/me/password', {
+    const response = await fetch('/api/users/me/password', {
       method: 'PUT',
       headers: { 
         'Content-Type': 'application/json',
