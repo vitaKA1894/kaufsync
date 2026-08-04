@@ -2,3 +2,6 @@ fastapi
 uvicorn[standard]
 sqlalchemy
 pydantic
+PyJWT
+passlib
+bcrypt==4.0.1
