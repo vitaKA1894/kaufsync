@@ -14,3 +14,7 @@ env/
 # OS generierte Dateien
 .DS_Store
 Thumbs.db
+# Ignore env for docker
+.env
+node_modules/
+dist/
