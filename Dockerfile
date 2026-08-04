@@ -1,28 +1,26 @@
-# Stage 1: Build the Vue/Vite frontend
-FROM node:20-alpine AS builder
+# Stage 1: Build der Vue-Anwendung
+# Wir nutzen das Standard-Node-Image statt Alpine, um Kompilierungsfehler zu vermeiden.
+# Die Größe spielt hier keine Rolle, da diese Stage später weggeworfen wird.
+FROM node:20 AS build
 
+# Wir setzen das Arbeitsverzeichnis
 WORKDIR /app
 
-# Copy package.json and package-lock.json first for better caching
-COPY package*.json ./
+# WICHTIG: Wir greifen explizit auf deinen "frontend" Ordner zu!
+COPY frontend/package*.json ./
 
-# Install dependencies
-RUN npm install
+# Wir nutzen npm ci für saubere CI/CD Builds (setzt eine package-lock.json voraus)
+# Falls du keine package-lock.json hast, ändere dies wieder zu: RUN npm install
+RUN npm ci
 
-# Copy the rest of the frontend code
-COPY . .
+# Jetzt kopieren wir den Rest deines Vue-Codes aus dem frontend-Ordner
+COPY frontend/ .
 
-# Build the app
+# Vue-App bauen
 RUN npm run build
 
-# Stage 2: Serve the built static files with Nginx
+# Stage 2: Ausliefern mit Nginx (Hier bleibt alles schön klein und schlank)
 FROM nginx:alpine
-
-# Copy the built files from the builder stage
-COPY --from=builder /app/dist /usr/share/nginx/html
-
-# Expose port 80
+COPY --from=build /app/dist /usr/share/nginx/html
 EXPOSE 80
-
-# Start Nginx
 CMD ["nginx", "-g", "daemon off;"]
