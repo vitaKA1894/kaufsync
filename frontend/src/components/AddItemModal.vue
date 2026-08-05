@@ -15,8 +15,16 @@ const predefinedCategories = [
   { name: 'Sonstiges', color: 'var(--ks-text-muted)', bg: 'var(--ks-surface-3)' }
 ];
 
+const mapLegacyCategory = (catName) => {
+  if (catName === 'Milch & Tiefkühl') return 'Milchprodukte & Tiefkühlkost';
+  if (catName === 'Getränke') return 'Getränke & Genussmittel';
+  if (catName === 'Drogerie & Haushalt') return 'Drogerie, Haushalt & Tierbedarf';
+  return catName;
+};
+
 const getCategoryDef = (catName) => {
-  return predefinedCategories.find(c => c.name === catName) || predefinedCategories[7];
+  const mappedCatName = mapLegacyCategory(catName);
+  return predefinedCategories.find(c => c.name === mappedCatName) || predefinedCategories[7];
 };
 
 const props = defineProps({
@@ -231,7 +239,8 @@ watch(() => props.isOpen, (newVal) => {
     if (newVal) {
         if (props.editItem) {
             // Edit Mode Init
-            selectItem(props.editItem);
+            const editItemMapped = { ...props.editItem, category: mapLegacyCategory(props.editItem.category || 'Sonstiges') };
+            selectItem(editItemMapped);
 
             // Re-map tags
             let tags = [];

@@ -3085,7 +3085,7 @@
     "id": "6800336b-060e-4ae1-9186-e1d5c0eb9c85",
     "name": "Milch (Kuhmilch)",
     "aliases": [],
-    "category": "Milch & Tiefkühl",
+    "category": "Milchprodukte & Tiefkühlkost",
     "tags": {
       "quantities": [
         "1",
@@ -3123,7 +3123,7 @@
     "id": "0ad2099e-3ab3-4028-9870-2f0f0be98997",
     "name": "Pflanzliche Milch (Drink)",
     "aliases": [],
-    "category": "Milch & Tiefkühl",
+    "category": "Milchprodukte & Tiefkühlkost",
     "tags": {
       "quantities": [
         "1",
@@ -3156,7 +3156,7 @@
     "id": "175c0d2b-160c-4a60-b50f-78fe1d135556",
     "name": "Joghurt (Natur)",
     "aliases": [],
-    "category": "Milch & Tiefkühl",
+    "category": "Milchprodukte & Tiefkühlkost",
     "tags": {
       "quantities": [
         "1",
@@ -3189,7 +3189,7 @@
     "id": "bd7c7ca9-e5cb-4f3f-8fd2-f61eb5235823",
     "name": "Fruchtjoghurt",
     "aliases": [],
-    "category": "Milch & Tiefkühl",
+    "category": "Milchprodukte & Tiefkühlkost",
     "tags": {
       "quantities": [
         "1",
@@ -3220,7 +3220,7 @@
     "aliases": [
       "Speisequark"
     ],
-    "category": "Milch & Tiefkühl",
+    "category": "Milchprodukte & Tiefkühlkost",
     "tags": {
       "quantities": [
         "1",
@@ -3248,7 +3248,7 @@
     "id": "d57eae06-031a-4cc2-b1bf-4b1837d81279",
     "name": "Kräuterquark",
     "aliases": [],
-    "category": "Milch & Tiefkühl",
+    "category": "Milchprodukte & Tiefkühlkost",
     "tags": {
       "quantities": [
         "1",
@@ -3273,7 +3273,7 @@
     "aliases": [
       "Schlagsahne"
     ],
-    "category": "Milch & Tiefkühl",
+    "category": "Milchprodukte & Tiefkühlkost",
     "tags": {
       "quantities": [
         "1",
@@ -3301,7 +3301,7 @@
     "id": "bdba576c-69c2-4450-a926-ae386687e689",
     "name": "Saure Sahne",
     "aliases": [],
-    "category": "Milch & Tiefkühl",
+    "category": "Milchprodukte & Tiefkühlkost",
     "tags": {
       "quantities": [
         "1",
@@ -3324,7 +3324,7 @@
     "id": "9b473410-16c9-4d14-a372-3fa82ed237cc",
     "name": "Schmand",
     "aliases": [],
-    "category": "Milch & Tiefkühl",
+    "category": "Milchprodukte & Tiefkühlkost",
     "tags": {
       "quantities": [
         "1",
@@ -3347,7 +3347,7 @@
     "id": "6f035143-c971-4947-b895-a65fac2ef0bd",
     "name": "Crème Fraîche",
     "aliases": [],
-    "category": "Milch & Tiefkühl",
+    "category": "Milchprodukte & Tiefkühlkost",
     "tags": {
       "quantities": [
         "1",
@@ -3370,7 +3370,7 @@
     "id": "204a033c-a04d-41ee-bf97-06e89fd9d27f",
     "name": "Mascarpone",
     "aliases": [],
-    "category": "Milch & Tiefkühl",
+    "category": "Milchprodukte & Tiefkühlkost",
     "tags": {
       "quantities": [
         "1",
@@ -3393,7 +3393,7 @@
     "id": "4af0a802-e326-4f67-bd59-9d923f1b3874",
     "name": "Buttermilch",
     "aliases": [],
-    "category": "Milch & Tiefkühl",
+    "category": "Milchprodukte & Tiefkühlkost",
     "tags": {
       "quantities": [
         "1",
@@ -3419,7 +3419,7 @@
     "id": "06ac8f78-f9f0-4ae1-b620-5198c288040e",
     "name": "Kefir",
     "aliases": [],
-    "category": "Milch & Tiefkühl",
+    "category": "Milchprodukte & Tiefkühlkost",
     "tags": {
       "quantities": [
         "1",
@@ -3442,7 +3442,7 @@
     "id": "d8626447-b88e-4f0b-a182-679bc25b5ffc",
     "name": "Pudding (Kühlregal)",
     "aliases": [],
-    "category": "Milch & Tiefkühl",
+    "category": "Milchprodukte & Tiefkühlkost",
     "tags": {
       "quantities": [
         "1",
@@ -3470,7 +3470,7 @@
     "id": "0482f5ad-1d27-46fd-b3ec-384e6725a5a9",
     "name": "Gouda",
     "aliases": [],
-    "category": "Milch & Tiefkühl",
+    "category": "Milchprodukte & Tiefkühlkost",
     "tags": {
       "quantities": [
         "1",
@@ -3499,7 +3499,7 @@
     "id": "0f942f6b-dbeb-47ca-953f-f0504cf94cdd",
     "name": "Emmentaler",
     "aliases": [],
-    "category": "Milch & Tiefkühl",
+    "category": "Milchprodukte & Tiefkühlkost",
     "tags": {
       "quantities": [
         "1",
@@ -3527,7 +3527,7 @@
     "aliases": [
       "Butterkäse"
     ],
-    "category": "Milch & Tiefkühl",
+    "category": "Milchprodukte & Tiefkühlkost",
     "tags": {
       "quantities": [
         "1",
@@ -3552,7 +3552,7 @@
     "id": "53bb3f3f-3b68-4cb2-a90f-8cf4715b77f6",
     "name": "Mozzarella",
     "aliases": [],
-    "category": "Milch & Tiefkühl",
+    "category": "Milchprodukte & Tiefkühlkost",
     "tags": {
       "quantities": [
         "1",
@@ -3581,7 +3581,7 @@
     "aliases": [
       "Schafskäse"
     ],
-    "category": "Milch & Tiefkühl",
+    "category": "Milchprodukte & Tiefkühlkost",
     "tags": {
       "quantities": [
         "1",
@@ -3606,7 +3606,7 @@
     "id": "a9f1a3d4-f6f0-4b67-a975-79e2cde0780a",
     "name": "Hirtenkäse",
     "aliases": [],
-    "category": "Milch & Tiefkühl",
+    "category": "Milchprodukte & Tiefkühlkost",
     "tags": {
       "quantities": [
         "1",
@@ -3632,7 +3632,7 @@
     "aliases": [
       "Brie"
     ],
-    "category": "Milch & Tiefkühl",
+    "category": "Milchprodukte & Tiefkühlkost",
     "tags": {
       "quantities": [
         "1",
@@ -3658,7 +3658,7 @@
     "id": "3c82837c-d027-4565-96fe-156b6597b539",
     "name": "Parmesan",
     "aliases": [],
-    "category": "Milch & Tiefkühl",
+    "category": "Milchprodukte & Tiefkühlkost",
     "tags": {
       "quantities": [
         "1",
@@ -3682,7 +3682,7 @@
     "id": "150fd77e-b057-4a0e-865d-331b07587d81",
     "name": "Frischkäse",
     "aliases": [],
-    "category": "Milch & Tiefkühl",
+    "category": "Milchprodukte & Tiefkühlkost",
     "tags": {
       "quantities": [
         "1",
@@ -3713,7 +3713,7 @@
     "aliases": [
       "Handkäse"
     ],
-    "category": "Milch & Tiefkühl",
+    "category": "Milchprodukte & Tiefkühlkost",
     "tags": {
       "quantities": [
         "1",
@@ -3736,7 +3736,7 @@
     "id": "d2406cb5-37b2-4030-9a19-6606f4fa0ad1",
     "name": "Hüttenkäse",
     "aliases": [],
-    "category": "Milch & Tiefkühl",
+    "category": "Milchprodukte & Tiefkühlkost",
     "tags": {
       "quantities": [
         "1",
@@ -3760,7 +3760,7 @@
     "id": "27dea475-4876-4b84-85b5-0319cc9edbb1",
     "name": "Eier (Hühnereier)",
     "aliases": [],
-    "category": "Milch & Tiefkühl",
+    "category": "Milchprodukte & Tiefkühlkost",
     "tags": {
       "quantities": [
         "1",
@@ -3788,7 +3788,7 @@
     "id": "0b382e29-cb15-4d3c-a0b3-d6d6a838d76a",
     "name": "Butter",
     "aliases": [],
-    "category": "Milch & Tiefkühl",
+    "category": "Milchprodukte & Tiefkühlkost",
     "tags": {
       "quantities": [
         "1",
@@ -3816,7 +3816,7 @@
     "id": "a5456f2e-5829-413e-bf34-82e4ca429cb8",
     "name": "Margarine",
     "aliases": [],
-    "category": "Milch & Tiefkühl",
+    "category": "Milchprodukte & Tiefkühlkost",
     "tags": {
       "quantities": [
         "1",
@@ -3844,7 +3844,7 @@
     "aliases": [
       "Geräuchert)"
     ],
-    "category": "Milch & Tiefkühl",
+    "category": "Milchprodukte & Tiefkühlkost",
     "tags": {
       "quantities": [
         "1",
@@ -3870,7 +3870,7 @@
     "id": "798c13fc-eb82-491f-8de2-ea676edbbb86",
     "name": "Veganes Hack",
     "aliases": [],
-    "category": "Milch & Tiefkühl",
+    "category": "Milchprodukte & Tiefkühlkost",
     "tags": {
       "quantities": [
         "1",
@@ -3899,7 +3899,7 @@
     "aliases": [
       "Schnitzel"
     ],
-    "category": "Milch & Tiefkühl",
+    "category": "Milchprodukte & Tiefkühlkost",
     "tags": {
       "quantities": [
         "1",
@@ -3923,7 +3923,7 @@
     "id": "976e3469-075d-422b-8f61-8e5316932760",
     "name": "Blätterteig",
     "aliases": [],
-    "category": "Milch & Tiefkühl",
+    "category": "Milchprodukte & Tiefkühlkost",
     "tags": {
       "quantities": [
         "1",
@@ -3949,7 +3949,7 @@
     "aliases": [
       "Flammkuchenteig"
     ],
-    "category": "Milch & Tiefkühl",
+    "category": "Milchprodukte & Tiefkühlkost",
     "tags": {
       "quantities": [
         "1",
@@ -3973,7 +3973,7 @@
     "id": "ca40515b-1720-4bb8-9726-7e8d2edfdb50",
     "name": "Tiefkühl-Pizza",
     "aliases": [],
-    "category": "Milch & Tiefkühl",
+    "category": "Milchprodukte & Tiefkühlkost",
     "tags": {
       "quantities": [
         "1",
@@ -4002,7 +4002,7 @@
     "id": "e1364d62-6971-462a-bd39-68a7b781280f",
     "name": "Pommes Frites (TK)",
     "aliases": [],
-    "category": "Milch & Tiefkühl",
+    "category": "Milchprodukte & Tiefkühlkost",
     "tags": {
       "quantities": [
         "1",
@@ -4028,7 +4028,7 @@
     "aliases": [
       "Spinat)"
     ],
-    "category": "Milch & Tiefkühl",
+    "category": "Milchprodukte & Tiefkühlkost",
     "tags": {
       "quantities": [
         "1",
@@ -4055,7 +4055,7 @@
     "id": "61517e04-9b58-4b7b-a873-330efc06079c",
     "name": "Tiefkühl-Kräuter",
     "aliases": [],
-    "category": "Milch & Tiefkühl",
+    "category": "Milchprodukte & Tiefkühlkost",
     "tags": {
       "quantities": [
         "1",
@@ -4081,7 +4081,7 @@
     "id": "498a807f-1a2b-497a-82b1-b406c18251f2",
     "name": "Tiefkühl-Beeren",
     "aliases": [],
-    "category": "Milch & Tiefkühl",
+    "category": "Milchprodukte & Tiefkühlkost",
     "tags": {
       "quantities": [
         "1",
@@ -4108,7 +4108,7 @@
     "aliases": [
       "Eiscreme"
     ],
-    "category": "Milch & Tiefkühl",
+    "category": "Milchprodukte & Tiefkühlkost",
     "tags": {
       "quantities": [
         "1",
@@ -4136,7 +4136,7 @@
     "id": "568cc1ba-4d7c-47eb-ade6-c533a3cc5b2e",
     "name": "Eiswürfel",
     "aliases": [],
-    "category": "Milch & Tiefkühl",
+    "category": "Milchprodukte & Tiefkühlkost",
     "tags": {
       "quantities": [
         "1",
@@ -5443,7 +5443,7 @@
     "id": "58cc0da4-9f06-49bc-a5d7-a291e2a3c522",
     "name": "Mineralwasser",
     "aliases": [],
-    "category": "Getränke",
+    "category": "Getränke & Genussmittel",
     "tags": {
       "quantities": [
         "1",
@@ -5473,7 +5473,7 @@
     "id": "819da2e1-7fa6-4ba1-8ad0-b28c965838ae",
     "name": "Apfelsaft",
     "aliases": [],
-    "category": "Getränke",
+    "category": "Getränke & Genussmittel",
     "tags": {
       "quantities": [
         "1",
@@ -5501,7 +5501,7 @@
     "id": "f2e7841e-0302-44ac-9e72-1ea666c948a7",
     "name": "Orangensaft",
     "aliases": [],
-    "category": "Getränke",
+    "category": "Getränke & Genussmittel",
     "tags": {
       "quantities": [
         "1",
@@ -5528,7 +5528,7 @@
     "id": "0a1680c5-f11b-493b-8a5b-a538123c235d",
     "name": "Cola",
     "aliases": [],
-    "category": "Getränke",
+    "category": "Getränke & Genussmittel",
     "tags": {
       "quantities": [
         "1",
@@ -5560,7 +5560,7 @@
     "aliases": [
       "Sprite)"
     ],
-    "category": "Getränke",
+    "category": "Getränke & Genussmittel",
     "tags": {
       "quantities": [
         "1",
@@ -5586,7 +5586,7 @@
     "id": "fc02a237-795b-4397-92c6-710159dd6b02",
     "name": "Eistee",
     "aliases": [],
-    "category": "Getränke",
+    "category": "Getränke & Genussmittel",
     "tags": {
       "quantities": [
         "1",
@@ -5614,7 +5614,7 @@
     "id": "b0254a4b-1983-4416-9e4d-c5de6e866053",
     "name": "Kaffee",
     "aliases": [],
-    "category": "Getränke",
+    "category": "Getränke & Genussmittel",
     "tags": {
       "quantities": [
         "1",
@@ -5643,7 +5643,7 @@
     "aliases": [
       "Kapseln"
     ],
-    "category": "Getränke",
+    "category": "Getränke & Genussmittel",
     "tags": {
       "quantities": [
         "1",
@@ -5669,7 +5669,7 @@
     "aliases": [
       "Lose)"
     ],
-    "category": "Getränke",
+    "category": "Getränke & Genussmittel",
     "tags": {
       "quantities": [
         "1",
@@ -5698,7 +5698,7 @@
     "aliases": [
       "Kaba (Pulver)"
     ],
-    "category": "Getränke",
+    "category": "Getränke & Genussmittel",
     "tags": {
       "quantities": [
         "1",
@@ -5724,7 +5724,7 @@
     "id": "97212e47-7cd1-4752-9a08-755021641434",
     "name": "Bier",
     "aliases": [],
-    "category": "Getränke",
+    "category": "Getränke & Genussmittel",
     "tags": {
       "quantities": [
         "1",
@@ -5756,7 +5756,7 @@
     "id": "c8a7f715-fc08-41f5-8a41-396b26959151",
     "name": "Wein (Weißwein)",
     "aliases": [],
-    "category": "Getränke",
+    "category": "Getränke & Genussmittel",
     "tags": {
       "quantities": [
         "1",
@@ -5785,7 +5785,7 @@
     "id": "7cc10388-105a-44bd-8c7b-b5ec985c2e57",
     "name": "Wein (Rotwein)",
     "aliases": [],
-    "category": "Getränke",
+    "category": "Getränke & Genussmittel",
     "tags": {
       "quantities": [
         "1",
@@ -5815,7 +5815,7 @@
     "aliases": [
       "Schaumwein"
     ],
-    "category": "Getränke",
+    "category": "Getränke & Genussmittel",
     "tags": {
       "quantities": [
         "1",
@@ -5847,7 +5847,7 @@
       "Rum",
       "Gin"
     ],
-    "category": "Getränke",
+    "category": "Getränke & Genussmittel",
     "tags": {
       "quantities": [
         "1",
@@ -5872,7 +5872,7 @@
     "id": "e114e9d7-0722-4c9c-9649-9951d6e155fa",
     "name": "Windeln",
     "aliases": [],
-    "category": "Drogerie & Haushalt",
+    "category": "Drogerie, Haushalt & Tierbedarf",
     "tags": {
       "quantities": [
         "1",
@@ -5902,7 +5902,7 @@
     "id": "1130d07a-3a99-44a6-a84f-c7df822924d4",
     "name": "Feuchttücher (Baby)",
     "aliases": [],
-    "category": "Drogerie & Haushalt",
+    "category": "Drogerie, Haushalt & Tierbedarf",
     "tags": {
       "quantities": [
         "1",
@@ -5930,7 +5930,7 @@
     "aliases": [
       "Pulver)"
     ],
-    "category": "Drogerie & Haushalt",
+    "category": "Drogerie, Haushalt & Tierbedarf",
     "tags": {
       "quantities": [
         "1",
@@ -5958,7 +5958,7 @@
     "id": "46540766-6300-46db-b616-ce34b090b706",
     "name": "Duschgel",
     "aliases": [],
-    "category": "Drogerie & Haushalt",
+    "category": "Drogerie, Haushalt & Tierbedarf",
     "tags": {
       "quantities": [
         "1",
@@ -5986,7 +5986,7 @@
     "id": "19904d14-cb09-4df8-ba27-32f2354bba07",
     "name": "Shampoo",
     "aliases": [],
-    "category": "Drogerie & Haushalt",
+    "category": "Drogerie, Haushalt & Tierbedarf",
     "tags": {
       "quantities": [
         "1",
@@ -6013,7 +6013,7 @@
     "aliases": [
       "Stück)"
     ],
-    "category": "Drogerie & Haushalt",
+    "category": "Drogerie, Haushalt & Tierbedarf",
     "tags": {
       "quantities": [
         "1",
@@ -6039,7 +6039,7 @@
     "id": "df6d9a92-2e5d-4087-9297-7ae5c9700e29",
     "name": "Deodorant (Deo)",
     "aliases": [],
-    "category": "Drogerie & Haushalt",
+    "category": "Drogerie, Haushalt & Tierbedarf",
     "tags": {
       "quantities": [
         "1",
@@ -6067,7 +6067,7 @@
     "aliases": [
       "Einwegrasierer"
     ],
-    "category": "Drogerie & Haushalt",
+    "category": "Drogerie, Haushalt & Tierbedarf",
     "tags": {
       "quantities": [
         "1",
@@ -6092,7 +6092,7 @@
     "id": "6a38e91b-e157-4fe7-8bf0-17ca0e221c00",
     "name": "Zahnpasta",
     "aliases": [],
-    "category": "Drogerie & Haushalt",
+    "category": "Drogerie, Haushalt & Tierbedarf",
     "tags": {
       "quantities": [
         "1",
@@ -6122,7 +6122,7 @@
     "aliases": [
       "Aufsteckbürsten"
     ],
-    "category": "Drogerie & Haushalt",
+    "category": "Drogerie, Haushalt & Tierbedarf",
     "tags": {
       "quantities": [
         "1",
@@ -6150,7 +6150,7 @@
     "id": "ed255c93-9da3-4243-a077-f910c322a520",
     "name": "Toilettenpapier",
     "aliases": [],
-    "category": "Drogerie & Haushalt",
+    "category": "Drogerie, Haushalt & Tierbedarf",
     "tags": {
       "quantities": [
         "1",
@@ -6180,7 +6180,7 @@
     "aliases": [
       "Haushaltspapier"
     ],
-    "category": "Drogerie & Haushalt",
+    "category": "Drogerie, Haushalt & Tierbedarf",
     "tags": {
       "quantities": [
         "1",
@@ -6206,7 +6206,7 @@
     "id": "4ed3cf87-688d-463e-9093-55dd04c8d97d",
     "name": "Taschentücher",
     "aliases": [],
-    "category": "Drogerie & Haushalt",
+    "category": "Drogerie, Haushalt & Tierbedarf",
     "tags": {
       "quantities": [
         "1",
@@ -6235,7 +6235,7 @@
     "aliases": [
       "Binden"
     ],
-    "category": "Drogerie & Haushalt",
+    "category": "Drogerie, Haushalt & Tierbedarf",
     "tags": {
       "quantities": [
         "1",
@@ -6266,7 +6266,7 @@
     "aliases": [
       "Pulver)"
     ],
-    "category": "Drogerie & Haushalt",
+    "category": "Drogerie, Haushalt & Tierbedarf",
     "tags": {
       "quantities": [
         "1",
@@ -6295,7 +6295,7 @@
     "id": "91a07a6b-ec5f-4a03-9a5d-b63237e3a334",
     "name": "Weichspüler",
     "aliases": [],
-    "category": "Drogerie & Haushalt",
+    "category": "Drogerie, Haushalt & Tierbedarf",
     "tags": {
       "quantities": [
         "1",
@@ -6321,7 +6321,7 @@
     "id": "6a078549-33f5-4d61-bb20-d4adee127d57",
     "name": "Spülmittel (Hand)",
     "aliases": [],
-    "category": "Drogerie & Haushalt",
+    "category": "Drogerie, Haushalt & Tierbedarf",
     "tags": {
       "quantities": [
         "1",
@@ -6348,7 +6348,7 @@
     "id": "992e564c-ccac-470c-8ac4-5c57621920e8",
     "name": "Spülmaschinentabs",
     "aliases": [],
-    "category": "Drogerie & Haushalt",
+    "category": "Drogerie, Haushalt & Tierbedarf",
     "tags": {
       "quantities": [
         "1",
@@ -6377,7 +6377,7 @@
     "aliases": [
       "Glasreiniger"
     ],
-    "category": "Drogerie & Haushalt",
+    "category": "Drogerie, Haushalt & Tierbedarf",
     "tags": {
       "quantities": [
         "1",
@@ -6402,7 +6402,7 @@
     "id": "6bbae751-7de1-4489-b1ed-0acd5a125586",
     "name": "Müllbeutel",
     "aliases": [],
-    "category": "Drogerie & Haushalt",
+    "category": "Drogerie, Haushalt & Tierbedarf",
     "tags": {
       "quantities": [
         "1",
@@ -6434,7 +6434,7 @@
     "aliases": [
       "Frischhaltefolie"
     ],
-    "category": "Drogerie & Haushalt",
+    "category": "Drogerie, Haushalt & Tierbedarf",
     "tags": {
       "quantities": [
         "1",
@@ -6460,7 +6460,7 @@
     "id": "10dc07b0-2e75-4d74-ba77-3bafaa23cfa7",
     "name": "Backpapier",
     "aliases": [],
-    "category": "Drogerie & Haushalt",
+    "category": "Drogerie, Haushalt & Tierbedarf",
     "tags": {
       "quantities": [
         "1",
@@ -6487,7 +6487,7 @@
     "aliases": [
       "Spültuch"
     ],
-    "category": "Drogerie & Haushalt",
+    "category": "Drogerie, Haushalt & Tierbedarf",
     "tags": {
       "quantities": [
         "1",
@@ -6515,7 +6515,7 @@
     "aliases": [
       "AAA)"
     ],
-    "category": "Drogerie & Haushalt",
+    "category": "Drogerie, Haushalt & Tierbedarf",
     "tags": {
       "quantities": [
         "1",
@@ -6543,7 +6543,7 @@
     "aliases": [
       "Trocken)"
     ],
-    "category": "Drogerie & Haushalt",
+    "category": "Drogerie, Haushalt & Tierbedarf",
     "tags": {
       "quantities": [
         "1",
@@ -6576,7 +6576,7 @@
     "id": "94bf961b-fe86-4cb8-a149-7b48f521f4d0",
     "name": "Katzenstreu",
     "aliases": [],
-    "category": "Drogerie & Haushalt",
+    "category": "Drogerie, Haushalt & Tierbedarf",
     "tags": {
       "quantities": [
         "1",
@@ -6604,7 +6604,7 @@
     "aliases": [
       "Trocken)"
     ],
-    "category": "Drogerie & Haushalt",
+    "category": "Drogerie, Haushalt & Tierbedarf",
     "tags": {
       "quantities": [
         "1",
@@ -6637,7 +6637,7 @@
     "aliases": [
       "Katze)"
     ],
-    "category": "Drogerie & Haushalt",
+    "category": "Drogerie, Haushalt & Tierbedarf",
     "tags": {
       "quantities": [
         "1",
@@ -6665,7 +6665,7 @@
     "aliases": [
       "Verbandszeug"
     ],
-    "category": "Drogerie & Haushalt",
+    "category": "Drogerie, Haushalt & Tierbedarf",
     "tags": {
       "quantities": [
         "1",
@@ -6690,7 +6690,7 @@
     "aliases": [
       "Nahrungsergänzung"
     ],
-    "category": "Drogerie & Haushalt",
+    "category": "Drogerie, Haushalt & Tierbedarf",
     "tags": {
       "quantities": [
         "1",
