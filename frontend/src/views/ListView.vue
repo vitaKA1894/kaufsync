@@ -478,13 +478,22 @@ const sortedCategoryChips = computed(() => {
   });
 });
 
+const mapLegacyCategory = (catName) => {
+  if (catName === 'Milch & Tiefkühl') return 'Milchprodukte & Tiefkühlkost';
+  if (catName === 'Getränke') return 'Getränke & Genussmittel';
+  if (catName === 'Drogerie & Haushalt') return 'Drogerie, Haushalt & Tierbedarf';
+  return catName;
+};
+
 // Berechnete Eigenschaften für Gruppierung der Listenansicht
 const groupedActiveItems = computed(() => {
   const activeItems = items.value.filter(i => i.status === 'active');
   const groups = {};
   
   activeItems.forEach(item => {
-    const catName = item.category || 'Sonstiges';
+    let catName = item.category || 'Sonstiges';
+    catName = mapLegacyCategory(catName);
+
     if (!groups[catName]) {
       groups[catName] = { 
         name: catName, 
@@ -505,7 +514,10 @@ const groupedActiveItems = computed(() => {
   });
 });
 
-const completedItems = computed(() => items.value.filter(i => i.status === 'completed'));
+const completedItems = computed(() => items.value.filter(i => i.status === 'completed').map(item => {
+  let catName = item.category || 'Sonstiges';
+  return { ...item, category: mapLegacyCategory(catName) };
+}));
 
 onMounted(() => {
   loadItems(); // loadItems ruft am Ende loadCategoryOrder() auf
@@ -862,7 +874,7 @@ onUnmounted(() => {
 /* Sort List */
 .sort-list {
   display: flex; flex-direction: column; gap: 8px;
-  max-height: 50vh; overflow-y: auto;
+
 }
 .sort-item {
   display: flex; align-items: center; justify-content: space-between;
