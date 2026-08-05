@@ -3,6 +3,22 @@ import { ref, onMounted, nextTick, computed } from 'vue';
 import { searchTaxonomy, debounce } from '../utils/search';
 import CategoryIcon from './CategoryIcon.vue';
 
+// --- KATEGORIE DEFINITIONEN ---
+const predefinedCategories = [
+  { name: 'Obst & Gemüse', color: '#1B5E20', bg: '#C8E6C9' },
+  { name: 'Brot & Backwaren', color: '#F57F17', bg: '#FFF9C4' },
+  { name: 'Fleisch & Fisch', color: '#B71C1C', bg: '#FFCDD2' },
+  { name: 'Milchprodukte & Tiefkühlkost', color: '#01579B', bg: '#B3E5FC' },
+  { name: 'Vorratskammer', color: '#E65100', bg: '#FFE0B2' },
+  { name: 'Getränke & Genussmittel', color: '#1A237E', bg: '#C5CAE9' },
+  { name: 'Drogerie, Haushalt & Tierbedarf', color: '#006064', bg: '#B2EBF2' },
+  { name: 'Sonstiges', color: 'var(--ks-text-muted)', bg: 'var(--ks-surface-3)' }
+];
+
+const getCategoryDef = (catName) => {
+  return predefinedCategories.find(c => c.name === catName) || predefinedCategories[7];
+};
+
 const props = defineProps({
   isOpen: Boolean,
   editItem: { type: Object, default: null }
@@ -271,9 +287,9 @@ watch(() => props.isOpen, (newVal) => {
                 class="result-item"
                 @click="selectItem(item)"
               >
-                <CategoryIcon :name="item.name" :category="item.category" class="result-icon" />
+                <CategoryIcon :name="item.name" :category="item.category" class="result-icon" :color="getCategoryDef(item.category).color" />
                 <div class="result-text">{{ item.name }}</div>
-                <span class="result-category">{{ item.category }}</span>
+                <span class="result-category" :style="{ background: getCategoryDef(item.category).bg, color: getCategoryDef(item.category).color }">{{ item.category }}</span>
               </div>
             </div>
 
@@ -285,24 +301,9 @@ watch(() => props.isOpen, (newVal) => {
                 class="result-item"
                 @click="selectItem(item)"
               >
-                <CategoryIcon :name="item.name" :category="item.category" class="result-icon" />
+                <CategoryIcon :name="item.name" :category="item.category" class="result-icon" :color="getCategoryDef(item.category).color" />
                 <div class="result-text" v-html="highlightText(item.name, query)"></div>
-                <span class="result-category">{{ item.category }}</span>
-              </div>
-
-              <!-- Also show Frequent items below Search Results -->
-              <div v-if="results.length > 0 && frequentItems.length > 0" style="margin-top: 16px;">
-                <p class="history-label">Häufig gekauft</p>
-                <div
-                  v-for="item in frequentItems"
-                  :key="item.id"
-                  class="result-item"
-                  @click="selectItem(item)"
-                >
-                  <CategoryIcon :name="item.name" :category="item.category" class="result-icon" />
-                  <div class="result-text">{{ item.name }}</div>
-                  <span class="result-category">{{ item.category }}</span>
-                </div>
+                <span class="result-category" :style="{ background: getCategoryDef(item.category).bg, color: getCategoryDef(item.category).color }">{{ item.category }}</span>
               </div>
 
               <div v-if="query.length >= 3 && results.length === 0" class="no-results">
