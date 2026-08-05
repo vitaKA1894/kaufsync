@@ -17,7 +17,7 @@ export default defineConfig({
     VitePWA({
       registerType: 'autoUpdate',
       injectRegister: 'auto',
-      includeAssets: ['favicon.svg', 'icons.svg'], // Deine SVGs nehmen
+      includeAssets: ['favicon.svg', 'icons.svg', 'pwa-192x192.png', 'pwa-512x512.png'],
       
       // NEU: Zwingt Vite, die PWA auch im dev-Modus zu testen!
       devOptions: {
@@ -33,15 +33,15 @@ export default defineConfig({
         display: 'standalone',
         icons: [
           {
-            src: '/icons.svg', // Wir nutzen deine existierende SVG!
+            src: '/pwa-192x192.png',
             sizes: '192x192',
-            type: 'image/svg+xml', // Typ auf SVG geändert
+            type: 'image/png',
             purpose: 'any maskable'
           },
           {
-            src: '/icons.svg',
+            src: '/pwa-512x512.png',
             sizes: '512x512',
-            type: 'image/svg+xml',
+            type: 'image/png',
             purpose: 'any maskable'
           }
         ]

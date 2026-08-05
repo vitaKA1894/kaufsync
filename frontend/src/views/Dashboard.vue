@@ -64,6 +64,12 @@ const loadLists = async () => {
   try {
     const token = localStorage.getItem('token');
     const response = await fetch('/api/lists', { headers: { 'Authorization': `Bearer ${token}` } });
+    if (response.status === 401) {
+      localStorage.removeItem('token');
+      localStorage.removeItem('isLoggedIn');
+      router.push('/login');
+      return;
+    }
     if (!response.ok) throw new Error('Fehler beim Laden');
     const data = await response.json();
     shoppingLists.value = data;
