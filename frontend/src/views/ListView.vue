@@ -594,9 +594,8 @@ onUnmounted(() => {
         <p class="sheet-support">Sortiere die Kategorien, damit sie deinem Weg durch den Markt entsprechen.</p>
         
         <div class="sort-list" ref="sortListRef">
-          <div v-for="(catName, index) in categoryOrder" :key="catName" class="sort-item" :data-id="catName">
+          <div v-for="(catName, index) in categoryOrder" :key="catName" class="sort-item" :data-id="catName" :style="{ background: getCategoryDef(catName).bg, color: getCategoryDef(catName).color, border: 'none' }">
             <div class="sort-info">
-               <span class="sort-color-dot" :style="{ background: getCategoryDef(catName).color }"></span>
                <span>{{ catName }}</span>
             </div>
             <div class="sort-actions">
@@ -871,7 +870,6 @@ onUnmounted(() => {
   border-radius: var(--ks-radius-xs); border: 1px solid var(--ks-border);
 }
 .sort-info { display: flex; align-items: center; gap: 12px; font-weight: 500; }
-.sort-color-dot { width: 12px; height: 12px; border-radius: 50%; }
 .sort-actions { display: flex; gap: 4px; }
 .small-btn { width: 36px; height: 36px; }
 .small-btn:disabled { opacity: 0.2; pointer-events: none; }
