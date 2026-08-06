@@ -1,8 +1,12 @@
+import os
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
 
-# SQLite Datenbank-Datei im selben Ordner
-SQLALCHEMY_DATABASE_URL = "sqlite:///./kaufsync.db"
+# Use DATA_DIR if set, otherwise default to current directory
+DATA_DIR = os.getenv("DATA_DIR", ".")
+# SQLite Datenbank-Datei
+db_path = os.path.join(DATA_DIR, "kaufsync.db")
+SQLALCHEMY_DATABASE_URL = f"sqlite:///{db_path}"
 
 # Engine erstellen (check_same_thread ist nur für SQLite nötig)
 engine = create_engine(

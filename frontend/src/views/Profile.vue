@@ -26,6 +26,13 @@ const loadUserProfile = async () => {
       headers: { 'Authorization': `Bearer ${token}` }
     });
     
+    if (response.status === 401) {
+      localStorage.removeItem('token');
+      localStorage.removeItem('isLoggedIn');
+      router.push('/login');
+      return;
+    }
+
     if (!response.ok) throw new Error('Profil konnte nicht geladen werden');
     
     const data = await response.json();

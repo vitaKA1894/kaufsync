@@ -195,6 +195,12 @@ const loadItems = async () => {
     const response = await fetch('/api/lists', {
       headers: { 'Authorization': `Bearer ${token}` }
     });
+    if (response.status === 401) {
+      localStorage.removeItem('token');
+      localStorage.removeItem('isLoggedIn');
+      router.push('/login');
+      return;
+    }
     if (!response.ok) throw new Error('Fehler beim Laden');
     const lists = await response.json();
 
