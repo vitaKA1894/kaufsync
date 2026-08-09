@@ -100,6 +100,18 @@ const enhancedQuantities = computed(() => {
 });
 
 const selectItem = (item) => {
+  const isDuplicate = props.activeItems.some(
+    i => i.name.trim().toLowerCase() === item.name.trim().toLowerCase()
+  );
+  if (isDuplicate) {
+    duplicateWarning.value = true;
+    return;
+  }
+
+  proceedToDetails(item);
+};
+
+const proceedToDetails = (item) => {
   // normalize item for detail view if it's from history
   if (!item.tags || typeof item.tags === 'string') {
       let parsedTags = [];
@@ -171,7 +183,7 @@ const parseQuantity = (input) => {
 const confirmSelection = (bypassWarning = false) => {
   const finalName = selectedItem.value ? selectedItem.value.name : query.value;
 
-  if (!bypassWarning && finalName.trim() !== '') {
+  if (!bypassWarning && !selectedItem.value && finalName.trim() !== '') {
     const isDuplicate = props.activeItems.some(i => i.name.trim().toLowerCase() === finalName.trim().toLowerCase());
     if (isDuplicate) {
       duplicateWarning.value = true;
@@ -338,7 +350,7 @@ watch(() => props.isOpen, (newVal) => {
             <div style="flex: 1; display: flex; flex-direction: column; position: relative;">
               <div v-if="duplicateWarning" class="duplicate-warning">
                 Dieser Artikel steht bereits auf der Liste.
-                <button class="duplicate-bypass-btn" @click="confirmSelection(true)">Trotzdem hinzufügen</button>
+                <button class="duplicate-bypass-btn" @click="proceedToDetails(results.find(r => r.name.toLowerCase() === query.toLowerCase()) || {name: query})">Trotzdem hinzufügen</button>
               </div>
               <input
                 ref="inputRef"
