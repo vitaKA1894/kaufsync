@@ -18,12 +18,16 @@ const errorMessage = ref('');
 const successMessage = ref('');
 const showShareSheet = ref(false);
 const showSortSheet = ref(false);
+const showChangelogSheet = ref(false);
 const sortListRef = ref(null);
 let sortableInstance = null;
 
 const searchQuery = ref('');
 const searchResults = ref([]);
 const isSearching = ref(false);
+
+const changelog = ref([]);
+const changelogFilter = ref('all'); // 'all', 'added', 'completed'
 
 let ws = null;
 const isOnline = ref(navigator.onLine);
@@ -253,6 +257,10 @@ const setupWebSocket = () => {
         }
       } else if (data.event === 'ITEM_DELETED') {
         items.value = items.value.filter(i => i.id !== data.payload.item_id);
+      } else if (data.event === 'CHANGELOG_UPDATED') {
+        if (showChangelogSheet.value) {
+          loadChangelog();
+        }
       }
     };
   } catch (err) {
@@ -399,6 +407,51 @@ const deleteItem = async (itemId) => {
   }
 };
 
+const loadChangelog = async () => {
+  try {
+    const token = localStorage.getItem('token');
+    const response = await fetch(`/api/lists/${listId}/changelog`, {
+      headers: { 'Authorization': `Bearer ${token}` }
+    });
+    if (response.ok) {
+      changelog.value = await response.json();
+    }
+  } catch (error) {
+    console.error("Fehler beim Laden des Changelogs", error);
+  }
+};
+
+const openChangelog = () => {
+  showChangelogSheet.value = true;
+  loadChangelog();
+};
+
+const filteredChangelog = computed(() => {
+  if (changelogFilter.value === 'added') return changelog.value.filter(log => log.action_type === 'added');
+  if (changelogFilter.value === 'completed') return changelog.value.filter(log => log.action_type === 'completed');
+  return changelog.value;
+});
+
+const formatChangelogTime = (dateStr) => {
+  const d = new Date(dateStr + 'Z');
+  return d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) + ' Uhr';
+};
+
+const formatChangelogAction = (action) => {
+  const map = {
+    'added': 'hat hinzugefügt:',
+    'completed': 'hat abgehakt:',
+    'deleted': 'hat gelöscht:',
+    'reactivated': 'hat wiederhergestellt:'
+  };
+  return map[action] || action;
+};
+
+const getInitial = (name) => {
+  if (!name) return '?';
+  return name.charAt(0).toUpperCase();
+};
+
 const copyToClipboard = async () => {
   if (!currentList.value) return;
   try {
@@ -541,16 +594,20 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="page-shell list-view-layout" @click="showShareSheet = false; showSortSheet = false;">
+  <div class="page-shell list-view-layout" @click="showShareSheet = false; showSortSheet = false; showChangelogSheet = false;">
 
     <header class="page-topbar" style="justify-content: space-between;">
-      <div style="display: flex; align-items: center; gap: 12px; flex: 1; min-width: 0;">
+      <div style="display: flex; align-items: center; gap: 8px; flex: 1; min-width: 0;">
+        <img src="/favicon.svg" alt="Logo" style="width: 24px; height: 24px; margin-right: 4px;" />
         <button class="ks-icon-btn" @click.stop="router.push('/')" aria-label="Zurück">
           <svg viewBox="0 0 24 24"><path d="M11.175 19 4 12l7.175-7 1.425 1.4L7.85 11H20v2H7.85l4.75 4.6Z"/></svg>
         </button>
         <h1 class="list-title">{{ currentList ? currentList.name : 'Laden...' }}</h1>
       </div>
       <div style="display: flex; gap: 8px;">
+        <button class="ks-icon-btn" @click.stop="openChangelog" aria-label="Aktivitätenprotokoll">
+           <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+        </button>
         <button class="ks-icon-btn" @click.stop="showSortSheet = !showSortSheet" aria-label="Kategorien sortieren">
            <svg viewBox="0 0 24 24"><path d="M3 18v-2h6v2H3Zm0-5v-2h12v2H3Zm0-5V6h18v2H3Z"/></svg>
         </button>
@@ -562,7 +619,7 @@ onUnmounted(() => {
 
     <!-- SHARE SHEET -->
     <transition name="scrim-fade">
-      <div v-if="showShareSheet || showSortSheet" class="ks-sheet-scrim" @click="showShareSheet = false; showSortSheet = false;"></div>
+      <div v-if="showShareSheet || showSortSheet || showChangelogSheet" class="ks-sheet-scrim" @click="showShareSheet = false; showSortSheet = false; showChangelogSheet = false;"></div>
     </transition>
 
     <transition name="sheet-slide">
@@ -600,6 +657,43 @@ onUnmounted(() => {
             </div>
           </div>
           <p v-else-if="searchQuery.length >= 2 && !isSearching" class="no-results">Keine Benutzer gefunden</p>
+        </div>
+      </div>
+    </transition>
+
+    <!-- CHANGELOG SHEET -->
+    <transition name="sheet-slide">
+      <div v-if="showChangelogSheet" class="ks-sheet" @click.stop>
+        <div class="ks-sheet__handle"></div>
+        <div class="modal-header" style="justify-content: space-between; margin-bottom: 16px;">
+            <h3 class="sheet-heading" style="margin: 0;">Aktivitäten</h3>
+            <button class="close-btn ks-icon-btn" @click="showChangelogSheet = false">
+                <svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+            </button>
+        </div>
+
+        <div class="tag-group" style="margin-bottom: 16px;">
+            <button class="ks-chip tag-chip" :class="{ active: changelogFilter === 'all' }" @click="changelogFilter = 'all'">Alle</button>
+            <button class="ks-chip tag-chip" :class="{ active: changelogFilter === 'added' }" @click="changelogFilter = 'added'">Hinzugefügt</button>
+            <button class="ks-chip tag-chip" :class="{ active: changelogFilter === 'completed' }" @click="changelogFilter = 'completed'">Abgehakt</button>
+        </div>
+
+        <div class="changelog-list" style="max-height: 50vh; overflow-y: auto;">
+            <div v-for="log in filteredChangelog" :key="log.id" class="changelog-item">
+                <div class="changelog-avatar">{{ getInitial(log.user_name) }}</div>
+                <div class="changelog-content">
+                    <div class="changelog-meta">
+                        <span class="changelog-user">{{ log.user_name || 'Unbekannt' }}</span>
+                        <span class="changelog-time">{{ formatChangelogTime(log.created_at) }}</span>
+                    </div>
+                    <div class="changelog-action">
+                        {{ formatChangelogAction(log.action_type) }} <strong>{{ log.item_name }}</strong>
+                    </div>
+                </div>
+            </div>
+            <div v-if="filteredChangelog.length === 0" class="empty-state">
+                Keine Aktivitäten gefunden.
+            </div>
         </div>
       </div>
     </transition>
@@ -726,6 +820,7 @@ onUnmounted(() => {
     <AddItemModal
         :is-open="isAddModalOpen"
         :edit-item="itemToEdit"
+        :active-items="items.filter(i => i.status === 'active')"
         @close="isAddModalOpen = false; itemToEdit = null"
         @add="handleAddItem"
         @update="handleUpdateItem"
@@ -876,6 +971,22 @@ onUnmounted(() => {
 }
 .code-box .code { font-size: 24px; font-family: monospace; font-weight: 700; letter-spacing: 4px; }
 .code-box svg { width: 24px; height: 24px; fill: currentColor; opacity: 0.6; }
+
+/* Changelog */
+.changelog-list { display: flex; flex-direction: column; gap: 12px; }
+.changelog-item { display: flex; align-items: flex-start; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--ks-border); }
+.changelog-item:last-child { border-bottom: none; }
+.changelog-avatar { width: 32px; height: 32px; border-radius: 50%; background: var(--ks-primary); color: var(--ks-on-primary); display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 14px; flex-shrink: 0; }
+.changelog-content { flex: 1; min-width: 0; }
+.changelog-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px; }
+.changelog-user { font-weight: 600; font-size: 14px; color: var(--ks-text); }
+.changelog-time { font-size: 12px; color: var(--ks-text-muted); }
+.changelog-action { font-size: 14px; color: var(--ks-text); line-height: 1.4; word-break: break-word; }
+
+/* Tags/Chips (reused from AddItemModal) */
+.tag-group { display: flex; flex-wrap: wrap; gap: 8px; }
+.tag-chip { padding: 8px 16px; border-radius: 20px; background: var(--ks-surface-2); border: 1px solid transparent; color: var(--ks-text); cursor: pointer; font-size: 14px; font-weight: 500; }
+.tag-chip.active { background: var(--ks-primary-container); color: var(--ks-primary); border-color: var(--ks-primary); }
 
 /* Sort List */
 .sort-list {

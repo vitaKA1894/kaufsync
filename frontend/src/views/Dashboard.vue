@@ -196,7 +196,10 @@ onMounted(() => {
   <div class="page-shell" @click="closeActionSheet">
 
     <header class="page-topbar" style="justify-content: space-between;">
-      <h1 style="margin: 0; font-size: 22px;">Meine Listen</h1>
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <img src="/favicon.svg" alt="Logo" style="width: 24px; height: 24px;" />
+        <h1 style="margin: 0; font-size: 22px;">Meine Listen</h1>
+      </div>
       <button class="ks-icon-btn profile-btn" @click.stop="goToProfile" aria-label="Profil">
         <div v-if="currentUser" class="member-avatar creator" style="width: 32px; height: 32px; font-size: 14px;">
           {{ getInitial(currentUser.display_name) }}

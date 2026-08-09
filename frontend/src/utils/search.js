@@ -94,7 +94,7 @@ export function searchTaxonomy(query) {
     return a.item.name.length - b.item.name.length;
   })
   .map(result => result.item)
-  .slice(0, 10);
+  .slice(0, 4);
 
   return results;
 }

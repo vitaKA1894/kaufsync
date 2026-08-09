@@ -355,6 +355,16 @@ async def create_item(
     db.commit()
     db.refresh(new_item)
 
+    # LOG ACTIVITY
+    log_entry = models.ActivityLog(
+        list_id=list_id,
+        user_id=current_user.id,
+        action_type="added",
+        item_name=new_item.name
+    )
+    db.add(log_entry)
+    db.commit()
+
     # WEBSOCKET BROADCAST - Jetzt inklusive Kategorie
     await manager.broadcast(list_id, {
         "event": "ITEM_UPDATED",
@@ -364,7 +374,43 @@ async def create_item(
         }
     })
     
+    await manager.broadcast(list_id, {
+        "event": "CHANGELOG_UPDATED",
+        "payload": {}
+    })
+
     return new_item
+
+@app.get("/api/lists/{list_id}/changelog", response_model=List[schemas.ActivityLogResponse])
+async def get_list_changelog(
+    list_id: str,
+    db: Session = Depends(get_db),
+    current_user: models.User = Depends(auth.get_current_user)
+):
+    # Verify user has access to list
+    db_list = db.query(models.List).filter(models.List.id == list_id).first()
+    if not db_list:
+        raise HTTPException(status_code=404, detail="Liste nicht gefunden")
+
+    # Check if user is member or creator
+    is_member = any(member.id == current_user.id for member in db_list.members)
+    if db_list.created_by != current_user.id and not is_member:
+        raise HTTPException(status_code=403, detail="Kein Zugriff auf diese Liste")
+
+    logs = db.query(models.ActivityLog).filter(
+        models.ActivityLog.list_id == list_id
+    ).order_by(
+        models.ActivityLog.created_at.desc()
+    ).limit(50).all()
+
+    # Add user_name
+    for log in logs:
+        user = db.query(models.User).filter(models.User.id == log.user_id).first()
+        if user:
+            log.user_name = user.display_name
+
+    return logs
+
 
 @app.put("/api/items/{item_id}", response_model=schemas.ItemResponse)
 async def update_item(
@@ -379,6 +425,7 @@ async def update_item(
     
     if item_data.name is not None: db_item.name = item_data.name
     if item_data.unit is not None: db_item.unit = item_data.unit
+    old_status = db_item.status
     if item_data.status is not None: db_item.status = item_data.status
     if item_data.quantity is not None: db_item.quantity = item_data.quantity
     if item_data.note is not None: db_item.note = item_data.note
@@ -389,6 +436,23 @@ async def update_item(
         
     db.commit()
     db.refresh(db_item)
+
+    # LOG ACTIVITY (if status changed)
+    if item_data.status is not None and old_status != item_data.status:
+        action = "completed" if item_data.status == "completed" else "reactivated"
+        log_entry = models.ActivityLog(
+            list_id=db_item.list_id,
+            user_id=current_user.id,
+            action_type=action,
+            item_name=db_item.name
+        )
+        db.add(log_entry)
+        db.commit()
+
+        await manager.broadcast(db_item.list_id, {
+            "event": "CHANGELOG_UPDATED",
+            "payload": {}
+        })
 
     # WEBSOCKET BROADCAST - Jetzt inklusive Kategorie
     await manager.broadcast(db_item.list_id, {
@@ -412,7 +476,18 @@ async def delete_item(
         raise HTTPException(status_code=404, detail="Item nicht gefunden")
     
     list_id = db_item.list_id
+    item_name = db_item.name
     db.delete(db_item)
+    db.commit()
+
+    # LOG ACTIVITY
+    log_entry = models.ActivityLog(
+        list_id=list_id,
+        user_id=current_user.id,
+        action_type="deleted",
+        item_name=item_name
+    )
+    db.add(log_entry)
     db.commit()
 
     # WEBSOCKET BROADCAST
@@ -424,6 +499,11 @@ async def delete_item(
         }
     })
     
+    await manager.broadcast(list_id, {
+        "event": "CHANGELOG_UPDATED",
+        "payload": {}
+    })
+
     return {"status": "ok", "message": "Item gelöscht"}
 
 import pathlib
