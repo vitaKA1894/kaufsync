@@ -6,7 +6,8 @@ const router = useRouter();
 
 const user = ref({
   email: '',
-  display_name: ''
+  display_name: '',
+  is_admin: false
 });
 
 const passwordData = ref({
@@ -38,6 +39,7 @@ const loadUserProfile = async () => {
     const data = await response.json();
     user.value.email = data.email;
     user.value.display_name = data.display_name;
+    user.value.is_admin = data.is_admin || false;
   } catch (error) {
     console.error(error);
   }
@@ -146,6 +148,17 @@ onMounted(loadUserProfile);
     </div>
 
     <div class="settings-grid">
+      <!-- Admin Bereich -->
+      <section v-if="user.is_admin" class="page-panel settings-card">
+        <h3>Admin Dashboard</h3>
+        <p style="margin-top: 0; color: var(--ks-text-muted); font-size: 14px; margin-bottom: 20px;">
+          Du hast Administrator-Rechte.
+        </p>
+        <button @click="router.push('/admin')" class="ks-btn-filled full-width" style="background: var(--ks-primary);">
+          Admin Dashboard öffnen
+        </button>
+      </section>
+
       <!-- Profil Info -->
       <section class="page-panel settings-card">
         <h3>Profil & Einstellungen</h3>

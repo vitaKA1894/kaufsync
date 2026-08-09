@@ -361,6 +361,23 @@ const toggleItemStatus = async (item) => {
     return;
   }
   const newStatus = item.status === 'active' ? 'completed' : 'active';
+
+  // Prevent duplicate reactivation
+  if (newStatus === 'active') {
+    const existingActiveItem = items.value.find(
+      i => i.name.toLowerCase() === item.name.toLowerCase() && i.status === 'active'
+    );
+    if (existingActiveItem) {
+      // Highlight existing item
+      const existingEl = document.getElementById(`item-${existingActiveItem.id}`);
+      if (existingEl) {
+        existingEl.classList.add('flash-highlight');
+        setTimeout(() => existingEl.classList.remove('flash-highlight'), 1000);
+      }
+      return;
+    }
+  }
+
   item.status = newStatus;
 
   try {
@@ -746,7 +763,7 @@ onUnmounted(() => {
           </div>
 
           <div class="ks-grid">
-            <div v-for="item in group.items" :key="item.id" class="grid-card active"
+            <div v-for="item in group.items" :key="item.id" class="grid-card active" :id="'item-' + item.id"
                  @click="toggleItemStatus(item)"
                  @mousedown="startPress(item, $event)"
                  @touchstart="startPress(item, $event)"
@@ -777,6 +794,11 @@ onUnmounted(() => {
       <div v-if="groupedActiveItems.length === 0 && completedItems.length === 0" class="empty-state">
         <svg viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4Z"/></svg>
         <p>Deine Liste ist leer!</p>
+      </div>
+
+      <div v-if="groupedActiveItems.length === 0 && completedItems.length > 0" class="all-done-banner text-center bg-green-100 text-green-700 p-4 rounded-xl mb-4 flex items-center justify-center gap-3" style="background-color: #d1fae5; color: #15803d; padding: 16px; border-radius: 12px; margin-bottom: 24px; display: flex; align-items: center; justify-content: center; gap: 12px;">
+        <svg class="modern-check-icon w-8 h-8" style="width: 32px; height: 32px;" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+        <span class="font-bold text-lg" style="font-weight: 700; font-size: 18px;">Alles erledigt!</span>
       </div>
 
       <!-- ERLEDIGTE ARTIKEL -->
@@ -880,10 +902,17 @@ onUnmounted(() => {
   display: flex; flex-direction: column;
   border-radius: var(--ks-radius-sm); padding: 12px 8px;
   cursor: pointer; text-align: center;
-  transition: transform 0.1s, opacity 0.2s, background 0.2s;
+  transition: transform 0.1s, opacity 0.2s, background 0.2s, border-color 0.3s;
   position: relative;
   background: var(--ks-surface-2);
   border: 1px solid var(--ks-border);
+}
+.flash-highlight {
+  animation: flash 1s ease-out;
+}
+@keyframes flash {
+  0% { border-color: var(--ks-primary); background: var(--ks-primary-container); transform: scale(1.05); }
+  100% { border-color: var(--ks-border); background: var(--ks-surface-2); transform: scale(1); }
 }
 .grid-card:active { transform: scale(0.95); }
 .grid-card:hover { background: var(--ks-surface-3); }

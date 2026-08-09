@@ -8,8 +8,9 @@ from fastapi.security import OAuth2PasswordBearer
 from sqlalchemy.orm import Session
 from database import get_db
 import models
+import os
 
-SECRET_KEY = "ein_sehr_geheimes_passwort_für_kaufsync_das_niemand_kennen_darf"
+SECRET_KEY = os.getenv("JWT_SECRET_KEY", "fallback_only_for_local_dev")
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 60 * 24 * 30
 

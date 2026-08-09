@@ -2,16 +2,17 @@ from sqlalchemy import Column, String, Integer, ForeignKey, DateTime, Table
 from sqlalchemy.orm import relationship
 from datetime import datetime
 import uuid
-import random
+import secrets
 import string
 from database import Base
+from sqlalchemy import Boolean
 
 def generate_uuid():
     return str(uuid.uuid4())
 
 # Generiert einen 6-stelligen Code aus Großbuchstaben und Zahlen
 def generate_share_code():
-    return ''.join(random.choices(string.ascii_uppercase + string.digits, k=6))
+    return ''.join(secrets.choice(string.ascii_uppercase + string.digits) for _ in range(6))
 
 # Zwischentabelle: Speichert, welcher User in welcher Liste Mitglied ist
 list_members = Table(
@@ -27,6 +28,7 @@ class User(Base):
     email = Column(String, unique=True, index=True)
     password_hash = Column(String)
     display_name = Column(String)
+    is_admin = Column(Boolean, default=False)
     created_at = Column(DateTime, default=datetime.utcnow)
 
 class List(Base):

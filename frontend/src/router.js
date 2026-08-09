@@ -3,6 +3,7 @@ import Dashboard from './views/Dashboard.vue'
 import ListView from './views/ListView.vue'
 import Login from './views/Login.vue'
 import Profile from './views/Profile.vue'
+import AdminView from './views/AdminView.vue';
 
 const routes = [
   {
@@ -27,6 +28,12 @@ const routes = [
   name: 'Profile',
   component: Profile,
   meta: { requiresAuth: true }
+  },
+  {
+    path: '/admin',
+    name: 'Admin',
+    component: AdminView,
+    meta: { requiresAuth: true }
 }
 ]
 

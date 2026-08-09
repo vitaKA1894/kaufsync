@@ -73,10 +73,15 @@ def register(user_data: schemas.UserCreate, db: Session = Depends(get_db)):
         raise HTTPException(status_code=400, detail="E-Mail bereits registriert")
         
     hashed_password = auth.get_password_hash(user_data.password)
+
+    user_count = db.query(models.User).count()
+    is_first_user = (user_count == 0)
+
     new_user = models.User(
         email=user_data.email, 
         password_hash=hashed_password, 
-        display_name=user_data.display_name
+        display_name=user_data.display_name,
+        is_admin=is_first_user
     )
     db.add(new_user)
     db.commit()
@@ -102,6 +107,37 @@ def login(login_data: schemas.LoginRequest, db: Session = Depends(get_db)):
         "token_type": "bearer",
         "user": {"id": user.id, "name": user.display_name}
     }
+# --- ADMIN ENDPUNKTE ---
+def get_admin_user(current_user: models.User = Depends(auth.get_current_user)):
+    if not current_user.is_admin:
+        raise HTTPException(status_code=403, detail="Keine Admin-Rechte")
+    return current_user
+
+@app.get("/api/admin/stats")
+def get_admin_stats(db: Session = Depends(get_db), admin: models.User = Depends(get_admin_user)):
+    list_count = db.query(models.List).count()
+    user_count = db.query(models.User).count()
+    item_count = db.query(models.Item).count()
+
+    # Optional: fetch user list for the admin view to display beneath stats
+    users = db.query(models.User).all()
+
+    return {
+        "lists": list_count,
+        "users": user_count,
+        "items": item_count,
+        "user_list": [{"id": u.id, "email": u.email, "display_name": u.display_name, "is_admin": u.is_admin} for u in users]
+    }
+
+@app.patch("/api/admin/users/{user_id}/promote")
+def promote_user(user_id: str, db: Session = Depends(get_db), admin: models.User = Depends(get_admin_user)):
+    user = db.query(models.User).filter(models.User.id == user_id).first()
+    if not user:
+        raise HTTPException(status_code=404, detail="Benutzer nicht gefunden")
+    user.is_admin = True
+    db.commit()
+    return {"status": "ok", "message": f"{user.display_name} ist nun Admin."}
+
 # --- USER ENDPUNKTE ---
 
 class UserUpdate(schemas.BaseModel):
