@@ -83,6 +83,21 @@ class ListResponse(ListBase):
 class JoinListRequest(BaseModel):
     share_code: str
 
+# --- ACTIVITY LOG SCHEMAS ---
+class ActivityLogResponse(BaseModel):
+    id: str
+    list_id: str
+    user_id: str
+    action_type: str
+    item_name: str
+    created_at: datetime
+
+    # Optional field for frontend display
+    user_name: Optional[str] = None
+
+    class Config:
+        from_attributes = True
+
 # --- INVITATION SCHEMAS ---
 class InviteUserRequest(BaseModel):
     invitee_id: str

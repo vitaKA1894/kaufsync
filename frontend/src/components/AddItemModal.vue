@@ -29,12 +29,14 @@ const getCategoryDef = (catName) => {
 
 const props = defineProps({
   isOpen: Boolean,
-  editItem: { type: Object, default: null }
+  editItem: { type: Object, default: null },
+  activeItems: { type: Array, default: () => [] }
 });
 
 const emit = defineEmits(['close', 'add', 'update']);
 
 const query = ref('');
+const duplicateWarning = ref(false);
 const results = ref([]);
 const inputRef = ref(null);
 const selectedItem = ref(null);
@@ -72,7 +74,7 @@ const calculateFrequentItems = () => {
 
 const search = debounce((val) => {
   if (val && val.length >= 3) {
-    results.value = searchTaxonomy(val);
+    results.value = searchTaxonomy(val).reverse();
   } else {
     results.value = [];
   }
@@ -166,7 +168,17 @@ const parseQuantity = (input) => {
     return { quantity: 1, unit: str };
 };
 
-const confirmSelection = () => {
+const confirmSelection = (bypassWarning = false) => {
+  const finalName = selectedItem.value ? selectedItem.value.name : query.value;
+
+  if (!bypassWarning && finalName.trim() !== '') {
+    const isDuplicate = props.activeItems.some(i => i.name.trim().toLowerCase() === finalName.trim().toLowerCase());
+    if (isDuplicate) {
+      duplicateWarning.value = true;
+      return;
+    }
+  }
+
   let quantity = 1;
   let unit = 'Stk';
 
@@ -214,6 +226,7 @@ const closeModal = () => {
   activeTags.value = [];
   showManualAmount.value = false;
   manualAmount.value = '';
+  duplicateWarning.value = false;
   emit('close');
 };
 
@@ -262,7 +275,7 @@ watch(() => props.isOpen, (newVal) => {
             }
         } else {
             // Add Mode Init
-            frequentItems.value = calculateFrequentItems();
+            frequentItems.value = calculateFrequentItems().reverse();
             nextTick(() => {
                 inputRef.value?.focus();
             });
@@ -322,15 +335,22 @@ watch(() => props.isOpen, (newVal) => {
           </div>
 
           <div class="modal-header">
-            <input
-              ref="inputRef"
-              v-model="query"
-              @input="handleInput"
-              type="text"
-              class="modal-input"
-              placeholder="Artikel suchen..."
-              @keyup.enter="confirmSelection"
-            />
+            <div style="flex: 1; display: flex; flex-direction: column; position: relative;">
+              <div v-if="duplicateWarning" class="duplicate-warning">
+                Dieser Artikel steht bereits auf der Liste.
+                <button class="duplicate-bypass-btn" @click="confirmSelection(true)">Trotzdem hinzufügen</button>
+              </div>
+              <input
+                ref="inputRef"
+                v-model="query"
+                @input="handleInput($event); duplicateWarning = false"
+                type="text"
+                class="modal-input"
+                :class="{ 'input-error': duplicateWarning }"
+                placeholder="Artikel suchen..."
+                @keyup.enter="confirmSelection(false)"
+              />
+            </div>
             <button class="close-btn ks-icon-btn" @click="closeModal">
                 <svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
             </button>
@@ -413,7 +433,7 @@ watch(() => props.isOpen, (newVal) => {
            </div>
 
            <div class="modal-footer">
-               <button class="ks-btn-filled full-width" @click="confirmSelection">
+               <button class="ks-btn-filled full-width" @click="confirmSelection(false)">
                    {{ editItem ? 'Speichern' : 'Zur Liste hinzufügen' }}
                </button>
            </div>
@@ -451,28 +471,57 @@ watch(() => props.isOpen, (newVal) => {
   flex-direction: column;
   flex: 1;
   min-height: 0; /* Important for flex child to scroll */
+  position: relative;
 }
 
 .modal-header {
   display: flex;
   align-items: center;
-  margin-top: 16px;
+  margin-top: auto; /* Push down to bottom */
   padding-bottom: env(safe-area-inset-bottom);
 }
 
 .modal-input {
-  flex: 1;
+  width: 100%;
   background: var(--ks-surface-2);
-  border: none;
+  border: 1px solid transparent;
   border-radius: 12px;
   padding: 14px 16px;
   font-size: 18px;
   color: var(--ks-text);
   outline: none;
+  transition: border-color 0.2s;
+}
+.modal-input.input-error {
+  border-color: #F57F17; /* Yellow border for warning */
 }
 .modal-input::placeholder {
   color: var(--ks-text-muted);
 }
+
+.duplicate-warning {
+  font-size: 13px;
+  color: #F57F17;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 4px;
+}
+.duplicate-bypass-btn {
+  background: transparent;
+  border: none;
+  color: var(--ks-primary);
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 8px;
+}
+.duplicate-bypass-btn:hover {
+  background: var(--ks-primary-container);
+}
+.mb-3 { margin-bottom: 12px; }
 
 .close-btn {
   margin-left: 8px;
@@ -489,7 +538,12 @@ watch(() => props.isOpen, (newVal) => {
   flex-direction: column;
   overflow-y: auto;
   gap: 8px;
-  flex: 1;
+  max-height: 50vh;
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  right: 0;
+  margin-bottom: 16px;
 }
 
 .result-item {

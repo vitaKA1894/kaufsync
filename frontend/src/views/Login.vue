@@ -72,9 +72,10 @@ const submitForm = async () => {
   <div class="page-shell login-view">
     <div class="page-panel login-panel">
       <div class="branding">
-        <div class="logo-circle">
-          <svg viewBox="0 0 24 24"><path d="M7 22q-.825 0-1.412-.587Q5 20.825 5 20t.588-1.412Q6.175 18 7 18t1.413.588Q9 19.175 9 20t-.587 1.413Q7.825 22 7 22Zm10 0q-.825 0-1.412-.587Q15 20.825 15 20t.588-1.412Q16.175 18 17 18t1.413.588Q19 19.175 19 20t-.587 1.413Q17.825 22 17 22ZM6.15 6l1.4 3h9.75l1.65-3ZM5.2 4h15.35q.575 0 .875.5.3.5.025 1L18.3 10.45q-.275.5-.737.775-.463.275-1.013.275H7.15L6 13h12v2H6q-1.15 0-1.725-1.012-.575-1.013-.025-2.038L5.6 9.6 2 2h2Z"/></svg>
-        </div>
+        <picture class="login-logo">
+          <source srcset="/android-chrome-512x512.png" media="(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)" />
+          <img src="/android-chrome-192x192.png" srcset="/android-chrome-512x512.png 2x" alt="KaufSync Logo" />
+        </picture>
         <h1>KaufSync</h1>
         <p>{{ isLogin ? 'Willkommen zurück!' : 'Konto erstellen' }}</p>
       </div>
@@ -128,12 +129,16 @@ const submitForm = async () => {
 }
 
 .branding { text-align: center; margin-bottom: 32px; }
-.logo-circle {
-  width: 64px; height: 64px; margin: 0 auto 16px;
-  background: var(--ks-primary); color: var(--ks-on-primary);
-  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+.login-logo {
+  display: block;
+  margin: 0 auto 16px;
 }
-.logo-circle svg { width: 32px; height: 32px; }
+.login-logo img {
+  width: 100%;
+  max-width: 120px;
+  height: auto;
+  border-radius: 20%;
+}
 .branding h1 { margin: 0 0 8px; font-size: 24px; font-weight: 600; }
 .branding p { margin: 0; color: var(--ks-text-muted); font-size: 15px; }
 

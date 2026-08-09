@@ -43,6 +43,19 @@ class List(Base):
     members = relationship("User", secondary=list_members, backref="shared_lists") # NEU
     creator = relationship("User", foreign_keys=[created_by])
 
+class ActivityLog(Base):
+    __tablename__ = "activity_logs"
+    id = Column(String, primary_key=True, default=generate_uuid)
+    list_id = Column(String, ForeignKey("lists.id"))
+    user_id = Column(String, ForeignKey("users.id"))
+    action_type = Column(String) # 'added', 'completed', 'deleted', 'reactivated'
+    item_name = Column(String)
+    created_at = Column(DateTime, default=datetime.utcnow)
+
+    # Beziehungen
+    list = relationship("List")
+    user = relationship("User", foreign_keys=[user_id])
+
 class Item(Base):
     __tablename__ = "items"
     id = Column(String, primary_key=True, default=generate_uuid)
