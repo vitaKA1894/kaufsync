@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, watch, computed } from 'vue';
+import { ref, onMounted, onUnmounted, watch, computed } from 'vue';
 import { useRouter } from 'vue-router';
 
 const router = useRouter();
@@ -60,6 +60,66 @@ const openOptions = (list) => {
 
 const goToProfile = () => router.push('/profile');
 
+const wsConnections = new Map();
+
+const setupWebSockets = () => {
+  const isOnline = navigator.onLine;
+  if (!isOnline) return;
+
+  const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+
+  shoppingLists.value.forEach(list => {
+    if (!wsConnections.has(list.id)) {
+      try {
+        const ws = new WebSocket(`${protocol}//${window.location.host}/ws/${list.id}`);
+        ws.onerror = (error) => console.warn(`WebSocket Fehler für Liste ${list.id}`, error);
+        ws.onmessage = (event) => {
+          const data = JSON.parse(event.data);
+
+          if (data.event === 'ITEM_UPDATED') {
+            const incomingItem = data.payload.item;
+            const targetList = shoppingLists.value.find(l => l.id === list.id);
+            if (targetList && targetList.items) {
+              const index = targetList.items.findIndex(i => i.id === incomingItem.id);
+              if (index !== -1) {
+                targetList.items[index].status = incomingItem.status;
+                targetList.items[index].quantity = incomingItem.quantity;
+                targetList.items[index].name = incomingItem.name;
+                targetList.items[index].unit = incomingItem.unit;
+                targetList.items[index].tags = incomingItem.tags;
+                if (incomingItem.category) targetList.items[index].category = incomingItem.category;
+              } else {
+                targetList.items.push(incomingItem);
+              }
+            }
+          } else if (data.event === 'ITEM_DELETED') {
+            const targetList = shoppingLists.value.find(l => l.id === list.id);
+            if (targetList && targetList.items) {
+              targetList.items = targetList.items.filter(i => i.id !== data.payload.item_id);
+            }
+          }
+        };
+        wsConnections.set(list.id, ws);
+      } catch (err) {
+        console.warn(`Konnte WebSocket für Liste ${list.id} nicht aufbauen:`, err);
+      }
+    }
+  });
+};
+
+const closeWebSockets = () => {
+  wsConnections.forEach((ws) => {
+    ws.close();
+  });
+  wsConnections.clear();
+};
+
+const updateOnlineStatus = () => {
+  if (navigator.onLine) {
+    setupWebSockets();
+  }
+};
+
 const loadLists = async () => {
   try {
     const token = localStorage.getItem('token');
@@ -73,6 +133,7 @@ const loadLists = async () => {
     if (!response.ok) throw new Error('Fehler beim Laden');
     const data = await response.json();
     shoppingLists.value = data;
+    setupWebSockets();
   } catch (error) {
     if (error?.message?.includes('eingeloggt')) router.push('/login');
   }
@@ -201,6 +262,11 @@ const getBannerUrl = (name) => {
   return `/banners/${formatted}_Banner.jpeg`;
 };
 
+const getActiveCount = (list) => {
+  if (!list || !list.items) return 0;
+  return list.items.filter(i => i.status === 'active').length;
+};
+
 const handleImageError = (event) => {
   event.target.src = '/banners/Generic_Banner.jpeg';
 };
@@ -220,6 +286,14 @@ onMounted(() => {
   loadLists();
   loadInvitations();
   loadUserProfile();
+  window.addEventListener('online', updateOnlineStatus);
+  window.addEventListener('offline', updateOnlineStatus);
+});
+
+onUnmounted(() => {
+  closeWebSockets();
+  window.removeEventListener('online', updateOnlineStatus);
+  window.removeEventListener('offline', updateOnlineStatus);
 });
 </script>
 
@@ -288,7 +362,7 @@ onMounted(() => {
             <span class="banner-title">{{ list.name }}</span>
             <div class="banner-left-bottom">
               <div class="item-count-badge">
-                {{ list.items?.length || 0 }} Artikel
+                {{ getActiveCount(list) }} Artikel
               </div>
               <div class="member-indicators" v-if="list.creator || (list.members && list.members.length > 0)">
                 <div class="member-avatar creator" v-if="list.creator" :title="list.creator.display_name">

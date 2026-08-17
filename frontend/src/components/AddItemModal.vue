@@ -43,7 +43,8 @@ const selectedItem = ref(null);
 
 // Custom Amount
 const showManualAmount = ref(false);
-const manualAmount = ref('');
+const manualQuantity = ref('');
+const manualUnit = ref('');
 
 // Active tags state
 const activeTags = ref([]);
@@ -139,7 +140,8 @@ const proceedToDetails = (item) => {
 
   activeTags.value = []; // Reset selected tags
   showManualAmount.value = false;
-  manualAmount.value = '';
+  manualQuantity.value = '';
+  manualUnit.value = '';
 };
 
 const toggleTag = (tag) => {
@@ -195,10 +197,10 @@ const confirmSelection = (bypassWarning = false) => {
   let unit = 'Stk';
 
   // Custom amount overrides chip selection
-  if (showManualAmount.value && manualAmount.value.trim() !== '') {
-      const parsed = parseQuantity(manualAmount.value);
-      quantity = parsed.quantity;
-      unit = parsed.unit;
+  if (showManualAmount.value && (manualQuantity.value.trim() !== '' || manualUnit.value.trim() !== '')) {
+      const qVal = parseFloat(manualQuantity.value.replace(',', '.'));
+      quantity = !isNaN(qVal) ? qVal : 1;
+      unit = manualUnit.value.trim() || 'Stk';
   } else {
       // Find quantity from active tags
       const quantTags = enhancedQuantities.value;
@@ -237,7 +239,8 @@ const closeModal = () => {
   selectedItem.value = null;
   activeTags.value = [];
   showManualAmount.value = false;
-  manualAmount.value = '';
+  manualQuantity.value = '';
+  manualUnit.value = '';
   duplicateWarning.value = false;
   emit('close');
 };
@@ -282,7 +285,8 @@ watch(() => props.isOpen, (newVal) => {
                     activeTags.value.push(combinedQty);
                 } else {
                     showManualAmount.value = true;
-                    manualAmount.value = combinedQty;
+                    manualQuantity.value = props.editItem.quantity.toString();
+                    manualUnit.value = props.editItem.unit;
                 }
             }
         } else {
@@ -299,7 +303,8 @@ watch(() => props.isOpen, (newVal) => {
         selectedItem.value = null;
         activeTags.value = [];
         showManualAmount.value = false;
-        manualAmount.value = '';
+        manualQuantity.value = '';
+        manualUnit.value = '';
     }
 });
 </script>
@@ -400,16 +405,26 @@ watch(() => props.isOpen, (newVal) => {
                        </button>
                    </div>
 
-                   <div v-if="showManualAmount" class="manual-amount-input mt-3">
+                   <div v-if="showManualAmount" class="manual-amount-input mt-3" style="display: flex; gap: 8px; align-items: center;">
                        <input
                            type="text"
-                           v-model="manualAmount"
-                           placeholder="z.B. 300g, 1/2, 2 Kisten"
+                           v-model="manualQuantity"
+                           placeholder="Menge (z.B. 2)"
                            class="modal-input"
-                           style="background: var(--ks-surface-3); font-size: 16px; padding: 10px 14px;"
-                           @keyup.enter="confirmSelection"
-                           ref="manualInputRef"
+                           style="background: var(--ks-surface-3); font-size: 16px; padding: 10px 14px; flex: 1; min-width: 0;"
+                           @keyup.enter="confirmSelection(false)"
                        />
+                       <input
+                           type="text"
+                           v-model="manualUnit"
+                           placeholder="Einheit (z.B. kg)"
+                           class="modal-input"
+                           style="background: var(--ks-surface-3); font-size: 16px; padding: 10px 14px; flex: 1.5; min-width: 0;"
+                           @keyup.enter="confirmSelection(false)"
+                       />
+                       <button class="ks-icon-btn primary" style="background: var(--ks-primary); color: var(--ks-on-primary); width: 44px; height: 44px; border-radius: 12px;" @click="confirmSelection(false)">
+                           <svg viewBox="0 0 24 24" style="width: 24px; height: 24px; fill: currentColor;"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg>
+                       </button>
                    </div>
                </div>
 
