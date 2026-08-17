@@ -282,7 +282,7 @@ def get_invitations(
     return invitations
 
 @app.delete("/api/lists/{list_id}")
-def delete_list(
+async def delete_list(
     list_id: str,
     db: Session = Depends(get_db),
     current_user: models.User = Depends(auth.get_current_user)
@@ -297,15 +297,23 @@ def delete_list(
         if current_user in db_list.members:
             db_list.members.remove(current_user)
             db.commit()
+            await manager.broadcast_user(str(current_user.id), {
+                "event": "LIST_UPDATED"
+            })
             return {"status": "ok", "message": "Liste verlassen"}
         raise HTTPException(status_code=403, detail="Keine Berechtigung")
         
     db.delete(db_list)
     db.commit()
+
+    await manager.broadcast_user(str(current_user.id), {
+        "event": "LIST_UPDATED"
+    })
+
     return {"status": "ok", "message": "Liste erfolgreich gelöscht"}
     
 @app.post("/api/lists/join", response_model=schemas.ListResponse)
-def join_list(
+async def join_list(
     join_data: schemas.JoinListRequest, 
     db: Session = Depends(get_db),
     current_user: models.User = Depends(auth.get_current_user)
@@ -323,6 +331,11 @@ def join_list(
     db_list.members.append(current_user)
     db.commit()
     db.refresh(db_list)
+
+    await manager.broadcast_user(str(current_user.id), {
+        "event": "LIST_UPDATED"
+    })
+
     return db_list
 
 @app.post("/api/lists/{list_id}/invite", response_model=schemas.ListInvitationResponse)
