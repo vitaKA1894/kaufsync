@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, watch } from 'vue';
+import { ref, onMounted, watch, computed } from 'vue';
 import { useRouter } from 'vue-router';
 
 const router = useRouter();
@@ -174,6 +174,37 @@ const deleteList = async () => {
   }
 };
 
+const sortedShoppingLists = computed(() => {
+  return [...shoppingLists.value].sort((a, b) => {
+    return (a.name || '').localeCompare(b.name || '');
+  });
+});
+
+const getBannerUrl = (name) => {
+  if (!name) return '/banners/Generic_Banner.jpeg';
+  const nameLower = name.toLowerCase();
+  if (nameLower.includes('aldi')) return '/banners/ALDI_Banner.jpeg';
+  if (nameLower.includes('dm')) return '/banners/DM_Banner.jpeg';
+  if (nameLower.includes('edeka')) return '/banners/Edeka_Banner.jpeg';
+  if (nameLower.includes('kaufland')) return '/banners/Kaufland_Banner.jpeg';
+  if (nameLower.includes('lidl')) return '/banners/LIDL_Banner.jpeg';
+  if (nameLower.includes('metro')) return '/banners/Metro_Banner.jpeg';
+  if (nameLower.includes('mueller') || nameLower.includes('müller')) return '/banners/Mueller_Banner.jpeg';
+  if (nameLower.includes('netto')) return '/banners/Netto_Banner.jpeg';
+  if (nameLower.includes('penny')) return '/banners/Penny_Banner.jpeg';
+  if (nameLower.includes('rewe')) return '/banners/Rewe_Banner.jpeg';
+  if (nameLower.includes('rossmann')) return '/banners/Rossmann_Banner.jpeg';
+  if (nameLower.includes('selgros')) return '/banners/Selgros_Banner.jpeg';
+
+  // Format normally for generic matching attempts (capitalize first letter if needed, but let fallback handle the rest)
+  const formatted = name.charAt(0).toUpperCase() + name.slice(1);
+  return `/banners/${formatted}_Banner.jpeg`;
+};
+
+const handleImageError = (event) => {
+  event.target.src = '/banners/Generic_Banner.jpeg';
+};
+
 const loadUserProfile = async () => {
   try {
     const token = localStorage.getItem('token');
@@ -245,30 +276,33 @@ onMounted(() => {
 
     <div class="list-stack">
       <button 
-        v-for="list in shoppingLists" :key="list.id" 
-        class="page-panel list-card" 
+        v-for="list in sortedShoppingLists" :key="list.id"
+        class="page-panel banner-card"
         @click="router.push(`/list/${list.id}`)"
         @contextmenu.prevent="openOptions(list)"
       >
-        <div class="card-leading">
-          <div class="card-icon-circle" :class="{ 'has-image': list.icon_name && list.icon_name !== 'mdi-cart' }">
-            <img v-if="list.icon_name && list.icon_name !== 'mdi-cart'" :src="list.icon_name" :alt="list.name" class="store-logo-img" />
-            <svg v-else viewBox="0 0 24 24"><path d="M7 22q-.825 0-1.412-.587Q5 20.825 5 20t.588-1.412Q6.175 18 7 18t1.413.588Q9 19.175 9 20t-.587 1.413Q7.825 22 7 22Zm10 0q-.825 0-1.412-.587Q15 20.825 15 20t.588-1.412Q16.175 18 17 18t1.413.588Q19 19.175 19 20t-.587 1.413Q17.825 22 17 22ZM6.15 6l1.4 3h9.75l1.65-3ZM5.2 4h15.35q.575 0 .875.5.3.5.025 1L18.3 10.45q-.275.5-.737.775-.463.275-1.013.275H7.15L6 13h12v2H6q-1.15 0-1.725-1.012-.575-1.013-.025-2.038L5.6 9.6 2 2h2Z"/></svg>
-          </div>
-          <div style="display: flex; flex-direction: column; gap: 4px;">
-            <span class="card-title">{{ list.name }}</span>
-            <div class="member-indicators" v-if="list.creator || (list.members && list.members.length > 0)">
-              <div class="member-avatar creator" v-if="list.creator" :title="list.creator.display_name">
-                {{ getInitial(list.creator.display_name) }}
+        <img :src="getBannerUrl(list.name)" class="banner-img" @error="handleImageError" alt="Banner Background" />
+        <div class="banner-overlay"></div>
+        <div class="banner-content">
+          <div class="banner-leading">
+            <span class="banner-title">{{ list.name }}</span>
+            <div class="banner-left-bottom">
+              <div class="item-count-badge">
+                {{ list.items?.length || 0 }} Artikel
               </div>
-              <div class="member-avatar" v-for="member in list.members" :key="member.id" :title="member.display_name">
-                {{ getInitial(member.display_name) }}
+              <div class="member-indicators" v-if="list.creator || (list.members && list.members.length > 0)">
+                <div class="member-avatar creator" v-if="list.creator" :title="list.creator.display_name">
+                  {{ getInitial(list.creator.display_name) }}
+                </div>
+                <div class="member-avatar" v-for="member in list.members" :key="member.id" :title="member.display_name">
+                  {{ getInitial(member.display_name) }}
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="options-trigger" @click.stop="openOptions(list)">
-          <svg viewBox="0 0 24 24" style="width:20px;height:20px;fill:var(--ks-text-muted);"><path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg>
+          <div class="options-trigger banner-options" @click.stop="openOptions(list)">
+            <svg viewBox="0 0 24 24" style="width:24px;height:24px;fill:#ffffff;"><path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg>
+          </div>
         </div>
       </button>
     </div>
@@ -382,6 +416,97 @@ onMounted(() => {
   cursor: pointer; text-align: left; transition: filter 0.15s; border-radius: 16px; position: relative;
 }
 .list-card:hover { filter: brightness(1.1); }
+
+.banner-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  cursor: pointer;
+  text-align: left;
+  border: none;
+  background: transparent;
+  padding: 0;
+  min-height: 120px;
+  margin: 0 -8px; /* Slightly wider */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  display: flex;
+}
+.banner-card:hover .banner-img { transform: scale(1.05); }
+
+.banner-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+  z-index: 0;
+}
+
+.banner-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.1) 100%);
+  z-index: 1;
+}
+
+.banner-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  width: 100%;
+  padding: 16px;
+}
+
+.banner-leading {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.banner-title {
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: 700;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  margin-bottom: 12px;
+}
+
+.banner-left-bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.item-count-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  backdrop-filter: blur(4px);
+  width: max-content;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.banner-options {
+  align-self: flex-start;
+  background: rgba(0,0,0,0.3);
+  backdrop-filter: blur(4px);
+  margin: 0;
+}
+.banner-options:hover { background: rgba(0,0,0,0.5); }
+
 
 .card-leading { display: flex; align-items: center; gap: 16px; min-width: 0; }
 

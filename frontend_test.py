@@ -14,7 +14,7 @@ def verify_frontend():
         page.wait_for_timeout(2000)
 
         # Enter a list
-        page.click('.list-card')
+        page.click('.banner-card')
         page.wait_for_timeout(2000)
 
         # Add test items via the new modal logic
