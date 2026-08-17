@@ -197,7 +197,7 @@ onMounted(() => {
 
     <header class="page-topbar" style="justify-content: space-between;">
       <div style="display: flex; align-items: center; gap: 8px;">
-        <img src="/favicon.svg" alt="Logo" style="width: 24px; height: 24px;" />
+        <img src="/android-chrome-512x512.png" alt="Logo" style="height: 48px; object-fit: contain;" />
         <h1 style="margin: 0; font-size: 22px;">Meine Listen</h1>
       </div>
       <button class="ks-icon-btn profile-btn" @click.stop="goToProfile" aria-label="Profil">

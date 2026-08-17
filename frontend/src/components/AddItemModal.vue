@@ -100,7 +100,7 @@ const enhancedQuantities = computed(() => {
 });
 
 const selectItem = (item) => {
-  const isDuplicate = props.activeItems.some(
+  const isDuplicate = !props.editItem && props.activeItems.some(
     i => i.name.trim().toLowerCase() === item.name.trim().toLowerCase()
   );
   if (isDuplicate) {
@@ -184,7 +184,7 @@ const confirmSelection = (bypassWarning = false) => {
   const finalName = selectedItem.value ? selectedItem.value.name : query.value;
 
   if (!bypassWarning && !selectedItem.value && finalName.trim() !== '') {
-    const isDuplicate = props.activeItems.some(i => i.name.trim().toLowerCase() === finalName.trim().toLowerCase());
+    const isDuplicate = !props.editItem && props.activeItems.some(i => i.name.trim().toLowerCase() === finalName.trim().toLowerCase());
     if (isDuplicate) {
       duplicateWarning.value = true;
       return;
@@ -355,7 +355,7 @@ watch(() => props.isOpen, (newVal) => {
               <input
                 ref="inputRef"
                 v-model="query"
-                @input="handleInput($event); duplicateWarning = false"
+                @input="handleInput($event); duplicateWarning = false;"
                 type="text"
                 class="modal-input"
                 :class="{ 'input-error': duplicateWarning }"
