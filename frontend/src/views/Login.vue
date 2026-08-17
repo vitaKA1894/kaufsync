@@ -130,14 +130,18 @@ const submitForm = async () => {
 
 .branding { text-align: center; margin-bottom: 32px; }
 .login-logo {
-  display: block;
-  margin: 0 auto 16px;
-}
-.login-logo img {
+  display: flex;
+  justify-content: center;
   width: 100%;
-  max-width: 120px;
+  margin: 0 auto 16px auto; /* 16px Abstand nach unten zum h1-Titel */
+}
+
+.login-logo img {
+  display: block;
+  margin: 0 auto;
+  /* Optionale Begrenzung, falls das Logo auf großen Screens nicht zu riesig werden soll: */
+  max-width: 120px; 
   height: auto;
-  border-radius: 20%;
 }
 .branding h1 { margin: 0 0 8px; font-size: 24px; font-weight: 600; }
 .branding p { margin: 0; color: var(--ks-text-muted); font-size: 15px; }
