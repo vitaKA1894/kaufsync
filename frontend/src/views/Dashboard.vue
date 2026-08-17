@@ -61,12 +61,29 @@ const openOptions = (list) => {
 const goToProfile = () => router.push('/profile');
 
 const wsConnections = new Map();
+let userWs = null;
 
 const setupWebSockets = () => {
   const isOnline = navigator.onLine;
   if (!isOnline) return;
 
   const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+
+  if (currentUser.value && !userWs) {
+    try {
+      userWs = new WebSocket(`${protocol}//${window.location.host}/ws/user/${currentUser.value.id}`);
+      userWs.onerror = (error) => console.warn("User WebSocket Fehler", error);
+      userWs.onmessage = (event) => {
+        const data = JSON.parse(event.data);
+        if (data.event === 'LIST_UPDATED') {
+          loadLists();
+        }
+      };
+    } catch (err) {
+      console.warn("Konnte User WebSocket nicht aufbauen", err);
+    }
+  }
+
 
   shoppingLists.value.forEach(list => {
     if (!wsConnections.has(list.id)) {
@@ -112,6 +129,10 @@ const closeWebSockets = () => {
     ws.close();
   });
   wsConnections.clear();
+  if (userWs) {
+    userWs.close();
+    userWs = null;
+  }
 };
 
 const updateOnlineStatus = () => {
@@ -277,6 +298,7 @@ const loadUserProfile = async () => {
     const response = await fetch('/api/users/me', { headers: { 'Authorization': `Bearer ${token}` } });
     if (!response.ok) throw new Error('Fehler beim Laden des Profils');
     currentUser.value = await response.json();
+    setupWebSockets();
   } catch (error) {
     console.error(error);
   }

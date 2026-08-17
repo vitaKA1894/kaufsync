@@ -29,6 +29,8 @@ class ConnectionManager:
     def __init__(self):
         # Speichert aktive Verbindungen pro Einkaufsliste (list_id)
         self.active_connections: Dict[str, List[WebSocket]] = {}
+        # Speichert aktive Verbindungen pro User (user_id)
+        self.user_active_connections: Dict[str, List[WebSocket]] = {}
 
     async def connect(self, websocket: WebSocket, list_id: str):
         await websocket.accept()
@@ -43,7 +45,28 @@ class ConnectionManager:
     async def broadcast(self, list_id: str, message: dict):
         if list_id in self.active_connections:
             for connection in self.active_connections[list_id]:
-                await connection.send_json(message)
+                try:
+                    await connection.send_json(message)
+                except Exception:
+                    pass
+
+    async def connect_user(self, websocket: WebSocket, user_id: str):
+        await websocket.accept()
+        if user_id not in self.user_active_connections:
+            self.user_active_connections[user_id] = []
+        self.user_active_connections[user_id].append(websocket)
+
+    def disconnect_user(self, websocket: WebSocket, user_id: str):
+        if user_id in self.user_active_connections:
+            self.user_active_connections[user_id].remove(websocket)
+
+    async def broadcast_user(self, user_id: str, message: dict):
+        if user_id in self.user_active_connections:
+            for connection in self.user_active_connections[user_id]:
+                try:
+                    await connection.send_json(message)
+                except Exception:
+                    pass
 
 manager = ConnectionManager()
 
@@ -57,6 +80,16 @@ async def websocket_endpoint(websocket: WebSocket, list_id: str):
             await websocket.receive_text()
     except WebSocketDisconnect:
         manager.disconnect(websocket, list_id)
+
+
+@app.websocket("/ws/user/{user_id}")
+async def user_websocket_endpoint(websocket: WebSocket, user_id: str):
+    await manager.connect_user(websocket, user_id)
+    try:
+        while True:
+            await websocket.receive_text()
+    except WebSocketDisconnect:
+        manager.disconnect_user(websocket, user_id)
 
 # --- REST ENDPUNKTE ---
 @app.get("/api/health")
@@ -201,7 +234,7 @@ def change_password(
 # --- GESCHÜTZTE DATEN-ENDPUNKTE ---
 
 @app.post("/api/lists", response_model=schemas.ListResponse)
-def create_list(
+async def create_list(
     list_data: schemas.ListCreate, 
     db: Session = Depends(get_db),
     current_user: models.User = Depends(auth.get_current_user) # SCHUTZ
@@ -214,6 +247,9 @@ def create_list(
     db.add(new_list)
     db.commit()
     db.refresh(new_list)
+    await manager.broadcast_user(str(current_user.id), {
+        "event": "LIST_UPDATED"
+    })
     return new_list
 
 @app.get("/api/lists", response_model=list[schemas.ListResponse])
@@ -368,6 +404,13 @@ def respond_to_invitation(
         raise HTTPException(status_code=400, detail="Ungültige Aktion")
 
     db.commit()
+
+    if action == "accept":
+        import asyncio
+        asyncio.create_task(manager.broadcast_user(str(current_user.id), {
+            "event": "LIST_UPDATED"
+        }))
+
     return {"status": "ok", "message": f"Einladung {'angenommen' if action == 'accept' else 'abgelehnt'}"}
 
 @app.post("/api/lists/{list_id}/items", response_model=schemas.ItemResponse)
