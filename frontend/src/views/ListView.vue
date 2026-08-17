@@ -615,7 +615,7 @@ onUnmounted(() => {
 
     <header class="page-topbar" style="justify-content: space-between;">
       <div style="display: flex; align-items: center; gap: 8px; flex: 1; min-width: 0;">
-        <img src="/favicon.svg" alt="Logo" style="width: 24px; height: 24px; margin-right: 4px;" />
+        <img src="/android-chrome-512x512.png" alt="KaufSync Logo" style="width: 24px; height: 24px; object-fit: contain; margin-right: 4px;">
         <button class="ks-icon-btn" @click.stop="router.push('/')" aria-label="Zurück">
           <svg viewBox="0 0 24 24"><path d="M11.175 19 4 12l7.175-7 1.425 1.4L7.85 11H20v2H7.85l4.75 4.6Z"/></svg>
         </button>
