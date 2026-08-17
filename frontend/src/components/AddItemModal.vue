@@ -196,23 +196,28 @@ const confirmSelection = (bypassWarning = false) => {
   let quantity = 1;
   let unit = 'Stk';
 
-  // Custom amount overrides chip selection
-  if (showManualAmount.value && (manualQuantity.value.trim() !== '' || manualUnit.value.trim() !== '')) {
-      const qVal = parseFloat(manualQuantity.value.replace(',', '.'));
-      quantity = !isNaN(qVal) ? qVal : 1;
-      unit = manualUnit.value.trim() || 'Stk';
+
+  // Process Menge
+  if (manualQuantity.value && manualQuantity.value.trim() !== '') {
+      const parsed = parseQuantity(manualQuantity.value);
+      quantity = parsed.quantity;
+      unit = parsed.unit;
   } else {
-      // Find quantity from active tags
       const quantTags = enhancedQuantities.value;
       const selectedQuantTag = activeTags.value.find(t => quantTags.includes(t));
       if (selectedQuantTag) {
           const parsed = parseQuantity(selectedQuantTag);
           quantity = parsed.quantity;
           unit = parsed.unit;
-          // Remove it from active tags so it doesn't show up in the pills
           activeTags.value = activeTags.value.filter(t => t !== selectedQuantTag);
       }
   }
+
+  // Process Ausprägung
+  if (manualUnit.value.trim() !== '') {
+      activeTags.value.push(manualUnit.value.trim());
+  }
+
 
   const payload = {
     name: selectedItem.value ? selectedItem.value.name : query.value,
@@ -270,11 +275,6 @@ watch(() => props.isOpen, (newVal) => {
             const editItemMapped = { ...props.editItem, category: mapLegacyCategory(props.editItem.category || 'Sonstiges') };
             selectItem(editItemMapped);
 
-            // Re-map tags
-            let tags = [];
-            try { tags = typeof props.editItem.tags === 'string' ? JSON.parse(props.editItem.tags) : []; } catch(e){}
-            activeTags.value = tags;
-
             // Re-map quantity
             if (props.editItem.quantity) {
                 const combinedQty = props.editItem.unit === 'Stk'
@@ -282,13 +282,37 @@ watch(() => props.isOpen, (newVal) => {
                     : `${props.editItem.quantity} ${props.editItem.unit}`;
 
                 if (enhancedQuantities.value.includes(combinedQty)) {
-                    activeTags.value.push(combinedQty);
+                    activeTags.value = [combinedQty];
                 } else {
-                    showManualAmount.value = true;
-                    manualQuantity.value = props.editItem.quantity.toString();
-                    manualUnit.value = props.editItem.unit;
+                    activeTags.value = [];
+                    manualQuantity.value = combinedQty;
                 }
+            } else {
+                activeTags.value = [];
             }
+
+            // Re-map tags (Ausprägungen)
+            let tags = [];
+            try { tags = typeof props.editItem.tags === 'string' ? JSON.parse(props.editItem.tags) : []; } catch(e){}
+
+            // Check if there are tags that are not in the standard constellations/meta or quantities
+            tags.forEach(t => {
+                if (!enhancedQuantities.value.includes(t)) {
+                    // Try to see if it's a known constellation or just append it to manualUnit if it's the first unknown
+                    let isKnown = false;
+                    if (selectedItem.value && selectedItem.value.tags) {
+                        if (selectedItem.value.tags.constellations?.includes(t)) isKnown = true;
+                        if (selectedItem.value.tags.global_meta?.includes(t)) isKnown = true;
+                    }
+                    if (isKnown) {
+                        activeTags.value.push(t);
+                    } else if (manualUnit.value === '') {
+                        manualUnit.value = t;
+                    } else {
+                        activeTags.value.push(t);
+                    }
+                }
+            });
         } else {
             // Add Mode Init
             frequentItems.value = calculateFrequentItems().reverse();
@@ -391,47 +415,28 @@ watch(() => props.isOpen, (newVal) => {
                        <button
                            v-for="tag in enhancedQuantities" :key="tag"
                            class="ks-chip tag-chip"
-                           :class="{ active: activeTags.includes(tag) && !showManualAmount }"
-                           @click="() => { showManualAmount = false; toggleTag(tag); }"
+                           :class="{ active: activeTags.includes(tag) }"
+                           @click="toggleTag(tag)"
                        >
                            {{ tag }}
                        </button>
-                       <button
-                           class="ks-chip tag-chip"
-                           :class="{ active: showManualAmount }"
-                           @click="showManualAmount = !showManualAmount"
-                       >
-                           Manuell ✏️
-                       </button>
                    </div>
-
-                   <div v-if="showManualAmount" class="manual-amount-input mt-3" style="display: flex; gap: 8px; align-items: center;">
+                   <div class="manual-amount-input mt-3" style="display: flex; gap: 8px; align-items: center;">
                        <input
                            type="text"
                            v-model="manualQuantity"
-                           placeholder="Menge (z.B. 2)"
+                           placeholder="Menge (z.B. 2 6er-Träger)"
                            class="modal-input"
                            style="background: var(--ks-surface-3); font-size: 16px; padding: 10px 14px; flex: 1; min-width: 0;"
                            @keyup.enter="confirmSelection(false)"
                        />
-                       <input
-                           type="text"
-                           v-model="manualUnit"
-                           placeholder="Einheit (z.B. kg)"
-                           class="modal-input"
-                           style="background: var(--ks-surface-3); font-size: 16px; padding: 10px 14px; flex: 1.5; min-width: 0;"
-                           @keyup.enter="confirmSelection(false)"
-                       />
-                       <button class="ks-icon-btn primary" style="background: var(--ks-primary); color: var(--ks-on-primary); width: 44px; height: 44px; border-radius: 12px;" @click="confirmSelection(false)">
-                           <svg viewBox="0 0 24 24" style="width: 24px; height: 24px; fill: currentColor;"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg>
-                       </button>
                    </div>
                </div>
 
                <!-- Produktspezifische Eigenschaften -->
-               <div class="tag-section" v-if="selectedItem.tags.constellations?.length > 0">
+               <div class="tag-section">
                    <p class="tag-label">Ausprägung</p>
-                   <div class="tag-group">
+                   <div class="tag-group" v-if="selectedItem.tags.constellations?.length > 0">
                        <button
                            v-for="tag in selectedItem.tags.constellations" :key="tag"
                            class="ks-chip tag-chip"
@@ -440,6 +445,16 @@ watch(() => props.isOpen, (newVal) => {
                        >
                            {{ tag }}
                        </button>
+                   </div>
+                   <div class="manual-amount-input mt-3" style="display: flex; gap: 8px; align-items: center;">
+                       <input
+                           type="text"
+                           v-model="manualUnit"
+                           placeholder="Ausprägung (z.B. Bio)"
+                           class="modal-input"
+                           style="background: var(--ks-surface-3); font-size: 16px; padding: 10px 14px; flex: 1; min-width: 0;"
+                           @keyup.enter="confirmSelection(false)"
+                       />
                    </div>
                </div>
 
