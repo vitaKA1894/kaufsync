@@ -50,10 +50,9 @@ export function searchTaxonomy(query) {
 
   const lowerQuery = query.toLowerCase();
 
-  // Scoring function:
+  // Scoring function (Strict matching only):
   // - Exact match in primary name or aliases: 0
   // - Prefix match (e.g. "Mil" in "Milch"): 1
-  // - Fuzzy match via levenshtein <= 2: 2
   // - Contains substring match: 3
 
   const results = taxonomy.map(item => {
@@ -65,8 +64,6 @@ export function searchTaxonomy(query) {
         score = Math.min(score, 0);
     } else if (lowerName.startsWith(lowerQuery)) {
         score = Math.min(score, 1);
-    } else if (levenshteinDistance(lowerName, lowerQuery) <= 2) {
-        score = Math.min(score, 2);
     } else if (lowerName.includes(lowerQuery)) {
         score = Math.min(score, 3);
     }
@@ -78,8 +75,6 @@ export function searchTaxonomy(query) {
             score = Math.min(score, 0);
         } else if (lowerAlias.startsWith(lowerQuery)) {
             score = Math.min(score, 1);
-        } else if (levenshteinDistance(lowerAlias, lowerQuery) <= 2) {
-            score = Math.min(score, 2);
         } else if (lowerAlias.includes(lowerQuery)) {
             score = Math.min(score, 3);
         }
