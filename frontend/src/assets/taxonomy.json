@@ -308,9 +308,9 @@
   },
   {
     "id": "e1ba60cb-9d2e-42a6-846b-d04f968fca2b",
-    "name": "Zuckermelone (Galia",
+    "name": "Zuckermelone",
     "aliases": [
-      "Honig)"
+      "Honigmelone"
     ],
     "category": "Obst & Gemüse",
     "tags": {
@@ -320,7 +320,8 @@
       ],
       "constellations": [
         "Essreif",
-        "Bio"
+        "Bio",
+        "Galia"
       ],
       "global_meta": [
         "Dringend",
@@ -826,12 +827,16 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Obst"
   },
   {
     "id": "1592d899-ed89-477f-990a-8f70ea5abb5c",
-    "name": "Feige (frisch)",
-    "aliases": [],
+    "name": "Feige",
+    "aliases": [
+      "Trockenfeigen",
+      "Feigen"
+    ],
     "category": "Obst & Gemüse",
     "tags": {
       "quantities": [
@@ -844,14 +849,19 @@
       "constellations": [
         "Bio",
         "Blau",
-        "Grün"
+        "Grün",
+        "Frisch",
+        "Getrocknet",
+        "Exotisch",
+        "Süß"
       ],
       "global_meta": [
         "Dringend",
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Feigen"
   },
   {
     "id": "352a3ace-aa90-4f73-92fd-99afd20904c0",
@@ -1041,7 +1051,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Obst"
   },
   {
     "id": "a4fd25d4-4976-41d5-98fe-c340f0c42e7b",
@@ -1281,7 +1292,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Obst"
   },
   {
     "id": "93c2b7c7-12b5-4853-a611-a4cf6affafb8",
@@ -1360,8 +1372,12 @@
   },
   {
     "id": "f464ee53-54a1-4cb0-89e3-a5ff453489fc",
-    "name": "Spinat (frisch)",
-    "aliases": [],
+    "name": "Spinat",
+    "aliases": [
+      "Rahmspinat",
+      "Blattspinat",
+      "Spinat"
+    ],
     "category": "Obst & Gemüse",
     "tags": {
       "quantities": [
@@ -1373,7 +1389,13 @@
       "constellations": [
         "Babyspinat",
         "Bio",
-        "Gewaschen"
+        "Gewaschen",
+        "Frischer Blatt",
+        "TK-Rahm",
+        "TK-Blatt",
+        "Regional",
+        "Gemüse",
+        "Iglo"
       ],
       "global_meta": [
         "Dringend",
@@ -1414,7 +1436,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Obst"
   },
   {
     "id": "91fe6a5e-4522-410e-a01c-0494d2eb923f",
@@ -1553,7 +1576,7 @@
       "Apfelrotkohl",
       "Mildessa",
       "Blaukraut",
-      "Blaukraut (frisch)",
+      "Blaukraut",
       "Kühne"
     ],
     "tags": {
@@ -1677,8 +1700,11 @@
   },
   {
     "id": "6df21a1e-e838-4bdd-8b4f-287588047124",
-    "name": "Rosenkohl (frisch)",
-    "aliases": [],
+    "name": "Rosenkohl",
+    "aliases": [
+      "Kohlsprossen",
+      "Sprossenkohl"
+    ],
     "category": "Obst & Gemüse",
     "tags": {
       "quantities": [
@@ -1689,7 +1715,12 @@
       ],
       "constellations": [
         "Bio",
-        "Regional"
+        "Regional",
+        "Frisch",
+        "TK",
+        "Saisonal",
+        "Winter",
+        "Gemüse"
       ],
       "global_meta": [
         "Dringend",
@@ -1701,8 +1732,11 @@
   },
   {
     "id": "3c9fbb64-e5b3-498d-9ada-625e3c4dbfb0",
-    "name": "Grünkohl (frisch)",
-    "aliases": [],
+    "name": "Grünkohl",
+    "aliases": [
+      "Krauskohl",
+      "Braunkohl"
+    ],
     "category": "Obst & Gemüse",
     "tags": {
       "quantities": [
@@ -1713,7 +1747,13 @@
       "constellations": [
         "Bio",
         "Gerupft",
-        "Am Strunk"
+        "Am Strunk",
+        "Frisch",
+        "TK",
+        "Im Glas",
+        "Saisonal",
+        "Winter",
+        "Deftig"
       ],
       "global_meta": [
         "Dringend",
@@ -1833,10 +1873,8 @@
   },
   {
     "id": "ec0e9122-8c8e-45b1-8749-67d58908f915",
-    "name": "Rettich (Weiß",
-    "aliases": [
-      "Schwarz)"
-    ],
+    "name": "Rettich",
+    "aliases": [],
     "category": "Obst & Gemüse",
     "tags": {
       "quantities": [
@@ -1845,19 +1883,26 @@
       ],
       "constellations": [
         "Bio",
-        "Regional"
+        "Regional",
+        "Weiß",
+        "Schwarz"
       ],
       "global_meta": [
         "Dringend",
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Obst"
   },
   {
     "id": "7db6d1e1-d842-4f28-9139-5515bbe7b135",
-    "name": "Rote Bete (frisch)",
-    "aliases": [],
+    "name": "Rote Bete",
+    "aliases": [
+      "Rote Rübe",
+      "Rande",
+      "Rote Beete"
+    ],
     "category": "Obst & Gemüse",
     "tags": {
       "quantities": [
@@ -1868,7 +1913,12 @@
       ],
       "constellations": [
         "Bio",
-        "Gekocht (vakuum)"
+        "Gekocht (vakuum)",
+        "Frisch",
+        "Gegart vakuumiert",
+        "Regional",
+        "Saisonal",
+        "Gemüse"
       ],
       "global_meta": [
         "Dringend",
@@ -1981,7 +2031,7 @@
   },
   {
     "id": "05ef31cc-4918-4271-9e32-0ab1aab9df74",
-    "name": "Champignons (Pilze)",
+    "name": "Champignons",
     "aliases": [],
     "category": "Obst & Gemüse",
     "tags": {
@@ -2007,7 +2057,7 @@
   },
   {
     "id": "ea5b4a23-8b2b-4bb2-b741-c228cb79f177",
-    "name": "Pfifferlinge (frisch)",
+    "name": "Pfifferlinge",
     "aliases": [],
     "category": "Obst & Gemüse",
     "tags": {
@@ -2026,13 +2076,14 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Obst"
   },
   {
     "id": "da2a1c58-4ed8-4b07-8624-656d05b9f950",
-    "name": "Kräuter (Petersilie",
+    "name": "Petersilie",
     "aliases": [
-      "Schnittlauch)"
+      "Petersilienbund"
     ],
     "category": "Obst & Gemüse",
     "tags": {
@@ -2046,7 +2097,9 @@
         "Glatt",
         "Kraus",
         "Bio",
-        "Regional"
+        "Regional",
+        "TK",
+        "Kräuter"
       ],
       "global_meta": [
         "Dringend",
@@ -2058,9 +2111,9 @@
   },
   {
     "id": "1fef8658-c008-405c-8ae8-12d46aa3f40f",
-    "name": "Kräuter (Basilikum",
+    "name": "Basilikum",
     "aliases": [
-      "Minze)"
+      "Basilikumtopf"
     ],
     "category": "Obst & Gemüse",
     "tags": {
@@ -2071,7 +2124,11 @@
         "1 Topf"
       ],
       "constellations": [
-        "Bio"
+        "Bio",
+        "Topf",
+        "Gerebelt",
+        "Kräuter",
+        "Italienisch"
       ],
       "global_meta": [
         "Dringend",
@@ -2083,9 +2140,12 @@
   },
   {
     "id": "9e333578-7487-45ea-99f3-0ab93460a447",
-    "name": "Ingwer (frisch)",
-    "aliases": [],
-    "category": "Obst & Gemüse",
+    "name": "Ingwer",
+    "aliases": [
+      "Ingwerwurzel",
+      "Ingwertee"
+    ],
+    "category": "Vorratskammer",
     "tags": {
       "quantities": [
         "1",
@@ -2094,7 +2154,11 @@
         "250g"
       ],
       "constellations": [
-        "Bio"
+        "Bio",
+        "Klassisch",
+        "Scharf",
+        "Superfood",
+        "Knolle"
       ],
       "global_meta": [
         "Dringend",
@@ -2106,8 +2170,11 @@
   },
   {
     "id": "101cd5e4-52b6-4fe8-87dc-0622cc554ac3",
-    "name": "Kurkuma (frisch)",
-    "aliases": [],
+    "name": "Kurkuma",
+    "aliases": [
+      "Gelbwurz",
+      "Kurkumapulver"
+    ],
     "category": "Obst & Gemüse",
     "tags": {
       "quantities": [
@@ -2116,20 +2183,25 @@
         "100g"
       ],
       "constellations": [
-        "Bio"
+        "Bio",
+        "Gemahlen",
+        "Gewürz",
+        "Gesund",
+        "Gelb"
       ],
       "global_meta": [
         "Dringend",
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Obst"
   },
   {
     "id": "b05f76ba-aad2-4111-bcfc-f2bc93aa8daa",
     "name": "Chili",
     "aliases": [
-      "Peperoni (frisch)"
+      "Peperoni"
     ],
     "category": "Obst & Gemüse",
     "tags": {
@@ -2155,8 +2227,15 @@
   },
   {
     "id": "3d3c0e29-c31f-4782-bcb1-2eb4df43932b",
-    "name": "Brot (Allgemein)",
-    "aliases": [],
+    "name": "Brot",
+    "aliases": [
+      "Lieken Urkorn",
+      "Weltmeisterbrot",
+      "Mischbrot",
+      "Graubrot",
+      "Harry Brot",
+      "Paderborner"
+    ],
     "category": "Brot & Backwaren",
     "tags": {
       "quantities": [
@@ -2170,7 +2249,15 @@
         "Laib",
         "Geschnitten",
         "Frisch",
-        "Aufback"
+        "Aufback",
+        "Vollkorn",
+        "Roggenmisch",
+        "Weizen",
+        "Dinkel",
+        "Eiweiß",
+        "Frisches Holzofen",
+        "Bio",
+        "Bäcker"
       ],
       "global_meta": [
         "Dringend",
@@ -2308,10 +2395,8 @@
   },
   {
     "id": "b7439c4d-939f-4049-8934-e884f144fb32",
-    "name": "Laugengebäck (Brezel",
-    "aliases": [
-      "Stange)"
-    ],
+    "name": "Laugengebäck",
+    "aliases": [],
     "category": "Brot & Backwaren",
     "tags": {
       "quantities": [
@@ -2328,14 +2413,17 @@
         "Frisch",
         "Tiefkühl zum Aufbacken",
         "Bäcker",
-        "Salz"
+        "Salz",
+        "Brezel",
+        "Stange"
       ],
       "global_meta": [
         "Dringend",
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Brot"
   },
   {
     "id": "c2cc226b-3995-4b68-acf3-116baab90f61",
@@ -2363,7 +2451,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Brot"
   },
   {
     "id": "af568f64-955d-445a-b821-e0a300f64282",
@@ -2451,7 +2540,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Brot"
   },
   {
     "id": "8f856d36-c2db-46b6-b2ab-8b807b68aada",
@@ -2560,7 +2650,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Brot"
   },
   {
     "id": "4c6bcbbd-ef69-4d92-8e91-cdba0f69b302",
@@ -2630,8 +2721,14 @@
   },
   {
     "id": "d8192e2d-6e63-489f-802a-d899b637485a",
-    "name": "Hackfleisch (Gemischt)",
-    "aliases": [],
+    "name": "Hackfleisch",
+    "aliases": [
+      "Schabefleisch",
+      "Mett",
+      "Gehacktes",
+      "Hack",
+      "Rügenwalder Mühle"
+    ],
     "category": "Fleisch & Fisch",
     "tags": {
       "quantities": [
@@ -2647,7 +2744,16 @@
         "Bio",
         "Haltungsform 4",
         "SB",
-        "Theke"
+        "Theke",
+        "Gemischtes",
+        "Rinder",
+        "Veganes",
+        "Schweine",
+        "Geflügel",
+        "Frisch",
+        "TK",
+        "Pfanne",
+        "Protein"
       ],
       "global_meta": [
         "Dringend",
@@ -2755,7 +2861,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Fleisch"
   },
   {
     "id": "9ff1bf6e-838c-4952-ac94-1f7b7853771d",
@@ -2790,7 +2897,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Fleisch"
   },
   {
     "id": "dc394736-12e0-443c-bd32-c93df819d9c0",
@@ -2892,7 +3000,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Fleisch"
   },
   {
     "id": "a5a3cf5f-9fc0-4092-ab87-bba61512eba6",
@@ -2962,11 +3071,12 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Fleisch"
   },
   {
     "id": "8ee1a24e-4d07-4151-82fd-245804c2255c",
-    "name": "Hähnchen (Ganzes Tier)",
+    "name": "Hähnchen",
     "aliases": [],
     "category": "Fleisch & Fisch",
     "tags": {
@@ -2988,7 +3098,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Fleisch"
   },
   {
     "id": "596c517f-15cd-4228-b409-45468f0a88c5",
@@ -3057,7 +3168,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Fleisch"
   },
   {
     "id": "32c616f8-2091-4f52-9f22-3165fb8b31e4",
@@ -3132,8 +3244,15 @@
   },
   {
     "id": "510d0752-a0cc-48be-ada2-5c9533965a98",
-    "name": "Salami (Aufschnitt)",
-    "aliases": [],
+    "name": "Salami",
+    "aliases": [
+      "Aoste",
+      "Salami-Scheiben",
+      "Herta",
+      "Rügenwalder",
+      "Bifi",
+      "Kabanos"
+    ],
     "category": "Fleisch & Fisch",
     "tags": {
       "quantities": [
@@ -3149,7 +3268,16 @@
         "Paprika",
         "Theke",
         "SB",
-        "Luftgetrocknet"
+        "Luftgetrocknet",
+        "Hausmacher",
+        "Ungarische",
+        "Vegane",
+        "Pfeffer",
+        "Sticks",
+        "Aufschnitt",
+        "Vesper",
+        "Pizza",
+        "Dauerwurst"
       ],
       "global_meta": [
         "Dringend",
@@ -3534,10 +3662,8 @@
   },
   {
     "id": "58c89285-fa25-4d43-8d57-3cd1f409d5bb",
-    "name": "Lachsfilet (Frisch",
-    "aliases": [
-      "TK)"
-    ],
+    "name": "Lachsfilet",
+    "aliases": [],
     "category": "Fleisch & Fisch",
     "tags": {
       "quantities": [
@@ -3618,7 +3744,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Fleisch"
   },
   {
     "id": "38ac5daf-5430-4783-ace8-ea179b04dbfc",
@@ -3652,7 +3779,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Fleisch"
   },
   {
     "id": "39bfcf48-c301-441a-a0c9-e195629957e2",
@@ -3722,7 +3850,7 @@
   },
   {
     "id": "5a156b74-ed44-48f0-ac04-02871b736bb1",
-    "name": "Schlemmerfilet (Bordelaise)",
+    "name": "Schlemmerfilet",
     "aliases": [],
     "category": "Fleisch & Fisch",
     "tags": {
@@ -3735,14 +3863,16 @@
         "TK",
         "MSC",
         "Iglo",
-        "Frosta"
+        "Frosta",
+        "Bordelaise"
       ],
       "global_meta": [
         "Dringend",
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Fleisch"
   },
   {
     "id": "52ace1b8-b676-4a45-b378-be8fd4ffa52f",
@@ -3824,7 +3954,7 @@
   },
   {
     "id": "1cee61e1-313f-4b0d-b2a9-e2c3710903f2",
-    "name": "Muscheln (Miesmuscheln)",
+    "name": "Muscheln",
     "aliases": [],
     "category": "Fleisch & Fisch",
     "tags": {
@@ -3837,7 +3967,8 @@
       "constellations": [
         "Frisch",
         "Vakuum",
-        "Saison"
+        "Saison",
+        "Miesmuscheln"
       ],
       "global_meta": [
         "Dringend",
@@ -3849,8 +3980,18 @@
   },
   {
     "id": "6800336b-060e-4ae1-9186-e1d5c0eb9c85",
-    "name": "Milch (Kuhmilch)",
-    "aliases": [],
+    "name": "Milch",
+    "aliases": [
+      "Weihenstephan",
+      "Oatly",
+      "Kuhmilch",
+      "Landliebe",
+      "Alpro",
+      "Sojamilch",
+      "Hafermilch",
+      "Mandelmilch",
+      "Bärenmarke"
+    ],
     "category": "Milchprodukte & Tiefkühlkost",
     "tags": {
       "quantities": [
@@ -3876,7 +4017,19 @@
         "Bio",
         "haltbar (H-Milch)",
         "Frisch",
-        "Laktosefrei"
+        "Laktosefrei",
+        "Kuhmilch",
+        "Kuh Voll",
+        "Kuh Fettarm",
+        "Haferdrink",
+        "Mandeldrink",
+        "Sojadrink",
+        "Reisdrink",
+        "Erbsendrink",
+        "Ziegen",
+        "Vegan",
+        "H",
+        "Weide"
       ],
       "global_meta": [
         "Dringend",
@@ -3888,7 +4041,7 @@
   },
   {
     "id": "0ad2099e-3ab3-4028-9870-2f0f0be98997",
-    "name": "Pflanzliche Milch (Drink)",
+    "name": "Pflanzliche Milch",
     "aliases": [],
     "category": "Milchprodukte & Tiefkühlkost",
     "tags": {
@@ -3910,7 +4063,8 @@
         "Bio",
         "Barista",
         "Ungesüßt",
-        "Alpro/Oatly"
+        "Alpro/Oatly",
+        "Drink"
       ],
       "global_meta": [
         "Dringend",
@@ -3922,8 +4076,15 @@
   },
   {
     "id": "175c0d2b-160c-4a60-b50f-78fe1d135556",
-    "name": "Joghurt (Natur)",
-    "aliases": [],
+    "name": "Joghurt",
+    "aliases": [
+      "Zott",
+      "Landliebe",
+      "Ehrmann",
+      "Alpro Joghurt",
+      "Activia",
+      "Danone"
+    ],
     "category": "Milchprodukte & Tiefkühlkost",
     "tags": {
       "quantities": [
@@ -3944,7 +4105,16 @@
         "10% (Griechisch)",
         "Bio",
         "Laktosefrei",
-        "Vegan (Soja/Hafer)"
+        "Vegan (Soja/Hafer)",
+        "Natur 3,5%",
+        "Natur mild 1,5%",
+        "Griechischer  10%",
+        "Frucht Erdbeere",
+        "Hafer",
+        "Soja",
+        "Vegan",
+        "Pflanzlich",
+        "Molkerei"
       ],
       "global_meta": [
         "Dringend",
@@ -4092,7 +4262,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Allgemein"
   },
   {
     "id": "bdba576c-69c2-4450-a926-ae386687e689",
@@ -4304,12 +4475,18 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Allgemein"
   },
   {
     "id": "d8626447-b88e-4f0b-a182-679bc25b5ffc",
-    "name": "Pudding (Kühlregal)",
-    "aliases": [],
+    "name": "Pudding",
+    "aliases": [
+      "Dany Sahne",
+      "Ehrmann High Protein",
+      "Monte",
+      "Landliebe Pudding"
+    ],
     "category": "Milchprodukte & Tiefkühlkost",
     "tags": {
       "quantities": [
@@ -4325,7 +4502,15 @@
         "Schoko",
         "Vanille",
         "High Protein",
-        "Grießpudding"
+        "Grießpudding",
+        "Schoko mit Sahne",
+        "Vanille mit Sahne",
+        "Milchreis",
+        "High-Protein Schoko",
+        "Dessert",
+        "Süß",
+        "Kinder",
+        "Becher"
       ],
       "global_meta": [
         "Dringend",
@@ -4362,7 +4547,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Allgemein"
   },
   {
     "id": "0f942f6b-dbeb-47ca-953f-f0504cf94cdd",
@@ -4388,7 +4574,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Allgemein"
   },
   {
     "id": "65e31584-acdf-4689-84d4-8b45b83dc947",
@@ -4709,8 +4896,11 @@
   },
   {
     "id": "27dea475-4876-4b84-85b5-0319cc9edbb1",
-    "name": "Eier (Hühnereier)",
-    "aliases": [],
+    "name": "Eier",
+    "aliases": [
+      "Hühnereier",
+      "Bio-Eier"
+    ],
     "category": "Milchprodukte & Tiefkühlkost",
     "tags": {
       "quantities": [
@@ -4726,7 +4916,15 @@
         "Freiland (1)",
         "Bodenhaltung (2)",
         "Größe M",
-        "L"
+        "L",
+        "Hühnereier",
+        "Freilandhaltung",
+        "Bodenhaltung",
+        "Bio",
+        "Größe S",
+        "Größe L",
+        "Regional",
+        "Oster"
       ],
       "global_meta": [
         "Dringend",
@@ -4820,10 +5018,8 @@
   },
   {
     "id": "b50a417f-6293-4633-841b-0fc600c5bf12",
-    "name": "Tofu (Natur",
-    "aliases": [
-      "Geräuchert)"
-    ],
+    "name": "Tofu",
+    "aliases": [],
     "category": "Milchprodukte & Tiefkühlkost",
     "tags": {
       "quantities": [
@@ -4837,7 +5033,8 @@
         "Vegan",
         "Bio",
         "Taifun (Marke)",
-        "Seidentofu"
+        "Seidentofu",
+        "Geräuchert"
       ],
       "global_meta": [
         "Dringend",
@@ -4872,7 +5069,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Allgemein"
   },
   {
     "id": "f4a17693-032b-4574-af81-f85706c2426c",
@@ -4985,7 +5183,7 @@
   },
   {
     "id": "e1364d62-6971-462a-bd39-68a7b781280f",
-    "name": "Pommes Frites (TK)",
+    "name": "Pommes Frites",
     "aliases": [],
     "category": "Milchprodukte & Tiefkühlkost",
     "tags": {
@@ -5010,10 +5208,8 @@
   },
   {
     "id": "7499f12c-33aa-48b3-b473-af2af62152e0",
-    "name": "Tiefkühl-Gemüse (Erbsen",
-    "aliases": [
-      "Spinat)"
-    ],
+    "name": "Tiefkühl-Gemüse",
+    "aliases": [],
     "category": "Milchprodukte & Tiefkühlkost",
     "tags": {
       "quantities": [
@@ -5028,7 +5224,9 @@
         "Bio",
         "Iglo",
         "Rahmspinat",
-        "Junge Erbsen"
+        "Junge Erbsen",
+        "Erbsen",
+        "Spinat"
       ],
       "global_meta": [
         "Dringend",
@@ -5119,7 +5317,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Allgemein"
   },
   {
     "id": "568cc1ba-4d7c-47eb-ade6-c533a3cc5b2e",
@@ -5143,7 +5342,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Allgemein"
   },
   {
     "id": "f1bdcff3-6672-4739-89b3-7afcaae6ebd3",
@@ -5152,7 +5352,7 @@
     "aliases": [
       "Spirelli",
       "Mirácoli",
-      "Pasta (Hartweizen)",
+      "Pasta",
       "Buitoni",
       "Hartweizennudeln",
       "Barilla",
@@ -5184,34 +5384,10 @@
         "Teigwaren",
         "Hartweizen",
         "Kochen",
-        "Pasta"
-      ],
-      "global_meta": [
-        "Dringend",
-        "Angebot",
-        "Wenn's passt"
-      ]
-    },
-    "icon": "Nudeln"
-  },
-  {
-    "id": "9f1cd3d1-aa86-4ac0-90f1-9be7fb7813d4",
-    "name": "Nudeln (Vollkorn",
-    "aliases": [
-      "Dinkel)"
-    ],
-    "category": "Vorratskammer",
-    "tags": {
-      "quantities": [
-        "1",
-        "2",
-        "3",
-        "500g"
-      ],
-      "constellations": [
+        "Pasta",
         "Bio",
-        "Spaghetti",
-        "Penne"
+        "Vollkorn",
+        "Dinkel"
       ],
       "global_meta": [
         "Dringend",
@@ -5309,8 +5485,13 @@
   },
   {
     "id": "8f7bd564-2489-49ec-ae0f-3d2d9ce5ea7b",
-    "name": "Mehl (Weizen)",
-    "aliases": [],
+    "name": "Mehl",
+    "aliases": [
+      "Aurora Mehl",
+      "Dinkelmehl",
+      "Weizenmehl",
+      "Diamant Mehl"
+    ],
     "category": "Vorratskammer",
     "tags": {
       "quantities": [
@@ -5326,35 +5507,21 @@
         "Typ 405",
         "Typ 550",
         "Typ 1050",
-        "Bio"
-      ],
-      "global_meta": [
-        "Dringend",
-        "Angebot",
-        "Wenn's passt"
-      ]
-    },
-    "icon": "Mehl"
-  },
-  {
-    "id": "afe8d104-7f15-4e21-a516-1004aeae9dd9",
-    "name": "Mehl (Dinkel",
-    "aliases": [
-      "Roggen)"
-    ],
-    "category": "Vorratskammer",
-    "tags": {
-      "quantities": [
-        "1",
-        "2",
-        "3",
-        "1kg"
-      ],
-      "constellations": [
+        "Bio",
+        "Weizen",
         "Dinkel Typ 630",
         "Roggen Typ 1150",
         "Vollkornmehl",
-        "Bio"
+        "Dinkel",
+        "Roggen",
+        "Weizen Type 405",
+        "Weizen Type 550",
+        "Dinkel Type 630",
+        "Roggen Type 1150",
+        "Weizenvollkorn",
+        "Backen",
+        "Teig",
+        "Basis"
       ],
       "global_meta": [
         "Dringend",
@@ -5525,9 +5692,10 @@
   },
   {
     "id": "f624aff6-109f-4e60-8d58-3434ec92ebfc",
-    "name": "Bohnen (Getrocknet",
+    "name": "Bohnen",
     "aliases": [
-      "Dose)"
+      "Trockenbohnen",
+      "Riesenbohnen"
     ],
     "category": "Vorratskammer",
     "tags": {
@@ -5541,7 +5709,13 @@
         "Kidneybohnen",
         "Weiße Bohnen",
         "Schwarze Bohnen",
-        "Bio"
+        "Bio",
+        "Weiße",
+        "Kidney getrocknet",
+        "Schwarze",
+        "Hülsenfrüchte",
+        "Protein",
+        "Kochen"
       ],
       "global_meta": [
         "Dringend",
@@ -5644,7 +5818,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Allgemein"
   },
   {
     "id": "5c0239c7-528d-4fb2-86fc-be5bd9aba522",
@@ -5666,7 +5841,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Allgemein"
   },
   {
     "id": "7b03a05d-65e0-446c-abe1-8cafc4c011ab",
@@ -5888,14 +6064,15 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Allgemein"
   },
   {
     "id": "fcfa3fbb-e671-48ff-8144-a99ffdcece44",
     "name": "Oregano",
     "category": "Vorratskammer",
     "aliases": [
-      "Basilikum (Getr.)",
+      "Basilikum",
       "Oregano getrocknet",
       "Pizza-Gewürz"
     ],
@@ -5914,7 +6091,8 @@
         "Bio",
         "Italienisch",
         "Pizza",
-        "Gewürz"
+        "Gewürz",
+        "Getr."
       ],
       "global_meta": [
         "Dringend",
@@ -5926,7 +6104,7 @@
   },
   {
     "id": "291e2053-1a47-4c2f-8466-a649a91b19a4",
-    "name": "Brühe (Gemüse, Huhn, Rind)",
+    "name": "Brühe",
     "aliases": [],
     "category": "Vorratskammer",
     "tags": {
@@ -5940,7 +6118,8 @@
         "Bio",
         "Hefeextraktfrei",
         "Maggi/Knorr (Marke)",
-        "Pulver"
+        "Pulver",
+        "Gemüse, Huhn, Rind"
       ],
       "global_meta": [
         "Dringend",
@@ -6031,7 +6210,7 @@
   },
   {
     "id": "c4cdad23-7589-4166-bd4f-89b600c93bcd",
-    "name": "Essig (Balsamico)",
+    "name": "Essig",
     "aliases": [],
     "category": "Vorratskammer",
     "tags": {
@@ -6044,7 +6223,8 @@
         "Aceto Balsamico di Modena",
         "Bianco",
         "Bio",
-        "Crema"
+        "Crema",
+        "Balsamico"
       ],
       "global_meta": [
         "Dringend",
@@ -6214,7 +6394,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Allgemein"
   },
   {
     "id": "621b4b55-d0af-43f0-97c7-ebe8774bf887",
@@ -6257,8 +6438,13 @@
   },
   {
     "id": "dfef37d5-c466-4e93-b7d7-3ab197838c93",
-    "name": "Passierte Tomaten (Passata)",
-    "aliases": [],
+    "name": "Passierte Tomaten",
+    "aliases": [
+      "Mutti passierte Tomaten",
+      "Passata",
+      "Tomatenpüree",
+      "Oro di Parma"
+    ],
     "category": "Vorratskammer",
     "tags": {
       "quantities": [
@@ -6270,7 +6456,15 @@
       ],
       "constellations": [
         "Bio",
-        "Mit Kräutern"
+        "Mit Kräutern",
+        "Passata",
+        "Klassisch rein",
+        "Mit italienischen Kräutern",
+        "Mit Knoblauch",
+        "Tetra Pak",
+        "Kartoniert",
+        "Konserve",
+        "Basis"
       ],
       "global_meta": [
         "Dringend",
@@ -6343,7 +6537,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Allgemein"
   },
   {
     "id": "1f7b0180-bd91-48dc-8903-846bd495f713",
@@ -6384,7 +6579,7 @@
   },
   {
     "id": "98721ba9-75a2-4403-9393-3df64258ee7e",
-    "name": "Mais (Dose)",
+    "name": "Mais",
     "aliases": [],
     "category": "Vorratskammer",
     "tags": {
@@ -6438,8 +6633,13 @@
   },
   {
     "id": "0fc187fe-7aa1-4b6c-9bcc-ad334869fe7c",
-    "name": "Thunfisch (Konserve)",
-    "aliases": [],
+    "name": "Thunfisch",
+    "aliases": [
+      "Vuna",
+      "John West",
+      "Thunfischdose",
+      "Saupiquet"
+    ],
     "category": "Vorratskammer",
     "tags": {
       "quantities": [
@@ -6451,7 +6651,14 @@
       "constellations": [
         "In Sonnenblumenöl",
         "Im eigenen Saft",
-        "MSC"
+        "MSC",
+        "Steak frisch",
+        "Veganer -Ersatz",
+        "Konserve",
+        "Protein",
+        "Salat",
+        "Pizza",
+        "Fisch"
       ],
       "global_meta": [
         "Dringend",
@@ -6500,7 +6707,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Allgemein"
   },
   {
     "id": "68e7bfb9-7ad3-4677-94e3-3be94327a47c",
@@ -6633,8 +6841,15 @@
   },
   {
     "id": "1f333d92-8a2b-48e1-99e3-f12ab49036da",
-    "name": "Nuss-Nougat-Creme (Nutella)",
-    "aliases": [],
+    "name": "Nuss-Nougat-Creme",
+    "aliases": [
+      "Schokoaufstrich",
+      "Nudossi",
+      "Nutella",
+      "Milka Creme",
+      "Schokocreme",
+      "Bionella"
+    ],
     "category": "Vorratskammer",
     "tags": {
       "quantities": [
@@ -6650,19 +6865,33 @@
         "Bio",
         "Vegan",
         "Ohne Palmöl",
-        "Nudossi"
+        "Nudossi",
+        "Klassisch schokoladig",
+        "Vegane Schokocreme",
+        "Ohne Palmöl Schokocreme",
+        "Zweifarbig duo",
+        "Süß",
+        "Frühstück",
+        "Nussig",
+        "Brotaufstrich"
       ],
       "global_meta": [
         "Dringend",
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Nougatcreme"
   },
   {
     "id": "5bb0795c-556f-4c24-9909-f962309f9acb",
-    "name": "Schokolade (Tafel)",
-    "aliases": [],
+    "name": "Schokolade",
+    "aliases": [
+      "Schokotafel",
+      "Milka Tafel",
+      "Lindt Schokolade",
+      "Ritter Sport"
+    ],
     "category": "Vorratskammer",
     "tags": {
       "quantities": [
@@ -6679,7 +6908,16 @@
         "Weiß",
         "Vegan",
         "Milka",
-        "Ritter Sport"
+        "Ritter Sport",
+        "Tafel",
+        "Alpenmilch",
+        "Zartbitter 70%",
+        "Ganze Mandel",
+        "Weiße",
+        "Edel-Marzipan",
+        "Süßwaren",
+        "Kakao",
+        "Süß"
       ],
       "global_meta": [
         "Dringend",
@@ -6717,7 +6955,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Allgemein"
   },
   {
     "id": "766ef682-1c30-4716-9a96-58a836b2a5b2",
@@ -6794,7 +7033,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Allgemein"
   },
   {
     "id": "5bfa52e5-07d0-4105-81ad-fc1aea74f23f",
@@ -7028,9 +7268,15 @@
   },
   {
     "id": "ed7ebcc2-cd9a-476d-ac79-6dc9a621b52a",
-    "name": "Limonade (Fanta",
+    "name": "Limonade",
     "aliases": [
-      "Sprite)"
+      "Schwip Schwap",
+      "Almdudler",
+      "Fritz-Limo",
+      "Bionade",
+      "Mezzo Mix",
+      "Sprite",
+      "Fanta"
     ],
     "category": "Getränke & Genussmittel",
     "tags": {
@@ -7045,7 +7291,17 @@
       "constellations": [
         "Orange",
         "Zitrone",
-        "Zero"
+        "Zero",
+        "Fanta",
+        "Sprite",
+        "Orangen",
+        "Zitronen",
+        "Cola-Mix",
+        "Kräuter Bio",
+        "Süß",
+        "Erfrischung",
+        "Fruchtig",
+        "Flasche"
       ],
       "global_meta": [
         "Dringend",
@@ -7164,9 +7420,15 @@
   },
   {
     "id": "a59139be-a7df-4153-991c-ccb414575da6",
-    "name": "Tee (Beutel",
+    "name": "Tee",
     "aliases": [
-      "Lose)"
+      "Kamillentee",
+      "Kräutertee",
+      "Yogi Tea",
+      "Messmer",
+      "Teebeutel",
+      "Teekanne",
+      "Früchtetee"
     ],
     "category": "Getränke & Genussmittel",
     "tags": {
@@ -7182,20 +7444,29 @@
         "Pfefferminz",
         "Schwarztee",
         "Grüntee",
-        "Bio"
+        "Bio",
+        "Kamillen",
+        "Früchte Waldbeere",
+        "Grüner  Sencha",
+        "Schwarzer  Assam",
+        "Fenchel-Anis-Kümmel",
+        "Heißgetränk",
+        "Beruhigend",
+        "Beutel"
       ],
       "global_meta": [
         "Dringend",
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Tee"
   },
   {
     "id": "62acecf5-8b6e-4d29-8e75-26482d9842df",
     "name": "Kakao",
     "aliases": [
-      "Kaba (Pulver)"
+      "Kaba"
     ],
     "category": "Getränke & Genussmittel",
     "tags": {
@@ -7271,8 +7542,15 @@
   },
   {
     "id": "c8a7f715-fc08-41f5-8a41-396b26959151",
-    "name": "Wein (Weißwein)",
-    "aliases": [],
+    "name": "Wein",
+    "aliases": [
+      "Riesling",
+      "Weißwein",
+      "Chardonnay",
+      "Spätburgunder",
+      "Rotwein",
+      "Grauburgunder"
+    ],
     "category": "Getränke & Genussmittel",
     "tags": {
       "quantities": [
@@ -7289,7 +7567,18 @@
         "Lieblich",
         "Riesling",
         "Grauburgunder",
-        "Bio"
+        "Bio",
+        "Weißwein",
+        "Merlot",
+        "Dornfelder",
+        "Rotwein",
+        "Weiß trocken",
+        "Rot trocken",
+        "Weiß halbtrocken",
+        "Rosé trocken",
+        "Alkohol",
+        "Flasche",
+        "Traube"
       ],
       "global_meta": [
         "Dringend",
@@ -7298,35 +7587,6 @@
       ]
     },
     "icon": "Weisswein"
-  },
-  {
-    "id": "7cc10388-105a-44bd-8c7b-b5ec985c2e57",
-    "name": "Wein (Rotwein)",
-    "aliases": [],
-    "category": "Getränke & Genussmittel",
-    "tags": {
-      "quantities": [
-        "1",
-        "2",
-        "3",
-        "6",
-        "0",
-        "75l"
-      ],
-      "constellations": [
-        "Trocken",
-        "Halbtrocken",
-        "Merlot",
-        "Dornfelder",
-        "Bio"
-      ],
-      "global_meta": [
-        "Dringend",
-        "Angebot",
-        "Wenn's passt"
-      ]
-    },
-    "icon": "Rotwein"
   },
   {
     "id": "b0bb417a-a1e2-4db1-bf38-6162404f041a",
@@ -7464,8 +7724,13 @@
   },
   {
     "id": "1130d07a-3a99-44a6-a84f-c7df822924d4",
-    "name": "Feuchttücher (Baby)",
-    "aliases": [],
+    "name": "Feuchttücher",
+    "aliases": [
+      "Babylove Feuchttücher",
+      "Feuchttücher",
+      "Penaten Feuchttücher",
+      "Pampers Feuchttücher"
+    ],
     "category": "Drogerie, Haushalt & Tierbedarf",
     "tags": {
       "quantities": [
@@ -7479,7 +7744,14 @@
       "constellations": [
         "Sensitiv",
         "Wasserstoff",
-        "Bio"
+        "Bio",
+        "Baby",
+        "Baby- sensitiv",
+        "Baby- mit Aloe Vera",
+        "Reise- klein",
+        "Reinigung",
+        "Unterwegs",
+        "Hygiene"
       ],
       "global_meta": [
         "Dringend",
@@ -7491,10 +7763,8 @@
   },
   {
     "id": "60dfa9f9-e3b4-473a-b64c-ff65bdd77b30",
-    "name": "Babynahrung (Gläschen",
-    "aliases": [
-      "Pulver)"
-    ],
+    "name": "Babynahrung",
+    "aliases": [],
     "category": "Drogerie, Haushalt & Tierbedarf",
     "tags": {
       "quantities": [
@@ -7510,7 +7780,8 @@
         "Pre",
         "Folgemilch 1",
         "Ab 4. Monat",
-        "Hipp"
+        "Hipp",
+        "Gläschen"
       ],
       "global_meta": [
         "Dringend",
@@ -7561,7 +7832,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Allgemein"
   },
   {
     "id": "19904d14-cb09-4df8-ba27-32f2354bba07",
@@ -7606,10 +7878,8 @@
   },
   {
     "id": "72b0aeaf-e9fc-44be-9aa9-1466e58514c5",
-    "name": "Seife (Flüssig",
-    "aliases": [
-      "Stück)"
-    ],
+    "name": "Seife",
+    "aliases": [],
     "category": "Drogerie, Haushalt & Tierbedarf",
     "tags": {
       "quantities": [
@@ -7635,8 +7905,16 @@
   },
   {
     "id": "df6d9a92-2e5d-4087-9297-7ae5c9700e29",
-    "name": "Deodorant (Deo)",
-    "aliases": [],
+    "name": "Deodorant",
+    "aliases": [
+      "Nivea Deo",
+      "Deospray",
+      "8x4",
+      "Axe Bodyspray",
+      "Dove Deo",
+      "Deoroller",
+      "Rexona Deo"
+    ],
     "category": "Drogerie, Haushalt & Tierbedarf",
     "tags": {
       "quantities": [
@@ -7650,14 +7928,23 @@
         "Ohne Aluminium",
         "Naturkosmetik",
         "Nivea",
-        "Rexona"
+        "Rexona",
+        "Deo",
+        "Deospray Antitranspirant",
+        "Deo Roll-On sensitiv",
+        "Deostick ohne Aluminium",
+        "Hygiene",
+        "Frische",
+        "Duft",
+        "Schweißschutz"
       ],
       "global_meta": [
         "Dringend",
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Allgemein"
   },
   {
     "id": "0af5942e-a040-482f-b3af-e434d4e858b0",
@@ -7814,7 +8101,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Allgemein"
   },
   {
     "id": "00f01808-93e2-46ef-94b9-ba7f4496a204",
@@ -7943,9 +8231,15 @@
   },
   {
     "id": "2c297613-c8cb-4d01-8903-899d86388cc1",
-    "name": "Waschmittel (Flüssig",
+    "name": "Waschmittel",
     "aliases": [
-      "Pulver)"
+      "Coral",
+      "Spee Color",
+      "Waschpulver",
+      "Flüssigwaschmittel",
+      "Ariel Vollwaschmittel",
+      "Lenor Waschmittel",
+      "Persil Megaperls"
     ],
     "category": "Drogerie, Haushalt & Tierbedarf",
     "tags": {
@@ -7963,7 +8257,15 @@
         "Sensitiv",
         "Pods/Caps",
         "Ariel",
-        "Persil"
+        "Persil",
+        "Color flüssig",
+        "Voll Pulver",
+        "Fein Wolle & Seide",
+        "Pods",
+        "Wäsche",
+        "Sauberkeit",
+        "Duft",
+        "Waschen"
       ],
       "global_meta": [
         "Dringend",
@@ -8013,8 +8315,14 @@
   },
   {
     "id": "6a078549-33f5-4d61-bb20-d4adee127d57",
-    "name": "Spülmittel (Hand)",
-    "aliases": [],
+    "name": "Spülmittel",
+    "aliases": [
+      "Spüli",
+      "Palmolive Spülmittel",
+      "Frosch Spülmittel",
+      "Pril Spülmittel",
+      "Fairy Spülmittel"
+    ],
     "category": "Drogerie, Haushalt & Tierbedarf",
     "tags": {
       "quantities": [
@@ -8029,7 +8337,14 @@
         "Balsam",
         "Öko",
         "Pril",
-        "Fairy"
+        "Fairy",
+        "Original Konzentrat",
+        "Sensitiv Aloe Vera",
+        "Zitronenfrische",
+        "Spülen",
+        "Küche",
+        "Fettlösend",
+        "Haushalt"
       ],
       "global_meta": [
         "Dringend",
@@ -8079,7 +8394,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Allgemein"
   },
   {
     "id": "b46a373a-81e9-4b9c-8901-5f983a28903d",
@@ -8164,7 +8480,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Allgemein"
   },
   {
     "id": "9d0fbbbf-5341-4e81-9f6f-904d77243f85",
@@ -8282,9 +8599,10 @@
   },
   {
     "id": "0078589f-546f-42c8-9738-f3ad29c5eda8",
-    "name": "Batterien (AA",
+    "name": "Batterien",
     "aliases": [
-      "AAA)"
+      "Duracell",
+      "Varta Batterien"
     ],
     "category": "Drogerie, Haushalt & Tierbedarf",
     "tags": {
@@ -8299,7 +8617,14 @@
         "Alkaline",
         "Akkus (Wiederaufladbar)",
         "Varta",
-        "Duracell"
+        "Duracell",
+        "AA",
+        "AAA",
+        "AA Mignon 4er Pack",
+        "AAA Micro 4er Pack",
+        "Knopfzelle CR2032",
+        "Strom",
+        "Haushalt"
       ],
       "global_meta": [
         "Dringend",
@@ -8311,9 +8636,13 @@
   },
   {
     "id": "cc15c094-0821-4932-a3a0-684aab68b7d6",
-    "name": "Katzenfutter (Nass",
+    "name": "Katzenfutter",
     "aliases": [
-      "Trocken)"
+      "Kitekat",
+      "Felix Katzenfutter",
+      "Whiskas Katzenfutter",
+      "Sheba",
+      "Purina One"
     ],
     "category": "Drogerie, Haushalt & Tierbedarf",
     "tags": {
@@ -8335,7 +8664,15 @@
         "Getreidefrei",
         "Adult",
         "Senior",
-        "Kitten"
+        "Kitten",
+        "Trocken",
+        "Katzentrockenfutter Geflügel",
+        "Katzennassfutter in Gelee",
+        "Katzen-Milch",
+        "Katzen-Snacks",
+        "Tierbedarf",
+        "Katze",
+        "Nahrung"
       ],
       "global_meta": [
         "Dringend",
@@ -8387,9 +8724,13 @@
   },
   {
     "id": "23da7684-2a0f-4ebb-858d-96f8be363bc4",
-    "name": "Hundefutter (Nass",
+    "name": "Hundefutter",
     "aliases": [
-      "Trocken)"
+      "Pedigree Hundefutter",
+      "Cesar",
+      "Royal Canin",
+      "Frolic",
+      "Rinti"
     ],
     "category": "Drogerie, Haushalt & Tierbedarf",
     "tags": {
@@ -8409,7 +8750,15 @@
         "Getreidefrei",
         "Adult",
         "Puppy",
-        "Senior"
+        "Senior",
+        "Trocken",
+        "Hundetrockenfutter Lamm & Reis",
+        "Hundenassfutter Rind",
+        "Welpenfutter soft",
+        "Hunde-Kauknochen",
+        "Tierbedarf",
+        "Hund",
+        "Nahrung"
       ],
       "global_meta": [
         "Dringend",
@@ -8421,10 +8770,8 @@
   },
   {
     "id": "e6a04ee7-1011-4f53-9137-da9e26e0955c",
-    "name": "Leckerlis (Hund",
-    "aliases": [
-      "Katze)"
-    ],
+    "name": "Leckerlis",
+    "aliases": [],
     "category": "Drogerie, Haushalt & Tierbedarf",
     "tags": {
       "quantities": [
@@ -8445,7 +8792,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Allgemein"
   },
   {
     "id": "7c5cc988-7265-4502-bc47-a4679d0d5c2c",
@@ -8525,7 +8873,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Allgemein"
   },
   {
     "id": "10bd6d15-51a5-4e75-8b2f-6436cef76bc8",
@@ -8546,7 +8895,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Allgemein"
   },
   {
     "id": "769c2936-3080-43bc-817a-1e0a5facf03d",
@@ -8569,7 +8919,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Allgemein"
   },
   {
     "id": "4a8c4c7c-c271-4b62-803d-58526462cb38",
@@ -8599,7 +8950,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Allgemein"
   },
   {
     "id": "9889b789-84fa-4e69-81af-43e9303cdbfe",
@@ -8678,14 +9030,13 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Allgemein"
   },
   {
     "id": "a665a72f-6580-4554-826d-cfcf119d2d91",
-    "name": "Saisonartikel (Weihnachten",
-    "aliases": [
-      "Ostern)"
-    ],
+    "name": "Saisonartikel",
+    "aliases": [],
     "category": "Sonstiges",
     "tags": {
       "quantities": [
@@ -8704,7 +9055,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Allgemein"
   },
   {
     "id": "c940c1d6-21a9-4e29-b92f-9cae1b652e6f",
@@ -8948,37 +9300,6 @@
       ]
     },
     "icon": "Kirschen"
-  },
-  {
-    "id": "da620df8-3b99-4e45-8d88-1c0f47906611",
-    "name": "Feige",
-    "category": "Obst & Gemüse",
-    "aliases": [
-      "Trockenfeigen",
-      "Feigen"
-    ],
-    "tags": {
-      "quantities": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5"
-      ],
-      "constellations": [
-        "Frisch",
-        "Getrocknet",
-        "Bio",
-        "Exotisch",
-        "Süß"
-      ],
-      "global_meta": [
-        "Dringend",
-        "Angebot",
-        "Wenn's passt"
-      ]
-    },
-    "icon": "Feigen"
   },
   {
     "id": "21afe5d1-9d1d-4657-abaa-6c086f3b3775",
@@ -9225,7 +9546,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Obst"
   },
   {
     "id": "d83f6d96-b61d-4f41-9632-e94f91893244",
@@ -9299,40 +9621,6 @@
       ]
     },
     "icon": "Gurke"
-  },
-  {
-    "id": "6c31a943-f230-4d9f-aa53-73425a154b46",
-    "name": "Spinat",
-    "category": "Obst & Gemüse",
-    "aliases": [
-      "Rahmspinat",
-      "Blattspinat",
-      "Spinat"
-    ],
-    "tags": {
-      "quantities": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5"
-      ],
-      "constellations": [
-        "Frischer Blatt",
-        "TK-Rahm",
-        "TK-Blatt",
-        "Bio",
-        "Regional",
-        "Gemüse",
-        "Iglo"
-      ],
-      "global_meta": [
-        "Dringend",
-        "Angebot",
-        "Wenn's passt"
-      ]
-    },
-    "icon": "Spinat"
   },
   {
     "id": "90b1107b-bc12-425e-adde-c59b5614e82d",
@@ -9443,37 +9731,6 @@
     "icon": "Pilze"
   },
   {
-    "id": "a2ec6d65-fa4b-4eb8-b73e-a353a4c365dd",
-    "name": "Ingwer",
-    "category": "Getränke & Genussmittel",
-    "aliases": [
-      "Ingwerwurzel",
-      "Ingwertee"
-    ],
-    "tags": {
-      "quantities": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5"
-      ],
-      "constellations": [
-        "Klassisch",
-        "Bio",
-        "Scharf",
-        "Superfood",
-        "Knolle"
-      ],
-      "global_meta": [
-        "Dringend",
-        "Angebot",
-        "Wenn's passt"
-      ]
-    },
-    "icon": "Ingwer"
-  },
-  {
     "id": "3beea4c5-2a4f-4bd9-82c9-26312dff15fb",
     "name": "Sellerie",
     "category": "Obst & Gemüse",
@@ -9505,71 +9762,6 @@
       ]
     },
     "icon": "Sellerie"
-  },
-  {
-    "id": "7969009c-4eb0-45a5-b8df-ebd92bf93308",
-    "name": "Rote Bete",
-    "category": "Obst & Gemüse",
-    "aliases": [
-      "Rote Rübe",
-      "Rande",
-      "Rote Beete"
-    ],
-    "tags": {
-      "quantities": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5"
-      ],
-      "constellations": [
-        "Frisch",
-        "Gegart vakuumiert",
-        "Bio",
-        "Regional",
-        "Saisonal",
-        "Gemüse"
-      ],
-      "global_meta": [
-        "Dringend",
-        "Angebot",
-        "Wenn's passt"
-      ]
-    },
-    "icon": "Rote Bete"
-  },
-  {
-    "id": "5ec23c9f-a725-463d-b57f-263560686abf",
-    "name": "Rosenkohl",
-    "category": "Obst & Gemüse",
-    "aliases": [
-      "Kohlsprossen",
-      "Sprossenkohl"
-    ],
-    "tags": {
-      "quantities": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5"
-      ],
-      "constellations": [
-        "Frisch",
-        "TK",
-        "Bio",
-        "Saisonal",
-        "Winter",
-        "Gemüse"
-      ],
-      "global_meta": [
-        "Dringend",
-        "Angebot",
-        "Wenn's passt"
-      ]
-    },
-    "icon": "Kohl"
   },
   {
     "id": "44020f24-a088-4ce8-b9f6-56ee503f2f36",
@@ -9604,7 +9796,7 @@
   {
     "id": "749fd9fe-43b5-4b4e-aa1a-32700a72f8ef",
     "name": "Zuckererbse",
-    "category": "Vorratskammer",
+    "category": "Obst & Gemüse",
     "aliases": [
       "Kaiserschoten",
       "Zuckerschoten",
@@ -9666,38 +9858,6 @@
     "icon": "Erbsen"
   },
   {
-    "id": "f4c1427c-d29d-4439-9fc3-22d88856a6a8",
-    "name": "Grünkohl",
-    "category": "Obst & Gemüse",
-    "aliases": [
-      "Krauskohl",
-      "Braunkohl"
-    ],
-    "tags": {
-      "quantities": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5"
-      ],
-      "constellations": [
-        "Frisch",
-        "TK",
-        "Im Glas",
-        "Saisonal",
-        "Winter",
-        "Deftig"
-      ],
-      "global_meta": [
-        "Dringend",
-        "Angebot",
-        "Wenn's passt"
-      ]
-    },
-    "icon": "Kohl"
-  },
-  {
     "id": "8109a1f6-3dfb-4ee8-b7f8-47949336319d",
     "name": "Pastinake",
     "category": "Obst & Gemüse",
@@ -9724,7 +9884,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Obst"
   },
   {
     "id": "dc7ae5c3-6262-48b7-a918-224f6df6dd69",
@@ -9878,7 +10039,7 @@
   {
     "id": "d7028237-9ee7-471a-ba95-fee4fa022b45",
     "name": "Kräuterseitling",
-    "category": "Milchprodukte & Tiefkühlkost",
+    "category": "Obst & Gemüse",
     "aliases": [
       "Pilze",
       "Kräuterseitlinge"
@@ -9997,65 +10158,6 @@
     "icon": "Schnittlauch"
   },
   {
-    "id": "d030c40c-5924-4c7c-bcab-87b0c3fea33a",
-    "name": "Petersilie",
-    "category": "Obst & Gemüse",
-    "aliases": [
-      "Petersilienbund"
-    ],
-    "tags": {
-      "quantities": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5"
-      ],
-      "constellations": [
-        "Kraus",
-        "Glatt",
-        "TK",
-        "Kräuter",
-        "Regional"
-      ],
-      "global_meta": [
-        "Dringend",
-        "Angebot",
-        "Wenn's passt"
-      ]
-    },
-    "icon": "Petersilie"
-  },
-  {
-    "id": "a1a50cc3-e679-47c0-8d69-c505150c8a98",
-    "name": "Basilikum",
-    "category": "Obst & Gemüse",
-    "aliases": [
-      "Basilikumtopf"
-    ],
-    "tags": {
-      "quantities": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5"
-      ],
-      "constellations": [
-        "Topf",
-        "Gerebelt",
-        "Kräuter",
-        "Italienisch"
-      ],
-      "global_meta": [
-        "Dringend",
-        "Angebot",
-        "Wenn's passt"
-      ]
-    },
-    "icon": "Basilikum"
-  },
-  {
     "id": "3a7b10aa-6f44-4194-bdf7-a5d26ea68568",
     "name": "Kresse",
     "category": "Obst & Gemüse",
@@ -10080,7 +10182,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Obst"
   },
   {
     "id": "bece172d-b1d5-4f82-93a2-791428bd615d",
@@ -10110,7 +10213,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Obst"
   },
   {
     "id": "35ba9935-bc25-4ee6-acf1-18b75afa3ab0",
@@ -10139,7 +10243,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Obst"
   },
   {
     "id": "3ab57028-eb97-45c8-973b-4d5d95c6cf7d",
@@ -10263,53 +10368,6 @@
     "icon": "Thymian"
   },
   {
-    "id": "db463556-2a5b-4943-8e3e-dbc380d036bd",
-    "name": "Milch",
-    "category": "Milchprodukte & Tiefkühlkost",
-    "aliases": [
-      "Weihenstephan",
-      "Oatly",
-      "Kuhmilch",
-      "Landliebe",
-      "Alpro",
-      "Sojamilch",
-      "Hafermilch",
-      "Mandelmilch",
-      "Bärenmarke"
-    ],
-    "tags": {
-      "quantities": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5"
-      ],
-      "constellations": [
-        "Kuh Voll",
-        "Kuh Fettarm",
-        "Haferdrink",
-        "Mandeldrink",
-        "Sojadrink",
-        "Reisdrink",
-        "Erbsendrink",
-        "Ziegen",
-        "Bio",
-        "Vegan",
-        "H",
-        "Frisch",
-        "Laktosefrei",
-        "Weide"
-      ],
-      "global_meta": [
-        "Dringend",
-        "Angebot",
-        "Wenn's passt"
-      ]
-    },
-    "icon": "Milch"
-  },
-  {
     "id": "c5992d5c-a17e-44e8-a055-037c7a598016",
     "name": "Grießbrei",
     "category": "Milchprodukte & Tiefkühlkost",
@@ -10341,47 +10399,6 @@
       ]
     },
     "icon": "Griess"
-  },
-  {
-    "id": "e8ffb776-a974-4b59-b70d-d16544517ded",
-    "name": "Joghurt",
-    "category": "Milchprodukte & Tiefkühlkost",
-    "aliases": [
-      "Zott",
-      "Landliebe",
-      "Ehrmann",
-      "Alpro Joghurt",
-      "Activia",
-      "Danone"
-    ],
-    "tags": {
-      "quantities": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5"
-      ],
-      "constellations": [
-        "Natur 3,5%",
-        "Natur mild 1,5%",
-        "Griechischer  10%",
-        "Frucht Erdbeere",
-        "Hafer",
-        "Soja",
-        "Bio",
-        "Vegan",
-        "Laktosefrei",
-        "Pflanzlich",
-        "Molkerei"
-      ],
-      "global_meta": [
-        "Dringend",
-        "Angebot",
-        "Wenn's passt"
-      ]
-    },
-    "icon": "Joghurt"
   },
   {
     "id": "55448197-16d7-4ef1-adfc-8cfa76b94c14",
@@ -10512,7 +10529,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Allgemein"
   },
   {
     "id": "e0445841-9504-4c65-b71c-c9c21255fa23",
@@ -10710,7 +10728,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Allgemein"
   },
   {
     "id": "b3b232fe-b5c5-4001-9e0b-cc87344e3d12",
@@ -10742,7 +10761,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Allgemein"
   },
   {
     "id": "c83e9734-a0b0-4253-a3e9-0b4265508d37",
@@ -10872,116 +10892,6 @@
     "icon": "Gorgonzola"
   },
   {
-    "id": "d58d7e97-510c-44c1-b5ea-b2d9b9c59067",
-    "name": "Pudding",
-    "category": "Milchprodukte & Tiefkühlkost",
-    "aliases": [
-      "Dany Sahne",
-      "Ehrmann High Protein",
-      "Monte",
-      "Landliebe Pudding"
-    ],
-    "tags": {
-      "quantities": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5"
-      ],
-      "constellations": [
-        "Schoko mit Sahne",
-        "Vanille mit Sahne",
-        "Milchreis",
-        "High-Protein Schoko",
-        "Dessert",
-        "Süß",
-        "Kinder",
-        "Becher"
-      ],
-      "global_meta": [
-        "Dringend",
-        "Angebot",
-        "Wenn's passt"
-      ]
-    },
-    "icon": "Pudding"
-  },
-  {
-    "id": "dbdf95f5-4212-4258-8b4b-7b36bb937fc7",
-    "name": "Eier",
-    "category": "Milchprodukte & Tiefkühlkost",
-    "aliases": [
-      "Hühnereier",
-      "Bio-Eier"
-    ],
-    "tags": {
-      "quantities": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5"
-      ],
-      "constellations": [
-        "Freilandhaltung",
-        "Bodenhaltung",
-        "Bio",
-        "Größe S",
-        "Größe M",
-        "Größe L",
-        "Regional",
-        "Oster"
-      ],
-      "global_meta": [
-        "Dringend",
-        "Angebot",
-        "Wenn's passt"
-      ]
-    },
-    "icon": "Eier"
-  },
-  {
-    "id": "a9ee9d3f-c18a-45e4-8221-9a88a9b40e1d",
-    "name": "Brot",
-    "category": "Brot & Backwaren",
-    "aliases": [
-      "Lieken Urkorn",
-      "Weltmeisterbrot",
-      "Mischbrot",
-      "Graubrot",
-      "Harry Brot",
-      "Paderborner"
-    ],
-    "tags": {
-      "quantities": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5"
-      ],
-      "constellations": [
-        "Vollkorn",
-        "Roggenmisch",
-        "Weizen",
-        "Dinkel",
-        "Eiweiß",
-        "Frisches Holzofen",
-        "Bio",
-        "Geschnitten",
-        "Frisch",
-        "Bäcker"
-      ],
-      "global_meta": [
-        "Dringend",
-        "Angebot",
-        "Wenn's passt"
-      ]
-    },
-    "icon": "Brot"
-  },
-  {
     "id": "a3ff9010-af5c-449e-838c-b1f441461c1c",
     "name": "Toast",
     "category": "Brot & Backwaren",
@@ -11047,7 +10957,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Allgemein"
   },
   {
     "id": "2cd9bb6e-b1d8-41de-8954-5704be756c0a",
@@ -11080,7 +10991,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Brot"
   },
   {
     "id": "17f700ca-48a5-49da-8f1e-9f87eb7b8453",
@@ -11113,84 +11025,6 @@
       ]
     },
     "icon": "Brot"
-  },
-  {
-    "id": "471ea9ca-d190-41b3-b185-dee23b24a313",
-    "name": "Hackfleisch",
-    "category": "Fleisch & Fisch",
-    "aliases": [
-      "Schabefleisch",
-      "Mett",
-      "Gehacktes",
-      "Hack",
-      "Rügenwalder Mühle"
-    ],
-    "tags": {
-      "quantities": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5"
-      ],
-      "constellations": [
-        "Gemischtes",
-        "Rinder",
-        "Veganes",
-        "Schweine",
-        "Geflügel",
-        "Frisch",
-        "TK",
-        "Pfanne",
-        "Protein"
-      ],
-      "global_meta": [
-        "Dringend",
-        "Angebot",
-        "Wenn's passt"
-      ]
-    },
-    "icon": "Hackfleisch"
-  },
-  {
-    "id": "66206a2d-b6de-4131-b6e1-e030b9141e9d",
-    "name": "Salami",
-    "category": "Fleisch & Fisch",
-    "aliases": [
-      "Aoste",
-      "Salami-Scheiben",
-      "Herta",
-      "Rügenwalder",
-      "Bifi",
-      "Kabanos"
-    ],
-    "tags": {
-      "quantities": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5"
-      ],
-      "constellations": [
-        "Hausmacher",
-        "Geflügel",
-        "Ungarische",
-        "Vegane",
-        "Pfeffer",
-        "Sticks",
-        "Aufschnitt",
-        "Vesper",
-        "Pizza",
-        "Dauerwurst"
-      ],
-      "global_meta": [
-        "Dringend",
-        "Angebot",
-        "Wenn's passt"
-      ]
-    },
-    "icon": "Salami"
   },
   {
     "id": "d7b78a86-4335-4ec3-ad5c-e87756d19f6a",
@@ -11323,7 +11157,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Fleisch"
   },
   {
     "id": "ae483a30-c334-4081-aa36-3aff8b1407d8",
@@ -11353,7 +11188,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Fleisch"
   },
   {
     "id": "b173f183-1719-4614-afa7-aadcf8dda514",
@@ -11422,43 +11258,6 @@
     "icon": "Lachs"
   },
   {
-    "id": "354f729d-a96d-4c82-83e6-28571a1ad117",
-    "name": "Thunfisch",
-    "category": "Fleisch & Fisch",
-    "aliases": [
-      "Vuna",
-      "John West",
-      "Thunfischdose",
-      "Saupiquet"
-    ],
-    "tags": {
-      "quantities": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5"
-      ],
-      "constellations": [
-        "In Sonnenblumenöl",
-        "Im eigenen Saft",
-        "Steak frisch",
-        "Veganer -Ersatz",
-        "Konserve",
-        "Protein",
-        "Salat",
-        "Pizza",
-        "Fisch"
-      ],
-      "global_meta": [
-        "Dringend",
-        "Angebot",
-        "Wenn's passt"
-      ]
-    },
-    "icon": "Thunfisch"
-  },
-  {
     "id": "56eb3ce4-0c9c-49eb-80a4-3bbad6183f24",
     "name": "Hering",
     "category": "Milchprodukte & Tiefkühlkost",
@@ -11489,7 +11288,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Allgemein"
   },
   {
     "id": "dae3aa73-9433-4975-ae25-c6b237546b19",
@@ -11519,7 +11319,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Fleisch"
   },
   {
     "id": "656536ab-f7fa-433f-817d-19336234aba5",
@@ -11548,7 +11349,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Fleisch"
   },
   {
     "id": "a7848d3e-35ad-4256-85c7-fac5f393c2f3",
@@ -11756,7 +11558,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Allgemein"
   },
   {
     "id": "9ae7ca74-e81c-4dd6-9e6e-711d4ac9e993",
@@ -11794,7 +11597,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Allgemein"
   },
   {
     "id": "f11ad092-7675-4561-94a8-7100ace3cea0",
@@ -11930,7 +11734,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Allgemein"
   },
   {
     "id": "a917de27-1dc2-401b-9c27-814ccab9c77b",
@@ -11960,7 +11765,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Allgemein"
   },
   {
     "id": "1d046468-8465-4d43-b475-2ae2cb2c3e19",
@@ -11992,39 +11798,6 @@
       ]
     },
     "icon": "Salat"
-  },
-  {
-    "id": "a2269534-51f1-4448-a64d-70e83fbf3255",
-    "name": "Bohnen",
-    "category": "Vorratskammer",
-    "aliases": [
-      "Trockenbohnen",
-      "Riesenbohnen"
-    ],
-    "tags": {
-      "quantities": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5"
-      ],
-      "constellations": [
-        "Weiße",
-        "Kidney getrocknet",
-        "Schwarze",
-        "Hülsenfrüchte",
-        "Protein",
-        "Bio",
-        "Kochen"
-      ],
-      "global_meta": [
-        "Dringend",
-        "Angebot",
-        "Wenn's passt"
-      ]
-    },
-    "icon": "Bohnen"
   },
   {
     "id": "e8154ae5-2f86-4b9e-8f77-f560c287aa72",
@@ -12182,44 +11955,9 @@
     "icon": "Tomaten"
   },
   {
-    "id": "211427b8-d98a-44bb-bace-e0cd68292907",
-    "name": "Passierte Tomaten",
-    "category": "Obst & Gemüse",
-    "aliases": [
-      "Mutti passierte Tomaten",
-      "Passata",
-      "Tomatenpüree",
-      "Oro di Parma"
-    ],
-    "tags": {
-      "quantities": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5"
-      ],
-      "constellations": [
-        "Klassisch rein",
-        "Mit italienischen Kräutern",
-        "Mit Knoblauch",
-        "Tetra Pak",
-        "Kartoniert",
-        "Konserve",
-        "Basis"
-      ],
-      "global_meta": [
-        "Dringend",
-        "Angebot",
-        "Wenn's passt"
-      ]
-    },
-    "icon": "Tomaten"
-  },
-  {
     "id": "063a84d2-68e2-4f2c-b737-bd0a5782871b",
     "name": "Dosenbohnen",
-    "category": "Milchprodukte & Tiefkühlkost",
+    "category": "Vorratskammer",
     "aliases": [
       "Baked Beans",
       "Bonduelle",
@@ -12449,7 +12187,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Obst"
   },
   {
     "id": "63b553f4-8848-41ce-8050-93ce9a88377b",
@@ -12482,12 +12221,13 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Allgemein"
   },
   {
     "id": "c4f56ae7-3e02-495d-922b-d68a85f0eeab",
     "name": "Apfelmus",
-    "category": "Milchprodukte & Tiefkühlkost",
+    "category": "Vorratskammer",
     "aliases": [
       "Odenwald Apfelmus",
       "ja! Apfelmus",
@@ -12551,7 +12291,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Allgemein"
   },
   {
     "id": "b7c0eacc-80dc-45b8-bfe1-d3717c3dc04a",
@@ -12785,7 +12526,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Allgemein"
   },
   {
     "id": "c4a0631f-a1cf-4a42-b573-a675b84e3ba5",
@@ -12852,7 +12594,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Allgemein"
   },
   {
     "id": "8ad6d300-d9b9-46f8-ac21-ed05e64a77d6",
@@ -12979,7 +12722,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Allgemein"
   },
   {
     "id": "1246fcf5-8215-40c9-9b29-84148a503844",
@@ -13143,42 +12887,6 @@
     "icon": "Hefe"
   },
   {
-    "id": "8f791cb9-f0be-4f28-b696-9bbc8b00aee1",
-    "name": "Mehl",
-    "category": "Vorratskammer",
-    "aliases": [
-      "Aurora Mehl",
-      "Dinkelmehl",
-      "Weizenmehl",
-      "Diamant Mehl"
-    ],
-    "tags": {
-      "quantities": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5"
-      ],
-      "constellations": [
-        "Weizen Type 405",
-        "Weizen Type 550",
-        "Dinkel Type 630",
-        "Roggen Type 1150",
-        "Weizenvollkorn",
-        "Backen",
-        "Teig",
-        "Basis"
-      ],
-      "global_meta": [
-        "Dringend",
-        "Angebot",
-        "Wenn's passt"
-      ]
-    },
-    "icon": "Mehl"
-  },
-  {
     "id": "737bcb85-45a9-4c4d-bb9d-82d7c26af12e",
     "name": "Speisestärke",
     "category": "Vorratskammer",
@@ -13238,7 +12946,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Allgemein"
   },
   {
     "id": "97143203-b403-4045-ab06-f26ce66ecd11",
@@ -13340,7 +13049,7 @@
   {
     "id": "dc0dd280-0bef-4b28-90bc-bfa0e21c0d39",
     "name": "Rapsöl",
-    "category": "Milchprodukte & Tiefkühlkost",
+    "category": "Vorratskammer",
     "aliases": [
       "Bratöl Raps",
       "Reines Rapsöl",
@@ -13367,7 +13076,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Allgemein"
   },
   {
     "id": "ab087060-afbf-41b6-b04b-b2fe8841db2f",
@@ -13399,7 +13109,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Allgemein"
   },
   {
     "id": "3e92c106-4826-4a41-bc1b-10f8f3df3e3c",
@@ -13538,35 +13249,6 @@
     "icon": "Nüsse"
   },
   {
-    "id": "79bc45a0-a59f-428b-a8e4-4957df0075aa",
-    "name": "Kurkuma",
-    "category": "Vorratskammer",
-    "aliases": [
-      "Gelbwurz",
-      "Kurkumapulver"
-    ],
-    "tags": {
-      "quantities": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5"
-      ],
-      "constellations": [
-        "Gemahlen",
-        "Gewürz",
-        "Gesund",
-        "Gelb"
-      ],
-      "global_meta": [
-        "Dringend",
-        "Angebot",
-        "Wenn's passt"
-      ]
-    }
-  },
-  {
     "id": "1ea3c16e-0eef-44db-b165-6ee5c5c1cc6c",
     "name": "Knoblauchpulver",
     "category": "Obst & Gemüse",
@@ -13620,7 +13302,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Obst"
   },
   {
     "id": "6ddca136-5fc4-4ab4-a649-6ec0f8cabb80",
@@ -13648,7 +13331,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Allgemein"
   },
   {
     "id": "0321bbdb-431e-4444-9fe0-a284d134a6a6",
@@ -13706,12 +13390,13 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Allgemein"
   },
   {
     "id": "5a892301-d92a-4a09-8635-84b9b9be07ae",
     "name": "Vanilleschote",
-    "category": "Milchprodukte & Tiefkühlkost",
+    "category": "Vorratskammer",
     "aliases": [
       "Vanilleschoten",
       "Dr. Oetker Vanilleschote"
@@ -13735,12 +13420,13 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Allgemein"
   },
   {
     "id": "abee88de-a6f5-40a1-ac24-cc0d95a3cf78",
     "name": "Kuvertüre",
-    "category": "Milchprodukte & Tiefkühlkost",
+    "category": "Vorratskammer",
     "aliases": [
       "Dr. Oetker Kuvertüre",
       "Schokoglasur"
@@ -13766,12 +13452,13 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Allgemein"
   },
   {
     "id": "147f6528-08cc-4586-a1e9-fcd90ad009dd",
     "name": "Backaroma",
-    "category": "Milchprodukte & Tiefkühlkost",
+    "category": "Vorratskammer",
     "aliases": [
       "Dr. Oetker Backaroma",
       "Backaromen"
@@ -13796,7 +13483,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Allgemein"
   },
   {
     "id": "41b49beb-36b2-4e65-a3ad-266619b93d2f",
@@ -13824,7 +13512,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Allgemein"
   },
   {
     "id": "13f33f85-7bab-4d82-8214-a986ad085341",
@@ -13855,12 +13544,13 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Allgemein"
   },
   {
     "id": "b2099879-7163-4abb-8b0d-2ba58fe91f3a",
     "name": "Mandeln",
-    "category": "Milchprodukte & Tiefkühlkost",
+    "category": "Vorratskammer",
     "aliases": [
       "Gemahlene Mandeln",
       "Dr. Oetker Mandeln"
@@ -13893,7 +13583,7 @@
   {
     "id": "61388fe7-e1b5-4ac8-930b-f34011d7d250",
     "name": "Sahnesteif",
-    "category": "Milchprodukte & Tiefkühlkost",
+    "category": "Vorratskammer",
     "aliases": [
       "Dr. Oetker Sahnesteif",
       "San-apart"
@@ -13917,7 +13607,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Allgemein"
   },
   {
     "id": "5f04ff17-ce05-4c6f-83f6-ae91d892f8db",
@@ -13945,12 +13636,13 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Allgemein"
   },
   {
     "id": "a738db02-fde7-4a3a-874f-dcbe75a664ec",
     "name": "Tortenguss",
-    "category": "Milchprodukte & Tiefkühlkost",
+    "category": "Vorratskammer",
     "aliases": [
       "Dr. Oetker Tortenguss"
     ],
@@ -13979,7 +13671,7 @@
   {
     "id": "95142183-d96c-4b6a-926b-f714fece718d",
     "name": "Trockenbackhefe",
-    "category": "Milchprodukte & Tiefkühlkost",
+    "category": "Vorratskammer",
     "aliases": [
       "Ruf Hefe",
       "Dr. Oetker"
@@ -14008,7 +13700,7 @@
   {
     "id": "d9a9848a-2712-4c4f-9c5a-aefd93d6d730",
     "name": "Spezial-Speiseöl",
-    "category": "Milchprodukte & Tiefkühlkost",
+    "category": "Vorratskammer",
     "aliases": [
       "Leinöl",
       "Sesamöl",
@@ -14073,7 +13765,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Allgemein"
   },
   {
     "id": "2d6ee8a7-233c-4088-98e9-0638d2f9a52a",
@@ -14137,7 +13830,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Allgemein"
   },
   {
     "id": "999d95a9-7f35-40bf-adbd-23a237e5f4ee",
@@ -14201,7 +13895,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Allgemein"
   },
   {
     "id": "d2807846-dce7-4ec5-ac89-066fd0637a48",
@@ -14263,7 +13958,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Allgemein"
   },
   {
     "id": "a00f9e6a-ba59-48c3-9537-acea32e825ae",
@@ -14332,7 +14028,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Allgemein"
   },
   {
     "id": "fde65bfb-d1ff-42ec-8d00-976147c38c03",
@@ -14365,7 +14062,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Allgemein"
   },
   {
     "id": "f9a8de07-b3b9-4789-b4f3-55a02abf9d6e",
@@ -14398,49 +14096,13 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
-  },
-  {
-    "id": "dca252b1-219e-4212-a064-0b54b1e47b2d",
-    "name": "Schokolade",
-    "category": "Vorratskammer",
-    "aliases": [
-      "Schokotafel",
-      "Milka Tafel",
-      "Lindt Schokolade",
-      "Ritter Sport"
-    ],
-    "tags": {
-      "quantities": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5"
-      ],
-      "constellations": [
-        "Alpenmilch",
-        "Zartbitter 70%",
-        "Ganze Mandel",
-        "Weiße",
-        "Edel-Marzipan",
-        "Süßwaren",
-        "Kakao",
-        "Tafel",
-        "Süß"
-      ],
-      "global_meta": [
-        "Dringend",
-        "Angebot",
-        "Wenn's passt"
-      ]
     },
-    "icon": "Schokolade"
+    "icon": "Getränke"
   },
   {
     "id": "a0248c21-2ca2-42c3-9e4a-eecd15fbd771",
     "name": "Schokoriegel",
-    "category": "Milchprodukte & Tiefkühlkost",
+    "category": "Vorratskammer",
     "aliases": [
       "Twix",
       "Mars",
@@ -14475,7 +14137,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Allgemein"
   },
   {
     "id": "e8f0d35f-332d-4ae1-9aea-9c1821d26e2a",
@@ -14510,7 +14173,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Allgemein"
   },
   {
     "id": "e078d822-3d00-47c5-9b3f-31de596a83d7",
@@ -14580,7 +14244,7 @@
   {
     "id": "486d1338-a7cb-4184-942a-24e1d143d5be",
     "name": "Lebkuchen",
-    "category": "Milchprodukte & Tiefkühlkost",
+    "category": "Vorratskammer",
     "aliases": [
       "Lambertz",
       "Weiss",
@@ -14608,45 +14272,6 @@
       ]
     },
     "icon": "Lebkuchen"
-  },
-  {
-    "id": "e6fe8f22-e72a-4100-8bd8-0a54dcecb27d",
-    "name": "Nuss-Nougat-Creme",
-    "category": "Vorratskammer",
-    "aliases": [
-      "Schokoaufstrich",
-      "Nudossi",
-      "Nutella",
-      "Milka Creme",
-      "Schokocreme",
-      "Bionella"
-    ],
-    "tags": {
-      "quantities": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5"
-      ],
-      "constellations": [
-        "Klassisch schokoladig",
-        "Vegane Schokocreme",
-        "Ohne Palmöl Schokocreme",
-        "Zweifarbig duo",
-        "Süß",
-        "Frühstück",
-        "Nussig",
-        "Brotaufstrich",
-        "Nutella",
-        "Nudossi"
-      ],
-      "global_meta": [
-        "Dringend",
-        "Angebot",
-        "Wenn's passt"
-      ]
-    }
   },
   {
     "id": "3d0693a5-183f-4b6b-b569-a045f17536c0",
@@ -14782,7 +14407,7 @@
   {
     "id": "edb3bc69-83fc-4b3f-babf-1f3d42e7fa42",
     "name": "Pflanzlicher Aufstrich",
-    "category": "Drogerie, Haushalt & Tierbedarf",
+    "category": "Vorratskammer",
     "aliases": [
       "Alnatura Aufstrich",
       "Streichcreme vegan",
@@ -14811,7 +14436,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Allgemein"
   },
   {
     "id": "0f918bdb-90fd-435c-9382-3f52ef9c2f1c",
@@ -14872,51 +14498,13 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
-  },
-  {
-    "id": "41b7c72a-abb4-4369-ae34-c2c6e30a455d",
-    "name": "Limonade",
-    "category": "Getränke & Genussmittel",
-    "aliases": [
-      "Schwip Schwap",
-      "Almdudler",
-      "Fritz-Limo",
-      "Bionade",
-      "Mezzo Mix",
-      "Sprite",
-      "Fanta"
-    ],
-    "tags": {
-      "quantities": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5"
-      ],
-      "constellations": [
-        "Orangen",
-        "Zitronen",
-        "Cola-Mix",
-        "Kräuter Bio",
-        "Süß",
-        "Erfrischung",
-        "Fruchtig",
-        "Flasche"
-      ],
-      "global_meta": [
-        "Dringend",
-        "Angebot",
-        "Wenn's passt"
-      ]
     },
-    "icon": "Limonade"
+    "icon": "Allgemein"
   },
   {
     "id": "02fc5f47-7aa7-4710-9f28-13b0f51baf92",
     "name": "Apfelschorle",
-    "category": "Milchprodukte & Tiefkühlkost",
+    "category": "Getränke & Genussmittel",
     "aliases": [
       "Gerolsteiner Apfelschorle",
       "Apfel-Schorle",
@@ -15023,7 +14611,7 @@
   {
     "id": "f83b0e42-c3d3-43f9-a48f-dd74c787d295",
     "name": "Eiskaffee-Getränk",
-    "category": "Drogerie, Haushalt & Tierbedarf",
+    "category": "Getränke & Genussmittel",
     "aliases": [
       "Landliebe Eiskaffee",
       "Starbucks Discoveries",
@@ -15053,43 +14641,6 @@
       ]
     },
     "icon": "Kaffee"
-  },
-  {
-    "id": "e36ee7c0-911b-4d63-bd02-7af691fd1457",
-    "name": "Wein",
-    "category": "Milchprodukte & Tiefkühlkost",
-    "aliases": [
-      "Riesling",
-      "Weißwein",
-      "Chardonnay",
-      "Spätburgunder",
-      "Rotwein",
-      "Grauburgunder"
-    ],
-    "tags": {
-      "quantities": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5"
-      ],
-      "constellations": [
-        "Weiß trocken",
-        "Rot trocken",
-        "Weiß halbtrocken",
-        "Rosé trocken",
-        "Alkohol",
-        "Flasche",
-        "Traube"
-      ],
-      "global_meta": [
-        "Dringend",
-        "Angebot",
-        "Wenn's passt"
-      ]
-    },
-    "icon": "Weisswein"
   },
   {
     "id": "91583ec5-277d-4164-868c-f1618827f09f",
@@ -15218,7 +14769,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Getränke"
   },
   {
     "id": "c54259aa-d312-4ac4-ac69-d29320dffa26",
@@ -15253,7 +14805,7 @@
   {
     "id": "7ddb6ec7-15f8-4fce-946c-81e775fad168",
     "name": "Glühwein",
-    "category": "Milchprodukte & Tiefkühlkost",
+    "category": "Getränke & Genussmittel",
     "aliases": [
       "Omas Glühwein",
       "Glühwein Flasche"
@@ -15279,7 +14831,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Getränke"
   },
   {
     "id": "586a336b-ffa8-47c0-a087-106eaed7a6fd",
@@ -15319,7 +14872,7 @@
   {
     "id": "94c6c31c-7624-480e-82a3-63e4d8f31109",
     "name": "Filterkaffee",
-    "category": "Milchprodukte & Tiefkühlkost",
+    "category": "Getränke & Genussmittel",
     "aliases": [
       "Tchibo Feine Milde",
       "Melitta Kaffee gemahlen",
@@ -15416,50 +14969,9 @@
     "icon": "Kaffee"
   },
   {
-    "id": "091c980c-1e6d-4b50-b780-5a8b6dda7a77",
-    "name": "Tee",
-    "category": "Getränke & Genussmittel",
-    "aliases": [
-      "Kamillentee",
-      "Kräutertee",
-      "Yogi Tea",
-      "Messmer",
-      "Teebeutel",
-      "Teekanne",
-      "Früchtetee"
-    ],
-    "tags": {
-      "quantities": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5"
-      ],
-      "constellations": [
-        "Pfefferminz",
-        "Kamillen",
-        "Früchte Waldbeere",
-        "Grüner  Sencha",
-        "Schwarzer  Assam",
-        "Fenchel-Anis-Kümmel",
-        "Heißgetränk",
-        "Beruhigend",
-        "Bio",
-        "Beutel"
-      ],
-      "global_meta": [
-        "Dringend",
-        "Angebot",
-        "Wenn's passt"
-      ]
-    },
-    "icon": "Tee"
-  },
-  {
     "id": "34ae40e1-c865-4e03-82b5-9ece225f30ea",
     "name": "Getreidekaffee",
-    "category": "Milchprodukte & Tiefkühlkost",
+    "category": "Getränke & Genussmittel",
     "aliases": [
       "Kinderkaffee",
       "Caro",
@@ -15585,43 +15097,6 @@
       ]
     },
     "icon": "Haarspray"
-  },
-  {
-    "id": "1340dd63-b163-40de-9b77-aa3db81235b6",
-    "name": "Deodorant",
-    "category": "Drogerie, Haushalt & Tierbedarf",
-    "aliases": [
-      "Nivea Deo",
-      "Deospray",
-      "8x4",
-      "Axe Bodyspray",
-      "Dove Deo",
-      "Deoroller",
-      "Rexona Deo"
-    ],
-    "tags": {
-      "quantities": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5"
-      ],
-      "constellations": [
-        "Deospray Antitranspirant",
-        "Deo Roll-On sensitiv",
-        "Deostick ohne Aluminium",
-        "Hygiene",
-        "Frische",
-        "Duft",
-        "Schweißschutz"
-      ],
-      "global_meta": [
-        "Dringend",
-        "Angebot",
-        "Wenn's passt"
-      ]
-    }
   },
   {
     "id": "278f8218-3dec-48c7-be9f-7a9e2be44909",
@@ -15924,7 +15399,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Allgemein"
   },
   {
     "id": "8667eec0-022b-4074-93b1-0be833779454",
@@ -15955,7 +15431,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Allgemein"
   },
   {
     "id": "812f155e-278e-4c6e-ba98-a54a1e0006d5",
@@ -15988,41 +15465,6 @@
       ]
     },
     "icon": "Wattestäbchen"
-  },
-  {
-    "id": "d02aea1b-14cb-4bed-8a7b-20ea44a0ea6c",
-    "name": "Feuchttücher",
-    "category": "Drogerie, Haushalt & Tierbedarf",
-    "aliases": [
-      "Babylove Feuchttücher",
-      "Feuchttücher",
-      "Penaten Feuchttücher",
-      "Pampers Feuchttücher"
-    ],
-    "tags": {
-      "quantities": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5"
-      ],
-      "constellations": [
-        "Baby- sensitiv",
-        "Baby- mit Aloe Vera",
-        "Reise- klein",
-        "Baby",
-        "Reinigung",
-        "Unterwegs",
-        "Hygiene"
-      ],
-      "global_meta": [
-        "Dringend",
-        "Angebot",
-        "Wenn's passt"
-      ]
-    },
-    "icon": "Feuchttücher"
   },
   {
     "id": "2ca4a7bc-5f9f-4b97-981b-1affb59e9ffb",
@@ -16179,7 +15621,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Allgemein"
   },
   {
     "id": "88729855-49a6-41c4-961c-94f372efc56d",
@@ -16241,7 +15684,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Allgemein"
   },
   {
     "id": "79889402-349a-4d68-9149-2861dd20c1f7",
@@ -16302,43 +15746,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
-  },
-  {
-    "id": "350af471-33ba-4482-8094-8565b3cf3d25",
-    "name": "Spülmittel",
-    "category": "Drogerie, Haushalt & Tierbedarf",
-    "aliases": [
-      "Spüli",
-      "Palmolive Spülmittel",
-      "Frosch Spülmittel",
-      "Pril Spülmittel",
-      "Fairy Spülmittel"
-    ],
-    "tags": {
-      "quantities": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5"
-      ],
-      "constellations": [
-        "Original Konzentrat",
-        "Sensitiv Aloe Vera",
-        "Zitronenfrische",
-        "Spülen",
-        "Küche",
-        "Fettlösend",
-        "Haushalt"
-      ],
-      "global_meta": [
-        "Dringend",
-        "Angebot",
-        "Wenn's passt"
-      ]
     },
-    "icon": "Spülmittel"
+    "icon": "Allgemein"
   },
   {
     "id": "758986d9-8808-4f2c-8cb7-1f8cfcc0de1a",
@@ -16398,46 +15807,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
-  },
-  {
-    "id": "81290c71-d367-4756-9f7b-6b6f89ccf419",
-    "name": "Waschmittel",
-    "category": "Drogerie, Haushalt & Tierbedarf",
-    "aliases": [
-      "Coral",
-      "Spee Color",
-      "Waschpulver",
-      "Flüssigwaschmittel",
-      "Ariel Vollwaschmittel",
-      "Lenor Waschmittel",
-      "Persil Megaperls"
-    ],
-    "tags": {
-      "quantities": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5"
-      ],
-      "constellations": [
-        "Color flüssig",
-        "Voll Pulver",
-        "Fein Wolle & Seide",
-        "Pods",
-        "Wäsche",
-        "Sauberkeit",
-        "Duft",
-        "Waschen"
-      ],
-      "global_meta": [
-        "Dringend",
-        "Angebot",
-        "Wenn's passt"
-      ]
     },
-    "icon": "Waschmittel"
+    "icon": "Allgemein"
   },
   {
     "id": "679ad93b-6291-44c7-8a7b-bcdf0c9b433b",
@@ -16541,7 +15912,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Allgemein"
   },
   {
     "id": "b77d1f38-473e-4508-8bbf-7b43eb7a4400",
@@ -16665,7 +16037,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Allgemein"
   },
   {
     "id": "3c7d62eb-2ab2-43ce-8f32-7bd73aab0cae",
@@ -16695,7 +16068,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Allgemein"
   },
   {
     "id": "177eab49-5b1d-4a27-8b6b-7544c081b58c",
@@ -16756,7 +16130,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Allgemein"
   },
   {
     "id": "773d66eb-f076-46d9-acbe-cf76fe535a36",
@@ -16853,37 +16228,6 @@
     "icon": "Zitrone"
   },
   {
-    "id": "2f22c5da-480d-461b-bf24-0b1a86eec335",
-    "name": "Batterien",
-    "category": "Drogerie, Haushalt & Tierbedarf",
-    "aliases": [
-      "Duracell",
-      "Varta Batterien"
-    ],
-    "tags": {
-      "quantities": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5"
-      ],
-      "constellations": [
-        "AA Mignon 4er Pack",
-        "AAA Micro 4er Pack",
-        "Knopfzelle CR2032",
-        "Strom",
-        "Haushalt"
-      ],
-      "global_meta": [
-        "Dringend",
-        "Angebot",
-        "Wenn's passt"
-      ]
-    },
-    "icon": "Batterien"
-  },
-  {
     "id": "454cbebe-07d5-42a3-b7cf-a1f1a089eff7",
     "name": "Allzwecktücher",
     "category": "Drogerie, Haushalt & Tierbedarf",
@@ -16908,7 +16252,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Allgemein"
   },
   {
     "id": "ed2d9434-872a-4e04-9118-8f9f17f73af7",
@@ -16938,78 +16283,7 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
-  },
-  {
-    "id": "e5d3ae23-fb87-4b1d-8083-7c08bec39f64",
-    "name": "Hundefutter",
-    "category": "Drogerie, Haushalt & Tierbedarf",
-    "aliases": [
-      "Pedigree Hundefutter",
-      "Cesar",
-      "Royal Canin",
-      "Frolic",
-      "Rinti"
-    ],
-    "tags": {
-      "quantities": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5"
-      ],
-      "constellations": [
-        "Hundetrockenfutter Lamm & Reis",
-        "Hundenassfutter Rind",
-        "Welpenfutter soft",
-        "Hunde-Kauknochen",
-        "Tierbedarf",
-        "Hund",
-        "Nahrung"
-      ],
-      "global_meta": [
-        "Dringend",
-        "Angebot",
-        "Wenn's passt"
-      ]
     },
-    "icon": "Hundefutter"
-  },
-  {
-    "id": "e61937e2-fc68-47a7-ba91-bb2e4d6659aa",
-    "name": "Katzenfutter",
-    "category": "Drogerie, Haushalt & Tierbedarf",
-    "aliases": [
-      "Kitekat",
-      "Felix Katzenfutter",
-      "Whiskas Katzenfutter",
-      "Sheba",
-      "Purina One"
-    ],
-    "tags": {
-      "quantities": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5"
-      ],
-      "constellations": [
-        "Katzentrockenfutter Geflügel",
-        "Katzennassfutter in Gelee",
-        "Katzen-Milch",
-        "Katzen-Snacks",
-        "Tierbedarf",
-        "Katze",
-        "Nahrung"
-      ],
-      "global_meta": [
-        "Dringend",
-        "Angebot",
-        "Wenn's passt"
-      ]
-    },
-    "icon": "Katzenfutter"
+    "icon": "Allgemein"
   }
 ]
