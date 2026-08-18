@@ -110,14 +110,14 @@ const iconComponent = computed(() => {
 });
 
 const categoryImageMap = {
-  'obst & gemüse': 'apfel.png',
-  'brot & backwaren': 'brot.png',
-  'fleisch & fisch': 'fleisch_allgemein.png',
-  'milchprodukte & tiefkühlkost': 'milch.png',
-  'vorratskammer': 'nudeln.png',
-  'getränke & genussmittel': 'getraenke.png',
-  'drogerie, haushalt & tierbedarf': 'putzmittel.png',
-  'sonstiges': 'sonstiges.png'
+  'obst & gemüse': 'Obst.svg',
+  'brot & backwaren': 'Brot.svg',
+  'fleisch & fisch': 'fleisch_allgemein.svg',
+  'milchprodukte & tiefkühlkost': 'Milch.svg',
+  'vorratskammer': 'Nudeln.svg',
+  'getränke & genussmittel': 'Getraenke_allgemein.svg',
+  'drogerie, haushalt & tierbedarf': 'Putzmittel.svg',
+  'sonstiges': 'Allgemein.svg'
 };
 
 const errorLevel = ref(0);
@@ -131,9 +131,23 @@ const resetState = () => {
 watch(() => props.name, resetState);
 watch(() => props.category, resetState);
 
+
+const categoryClass = computed(() => {
+  if (!props.category) return '';
+  const lowerCat = props.category.toLowerCase();
+  if (lowerCat.includes('obst & gemüse')) return 'cat-obst-gemuese';
+  if (lowerCat.includes('brot & backwaren')) return 'cat-brot-backwaren';
+  if (lowerCat.includes('fleisch & fisch')) return 'cat-fleisch-fisch';
+  if (lowerCat.includes('milchprodukte & tiefkühlkost')) return 'cat-milch-tiefkuehl';
+  if (lowerCat.includes('vorratskammer')) return 'cat-vorratskammer';
+  if (lowerCat.includes('getränke & genussmittel')) return 'cat-getraenke-genuss';
+  if (lowerCat.includes('drogerie, haushalt & tierbedarf')) return 'cat-drogerie-haushalt';
+  return 'cat-sonstiges';
+});
+
 const currentImageSrc = computed(() => {
   if (errorLevel.value === 0) {
-    return `/icons/${props.name}.png`;
+    return `/icons/${props.name}.svg`;
   }
   if (errorLevel.value === 1) {
     if (props.category) {
@@ -148,10 +162,10 @@ const currentImageSrc = computed(() => {
     }
     // If no category match, force the next error level by returning a path we know will trigger an error or directly advance
     // Returning `sonstiges.png` here handles it natively.
-    return '/icons/sonstiges.png';
+    return '/icons/Allgemein.svg';
   }
   if (errorLevel.value === 2) {
-    return '/icons/sonstiges.png';
+    return '/icons/Allgemein.svg';
   }
   return '';
 });
@@ -176,15 +190,27 @@ const onImageError = (event) => {
     :stroke-width="strokeWidth"
     :color="color"
     class="lucide-icon"
+    :class="categoryClass"
   />
-  <img
+  <div
     v-else
-    :src="currentImageSrc"
-    @error="onImageError"
-    class="item-icon-img"
-    :style="{ width: typeof size === 'number' ? `${size}px` : size, height: typeof size === 'number' ? `${size}px` : size }"
-    :alt="name"
-  />
+    class="item-icon-svg"
+    :class="categoryClass"
+    :style="{
+      '--icon-src': `url(${currentImageSrc})`,
+      'background-color': color || 'currentColor',
+      width: typeof size === 'number' ? `${size}px` : size,
+      height: typeof size === 'number' ? `${size}px` : size
+    }"
+    :title="name"
+  >
+    <img
+      :src="currentImageSrc"
+      @error="onImageError"
+      style="display: none;"
+      :alt="name"
+    />
+  </div>
 </template>
 
 <style scoped>
@@ -193,8 +219,25 @@ const onImageError = (event) => {
   align-items: center;
   justify-content: center;
 }
-.item-icon-img {
-  object-fit: contain;
+.item-icon-svg {
   display: inline-block;
+  mask-image: var(--icon-src);
+  -webkit-mask-image: var(--icon-src);
+  mask-size: contain;
+  -webkit-mask-size: contain;
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-position: center;
 }
+
+/* Fallback Classes in case color prop isn't passed down - they align with ListView colors */
+.cat-obst-gemuese { color: #1B5E20; }
+.cat-brot-backwaren { color: #F57F17; }
+.cat-fleisch-fisch { color: #B71C1C; }
+.cat-milch-tiefkuehl { color: #01579B; }
+.cat-vorratskammer { color: #E65100; }
+.cat-getraenke-genuss { color: #1A237E; }
+.cat-drogerie-haushalt { color: #006064; }
+.cat-sonstiges { color: var(--ks-text-muted); }
 </style>
