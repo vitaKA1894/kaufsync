@@ -350,9 +350,9 @@ watch(() => props.isOpen, (newVal) => {
                 class="result-item"
                 @click="selectItem(item)"
               >
-                <CategoryIcon :name="item.name" :category="item.category" class="result-icon" :color="getCategoryDef(item.category).color" />
+                <CategoryIcon :name="item.name" :category="item.category" class="result-icon" size="40" :color="getCategoryDef(item.category).color" :style="{ background: getCategoryDef(item.category).bg, borderRadius: '12px', padding: '4px' }" />
                 <div class="result-text">{{ item.name }}</div>
-                <span class="result-category" :style="{ background: getCategoryDef(item.category).bg, color: getCategoryDef(item.category).color }">{{ item.category }}</span>
+                <span class="result-category" :style="{ background: getCategoryDef(item.category).bg, color: getCategoryDef(item.category).color, border: `1px solid ${getCategoryDef(item.category).color}` }">{{ item.category }}</span>
               </div>
             </div>
 
@@ -364,9 +364,9 @@ watch(() => props.isOpen, (newVal) => {
                 class="result-item"
                 @click="selectItem(item)"
               >
-                <CategoryIcon :name="item.name" :category="item.category" class="result-icon" :color="getCategoryDef(item.category).color" />
+                <CategoryIcon :name="item.name" :category="item.category" class="result-icon" size="40" :color="getCategoryDef(item.category).color" :style="{ background: getCategoryDef(item.category).bg, borderRadius: '12px', padding: '4px' }" />
                 <div class="result-text" v-html="highlightText(item.name, query)"></div>
-                <span class="result-category" :style="{ background: getCategoryDef(item.category).bg, color: getCategoryDef(item.category).color }">{{ item.category }}</span>
+                <span class="result-category" :style="{ background: getCategoryDef(item.category).bg, color: getCategoryDef(item.category).color, border: `1px solid ${getCategoryDef(item.category).color}` }">{{ item.category }}</span>
               </div>
 
               <div v-if="query.length >= 3 && results.length === 0" class="no-results">
