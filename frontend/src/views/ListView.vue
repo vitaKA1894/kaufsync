@@ -797,7 +797,7 @@ onUnmounted(() => {
       </div>
 
       <div v-if="groupedActiveItems.length === 0 && completedItems.length > 0" class="all-done-banner text-center bg-green-100 text-green-700 p-4 rounded-xl mb-4 flex items-center justify-center gap-3" style="background-color: #d1fae5; color: #15803d; padding: 16px; border-radius: 12px; margin-bottom: 24px; display: flex; align-items: center; justify-content: center; gap: 12px;">
-        <svg class="modern-check-icon w-8 h-8" style="width: 32px; height: 32px;" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+        <svg class="modern-check-icon w-8 h-8" style="width: 45px; height: 45px;" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
         <span class="font-bold text-lg" style="font-weight: 700; font-size: 18px;">Alles erledigt!</span>
       </div>
 
@@ -935,7 +935,7 @@ onUnmounted(() => {
   height: 50px; margin-bottom: 12px; border-radius: var(--ks-radius-xs);
 }
 .initials { font-size: 24px; font-weight: 700; }
-.icon-svg { display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; }
+.icon-svg { display: flex; align-items: center; justify-content: center; width: 45px; height: 45px; }
 .icon-svg :deep(svg) { width: 100%; height: 100%; }
 
 .item-quantity {
