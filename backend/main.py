@@ -239,6 +239,14 @@ async def create_list(
     db: Session = Depends(get_db),
     current_user: models.User = Depends(auth.get_current_user) # SCHUTZ
 ):
+    # Check if a list with the same name already exists for the user
+    existing_list = db.query(models.List).filter(
+        models.List.name == list_data.name,
+        ((models.List.created_by == current_user.id) | (models.List.members.any(id=current_user.id)))
+    ).first()
+    if existing_list:
+        return existing_list
+
     new_list = models.List(
         name=list_data.name, 
         icon_name=list_data.icon_name,
@@ -282,7 +290,7 @@ def get_invitations(
     return invitations
 
 @app.delete("/api/lists/{list_id}")
-def delete_list(
+async def delete_list(
     list_id: str,
     db: Session = Depends(get_db),
     current_user: models.User = Depends(auth.get_current_user)
@@ -297,15 +305,23 @@ def delete_list(
         if current_user in db_list.members:
             db_list.members.remove(current_user)
             db.commit()
+            await manager.broadcast_user(str(current_user.id), {
+                "event": "LIST_UPDATED"
+            })
             return {"status": "ok", "message": "Liste verlassen"}
         raise HTTPException(status_code=403, detail="Keine Berechtigung")
         
     db.delete(db_list)
     db.commit()
+
+    await manager.broadcast_user(str(current_user.id), {
+        "event": "LIST_UPDATED"
+    })
+
     return {"status": "ok", "message": "Liste erfolgreich gelöscht"}
     
 @app.post("/api/lists/join", response_model=schemas.ListResponse)
-def join_list(
+async def join_list(
     join_data: schemas.JoinListRequest, 
     db: Session = Depends(get_db),
     current_user: models.User = Depends(auth.get_current_user)
@@ -318,11 +334,24 @@ def join_list(
     # Prüfen ob man schon Mitglied oder sogar Besitzer ist
     if current_user.id == db_list.created_by or current_user in db_list.members:
         raise HTTPException(status_code=400, detail="Du bist bereits in dieser Liste")
+
+    # Prüfen ob eine Liste mit demselben Namen bereits in den Listen des Users existiert
+    existing_list = db.query(models.List).filter(
+        models.List.name == db_list.name,
+        ((models.List.created_by == current_user.id) | (models.List.members.any(id=current_user.id)))
+    ).first()
+    if existing_list:
+        raise HTTPException(status_code=400, detail="Eine Liste mit diesem Namen existiert bereits in deinen Listen.")
         
     # User als Mitglied hinzufügen
     db_list.members.append(current_user)
     db.commit()
     db.refresh(db_list)
+
+    await manager.broadcast_user(str(current_user.id), {
+        "event": "LIST_UPDATED"
+    })
+
     return db_list
 
 @app.post("/api/lists/{list_id}/invite", response_model=schemas.ListInvitationResponse)
