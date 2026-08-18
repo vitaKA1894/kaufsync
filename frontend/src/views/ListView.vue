@@ -772,7 +772,7 @@ onUnmounted(() => {
                  @touchend="cancelPress"
                  @touchmove="cancelPress">
               <div class="card-icon-area" :style="{ background: group.def.bg, color: group.def.color }">
-                 <CategoryIcon class="icon-svg" :name="item.name" :category="item.category" />
+                 <CategoryIcon class="icon-svg" :name="item.name" :category="item.category" size="40" />
               </div>
               <div class="card-text-area">
                 <span class="item-name">{{ item.name }}</span>
@@ -816,7 +816,7 @@ onUnmounted(() => {
         <div class="ks-grid">
           <div v-for="item in completedItems" :key="item.id" class="grid-card completed" @click="toggleItemStatus(item)">
             <div class="card-icon-area">
-               <CategoryIcon class="icon-svg" :name="item.name" :category="item.category" style="opacity: 0.5;" />
+               <CategoryIcon class="icon-svg" :name="item.name" :category="item.category" size="40" style="opacity: 0.5;" />
             </div>
             <div class="card-text-area">
               <span class="item-name">{{ item.name }}</span>
