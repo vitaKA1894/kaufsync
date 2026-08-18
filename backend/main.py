@@ -239,6 +239,14 @@ async def create_list(
     db: Session = Depends(get_db),
     current_user: models.User = Depends(auth.get_current_user) # SCHUTZ
 ):
+    # Check if a list with the same name already exists for the user
+    existing_list = db.query(models.List).filter(
+        models.List.name == list_data.name,
+        ((models.List.created_by == current_user.id) | (models.List.members.any(id=current_user.id)))
+    ).first()
+    if existing_list:
+        return existing_list
+
     new_list = models.List(
         name=list_data.name, 
         icon_name=list_data.icon_name,
@@ -326,6 +334,14 @@ async def join_list(
     # Prüfen ob man schon Mitglied oder sogar Besitzer ist
     if current_user.id == db_list.created_by or current_user in db_list.members:
         raise HTTPException(status_code=400, detail="Du bist bereits in dieser Liste")
+
+    # Prüfen ob eine Liste mit demselben Namen bereits in den Listen des Users existiert
+    existing_list = db.query(models.List).filter(
+        models.List.name == db_list.name,
+        ((models.List.created_by == current_user.id) | (models.List.members.any(id=current_user.id)))
+    ).first()
+    if existing_list:
+        raise HTTPException(status_code=400, detail="Eine Liste mit diesem Namen existiert bereits in deinen Listen.")
         
     # User als Mitglied hinzufügen
     db_list.members.append(current_user)
