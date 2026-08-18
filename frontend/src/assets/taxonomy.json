@@ -41,7 +41,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Äpfel"
   },
   {
     "id": "d2ca7ad4-1116-46d9-ac13-2f434a2f8dd6",
@@ -77,7 +78,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Bananen"
   },
   {
     "id": "5fb82042-2a88-4c62-a2a9-2d997289ece8",
@@ -112,7 +114,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Birnen"
   },
   {
     "id": "b438e1d4-3952-4bd2-ad19-0f3ac1d00f1c",
@@ -137,7 +140,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Erdbeeren"
   },
   {
     "id": "bc82bebd-75a6-4d99-8ec6-fbc66e71d93c",
@@ -160,7 +164,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Himbeeren"
   },
   {
     "id": "22cea1aa-ea4f-41e4-816c-80ac29d4c8e5",
@@ -187,7 +192,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Heidelbeeren"
   },
   {
     "id": "52cf5933-94a2-4a34-8f8e-adbfaf4974d8",
@@ -209,7 +215,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Brombeeren"
   },
   {
     "id": "34ef71c9-2ae9-49dd-90ca-e46ad136a5c9",
@@ -232,7 +239,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Beeren"
   },
   {
     "id": "81dddf90-e8cf-4574-b283-1b3f8a37268c",
@@ -259,7 +267,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Trauben"
   },
   {
     "id": "6190fcce-0dea-4307-bf71-d8d5505d0484",
@@ -294,7 +303,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Wassermelone"
   },
   {
     "id": "e1ba60cb-9d2e-42a6-846b-d04f968fca2b",
@@ -317,7 +327,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Melone"
   },
   {
     "id": "d6896d9b-1773-44bb-90a1-9ab525c8d3e7",
@@ -354,7 +365,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Orange"
   },
   {
     "id": "5007fc10-5c56-420b-be4b-aae523401944",
@@ -390,7 +402,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Mandarinen"
   },
   {
     "id": "0fe1aaf9-26e4-44be-9c62-93618aed14a7",
@@ -423,7 +436,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Zitrone"
   },
   {
     "id": "cfd7e508-db8a-4731-99ab-6b5d494f3357",
@@ -454,7 +468,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Limette"
   },
   {
     "id": "01d42916-2d1b-4424-b55a-085d57376554",
@@ -486,7 +501,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Grapefruit"
   },
   {
     "id": "afef5946-ebbd-4c88-9543-c9cea5f2d55a",
@@ -522,7 +538,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Pfirsich"
   },
   {
     "id": "8be2cb8e-3a32-4448-ac30-c9b0cd7470c2",
@@ -554,7 +571,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Nektarine"
   },
   {
     "id": "fd06b56f-afe7-40ff-be87-dc956e84da88",
@@ -589,7 +607,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Pflaumen"
   },
   {
     "id": "da286c49-76b6-44ed-aee8-6145ea11e46e",
@@ -612,7 +631,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Kirschen"
   },
   {
     "id": "2a13ac48-9934-44ab-aa56-3904848757a7",
@@ -646,7 +666,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Kiwi"
   },
   {
     "id": "eaeaa69c-059b-4f6e-a17a-2bfb7b8c78ad",
@@ -677,7 +698,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Mango"
   },
   {
     "id": "ead6cfa6-ed7f-48a5-8e09-3ef0aa0106a3",
@@ -708,7 +730,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Avocado"
   },
   {
     "id": "e0f30693-5028-4aae-8c95-4985b271426b",
@@ -742,7 +765,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Ananas"
   },
   {
     "id": "066c2a80-9735-45ae-89b7-ccbea90dd8ee",
@@ -773,7 +797,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Äpfel"
   },
   {
     "id": "9dd088ea-51a7-4a16-8023-8960d6f16612",
@@ -860,7 +885,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Kaki"
   },
   {
     "id": "11aa5bf9-a636-4574-8e20-4d044706c109",
@@ -900,7 +926,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Tomaten"
   },
   {
     "id": "b4162f0f-f5fd-4100-831f-fe4e7d0d23d2",
@@ -925,7 +952,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Cherrytomaten"
   },
   {
     "id": "5869c4dd-0d86-4a7d-9dc1-d13aba8e21f8",
@@ -948,7 +976,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Fleisch"
   },
   {
     "id": "40e5b4c0-2952-4700-9755-0c65e911eb1b",
@@ -972,7 +1001,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Gurke"
   },
   {
     "id": "5e462805-30fa-4d1e-b34b-92754d7cdbbe",
@@ -1039,7 +1069,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Kartoffeln"
   },
   {
     "id": "9e022680-e729-49ce-841a-2ee039989e56",
@@ -1070,7 +1101,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Süsskartoffeln"
   },
   {
     "id": "63de1a2f-f126-41d2-9980-5cf1a516bec5",
@@ -1096,7 +1128,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Zwiebeln"
   },
   {
     "id": "cb4dffb2-411a-4569-93b2-31d3e20f055e",
@@ -1133,7 +1166,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Knoblauch"
   },
   {
     "id": "df0a94c0-7ec1-4717-847c-ab9be01eaa09",
@@ -1160,7 +1194,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Karotten"
   },
   {
     "id": "42814715-a82b-4398-ad8a-0d0fb187d818",
@@ -1181,7 +1216,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Salat"
   },
   {
     "id": "f1582936-ce24-4607-bf13-5161a47058d3",
@@ -1221,7 +1257,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Salat"
   },
   {
     "id": "982c1093-7b44-4938-b3c4-e8f4b496dd44",
@@ -1268,7 +1305,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Rucola"
   },
   {
     "id": "20b55012-3518-4584-bc5f-0dc837d84ee3",
@@ -1291,7 +1329,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Salat"
   },
   {
     "id": "3a524213-4d08-46cf-a0d6-576476c9bac7",
@@ -1316,7 +1355,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Salat"
   },
   {
     "id": "f464ee53-54a1-4cb0-89e3-a5ff453489fc",
@@ -1340,7 +1380,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Spinat"
   },
   {
     "id": "15810aac-3cc9-4830-bb90-24e4ad4c453d",
@@ -1404,7 +1445,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Aubergine"
   },
   {
     "id": "a95eecbf-e9a7-4d3d-aa87-bffa2071b3b7",
@@ -1435,7 +1477,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Brokkoli"
   },
   {
     "id": "069ab45f-5e5e-4e4f-8541-5822ebaa1f95",
@@ -1466,7 +1509,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Blumenkohl"
   },
   {
     "id": "7c531cc0-c324-49c0-a300-a39d1951cb31",
@@ -1497,7 +1541,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Kohlrabi"
   },
   {
     "id": "dfd22b13-a5b8-4f32-abca-64ade9696b3b",
@@ -1533,7 +1578,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Kohl"
   },
   {
     "id": "9f94b158-20f4-4a5d-9f7f-f54beb35d93d",
@@ -1564,7 +1610,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Kohl"
   },
   {
     "id": "12e4c7df-3d49-42f2-9de5-acd72bd15517",
@@ -1594,7 +1641,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Kohl"
   },
   {
     "id": "773efb6a-fb4f-47b4-a0d3-351697a6cc25",
@@ -1624,7 +1672,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Kohl"
   },
   {
     "id": "6df21a1e-e838-4bdd-8b4f-287588047124",
@@ -1647,7 +1696,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Kohl"
   },
   {
     "id": "3c9fbb64-e5b3-498d-9ada-625e3c4dbfb0",
@@ -1670,7 +1720,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Kohl"
   },
   {
     "id": "70b4158d-1a47-4cbb-a6fd-32be6c41174b",
@@ -1702,7 +1753,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Lauch"
   },
   {
     "id": "c05bb7fb-dfd4-4daf-9e53-03893e192c75",
@@ -1722,7 +1774,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Sellerie"
   },
   {
     "id": "ecf6ce45-32c5-40e3-ae7b-6d95ff857dfb",
@@ -1743,7 +1796,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Sellerie"
   },
   {
     "id": "5646e63e-5f28-4bc2-b08c-32345b423cc3",
@@ -1774,7 +1828,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Radieschen"
   },
   {
     "id": "ec0e9122-8c8e-45b1-8749-67d58908f915",
@@ -1820,7 +1875,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Rote Bete"
   },
   {
     "id": "667c3163-ab7d-44c9-9bc9-fe0ebd9e97cf",
@@ -1858,7 +1914,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Spargel"
   },
   {
     "id": "bf6651b7-5f3d-403d-8a00-9de6877e5d64",
@@ -1887,7 +1944,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Fenchel"
   },
   {
     "id": "1413c58b-456c-475d-b878-b8169dc6926f",
@@ -1918,7 +1976,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Kürbis"
   },
   {
     "id": "05ef31cc-4918-4271-9e32-0ab1aab9df74",
@@ -1943,7 +2002,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Champignons"
   },
   {
     "id": "ea5b4a23-8b2b-4bb2-b741-c228cb79f177",
@@ -1993,7 +2053,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Kräuter"
   },
   {
     "id": "1fef8658-c008-405c-8ae8-12d46aa3f40f",
@@ -2017,7 +2078,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Basilikum"
   },
   {
     "id": "9e333578-7487-45ea-99f3-0ab93460a447",
@@ -2039,7 +2101,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Ingwer"
   },
   {
     "id": "101cd5e4-52b6-4fe8-87dc-0622cc554ac3",
@@ -2087,7 +2150,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Peperoni"
   },
   {
     "id": "3d3c0e29-c31f-4782-bcb1-2eb4df43932b",
@@ -2113,7 +2177,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Allgemein"
   },
   {
     "id": "73f0a607-3780-4558-9423-392060ef65c2",
@@ -2139,7 +2204,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Brot"
   },
   {
     "id": "b53a90ff-ecbb-420c-8557-938a2a7b3138",
@@ -2166,7 +2232,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Brot"
   },
   {
     "id": "e2b57651-ed1a-4dd4-a959-29c1d90ab32b",
@@ -2192,7 +2259,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Brot"
   },
   {
     "id": "897bc9a7-8f56-4fa8-acf3-9d370754cb26",
@@ -2235,7 +2303,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Brötchen"
   },
   {
     "id": "b7439c4d-939f-4049-8934-e884f144fb32",
@@ -2321,7 +2390,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Baguette"
   },
   {
     "id": "68e08829-3969-4325-9f22-1b562898e862",
@@ -2353,7 +2423,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Brot"
   },
   {
     "id": "853bc27a-40a8-4407-a485-9e938fcfbb8b",
@@ -2417,7 +2488,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Knäckebrot"
   },
   {
     "id": "b9b54f51-c784-4949-a785-8d53b953ff2c",
@@ -2451,7 +2523,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Brot"
   },
   {
     "id": "9b8b7af3-55de-4f58-a92d-ccca455bc9e9",
@@ -2526,7 +2599,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Reis"
   },
   {
     "id": "7528fc58-bae6-457f-b82a-6107f1648d35",
@@ -2551,7 +2625,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Kuchen"
   },
   {
     "id": "d8192e2d-6e63-489f-802a-d899b637485a",
@@ -2579,7 +2654,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Fleisch"
   },
   {
     "id": "eef9e848-049f-4938-af97-3cd72852ebbc",
@@ -2605,7 +2681,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Fleisch"
   },
   {
     "id": "d2005cfb-0ba4-4e0f-bfc5-d63850d5d432",
@@ -2644,7 +2721,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Schnitzel"
   },
   {
     "id": "7bf90fc3-a811-41ab-9469-46b521f8c480",
@@ -2752,7 +2830,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Steak"
   },
   {
     "id": "4a963c54-dbb0-4619-9648-05f371117aa8",
@@ -2788,7 +2867,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Rindfleisch"
   },
   {
     "id": "bce8e2bd-65b0-49a7-98a5-bff5eea24566",
@@ -2855,7 +2935,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Fleisch"
   },
   {
     "id": "44b8a5e3-0f16-447b-986c-f2351b446f0b",
@@ -2948,7 +3029,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Aufschnitt"
   },
   {
     "id": "edad5289-c1c0-4287-942a-b1bf361f59ba",
@@ -3001,7 +3083,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Lamm"
   },
   {
     "id": "bcc9dd5a-5c64-4373-b923-b67a54d22baa",
@@ -3044,7 +3127,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Bratwurst"
   },
   {
     "id": "510d0752-a0cc-48be-ada2-5c9533965a98",
@@ -3072,7 +3156,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Aufschnitt"
   },
   {
     "id": "d5860341-9694-40f6-a601-aa0a52fa1cd4",
@@ -3113,7 +3198,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Schinken"
   },
   {
     "id": "a3bb17c0-f29c-4499-bcb6-0661df386f1b",
@@ -3155,7 +3241,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Rohschinken"
   },
   {
     "id": "b0a14c9d-68e3-4de8-a033-ea12c7775c9c",
@@ -3196,7 +3283,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Wurst"
   },
   {
     "id": "86ffa6b5-102a-47c6-a982-d10de80672c7",
@@ -3224,7 +3312,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Fleisch"
   },
   {
     "id": "5cf5ea22-e93a-4f5e-9f1a-f4f10430c97e",
@@ -3261,7 +3350,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Bier"
   },
   {
     "id": "dc7b3405-a437-4aac-9108-d8e8588375e5",
@@ -3301,7 +3391,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Speck"
   },
   {
     "id": "2c3dd39c-b293-48fb-a118-8032413fd617",
@@ -3342,7 +3433,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Wurst"
   },
   {
     "id": "fcd3c33e-e742-4181-849f-8f5236d165b4",
@@ -3365,7 +3457,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Wurst"
   },
   {
     "id": "0777ae9e-ae1d-4a51-b12f-c051f3134454",
@@ -3399,7 +3492,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Wurst"
   },
   {
     "id": "3543e448-a940-4f28-a02e-74d54552998b",
@@ -3435,7 +3529,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Wurst"
   },
   {
     "id": "58c89285-fa25-4d43-8d57-3cd1f409d5bb",
@@ -3464,7 +3559,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Lachs"
   },
   {
     "id": "290ace6b-e513-4daf-ad00-4faf2da8aa79",
@@ -3489,7 +3585,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Lachs"
   },
   {
     "id": "98579c0d-2980-4d2c-9466-b5fd2421c02e",
@@ -3579,7 +3676,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Lachs"
   },
   {
     "id": "07c42e02-228c-4832-9d72-4c2ef56696b2",
@@ -3619,7 +3717,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Fisch"
   },
   {
     "id": "5a156b74-ed44-48f0-ac04-02871b736bb1",
@@ -3685,7 +3784,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Garnelen"
   },
   {
     "id": "42ce2d01-7c92-42d6-bb71-7fab3c973a97",
@@ -3719,7 +3819,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Fisch"
   },
   {
     "id": "1cee61e1-313f-4b0d-b2a9-e2c3710903f2",
@@ -3743,7 +3844,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Muscheln"
   },
   {
     "id": "6800336b-060e-4ae1-9186-e1d5c0eb9c85",
@@ -3781,7 +3883,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Milch"
   },
   {
     "id": "0ad2099e-3ab3-4028-9870-2f0f0be98997",
@@ -3814,7 +3917,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Milch"
   },
   {
     "id": "175c0d2b-160c-4a60-b50f-78fe1d135556",
@@ -3847,7 +3951,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Joghurt"
   },
   {
     "id": "bd7c7ca9-e5cb-4f3f-8fd2-f61eb5235823",
@@ -3876,7 +3981,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Joghurt"
   },
   {
     "id": "f3d62d66-ca14-452a-979d-759d1d3d7f73",
@@ -3918,7 +4024,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Quark"
   },
   {
     "id": "d57eae06-031a-4cc2-b1bf-4b1837d81279",
@@ -3954,7 +4061,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Kräuter"
   },
   {
     "id": "1665f09a-e1e6-48b5-8859-b388e6fbcc61",
@@ -4016,7 +4124,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Sauerrahm"
   },
   {
     "id": "9b473410-16c9-4d14-a372-3fa82ed237cc",
@@ -4049,7 +4158,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Sauerrahm"
   },
   {
     "id": "6f035143-c971-4947-b895-a65fac2ef0bd",
@@ -4086,7 +4196,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Creme fraiche"
   },
   {
     "id": "204a033c-a04d-41ee-bf97-06e89fd9d27f",
@@ -4120,7 +4231,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Mascarpone"
   },
   {
     "id": "4af0a802-e326-4f67-bd59-9d923f1b3874",
@@ -4159,7 +4271,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Butter"
   },
   {
     "id": "06ac8f78-f9f0-4ae1-b620-5198c288040e",
@@ -4219,7 +4332,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Pudding"
   },
   {
     "id": "0482f5ad-1d27-46fd-b3ec-384e6725a5a9",
@@ -4301,7 +4415,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Butter"
   },
   {
     "id": "53bb3f3f-3b68-4cb2-a90f-8cf4715b77f6",
@@ -4341,7 +4456,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Mozzarella"
   },
   {
     "id": "42adf4ee-2820-4923-acde-69afee16a82f",
@@ -4378,7 +4494,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Feta"
   },
   {
     "id": "a9f1a3d4-f6f0-4b67-a975-79e2cde0780a",
@@ -4402,7 +4519,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Käse"
   },
   {
     "id": "fb2dd3b9-45fc-4b94-8d8d-a3f907d23a84",
@@ -4444,7 +4562,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Käse"
   },
   {
     "id": "3c82837c-d027-4565-96fe-156b6597b539",
@@ -4481,7 +4600,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Parmesan"
   },
   {
     "id": "150fd77e-b057-4a0e-865d-331b07587d81",
@@ -4523,7 +4643,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Frischkäse"
   },
   {
     "id": "99f012ae-6a5e-4da4-91bc-61d3bb8dfbff",
@@ -4548,7 +4669,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Käse"
   },
   {
     "id": "d2406cb5-37b2-4030-9a19-6606f4fa0ad1",
@@ -4582,7 +4704,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Hüttenkäse"
   },
   {
     "id": "27dea475-4876-4b84-85b5-0319cc9edbb1",
@@ -4610,7 +4733,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Eier"
   },
   {
     "id": "0b382e29-cb15-4d3c-a0b3-d6d6a838d76a",
@@ -4650,7 +4774,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Butter"
   },
   {
     "id": "a5456f2e-5829-413e-bf34-82e4ca429cb8",
@@ -4690,7 +4815,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Margarine"
   },
   {
     "id": "b50a417f-6293-4633-841b-0fc600c5bf12",
@@ -4718,7 +4844,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Tofu"
   },
   {
     "id": "798c13fc-eb82-491f-8de2-ea676edbbb86",
@@ -4771,7 +4898,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Schnitzel"
   },
   {
     "id": "976e3469-075d-422b-8f61-8e5316932760",
@@ -4795,7 +4923,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Blätterteig"
   },
   {
     "id": "f934fdef-d154-4676-8a4d-896ae23ae0b8",
@@ -4821,7 +4950,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Pizzateig"
   },
   {
     "id": "ca40515b-1720-4bb8-9726-7e8d2edfdb50",
@@ -4850,7 +4980,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Pizza"
   },
   {
     "id": "e1364d62-6971-462a-bd39-68a7b781280f",
@@ -4874,7 +5005,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Pommes Frites"
   },
   {
     "id": "7499f12c-33aa-48b3-b473-af2af62152e0",
@@ -4903,7 +5035,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Erbsen"
   },
   {
     "id": "61517e04-9b58-4b7b-a873-330efc06079c",
@@ -4929,7 +5062,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Kräuter"
   },
   {
     "id": "498a807f-1a2b-497a-82b1-b406c18251f2",
@@ -4954,7 +5088,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Beeren"
   },
   {
     "id": "9fe58540-2754-4080-96fc-c73c0fe4f78a",
@@ -5056,7 +5191,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Nudeln"
   },
   {
     "id": "9f1cd3d1-aa86-4ac0-90f1-9be7fb7813d4",
@@ -5082,7 +5218,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Nudeln"
   },
   {
     "id": "c249ba48-95b7-4e0f-b294-e7d6c40eb23e",
@@ -5127,7 +5264,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Reis"
   },
   {
     "id": "198dd5a8-fb1b-4fb2-827e-a10ed5fc95c1",
@@ -5166,7 +5304,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Risottoreis"
   },
   {
     "id": "8f7bd564-2489-49ec-ae0f-3d2d9ce5ea7b",
@@ -5194,7 +5333,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Mehl"
   },
   {
     "id": "afe8d104-7f15-4e21-a516-1004aeae9dd9",
@@ -5221,7 +5361,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Mehl"
   },
   {
     "id": "eb5d005d-7ae1-44db-b1f1-d6ef5c5faa7d",
@@ -5263,7 +5404,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Zucker"
   },
   {
     "id": "3c513c49-ab4f-4b4e-9290-9124fdd5365d",
@@ -5303,7 +5445,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Haferflocken"
   },
   {
     "id": "0e90a2c2-0c0c-44f9-85a5-2ee2de72afbc",
@@ -5343,7 +5486,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Linsen"
   },
   {
     "id": "03a7a72b-5e3d-41fb-b77d-3ca18a8d66c2",
@@ -5376,7 +5520,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Kichererbsen"
   },
   {
     "id": "f624aff6-109f-4e60-8d58-3434ec92ebfc",
@@ -5403,7 +5548,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Bohnen"
   },
   {
     "id": "049c801b-b116-47b5-96d3-3cb78944c1fb",
@@ -5438,7 +5584,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Samen"
   },
   {
     "id": "1b266121-7a40-4dd2-b941-9c33de753482",
@@ -5471,7 +5618,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Couscous"
   },
   {
     "id": "75684091-8a29-4dbc-b30d-fc393a894230",
@@ -5542,7 +5690,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Paniermehl"
   },
   {
     "id": "de293f9d-a83d-49a8-8196-8ced649a3d67",
@@ -5579,7 +5728,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Griess"
   },
   {
     "id": "0dc64de5-c9d1-4a5e-b3a9-80cf29d36572",
@@ -5620,7 +5770,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Salz"
   },
   {
     "id": "86312162-3e43-482e-aaab-dfd5e684bd74",
@@ -5661,7 +5812,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Pfefferkörner"
   },
   {
     "id": "621b2001-cfd4-4594-ba0d-579bf102e04f",
@@ -5698,7 +5850,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Paprikapulver"
   },
   {
     "id": "1997a93b-a804-4ea6-8e4b-96722c15e0f9",
@@ -5768,7 +5921,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Oregano"
   },
   {
     "id": "291e2053-1a47-4c2f-8466-a649a91b19a4",
@@ -5793,7 +5947,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Gemüse"
   },
   {
     "id": "1a37e9e0-f747-4699-97a1-8f00b45675dd",
@@ -5833,7 +5988,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Olivenöl"
   },
   {
     "id": "60d94b2b-2983-43fb-9d1f-f642d7ff443a",
@@ -5870,7 +6026,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Blumen"
   },
   {
     "id": "c4cdad23-7589-4166-bd4f-89b600c93bcd",
@@ -5894,7 +6051,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Balsamico"
   },
   {
     "id": "71523695-966a-4a2c-b4c5-06291a316ba2",
@@ -5934,7 +6092,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Ketchup"
   },
   {
     "id": "c8609149-d49f-4790-bdc1-0342c5a9be4e",
@@ -5976,7 +6135,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Mayonnaise"
   },
   {
     "id": "9daab298-56aa-4521-b11d-190d2be1a8f3",
@@ -6016,7 +6176,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Senf"
   },
   {
     "id": "296297bf-fb0d-4023-b658-adbf3e86cda7",
@@ -6091,7 +6252,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Tomatenmark"
   },
   {
     "id": "dfef37d5-c466-4e93-b7d7-3ab197838c93",
@@ -6115,7 +6277,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Tomaten"
   },
   {
     "id": "edeb9222-632f-4b60-931b-dea0bbbd698e",
@@ -6139,7 +6302,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Tomaten"
   },
   {
     "id": "1f13a446-cb99-4eaf-a9be-ad4cf3cdade3",
@@ -6215,7 +6379,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Backpulver"
   },
   {
     "id": "98721ba9-75a2-4403-9393-3df64258ee7e",
@@ -6240,7 +6405,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Mais"
   },
   {
     "id": "6a33bfa2-9d86-4b72-8f13-c09c80e425e3",
@@ -6267,7 +6433,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Essiggurken"
   },
   {
     "id": "0fc187fe-7aa1-4b6c-9bcc-ad334869fe7c",
@@ -6291,7 +6458,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Fisch"
   },
   {
     "id": "7d1a193f-a5b0-4834-a972-e6d671bf537d",
@@ -6374,7 +6542,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Corn Flakes"
   },
   {
     "id": "82990530-c120-4e0b-ad2a-047a380b95ee",
@@ -6418,7 +6587,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Konfitüre"
   },
   {
     "id": "08a8d6d1-fbdb-4a08-9c6c-c134ac69a7f2",
@@ -6458,7 +6628,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Honig"
   },
   {
     "id": "1f333d92-8a2b-48e1-99e3-f12ab49036da",
@@ -6515,7 +6686,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Schokolade"
   },
   {
     "id": "2864249a-03da-4213-b8e3-0dce92e7bbf3",
@@ -6591,7 +6763,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Kekse"
   },
   {
     "id": "f29f645b-09a0-4a16-8f51-d1d2db786fae",
@@ -6660,7 +6833,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Erdnüsse"
   },
   {
     "id": "8326a88c-f514-408f-a723-5cf535859c47",
@@ -6698,7 +6872,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Nüsse"
   },
   {
     "id": "58cc0da4-9f06-49bc-a5d7-a291e2a3c522",
@@ -6744,7 +6919,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Mineralwasser"
   },
   {
     "id": "819da2e1-7fa6-4ba1-8ad0-b28c965838ae",
@@ -6772,7 +6948,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Apfelsaft"
   },
   {
     "id": "f2e7841e-0302-44ac-9e72-1ea666c948a7",
@@ -6799,7 +6976,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Orangensaft"
   },
   {
     "id": "0a1680c5-f11b-493b-8a5b-a538123c235d",
@@ -6845,7 +7023,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Cola"
   },
   {
     "id": "ed7ebcc2-cd9a-476d-ac79-6dc9a621b52a",
@@ -6873,7 +7052,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Limonade"
   },
   {
     "id": "fc02a237-795b-4397-92c6-710159dd6b02",
@@ -6913,7 +7093,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Eistee"
   },
   {
     "id": "b0254a4b-1983-4416-9e4d-c5de6e866053",
@@ -6940,7 +7121,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Kaffee"
   },
   {
     "id": "17ec2a35-bbc2-48bb-a742-6b7cb8a5f95d",
@@ -6977,7 +7159,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Kaffee"
   },
   {
     "id": "a59139be-a7df-4153-991c-ccb414575da6",
@@ -7034,7 +7217,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Kakao"
   },
   {
     "id": "97212e47-7cd1-4752-9a08-755021641434",
@@ -7082,7 +7266,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Bier"
   },
   {
     "id": "c8a7f715-fc08-41f5-8a41-396b26959151",
@@ -7111,7 +7296,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Weisswein"
   },
   {
     "id": "7cc10388-105a-44bd-8c7b-b5ec985c2e57",
@@ -7139,7 +7325,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Rotwein"
   },
   {
     "id": "b0bb417a-a1e2-4db1-bf38-6162404f041a",
@@ -7184,7 +7371,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Champagner"
   },
   {
     "id": "901b74ea-01a4-4ea7-9bcc-72f2d2c1d0d4",
@@ -7224,7 +7412,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Rum"
   },
   {
     "id": "e114e9d7-0722-4c9c-9649-9951d6e155fa",
@@ -7270,7 +7459,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Windeln"
   },
   {
     "id": "1130d07a-3a99-44a6-a84f-c7df822924d4",
@@ -7296,7 +7486,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Feuchttücher"
   },
   {
     "id": "60dfa9f9-e3b4-473a-b64c-ff65bdd77b30",
@@ -7326,7 +7517,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Babynahrung"
   },
   {
     "id": "46540766-6300-46db-b616-ce34b090b706",
@@ -7409,7 +7601,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Shampoo"
   },
   {
     "id": "72b0aeaf-e9fc-44be-9aa9-1466e58514c5",
@@ -7437,7 +7630,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Seife"
   },
   {
     "id": "df6d9a92-2e5d-4087-9297-7ae5c9700e29",
@@ -7490,7 +7684,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Rasierklingen"
   },
   {
     "id": "6a38e91b-e157-4fe7-8bf0-17ca0e221c00",
@@ -7533,7 +7728,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Zahnpasta"
   },
   {
     "id": "06b8733d-a7e0-4ccf-ad6c-82108aba8575",
@@ -7575,7 +7771,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Zahnbürsten"
   },
   {
     "id": "ed255c93-9da3-4243-a077-f910c322a520",
@@ -7658,7 +7855,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Haushaltspapier"
   },
   {
     "id": "4ed3cf87-688d-463e-9093-55dd04c8d97d",
@@ -7698,7 +7896,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Taschentücher"
   },
   {
     "id": "28ed56ad-0acd-431e-895c-d82fd438a425",
@@ -7739,7 +7938,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Tampons"
   },
   {
     "id": "2c297613-c8cb-4d01-8903-899d86388cc1",
@@ -7770,7 +7970,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Waschmittel"
   },
   {
     "id": "91a07a6b-ec5f-4a03-9a5d-b63237e3a334",
@@ -7807,7 +8008,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Weichspüler"
   },
   {
     "id": "6a078549-33f5-4d61-bb20-d4adee127d57",
@@ -7834,7 +8036,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Spülmittel"
   },
   {
     "id": "992e564c-ccac-470c-8ac4-5c57621920e8",
@@ -7918,7 +8121,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Putzmittel"
   },
   {
     "id": "6bbae751-7de1-4489-b1ed-0acd5a125586",
@@ -7996,7 +8200,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Alufolie"
   },
   {
     "id": "10dc07b0-2e75-4d74-ba77-3bafaa23cfa7",
@@ -8031,7 +8236,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Backpapier"
   },
   {
     "id": "3d851a06-c170-4a34-9c0d-48ed57cf0660",
@@ -8071,7 +8277,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Schwamm"
   },
   {
     "id": "0078589f-546f-42c8-9738-f3ad29c5eda8",
@@ -8099,7 +8306,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Batterien"
   },
   {
     "id": "cc15c094-0821-4932-a3a0-684aab68b7d6",
@@ -8134,7 +8342,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Katzenfutter"
   },
   {
     "id": "94bf961b-fe86-4cb8-a149-7b48f521f4d0",
@@ -8173,7 +8382,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Katzenstreu"
   },
   {
     "id": "23da7684-2a0f-4ebb-858d-96f8be363bc4",
@@ -8206,7 +8416,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Hundefutter"
   },
   {
     "id": "e6a04ee7-1011-4f53-9137-da9e26e0955c",
@@ -8259,7 +8470,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Pflaster"
   },
   {
     "id": "8101d82c-56ad-4c55-9404-2622b656f521",
@@ -8287,7 +8499,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Vitamine"
   },
   {
     "id": "1f9f4318-21ce-46fb-84ae-4a0f3f40035b",
@@ -8412,7 +8625,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Zigaretten"
   },
   {
     "id": "65428e32-37ab-4e3e-afdf-d5621e192bf8",
@@ -8438,7 +8652,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Blumen"
   },
   {
     "id": "04aaf738-6e07-4f7c-913f-56719b357226",
@@ -8517,7 +8732,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Grill"
   },
   {
     "id": "419f1ac2-41a8-4d5b-afb6-a7262f83af29",
@@ -8537,7 +8753,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Salz"
   },
   {
     "id": "995efdfa-64b8-4b5a-8118-9bb3c194cd01",
@@ -8568,7 +8785,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Erdbeeren"
   },
   {
     "id": "9e13128b-74c6-4dc1-a070-5bb89697960c",
@@ -8599,7 +8817,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Himbeeren"
   },
   {
     "id": "c0b40d0f-2952-41d3-8724-0f5bad7dfc3c",
@@ -8630,7 +8849,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Heidelbeeren"
   },
   {
     "id": "28b2d18b-dfa4-499d-afcc-1f0eda1ad001",
@@ -8664,7 +8884,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Trauben"
   },
   {
     "id": "12b44533-f51d-4c5f-bdfa-4a38e254e8fc",
@@ -8694,7 +8915,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Melone"
   },
   {
     "id": "07f55684-a1f9-486f-897a-43c04cac68f9",
@@ -8724,7 +8946,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Kirschen"
   },
   {
     "id": "da620df8-3b99-4e45-8d88-1c0f47906611",
@@ -8754,7 +8977,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Feigen"
   },
   {
     "id": "21afe5d1-9d1d-4657-abaa-6c086f3b3775",
@@ -8783,7 +9007,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Rhabarber"
   },
   {
     "id": "18362bae-4634-4477-a705-36da1f2f7aa0",
@@ -8814,7 +9039,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Aprikosen"
   },
   {
     "id": "56261944-498b-4071-91c5-34a27a285e2a",
@@ -8844,7 +9070,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Brombeeren"
   },
   {
     "id": "1e99885c-9246-4358-a431-d887b514b4a0",
@@ -8875,7 +9102,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Beeren"
   },
   {
     "id": "d0c7f2b3-0db8-460e-8a51-e0e29fc76a23",
@@ -8903,7 +9131,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Beeren"
   },
   {
     "id": "686a3f2b-a5cd-4dd7-a32b-d69a45b245f7",
@@ -8932,7 +9161,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Passionsfrucht"
   },
   {
     "id": "87211309-00ac-4582-8f2b-a44604a7ee29",
@@ -8963,7 +9193,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Reis"
   },
   {
     "id": "887d855f-d7b2-41c3-8b23-7b807834bce4",
@@ -9030,7 +9261,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Karotten"
   },
   {
     "id": "0acd307b-eb71-48c1-ad46-fdb7daad23a8",
@@ -9065,7 +9297,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Gurke"
   },
   {
     "id": "6c31a943-f230-4d9f-aa53-73425a154b46",
@@ -9098,7 +9331,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Spinat"
   },
   {
     "id": "90b1107b-bc12-425e-adde-c59b5614e82d",
@@ -9134,7 +9368,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Zwiebeln"
   },
   {
     "id": "64bdcbbe-35e4-4bef-9039-8544bc4598b1",
@@ -9168,7 +9403,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Kartoffeln"
   },
   {
     "id": "1a0536e8-1181-4694-9f5c-85afea192a2e",
@@ -9203,7 +9439,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Pilze"
   },
   {
     "id": "a2ec6d65-fa4b-4eb8-b73e-a353a4c365dd",
@@ -9233,7 +9470,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Ingwer"
   },
   {
     "id": "3beea4c5-2a4f-4bd9-82c9-26312dff15fb",
@@ -9265,7 +9503,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Sellerie"
   },
   {
     "id": "7969009c-4eb0-45a5-b8df-ebd92bf93308",
@@ -9297,7 +9536,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Rote Bete"
   },
   {
     "id": "5ec23c9f-a725-463d-b57f-263560686abf",
@@ -9328,7 +9568,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Kohl"
   },
   {
     "id": "44020f24-a088-4ce8-b9f6-56ee503f2f36",
@@ -9357,7 +9598,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Kohl"
   },
   {
     "id": "749fd9fe-43b5-4b4e-aa1a-32700a72f8ef",
@@ -9387,7 +9629,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Zucker"
   },
   {
     "id": "12086375-c687-4b01-aa3a-d607f98a3cf8",
@@ -9419,7 +9662,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Erbsen"
   },
   {
     "id": "f4c1427c-d29d-4439-9fc3-22d88856a6a8",
@@ -9450,7 +9694,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Kohl"
   },
   {
     "id": "8109a1f6-3dfb-4ee8-b7f8-47949336319d",
@@ -9507,7 +9752,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Petersilie"
   },
   {
     "id": "380d0917-a82c-4c0d-b621-3264a71d3cf4",
@@ -9536,7 +9782,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Spargel"
   },
   {
     "id": "001a9da0-6266-4a26-b996-55fa57382c23",
@@ -9565,7 +9812,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Salat"
   },
   {
     "id": "96b37006-11c0-4b32-adfd-f8c6c208fbe4",
@@ -9595,7 +9843,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Mango"
   },
   {
     "id": "335c9442-ab67-4df1-9212-6dfed05e4294",
@@ -9623,7 +9872,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Salat"
   },
   {
     "id": "d7028237-9ee7-471a-ba95-fee4fa022b45",
@@ -9651,7 +9901,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Pilze"
   },
   {
     "id": "93594080-b32c-4816-a31c-ae018adb824c",
@@ -9682,7 +9933,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Eier"
   },
   {
     "id": "e2fd7661-2c57-4d9a-9471-229a46476b39",
@@ -9711,7 +9963,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Pilze"
   },
   {
     "id": "2b03d3c9-27af-45d6-8b77-36f747b44d4e",
@@ -9740,7 +9993,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Schnittlauch"
   },
   {
     "id": "d030c40c-5924-4c7c-bcab-87b0c3fea33a",
@@ -9769,7 +10023,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Petersilie"
   },
   {
     "id": "a1a50cc3-e679-47c0-8d69-c505150c8a98",
@@ -9797,7 +10052,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Basilikum"
   },
   {
     "id": "3a7b10aa-6f44-4194-bdf7-a5d26ea68568",
@@ -9914,7 +10170,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Koriander"
   },
   {
     "id": "c8109609-3bfa-41c3-beb8-885eeaf0bd80",
@@ -9944,7 +10201,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Pfefferminze"
   },
   {
     "id": "ec25c316-c2cb-44a7-afdd-b7200cd03575",
@@ -9972,7 +10230,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Rosmarin"
   },
   {
     "id": "3bd3cce6-47ee-42ec-b08e-17d8a02ea251",
@@ -10000,7 +10259,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Thymian"
   },
   {
     "id": "db463556-2a5b-4943-8e3e-dbc380d036bd",
@@ -10046,7 +10306,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Milch"
   },
   {
     "id": "c5992d5c-a17e-44e8-a055-037c7a598016",
@@ -10078,7 +10339,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Griess"
   },
   {
     "id": "e8ffb776-a974-4b59-b70d-d16544517ded",
@@ -10118,7 +10380,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Joghurt"
   },
   {
     "id": "55448197-16d7-4ef1-adfc-8cfa76b94c14",
@@ -10152,7 +10415,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Joghurt"
   },
   {
     "id": "e61e8369-499d-4947-bb77-4085363cff9e",
@@ -10182,7 +10446,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Ricotta"
   },
   {
     "id": "e62fab4c-b160-4044-bb8a-42ff069021ef",
@@ -10216,7 +10481,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Rahm"
   },
   {
     "id": "f2645aba-fd85-4cc3-8f98-fcc22ae350d9",
@@ -10279,7 +10545,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Milch"
   },
   {
     "id": "8eaa793c-8d7e-4ebf-97a6-754bcd44a902",
@@ -10308,7 +10575,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Kaffee"
   },
   {
     "id": "dc342faa-55e7-46de-b66e-789070d9fd08",
@@ -10346,7 +10614,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Käse"
   },
   {
     "id": "86811feb-b3ac-4824-9beb-20e22e46abb1",
@@ -10377,7 +10646,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Käse"
   },
   {
     "id": "58c4ef41-a4cd-4248-8f4d-05a5d0441600",
@@ -10409,7 +10679,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Käse"
   },
   {
     "id": "561a46fd-313f-4ed0-9e92-3852b83caafa",
@@ -10502,7 +10773,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Kräuterbutter"
   },
   {
     "id": "6acd4375-31c9-4cfe-ae09-e93df7571392",
@@ -10533,7 +10805,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Grill"
   },
   {
     "id": "f64a9a9a-265f-42b0-a8ec-2e3f3218caaa",
@@ -10564,7 +10837,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Käse"
   },
   {
     "id": "ada0da40-eb86-40d5-aac0-48c2a0a657d5",
@@ -10594,7 +10868,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Gorgonzola"
   },
   {
     "id": "d58d7e97-510c-44c1-b5ea-b2d9b9c59067",
@@ -10629,7 +10904,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Pudding"
   },
   {
     "id": "dbdf95f5-4212-4258-8b4b-7b36bb937fc7",
@@ -10662,7 +10938,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Eier"
   },
   {
     "id": "a9ee9d3f-c18a-45e4-8221-9a88a9b40e1d",
@@ -10701,7 +10978,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Brot"
   },
   {
     "id": "a3ff9010-af5c-449e-838c-b1f441461c1c",
@@ -10734,7 +11012,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Toast"
   },
   {
     "id": "42d55b7e-cd7c-4645-b482-53f5fe9a0275",
@@ -10832,7 +11111,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Brot"
   },
   {
     "id": "471ea9ca-d190-41b3-b185-dee23b24a313",
@@ -10869,7 +11149,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Hackfleisch"
   },
   {
     "id": "66206a2d-b6de-4131-b6e1-e030b9141e9d",
@@ -10908,7 +11189,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Salami"
   },
   {
     "id": "d7b78a86-4335-4ec3-ad5c-e87756d19f6a",
@@ -10940,7 +11222,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Fleisch"
   },
   {
     "id": "9e4708e4-d3a4-478b-b54d-5f0c4d4d13a4",
@@ -10974,7 +11257,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Fleisch"
   },
   {
     "id": "fec8cdc3-5e4a-4cd6-8f6c-f7a6d0e831ab",
@@ -11006,7 +11290,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Aufschnitt"
   },
   {
     "id": "b87b593e-d556-4a57-8cc6-ffb5611b9294",
@@ -11098,7 +11383,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Käse"
   },
   {
     "id": "580252ad-3997-46f3-bd34-0782b973eae3",
@@ -11132,7 +11418,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Lachs"
   },
   {
     "id": "354f729d-a96d-4c82-83e6-28571a1ad117",
@@ -11168,7 +11455,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Thunfisch"
   },
   {
     "id": "56eb3ce4-0c9c-49eb-80a4-3bbad6183f24",
@@ -11289,7 +11577,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Fleisch"
   },
   {
     "id": "be158e8b-c466-4e73-81aa-c43ab9f09217",
@@ -11319,7 +11608,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Fisch"
   },
   {
     "id": "1136862b-a8a3-4fb1-bb35-0223837b5e25",
@@ -11355,7 +11645,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Pommes Frites"
   },
   {
     "id": "f03e9b58-8145-4e8e-8fee-61ce86fd6217",
@@ -11391,7 +11682,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Pizza"
   },
   {
     "id": "c35e1cd9-bdf7-40d5-a69b-bffcfd804b2d",
@@ -11428,7 +11720,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Gemüse"
   },
   {
     "id": "c3f2990f-5f36-491c-939c-f314846a5d83",
@@ -11534,7 +11827,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Reis"
   },
   {
     "id": "8214d0c6-e058-40f4-ad50-faedc8903377",
@@ -11570,7 +11864,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Torte"
   },
   {
     "id": "7fcd9fed-2a4a-4914-ba3f-5330afeb4ccc",
@@ -11604,7 +11899,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Fisch"
   },
   {
     "id": "a2a3063e-28f3-46d9-b9da-9fd45f1675c2",
@@ -11694,7 +11990,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Salat"
   },
   {
     "id": "a2269534-51f1-4448-a64d-70e83fbf3255",
@@ -11726,7 +12023,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Bohnen"
   },
   {
     "id": "e8154ae5-2f86-4b9e-8f77-f560c287aa72",
@@ -11754,7 +12052,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Samen"
   },
   {
     "id": "213caaf2-d22e-4731-92d3-0e6355d13f3f",
@@ -11783,7 +12082,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Griess"
   },
   {
     "id": "024f65f6-198b-415a-acc5-7cfa9fbfb48c",
@@ -11812,7 +12112,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Nudeln"
   },
   {
     "id": "87497649-6b2e-415d-abab-ea22afaa8599",
@@ -11842,7 +12143,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Nudeln"
   },
   {
     "id": "5f41a291-2040-4a61-81a7-aed1d6dc4949",
@@ -11876,7 +12178,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Tomaten"
   },
   {
     "id": "211427b8-d98a-44bb-bace-e0cd68292907",
@@ -11910,7 +12213,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Tomaten"
   },
   {
     "id": "063a84d2-68e2-4f2c-b737-bd0a5782871b",
@@ -11945,7 +12249,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Bohnen"
   },
   {
     "id": "f3f0427e-c375-4c17-85ec-8adb7e117f57",
@@ -11976,7 +12281,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Erbsen"
   },
   {
     "id": "cb921b25-eeac-4595-a287-cdd8df0f944f",
@@ -12009,7 +12315,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Mais"
   },
   {
     "id": "9ac1e487-9697-4075-88b4-245a7faf9be4",
@@ -12039,7 +12346,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Champignons"
   },
   {
     "id": "4e3a61e5-ad96-4a07-ad93-84dcb38e9de0",
@@ -12075,7 +12383,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Gurke"
   },
   {
     "id": "d1ecfffd-fbb0-4afe-82d5-4c1d78b0699e",
@@ -12109,7 +12418,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Oliven"
   },
   {
     "id": "8ddf0475-77d8-4d98-aa8d-1805d42a587c",
@@ -12207,7 +12517,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Apfelmus"
   },
   {
     "id": "8b6fc7bd-3641-4fe3-b6fb-9aebf645e9ce",
@@ -12272,7 +12583,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Eier"
   },
   {
     "id": "937d856d-db56-4419-ae66-95a2c74dd092",
@@ -12304,7 +12616,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Gnocchi"
   },
   {
     "id": "b8990794-3ba3-4bb9-aba3-66cb5dcabda3",
@@ -12336,7 +12649,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Torte"
   },
   {
     "id": "552f53b5-e833-456c-bb74-cd795cf8704b",
@@ -12365,7 +12679,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Nudeln"
   },
   {
     "id": "f0aa3968-8808-4e29-8f56-c05a7c627246",
@@ -12401,7 +12716,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Suppe"
   },
   {
     "id": "21a656cd-7d53-4dd2-a7db-b80e6e5484aa",
@@ -12433,7 +12749,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Suppe"
   },
   {
     "id": "1a199082-a417-4932-98c3-18713221dc4e",
@@ -12501,7 +12818,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Kokosmilch"
   },
   {
     "id": "26719419-b03a-468a-9136-a34e5804eac0",
@@ -12568,7 +12886,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Obst"
   },
   {
     "id": "f4b7a25d-130d-4716-a9ed-bebc698803ab",
@@ -12598,7 +12917,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Erbsen"
   },
   {
     "id": "b9e5f550-cd56-4de2-9aea-13ab312ca34d",
@@ -12628,7 +12948,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Sardellen"
   },
   {
     "id": "70771c10-aa49-4746-b2cf-801d294a29b9",
@@ -12690,7 +13011,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Erbsen"
   },
   {
     "id": "b41e1c8c-0cc9-46cf-b94e-85676cbfcf1d",
@@ -12720,7 +13042,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Avocado"
   },
   {
     "id": "d7f2b216-2fdb-4664-885d-be4c428d8121",
@@ -12752,7 +13075,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "getrocknete Tomaten"
   },
   {
     "id": "5c6fcb9b-79e9-40ba-a7f3-c6e69613bf0c",
@@ -12783,7 +13107,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Vanillezucker"
   },
   {
     "id": "f944f3c6-20a8-46e6-8f0a-2e95f11d863d",
@@ -12814,7 +13139,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Hefe"
   },
   {
     "id": "8f791cb9-f0be-4f28-b696-9bbc8b00aee1",
@@ -12849,7 +13175,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Mehl"
   },
   {
     "id": "737bcb85-45a9-4c4d-bb9d-82d7c26af12e",
@@ -12880,7 +13207,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Speisestärke"
   },
   {
     "id": "32d864bf-3aa8-415e-820d-0aa4ff35c88b",
@@ -12944,7 +13272,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Gemüse"
   },
   {
     "id": "d64c4557-acae-4550-8eeb-36f90c5536f1",
@@ -12974,7 +13303,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Bouillon"
   },
   {
     "id": "aa75f217-fdf9-432f-a9e8-72af99ea99a8",
@@ -13004,7 +13334,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Suppe"
   },
   {
     "id": "dc0dd280-0bef-4b28-90bc-bfa0e21c0d39",
@@ -13104,7 +13435,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Essig"
   },
   {
     "id": "7ca1a39a-fac7-4f5f-8e69-5c8f69e6da02",
@@ -13137,7 +13469,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Zimt"
   },
   {
     "id": "f2b6d1c6-4dcd-48bd-9faa-76e90f5f2543",
@@ -13170,7 +13503,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Kräuter"
   },
   {
     "id": "86d56d46-872d-436d-b57a-364b27551aeb",
@@ -13200,7 +13534,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Nüsse"
   },
   {
     "id": "79bc45a0-a59f-428b-a8e4-4957df0075aa",
@@ -13257,7 +13592,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Knoblauch"
   },
   {
     "id": "3e71bb92-7816-4a4a-b049-df5951ec6890",
@@ -13341,7 +13677,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Samen"
   },
   {
     "id": "62734fbc-4cc3-43f9-a9e1-a19c4ca361c4",
@@ -13550,7 +13887,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Mandeln"
   },
   {
     "id": "61388fe7-e1b5-4ac8-930b-f34011d7d250",
@@ -13635,7 +13973,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Torte"
   },
   {
     "id": "95142183-d96c-4b6a-926b-f714fece718d",
@@ -13663,7 +14002,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Hefe"
   },
   {
     "id": "d9a9848a-2712-4c4f-9c5a-aefd93d6d730",
@@ -13695,7 +14035,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Kürbis"
   },
   {
     "id": "f6c27e1f-8a23-4a6d-91fc-fd261bd84634",
@@ -13764,7 +14105,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Salzstangen"
   },
   {
     "id": "105df440-b2be-4d8d-ba55-5d51c85ad103",
@@ -13828,7 +14170,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Tortilla Chips"
   },
   {
     "id": "16b54b1f-1919-49de-9685-ca842558af70",
@@ -13888,7 +14231,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Nüsse"
   },
   {
     "id": "8afce9cd-61be-467b-b875-cd376f03423f",
@@ -13950,7 +14294,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Pop Corn"
   },
   {
     "id": "721ca2f5-1f3a-4914-93be-9582748e50c7",
@@ -14089,7 +14434,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Schokolade"
   },
   {
     "id": "a0248c21-2ca2-42c3-9e4a-eecd15fbd771",
@@ -14198,7 +14544,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Kaugummi"
   },
   {
     "id": "c0de5ebf-8511-46dd-9cc3-b8df7e762644",
@@ -14227,7 +14574,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Brezeln"
   },
   {
     "id": "486d1338-a7cb-4184-942a-24e1d143d5be",
@@ -14258,7 +14606,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Lebkuchen"
   },
   {
     "id": "e6fe8f22-e72a-4100-8bd8-0a54dcecb27d",
@@ -14333,7 +14682,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Butter"
   },
   {
     "id": "bcef3af7-2e7a-4b57-b00f-2171b79f0408",
@@ -14364,7 +14714,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Ahornsirup"
   },
   {
     "id": "321aaa69-ccac-4bb1-b597-c5576a60e3d9",
@@ -14395,7 +14746,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Sirup"
   },
   {
     "id": "6b435488-7094-41c8-8ffd-476aabd62538",
@@ -14424,7 +14776,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Sirup"
   },
   {
     "id": "edb3bc69-83fc-4b3f-babf-1f3d42e7fa42",
@@ -14489,7 +14842,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Mandelmus"
   },
   {
     "id": "0bf480f3-b72f-496d-b408-164a5c42f2a3",
@@ -14556,7 +14910,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Limonade"
   },
   {
     "id": "02fc5f47-7aa7-4710-9f28-13b0f51baf92",
@@ -14588,7 +14943,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Äpfel"
   },
   {
     "id": "f13e544f-e9e1-4a98-8411-0a21e92b0c21",
@@ -14625,7 +14981,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Orangensaft"
   },
   {
     "id": "e709b1ed-6d12-4c06-8133-2ba574ba95cc",
@@ -14660,7 +15017,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Energy Drink"
   },
   {
     "id": "f83b0e42-c3d3-43f9-a48f-dd74c787d295",
@@ -14693,7 +15051,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Kaffee"
   },
   {
     "id": "e36ee7c0-911b-4d63-bd02-7af691fd1457",
@@ -14729,7 +15088,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Weisswein"
   },
   {
     "id": "91583ec5-277d-4164-868c-f1618827f09f",
@@ -14762,7 +15122,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Gin"
   },
   {
     "id": "885c6978-3e69-4031-a571-2cbfa0f7c523",
@@ -14794,7 +15155,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Rum"
   },
   {
     "id": "403b86f8-136b-47e3-9c06-028fcbc98347",
@@ -14826,7 +15188,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Whisky"
   },
   {
     "id": "08f2974a-9f07-4841-abd5-72ebfe0cb503",
@@ -14884,7 +15247,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Tonic Water"
   },
   {
     "id": "7ddb6ec7-15f8-4fce-946c-81e775fad168",
@@ -14949,7 +15313,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Bohnen"
   },
   {
     "id": "94c6c31c-7624-480e-82a3-63e4d8f31109",
@@ -14981,7 +15346,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Kaffee"
   },
   {
     "id": "59cfa1fe-15fb-43a9-b52b-9cfbf0cdb60a",
@@ -15014,7 +15380,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Kaffee"
   },
   {
     "id": "aa5ff31d-bba4-4530-8583-018f2fd4c3be",
@@ -15045,7 +15412,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Kaffee"
   },
   {
     "id": "091c980c-1e6d-4b50-b780-5a8b6dda7a77",
@@ -15085,7 +15453,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Tee"
   },
   {
     "id": "34ae40e1-c865-4e03-82b5-9ece225f30ea",
@@ -15115,7 +15484,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Kaffee"
   },
   {
     "id": "f0760d98-1fed-4cd7-8410-22eb6aa771e8",
@@ -15148,7 +15518,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Schokolade"
   },
   {
     "id": "9ee0a079-d70b-46a3-a38a-7b82ebdcfb5f",
@@ -15180,7 +15551,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Conditioner"
   },
   {
     "id": "eb4d016b-a40f-45e4-9551-3e39e6edae02",
@@ -15211,7 +15583,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Haarspray"
   },
   {
     "id": "1340dd63-b163-40de-9b77-aa3db81235b6",
@@ -15283,7 +15656,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Seife"
   },
   {
     "id": "c354fbc4-daa7-476d-8cee-0a66cddadb85",
@@ -15314,7 +15688,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Mundspülung"
   },
   {
     "id": "baaeed41-51e2-49bb-81ce-71f4a130f987",
@@ -15347,7 +15722,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Bodylotion"
   },
   {
     "id": "d5794725-19ec-475b-acd1-92e1af43d8fe",
@@ -15378,7 +15754,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Handcreme"
   },
   {
     "id": "263b8ab5-6c6e-4f6b-ac5f-4f4b1f64719c",
@@ -15411,7 +15788,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Gesichtscreme"
   },
   {
     "id": "a6a6d053-d0d2-4973-abe4-ee548a90b439",
@@ -15444,7 +15822,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Rasierschaum"
   },
   {
     "id": "b630826b-cfac-4bfc-a468-9cef49eec256",
@@ -15479,7 +15858,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Rasierer"
   },
   {
     "id": "55882bc8-e2dd-4842-9704-8ce30d7db869",
@@ -15512,7 +15892,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Binden"
   },
   {
     "id": "593a034a-a5f1-4ffa-b44a-a2f5128491c1",
@@ -15605,7 +15986,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Wattestäbchen"
   },
   {
     "id": "d02aea1b-14cb-4bed-8a7b-20ea44a0ea6c",
@@ -15639,7 +16021,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Feuchttücher"
   },
   {
     "id": "2ca4a7bc-5f9f-4b97-981b-1affb59e9ffb",
@@ -15671,7 +16054,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Sonnencreme"
   },
   {
     "id": "6271f9c7-0248-48a8-ae2c-c1d8b0819b8f",
@@ -15700,7 +16084,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Zahnseide"
   },
   {
     "id": "a62ff071-7c8b-4ab3-8437-e3b5496bea52",
@@ -15730,7 +16115,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Kosmetiktücher"
   },
   {
     "id": "ad29413b-7af2-4d13-bb30-8b5b5294397c",
@@ -15759,7 +16145,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Haargel"
   },
   {
     "id": "64ab9b5a-943e-4f0f-aa3c-efd165e93e22",
@@ -15823,7 +16210,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Milch"
   },
   {
     "id": "d68e5f22-24e7-4cd6-a42e-5dcb6a88b7b7",
@@ -15882,7 +16270,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Shampoo"
   },
   {
     "id": "aa07c765-44b7-4671-a91c-4ca19b3f1f6c",
@@ -15948,7 +16337,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Spülmittel"
   },
   {
     "id": "758986d9-8808-4f2c-8cb7-1f8cfcc0de1a",
@@ -15978,7 +16368,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Salz"
   },
   {
     "id": "073cc22d-f085-421a-833d-3f24ab9c7785",
@@ -16045,7 +16436,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Waschmittel"
   },
   {
     "id": "679ad93b-6291-44c7-8a7b-bcdf0c9b433b",
@@ -16078,7 +16470,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Seife"
   },
   {
     "id": "012a54ff-931d-4b32-8bb5-578767442faa",
@@ -16112,7 +16505,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Badreiniger"
   },
   {
     "id": "e3a9fb85-9b0f-462f-98c3-71b431dddcbd",
@@ -16178,7 +16572,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Glasreiniger"
   },
   {
     "id": "c363118c-dbd2-42f0-9633-9983e85016cd",
@@ -16207,7 +16602,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Milch"
   },
   {
     "id": "aaf0a9bf-d642-4c96-8b53-dcc9588fa1ae",
@@ -16237,7 +16633,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Grill"
   },
   {
     "id": "fcdc5aa3-351c-43b3-b15b-d03be6e01aad",
@@ -16326,7 +16723,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Frischhaltefolie"
   },
   {
     "id": "1464cf08-9bff-4b53-ac08-4840b175ed52",
@@ -16388,7 +16786,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Streichhölzer"
   },
   {
     "id": "4ff299e1-bbdd-4d0c-b72c-4d7df7c56926",
@@ -16418,7 +16817,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Kerzen"
   },
   {
     "id": "260a6b02-7ad9-4406-8f92-5c21c9d84f05",
@@ -16449,7 +16849,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Zitrone"
   },
   {
     "id": "2f22c5da-480d-461b-bf24-0b1a86eec335",
@@ -16479,7 +16880,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Batterien"
   },
   {
     "id": "454cbebe-07d5-42a3-b7cf-a1f1a089eff7",
@@ -16571,7 +16973,8 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Hundefutter"
   },
   {
     "id": "e61937e2-fc68-47a7-ba91-bb2e4d6659aa",
@@ -16606,6 +17009,7 @@
         "Angebot",
         "Wenn's passt"
       ]
-    }
+    },
+    "icon": "Katzenfutter"
   }
 ]
