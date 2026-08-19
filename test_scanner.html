@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body { margin: 0; padding: 0; background: #111; height: 100vh;}
+.modal-backdrop {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.modal-content {
+  background: #222;
+  width: 100%;
+  border-radius: 20px 20px 0 0;
+  padding: 16px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+}
+.search-step-container {
+  flex: 1; display: flex; flex-direction: column; min-height: 0;
+}
+.scanner-container {
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  min-height: 400px;
+  background-color: #000;
+  border-radius: 20px 20px 0 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.scanner-video {
+  position: absolute; top:0; left:0; width: 100%; height:100%; object-fit: cover; background: #333;
+}
+.scanner-overlay {
+  position: absolute; top:0; left:0; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: space-between;
+  pointer-events: none;
+}
+.scanner-header { padding: 16px; display: flex; justify-content: flex-end; pointer-events: auto; }
+.close-btn { background: rgba(0,0,0,0.5); border-radius: 50%; width: 44px; height: 44px; color: white; border: none; }
+.crosshair-container { flex: 1; display: flex; align-items: center; justify-content: center; }
+.crosshair-target { width: 250px; height: 150px; border: 2px solid rgba(255,255,255,0.7); border-radius: 12px; box-shadow: 0 0 0 4000px rgba(0,0,0,0.5); }
+.scanner-footer { padding: 24px; text-align: center; color: white; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); }
+</style>
+</head>
+<body>
+<div class="modal-backdrop">
+  <div class="modal-content">
+    <div class="search-step-container">
+      <div class="scanner-container">
+        <div class="scanner-video"></div>
+        <div class="scanner-overlay">
+          <div class="scanner-header"><button class="close-btn">X</button></div>
+          <div class="crosshair-container"><div class="crosshair-target"></div></div>
+          <div class="scanner-footer"><p>Scanne den Barcode eines Produkts.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
