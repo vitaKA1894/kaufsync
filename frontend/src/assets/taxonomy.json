@@ -60,7 +60,7 @@
         "4",
         "5",
         "Staude",
-        "1kg"
+        "1 kg"
       ],
       "constellations": [
         "Bio",
@@ -94,8 +94,8 @@
         "2",
         "3",
         "4",
-        "500g",
-        "1kg",
+        "500 g",
+        "1 kg",
         "5"
       ],
       "constellations": [
@@ -178,8 +178,8 @@
       "quantities": [
         "1",
         "2",
-        "125g",
-        "300g",
+        "125 g",
+        "300 g",
         "500g Schale"
       ],
       "constellations": [
@@ -253,7 +253,7 @@
       "quantities": [
         "1",
         "500g Schale",
-        "1kg"
+        "1 kg"
       ],
       "constellations": [
         "Hell",
@@ -347,7 +347,7 @@
         "3",
         "1kg Netz",
         "2kg Netz",
-        "3kg",
+        "3 kg",
         "4",
         "5"
       ],
@@ -421,7 +421,7 @@
         "3",
         "4",
         "3er Netz",
-        "500g",
+        "500 g",
         "5"
       ],
       "constellations": [
@@ -589,8 +589,8 @@
       "quantities": [
         "1",
         "2",
-        "500g",
-        "1kg",
+        "500 g",
+        "1 kg",
         "3",
         "4",
         "5"
@@ -620,7 +620,7 @@
       "quantities": [
         "1",
         "500g Schale",
-        "1kg"
+        "1 kg"
       ],
       "constellations": [
         "Bio",
@@ -916,7 +916,7 @@
         "3",
         "4",
         "500g Rispe",
-        "1kg",
+        "1 kg",
         "5"
       ],
       "constellations": [
@@ -924,11 +924,11 @@
         "Regional",
         "Holland",
         "Lose",
-        "Rispenn",
-        "Fleischn",
-        "Cherryn",
-        "Roma-n",
-        "Dosenn",
+        "Rispen",
+        "Fleischtomaten",
+        "Cherrytomaten",
+        "Roma",
+        "Dosen",
         "Gemüse"
       ],
       "global_meta": [
@@ -1022,7 +1022,8 @@
       "Paprikaschoten",
       "Paprikamix",
       "Paprikaschote",
-      "Spitzpaprika"
+      "Spitzpaprika",
+      "Peperoni"
     ],
     "tags": {
       "quantities": [
@@ -1061,12 +1062,11 @@
     "category": "Obst & Gemüse",
     "tags": {
       "quantities": [
-        "1kg",
+        "1 kg",
         "1",
-        "5kg",
-        "2kg",
+        "5 kg",
+        "2 kg",
         "2",
-        "5kg",
         "5kg Sack"
       ],
       "constellations": [
@@ -1096,7 +1096,7 @@
         "1",
         "2",
         "3",
-        "1kg",
+        "1 kg",
         "Lose",
         "4",
         "5"
@@ -1157,7 +1157,7 @@
         "2",
         "3 Knollen",
         "3er Netz",
-        "200g",
+        "200 g",
         "3",
         "4",
         "5"
@@ -1384,7 +1384,7 @@
         "1",
         "2",
         "500g Beutel",
-        "250g"
+        "250 g"
       ],
       "constellations": [
         "Babyspinat",
@@ -1419,8 +1419,8 @@
         "2",
         "3",
         "4",
-        "500g",
-        "1kg",
+        "500 g",
+        "1 kg",
         "5"
       ],
       "constellations": [
@@ -1483,7 +1483,7 @@
         "1",
         "2",
         "3",
-        "500g",
+        "500 g",
         "4",
         "5"
       ],
@@ -1711,7 +1711,7 @@
         "1",
         "2",
         "500g Netz",
-        "750g"
+        "750 g"
       ],
       "constellations": [
         "Bio",
@@ -1908,8 +1908,8 @@
       "quantities": [
         "1",
         "2",
-        "500g",
-        "1kg"
+        "500 g",
+        "1 kg"
       ],
       "constellations": [
         "Bio",
@@ -1942,7 +1942,7 @@
         "1",
         "2",
         "500g Bund",
-        "1kg",
+        "1 kg",
         "3",
         "4",
         "5"
@@ -2064,7 +2064,7 @@
       "quantities": [
         "1",
         "2",
-        "200g",
+        "200 g",
         "400g Korb"
       ],
       "constellations": [
@@ -2145,13 +2145,13 @@
       "Ingwerwurzel",
       "Ingwertee"
     ],
-    "category": "Vorratskammer",
+    "category": "Obst & Gemüse",
     "tags": {
       "quantities": [
         "1",
         "2",
-        "100g",
-        "250g"
+        "100 g",
+        "250 g"
       ],
       "constellations": [
         "Bio",
@@ -2180,7 +2180,7 @@
       "quantities": [
         "1",
         "2",
-        "100g"
+        "100 g"
       ],
       "constellations": [
         "Bio",
@@ -2241,9 +2241,9 @@
       "quantities": [
         "1",
         "2",
-        "500g",
-        "750g",
-        "1kg"
+        "500 g",
+        "750 g",
+        "1 kg"
       ],
       "constellations": [
         "Laib",
@@ -2305,9 +2305,9 @@
       "quantities": [
         "1",
         "2",
-        "500g",
-        "750g",
-        "1kg"
+        "500 g",
+        "750 g",
+        "1 kg"
       ],
       "constellations": [
         "Laib",
@@ -2331,9 +2331,9 @@
       "quantities": [
         "1",
         "2",
-        "250g",
-        "500g",
-        "750g"
+        "250 g",
+        "500 g",
+        "750 g"
       ],
       "constellations": [
         "Vollkorn",
@@ -2556,7 +2556,7 @@
       "quantities": [
         "1",
         "2",
-        "200g",
+        "200 g",
         "250g Packung",
         "3",
         "4",
@@ -2593,8 +2593,8 @@
       "quantities": [
         "1",
         "2",
-        "250g",
-        "500g",
+        "250 g",
+        "500 g",
         "3",
         "4",
         "5"
@@ -2628,8 +2628,8 @@
       "quantities": [
         "1",
         "2",
-        "225g",
-        "500g",
+        "225 g",
+        "500 g",
         "3",
         "4",
         "5"
@@ -2667,7 +2667,7 @@
       "quantities": [
         "1",
         "2",
-        "100g",
+        "100 g",
         "130g Rolle",
         "3",
         "4",
@@ -2704,7 +2704,7 @@
       "quantities": [
         "1 Stück",
         "Ganzer Kuchen",
-        "400g"
+        "400 g"
       ],
       "constellations": [
         "Rührkuchen",
@@ -2734,10 +2734,10 @@
       "quantities": [
         "1",
         "2",
-        "300g",
-        "400g",
-        "500g",
-        "1kg"
+        "300 g",
+        "400 g",
+        "500 g",
+        "1 kg"
       ],
       "constellations": [
         "Rind & Schwein",
@@ -2772,8 +2772,8 @@
       "quantities": [
         "1",
         "2",
-        "400g",
-        "500g"
+        "400 g",
+        "500 g"
       ],
       "constellations": [
         "Bio",
@@ -2805,8 +2805,8 @@
         "2",
         "3",
         "4",
-        "400g",
-        "500g",
+        "400 g",
+        "500 g",
         "2 Stk",
         "5"
       ],
@@ -2842,8 +2842,8 @@
       "quantities": [
         "1",
         "2",
-        "500g",
-        "1kg",
+        "500 g",
+        "1 kg",
         "3",
         "4",
         "5"
@@ -2875,8 +2875,8 @@
     "tags": {
       "quantities": [
         "1",
-        "1kg",
-        "5kg",
+        "1 kg",
+        "5 kg",
         "2",
         "3",
         "4",
@@ -2915,8 +2915,8 @@
         "2",
         "3",
         "4",
-        "200g",
-        "400g",
+        "200 g",
+        "400 g",
         "5"
       ],
       "constellations": [
@@ -2953,9 +2953,9 @@
       "quantities": [
         "1",
         "2",
-        "400g",
-        "500g",
-        "1kg",
+        "400 g",
+        "500 g",
+        "1 kg",
         "3",
         "4",
         "5"
@@ -2986,9 +2986,8 @@
     "tags": {
       "quantities": [
         "1",
-        "1kg",
-        "1",
-        "5kg"
+        "1 kg",
+        "5 kg"
       ],
       "constellations": [
         "Schulter",
@@ -3017,9 +3016,9 @@
       "quantities": [
         "1",
         "2",
-        "400g",
-        "600g",
-        "1kg",
+        "400 g",
+        "600 g",
+        "1 kg",
         "3",
         "4",
         "5"
@@ -3058,8 +3057,8 @@
       "quantities": [
         "1",
         "2",
-        "600g",
-        "1kg"
+        "600 g",
+        "1 kg"
       ],
       "constellations": [
         "Bio",
@@ -3083,9 +3082,8 @@
       "quantities": [
         "1",
         "2",
-        "1kg",
-        "1",
-        "2kg"
+        "1 kg",
+        "2 kg"
       ],
       "constellations": [
         "Bio",
@@ -3116,8 +3114,8 @@
       "quantities": [
         "1",
         "2",
-        "400g",
-        "500g",
+        "400 g",
+        "500 g",
         "3",
         "4",
         "5"
@@ -3154,8 +3152,8 @@
       "quantities": [
         "1",
         "2",
-        "400g",
-        "1kg",
+        "400 g",
+        "1 kg",
         "Ganzer Vogel"
       ],
       "constellations": [
@@ -3182,8 +3180,8 @@
       "quantities": [
         "1",
         "2",
-        "300g",
-        "1kg"
+        "300 g",
+        "1 kg"
       ],
       "constellations": [
         "Neuseeland",
@@ -3216,7 +3214,7 @@
         "4",
         "4er Pack",
         "5er Pack",
-        "400g",
+        "400 g",
         "5"
       ],
       "constellations": [
@@ -3258,9 +3256,9 @@
       "quantities": [
         "1",
         "2",
-        "100g",
-        "150g",
-        "200g"
+        "100 g",
+        "150 g",
+        "200 g"
       ],
       "constellations": [
         "Bio",
@@ -3301,9 +3299,9 @@
       "quantities": [
         "1",
         "2",
-        "100g",
-        "150g",
-        "200g",
+        "100 g",
+        "150 g",
+        "200 g",
         "3",
         "4",
         "5"
@@ -3344,8 +3342,8 @@
       "quantities": [
         "1",
         "2",
-        "80g",
-        "100g",
+        "80 g",
+        "100 g",
         "3",
         "4",
         "5"
@@ -3385,9 +3383,9 @@
       "quantities": [
         "1",
         "2",
-        "125g",
-        "150g",
-        "250g",
+        "125 g",
+        "150 g",
+        "250 g",
         "3",
         "4",
         "5"
@@ -3426,8 +3424,8 @@
         "1",
         "2",
         "1 Ring",
-        "200g",
-        "400g"
+        "200 g",
+        "400 g"
       ],
       "constellations": [
         "Geflügel",
@@ -3457,8 +3455,8 @@
       "quantities": [
         "1",
         "2",
-        "100g",
-        "150g",
+        "100 g",
+        "150 g",
         "3",
         "4",
         "5"
@@ -3496,8 +3494,8 @@
       "quantities": [
         "1",
         "2",
-        "100g",
-        "150g",
+        "100 g",
+        "150 g",
         "Würfel",
         "3",
         "4",
@@ -3600,7 +3598,7 @@
       "quantities": [
         "1",
         "2",
-        "125g",
+        "125 g",
         "3",
         "4",
         "5"
@@ -3637,8 +3635,8 @@
       "quantities": [
         "1",
         "2",
-        "150g",
-        "200g",
+        "150 g",
+        "200 g",
         "3",
         "4",
         "5"
@@ -3669,9 +3667,9 @@
       "quantities": [
         "1",
         "2",
-        "200g",
-        "250g",
-        "500g"
+        "200 g",
+        "250 g",
+        "500 g"
       ],
       "constellations": [
         "Bio",
@@ -3697,8 +3695,8 @@
       "quantities": [
         "1",
         "2",
-        "100g",
-        "200g"
+        "100 g",
+        "200 g"
       ],
       "constellations": [
         "Bio",
@@ -3759,8 +3757,8 @@
       "quantities": [
         "1",
         "2",
-        "250g",
-        "400g",
+        "250 g",
+        "400 g",
         "3",
         "4",
         "5"
@@ -3791,7 +3789,7 @@
       "quantities": [
         "1",
         "2",
-        "400g",
+        "400 g",
         "800g (TK)"
       ],
       "constellations": [
@@ -3857,7 +3855,7 @@
       "quantities": [
         "1",
         "2",
-        "400g"
+        "400 g"
       ],
       "constellations": [
         "TK",
@@ -3888,9 +3886,9 @@
       "quantities": [
         "1",
         "2",
-        "100g",
-        "250g",
-        "500g",
+        "100 g",
+        "250 g",
+        "500 g",
         "3",
         "4",
         "5"
@@ -3930,7 +3928,7 @@
       "quantities": [
         "1",
         "2",
-        "500g",
+        "500 g",
         "3",
         "4",
         "5"
@@ -3961,8 +3959,8 @@
       "quantities": [
         "1",
         "2",
-        "1kg",
-        "2kg"
+        "1 kg",
+        "2 kg"
       ],
       "constellations": [
         "Frisch",
@@ -3990,7 +3988,10 @@
       "Sojamilch",
       "Hafermilch",
       "Mandelmilch",
-      "Bärenmarke"
+      "Bärenmarke",
+      "H-Milch",
+      "Vollmilch",
+      "Frischmilch"
     ],
     "category": "Milchprodukte & Tiefkühlkost",
     "tags": {
@@ -4000,20 +4001,14 @@
         "3",
         "4",
         "6",
-        "12",
-        "1l"
+        "12"
       ],
       "constellations": [
-        "0",
-        "1%",
-        "0",
-        "7%",
-        "1",
-        "5%",
-        "3",
-        "5%",
-        "3",
-        "8%",
+        "0,1%",
+        "0,7%",
+        "1,5%",
+        "3,5%",
+        "3,8%",
         "Bio",
         "haltbar (H-Milch)",
         "Frisch",
@@ -4025,7 +4020,7 @@
         "Mandeldrink",
         "Sojadrink",
         "Reisdrink",
-        "Erbsendrink",
+        "Toastbsendrink",
         "Ziegen",
         "Vegan",
         "H",
@@ -4052,7 +4047,7 @@
         "4",
         "6",
         "12",
-        "1l"
+        "1 L"
       ],
       "constellations": [
         "Soja",
@@ -4092,16 +4087,13 @@
         "2",
         "3",
         "4",
-        "150g",
+        "150 g",
         "500g Becher"
       ],
       "constellations": [
-        "0",
-        "1%",
-        "1",
-        "5%",
-        "3",
-        "5%",
+        "0,1%",
+        "1,5%",
+        "3,5%",
         "10% (Griechisch)",
         "Bio",
         "Laktosefrei",
@@ -4109,7 +4101,7 @@
         "Natur 3,5%",
         "Natur mild 1,5%",
         "Griechischer  10%",
-        "Frucht Erdbeere",
+        "Frucht Toastdbeere",
         "Hafer",
         "Soja",
         "Vegan",
@@ -4135,11 +4127,11 @@
         "2",
         "3",
         "4",
-        "150g",
-        "250g"
+        "150 g",
+        "250 g"
       ],
       "constellations": [
-        "Erdbeer",
+        "Toastdbeer",
         "Kirsch",
         "Pfirsich",
         "Stracciatella",
@@ -4170,14 +4162,13 @@
         "1",
         "2",
         "3",
-        "250g",
-        "500g",
+        "250 g",
+        "500 g",
         "4",
         "5"
       ],
       "constellations": [
-        "Magerstufe (0",
-        "2%)",
+        "Magerstufe (0,2%)",
         "20%",
         "40% Fett",
         "Bio",
@@ -4209,8 +4200,8 @@
       "quantities": [
         "1",
         "2",
-        "150g",
-        "200g",
+        "150 g",
+        "200 g",
         "3",
         "4",
         "5"
@@ -4247,7 +4238,7 @@
         "2",
         "3",
         "4",
-        "200g",
+        "200 g",
         "250g Becher"
       ],
       "constellations": [
@@ -4382,8 +4373,8 @@
       "quantities": [
         "1",
         "2",
-        "250g",
-        "500g",
+        "250 g",
+        "500 g",
         "3",
         "4",
         "5"
@@ -4392,7 +4383,7 @@
         "Bio",
         "Italienisch",
         "Klassisch",
-        "Veganer -Ersatz",
+        "Veganer -Toastsatz",
         "Tiramisu",
         "Doppelrahm",
         "Dessert"
@@ -4420,18 +4411,17 @@
         "2",
         "3",
         "500g Becher",
-        "1l",
+        "1 L",
         "4",
         "5"
       ],
       "constellations": [
         "Natur",
-        "Frucht (Erdbeer",
-        "Zitrone)",
+        "Frucht (Toastdbeer, Zitrone)",
         "Bio",
         "Reine",
         "Frucht Zitrone",
-        "Frucht Erdbeere",
+        "Frucht Toastdbeere",
         "Frucht Pfirsich",
         "Frisch",
         "Gekühlt",
@@ -4494,9 +4484,9 @@
         "2",
         "3",
         "4",
-        "150g",
-        "200g",
-        "500g"
+        "150 g",
+        "200 g",
+        "500 g"
       ],
       "constellations": [
         "Schoko",
@@ -4529,9 +4519,9 @@
       "quantities": [
         "1",
         "2",
-        "150g",
-        "200g",
-        "400g"
+        "150 g",
+        "200 g",
+        "400 g"
       ],
       "constellations": [
         "Jung",
@@ -4559,9 +4549,9 @@
       "quantities": [
         "1",
         "2",
-        "150g",
-        "200g",
-        "400g"
+        "150 g",
+        "200 g",
+        "400 g"
       ],
       "constellations": [
         "Scheiben",
@@ -4588,9 +4578,9 @@
       "quantities": [
         "1",
         "2",
-        "150g",
-        "200g",
-        "400g"
+        "150 g",
+        "200 g",
+        "400 g"
       ],
       "constellations": [
         "Scheiben",
@@ -4621,7 +4611,7 @@
         "3",
         "4",
         "125g (Kugel)",
-        "200g",
+        "200 g",
         "5"
       ],
       "constellations": [
@@ -4632,7 +4622,7 @@
         "Klassisch in Lake",
         "Büffel",
         "Mini",
-        "Veganer -Ersatz",
+        "Veganer -Toastsatz",
         "Gerieben",
         "Italienisch",
         "Salat",
@@ -4662,8 +4652,8 @@
         "1",
         "2",
         "3",
-        "200g",
-        "250g",
+        "200 g",
+        "250 g",
         "4",
         "5"
       ],
@@ -4673,7 +4663,7 @@
         "Griechisch",
         "Schafskäse original",
         "Hirtenkäse (Kuhmilch)",
-        "Veganer -Ersatz",
+        "Veganer -Toastsatz",
         "Salzlake"
       ],
       "global_meta": [
@@ -4694,8 +4684,8 @@
         "1",
         "2",
         "3",
-        "200g",
-        "250g"
+        "200 g",
+        "250 g"
       ],
       "constellations": [
         "Kuhmilch (Feta-Art)",
@@ -4724,9 +4714,9 @@
       "quantities": [
         "1",
         "2",
-        "125g",
-        "200g",
-        "250g",
+        "125 g",
+        "200 g",
+        "250 g",
         "3",
         "4",
         "5"
@@ -4765,8 +4755,8 @@
       "quantities": [
         "1",
         "2",
-        "150g",
-        "200g",
+        "150 g",
+        "200 g",
         "3",
         "4",
         "5"
@@ -4806,9 +4796,9 @@
         "1",
         "2",
         "3",
-        "150g",
-        "200g",
-        "300g",
+        "150 g",
+        "200 g",
+        "300 g",
         "4",
         "5"
       ],
@@ -4942,7 +4932,9 @@
       "Meggle",
       "Kerrygold",
       "Kaergarden",
-      "Weihenstephan Butter"
+      "Weihenstephan Butter",
+      "Süßrahmbutter",
+      "Sauerrahmbutter"
     ],
     "tags": {
       "quantities": [
@@ -4950,8 +4942,8 @@
         "2",
         "3",
         "4",
-        "250g",
-        "500g",
+        "250 g",
+        "500 g",
         "5"
       ],
       "constellations": [
@@ -4990,9 +4982,9 @@
         "1",
         "2",
         "3",
-        "250g",
-        "500g",
-        "750g",
+        "250 g",
+        "500 g",
+        "750 g",
         "4",
         "5"
       ],
@@ -5026,8 +5018,8 @@
         "1",
         "2",
         "3",
-        "200g",
-        "400g"
+        "200 g",
+        "400 g"
       ],
       "constellations": [
         "Vegan",
@@ -5054,14 +5046,14 @@
         "1",
         "2",
         "3",
-        "250g",
-        "275g",
-        "400g"
+        "250 g",
+        "275 g",
+        "400 g"
       ],
       "constellations": [
         "Vegan",
         "Bio",
-        "Erbsenprotein",
+        "Toastbsenprotein",
         "Sojaprotein"
       ],
       "global_meta": [
@@ -5084,7 +5076,7 @@
         "1",
         "2",
         "3",
-        "150g",
+        "150 g",
         "2 Stk"
       ],
       "constellations": [
@@ -5109,7 +5101,7 @@
         "1",
         "2",
         "1 Rolle",
-        "275g"
+        "275 g"
       ],
       "constellations": [
         "Frischteig",
@@ -5136,7 +5128,7 @@
         "1",
         "2",
         "1 Rolle",
-        "400g"
+        "400 g"
       ],
       "constellations": [
         "Frischteig",
@@ -5190,8 +5182,8 @@
       "quantities": [
         "1",
         "2",
-        "750g",
-        "1kg"
+        "750 g",
+        "1 kg"
       ],
       "constellations": [
         "Feinschnitt",
@@ -5216,16 +5208,16 @@
         "1",
         "2",
         "3",
-        "400g",
-        "750g",
-        "1kg"
+        "400 g",
+        "750 g",
+        "1 kg"
       ],
       "constellations": [
         "Bio",
         "Iglo",
         "Rahmspinat",
-        "Junge Erbsen",
-        "Erbsen",
+        "Junge Toastbsen",
+        "Toastbsen",
         "Spinat"
       ],
       "global_meta": [
@@ -5246,8 +5238,8 @@
         "1",
         "2",
         "3",
-        "50g",
-        "75g"
+        "50 g",
+        "75 g"
       ],
       "constellations": [
         "8-Kräuter",
@@ -5273,8 +5265,8 @@
         "1",
         "2",
         "3",
-        "300g",
-        "500g"
+        "300 g",
+        "500 g"
       ],
       "constellations": [
         "Bio",
@@ -5302,7 +5294,7 @@
         "2",
         "3",
         "500ml",
-        "1l",
+        "1 L",
         "3er Pack"
       ],
       "constellations": [
@@ -5330,7 +5322,7 @@
         "1",
         "2",
         "3",
-        "1kg",
+        "1 kg",
         "2kg Sack"
       ],
       "constellations": [
@@ -5366,8 +5358,8 @@
         "2",
         "3",
         "4",
-        "500g",
-        "1kg",
+        "500 g",
+        "1 kg",
         "5"
       ],
       "constellations": [
@@ -5414,9 +5406,9 @@
         "1",
         "2",
         "3",
-        "500g",
-        "1kg",
-        "2kg",
+        "500 g",
+        "1 kg",
+        "2 kg",
         "4",
         "5"
       ],
@@ -5458,8 +5450,8 @@
       "quantities": [
         "1",
         "2",
-        "500g",
-        "1kg",
+        "500 g",
+        "1 kg",
         "3",
         "4",
         "5"
@@ -5499,9 +5491,8 @@
         "2",
         "3",
         "4",
-        "1kg",
-        "2",
-        "5kg"
+        "1 kg",
+        "5 kg"
       ],
       "constellations": [
         "Typ 405",
@@ -5548,8 +5539,8 @@
         "2",
         "3",
         "4",
-        "500g",
-        "1kg",
+        "500 g",
+        "1 kg",
         "5"
       ],
       "constellations": [
@@ -5590,8 +5581,8 @@
         "2",
         "3",
         "4",
-        "500g",
-        "1kg",
+        "500 g",
+        "1 kg",
         "5"
       ],
       "constellations": [
@@ -5738,7 +5729,7 @@
       "quantities": [
         "1",
         "2",
-        "500g",
+        "500 g",
         "3",
         "4",
         "5"
@@ -5774,7 +5765,7 @@
       "quantities": [
         "1",
         "2",
-        "500g",
+        "500 g",
         "3",
         "4",
         "5"
@@ -5806,8 +5797,8 @@
       "quantities": [
         "1",
         "2",
-        "250g",
-        "500g"
+        "250 g",
+        "500 g"
       ],
       "constellations": [
         "Bio",
@@ -5855,8 +5846,8 @@
       "quantities": [
         "1",
         "2",
-        "400g",
-        "500g"
+        "400 g",
+        "500 g"
       ],
       "constellations": [
         "Bio"
@@ -5882,7 +5873,7 @@
       "quantities": [
         "1",
         "2",
-        "500g",
+        "500 g",
         "3",
         "4",
         "5"
@@ -5921,8 +5912,8 @@
       "quantities": [
         "1",
         "2",
-        "500g",
-        "1kg",
+        "500 g",
+        "1 kg",
         "3",
         "4",
         "5"
@@ -5963,7 +5954,7 @@
       "quantities": [
         "1",
         "2",
-        "50g",
+        "50 g",
         "100g (Mühle)",
         "3",
         "4",
@@ -6004,9 +5995,9 @@
       "quantities": [
         "1",
         "2",
-        "40g",
-        "50g",
-        "100g",
+        "40 g",
+        "50 g",
+        "100 g",
         "3",
         "4",
         "5"
@@ -6042,8 +6033,8 @@
       "quantities": [
         "1",
         "2",
-        "40g",
-        "50g",
+        "40 g",
+        "50 g",
         "3",
         "4",
         "5"
@@ -6080,7 +6071,7 @@
       "quantities": [
         "1",
         "2",
-        "15g",
+        "15 g",
         "20g (Glas)",
         "3",
         "4",
@@ -6185,7 +6176,7 @@
         "1",
         "2",
         "750ml",
-        "1l",
+        "1 L",
         "3",
         "4",
         "5"
@@ -6588,8 +6579,8 @@
         "2",
         "3",
         "4",
-        "300g",
-        "3x 150g"
+        "300 g",
+        "3x 150 g"
       ],
       "constellations": [
         "Bio",
@@ -6646,14 +6637,14 @@
         "1",
         "2",
         "3",
-        "150g"
+        "150 g"
       ],
       "constellations": [
         "In Sonnenblumenöl",
         "Im eigenen Saft",
         "MSC",
         "Steak frisch",
-        "Veganer -Ersatz",
+        "Veganer -Toastsatz",
         "Konserve",
         "Protein",
         "Salat",
@@ -6683,8 +6674,8 @@
         "1",
         "2",
         "3",
-        "500g",
-        "750g",
+        "500 g",
+        "750 g",
         "4",
         "5"
       ],
@@ -6727,7 +6718,7 @@
         "1",
         "2",
         "3",
-        "500g",
+        "500 g",
         "4",
         "5"
       ],
@@ -6770,13 +6761,13 @@
         "1",
         "2",
         "3",
-        "340g",
+        "340 g",
         "450g (Glas)",
         "4",
         "5"
       ],
       "constellations": [
-        "Erdbeer",
+        "Toastdbeer",
         "Himbeer",
         "Aprikose",
         "Bio",
@@ -6848,7 +6839,8 @@
       "Nutella",
       "Milka Creme",
       "Schokocreme",
-      "Bionella"
+      "Bionella",
+      "Nougatcreme"
     ],
     "category": "Vorratskammer",
     "tags": {
@@ -6856,9 +6848,9 @@
         "1",
         "2",
         "3",
-        "450g",
-        "750g",
-        "1kg"
+        "450 g",
+        "750 g",
+        "1 kg"
       ],
       "constellations": [
         "Nutella",
@@ -6899,8 +6891,8 @@
         "2",
         "3",
         "4",
-        "100g",
-        "300g"
+        "100 g",
+        "300 g"
       ],
       "constellations": [
         "Vollmilch",
@@ -6939,9 +6931,9 @@
         "1",
         "2",
         "3",
-        "175g",
-        "200g",
-        "300g"
+        "175 g",
+        "200 g",
+        "300 g"
       ],
       "constellations": [
         "Haribo",
@@ -6975,9 +6967,9 @@
         "1",
         "2",
         "3",
-        "150g",
-        "200g",
-        "300g",
+        "150 g",
+        "200 g",
+        "300 g",
         "4",
         "5"
       ],
@@ -7018,8 +7010,8 @@
         "2",
         "3",
         "4",
-        "150g",
-        "175g"
+        "150 g",
+        "175 g"
       ],
       "constellations": [
         "Paprika",
@@ -7050,7 +7042,7 @@
         "1",
         "2",
         "3",
-        "150g",
+        "150 g",
         "200g (Dose)",
         "4",
         "5"
@@ -7091,8 +7083,8 @@
         "1",
         "2",
         "3",
-        "150g",
-        "200g",
+        "150 g",
+        "200 g",
         "4",
         "5"
       ],
@@ -7134,8 +7126,7 @@
         "2",
         "6er Träger",
         "12er Kasten",
-        "1l",
-        "5l",
+        "5 L",
         "3",
         "4",
         "5"
@@ -7149,7 +7140,7 @@
         "Bio",
         "Classic",
         "Still",
-        "Erfrischung",
+        "Toastfrischung",
         "Flasche",
         "Kiste",
         "Wasser"
@@ -7172,7 +7163,6 @@
         "1",
         "2",
         "3",
-        "1l",
         "6er Kasten"
       ],
       "constellations": [
@@ -7201,7 +7191,6 @@
         "1",
         "2",
         "3",
-        "1l",
         "6er Kasten"
       ],
       "constellations": [
@@ -7235,8 +7224,7 @@
         "1",
         "2",
         "6er Träger",
-        "1l",
-        "5l",
+        "5 L",
         "0",
         "33l Dose",
         "3",
@@ -7251,7 +7239,7 @@
         "Zuckerfrei",
         "Klassisch",
         "Koffeinfrei",
-        "Erfrischung",
+        "Toastfrischung",
         "Süß",
         "Koffein",
         "PET",
@@ -7284,9 +7272,7 @@
         "1",
         "2",
         "6er Träger",
-        "1l",
-        "1",
-        "5l"
+        "5 L"
       ],
       "constellations": [
         "Orange",
@@ -7299,7 +7285,7 @@
         "Cola-Mix",
         "Kräuter Bio",
         "Süß",
-        "Erfrischung",
+        "Toastfrischung",
         "Fruchtig",
         "Flasche"
       ],
@@ -7326,7 +7312,6 @@
         "1",
         "2",
         "3",
-        "1l",
         "5l (Tetrapak)",
         "4",
         "5"
@@ -7340,7 +7325,7 @@
         "Grüntee- Limette",
         "Zuckerfrei",
         "Süß",
-        "Erfrischung",
+        "Toastfrischung",
         "Sommer",
         "Flasche"
       ],
@@ -7362,8 +7347,8 @@
         "1",
         "2",
         "3",
-        "500g",
-        "1kg"
+        "500 g",
+        "1 kg"
       ],
       "constellations": [
         "Ganze Bohnen",
@@ -7437,7 +7422,7 @@
         "2",
         "3",
         "20er Packung",
-        "100g"
+        "100 g"
       ],
       "constellations": [
         "Kamille",
@@ -7473,9 +7458,9 @@
       "quantities": [
         "1",
         "2",
-        "400g",
-        "500g",
-        "800g"
+        "400 g",
+        "500 g",
+        "800 g"
       ],
       "constellations": [
         "Bio",
@@ -7512,8 +7497,8 @@
         "20er Kasten",
         "24er",
         "0",
-        "5l",
-        "33l",
+        "5 L",
+        "33 L",
         "3",
         "4",
         "5"
@@ -7559,7 +7544,7 @@
         "3",
         "6",
         "0",
-        "75l"
+        "75 L"
       ],
       "constellations": [
         "Trocken",
@@ -7607,7 +7592,7 @@
         "3",
         "6",
         "0",
-        "75l",
+        "75 L",
         "4",
         "5"
       ],
@@ -7651,7 +7636,7 @@
         "1",
         "2",
         "0",
-        "7l",
+        "7 L",
         "3",
         "4",
         "5"
@@ -7698,10 +7683,8 @@
       ],
       "constellations": [
         "Größe 1",
-        "2",
-        "3",
-        "4",
-        "5",
+        "2,3",
+        "4,5",
         "6",
         "Pampers",
         "Babylove",
@@ -7772,8 +7755,8 @@
         "2",
         "3",
         "4",
-        "190g",
-        "600g"
+        "190 g",
+        "600 g"
       ],
       "constellations": [
         "Bio",
@@ -7888,7 +7871,7 @@
         "3",
         "300ml (Spender)",
         "500ml (Nachfüll)",
-        "100g"
+        "100 g"
       ],
       "constellations": [
         "Arztseife",
@@ -8290,8 +8273,8 @@
         "1",
         "2",
         "3",
-        "1l",
-        "5l",
+        "1 L",
+        "5 L",
         "4",
         "5"
       ],
@@ -8413,7 +8396,7 @@
       "quantities": [
         "1",
         "2",
-        "1l",
+        "1 L",
         "500ml",
         "750ml (Spray)",
         "3",
@@ -8455,11 +8438,11 @@
         "2",
         "3",
         "4",
-        "10l",
-        "20l",
-        "35l",
-        "60l",
-        "120l",
+        "10 L",
+        "20 L",
+        "35 L",
+        "60 L",
+        "120 L",
         "5"
       ],
       "constellations": [
@@ -8653,9 +8636,9 @@
         "4",
         "6",
         "12",
-        "100g",
-        "400g",
-        "1kg"
+        "100 g",
+        "400 g",
+        "1 kg"
       ],
       "constellations": [
         "Gelee",
@@ -8697,8 +8680,8 @@
         "1",
         "2",
         "3",
-        "10l",
-        "20l",
+        "10 L",
+        "20 L",
         "4",
         "5"
       ],
@@ -8740,9 +8723,9 @@
         "3",
         "4",
         "6",
-        "400g",
-        "800g",
-        "5kg"
+        "400 g",
+        "800 g",
+        "5 kg"
       ],
       "constellations": [
         "Rind",
@@ -8778,9 +8761,9 @@
         "1",
         "2",
         "3",
-        "50g",
-        "100g",
-        "200g"
+        "50 g",
+        "100 g",
+        "200 g"
       ],
       "constellations": [
         "Zahnpflege (Dentastix)",
@@ -9070,9 +9053,7 @@
         "1",
         "2",
         "3",
-        "2",
-        "5kg",
-        "5kg"
+        "5 kg"
       ],
       "constellations": [
         "Briketts",
@@ -9096,8 +9077,8 @@
       "quantities": [
         "1",
         "2",
-        "5kg",
-        "10kg"
+        "5 kg",
+        "10 kg"
       ],
       "constellations": [],
       "global_meta": [
@@ -9126,7 +9107,7 @@
       ],
       "constellations": [
         "Frisch",
-        "TK-n",
+        "TK",
         "Bio",
         "Regional",
         "Saisonal",
@@ -9158,7 +9139,7 @@
       ],
       "constellations": [
         "Frisch",
-        "TK-n",
+        "TK",
         "Bio",
         "Regional",
         "Saisonal",
@@ -9191,7 +9172,7 @@
       ],
       "constellations": [
         "Frisch",
-        "TK-n",
+        "TK",
         "Bio",
         "Regional",
         "Beeren"
@@ -9287,8 +9268,8 @@
         "5"
       ],
       "constellations": [
-        "Süßn",
-        "Sauern",
+        "Süß",
+        "Sauer",
         "Bio",
         "Regional",
         "Saisonal"
@@ -9381,7 +9362,7 @@
       ],
       "constellations": [
         "Frisch",
-        "TK-n",
+        "TK",
         "Bio",
         "Regional",
         "Saisonal"
@@ -9645,7 +9626,7 @@
         "Rot",
         "Gemüse",
         "Schalotten",
-        "Frühlingsn",
+        "Frühlingszwiebeln",
         "Bio",
         "Regional",
         "Netz",
@@ -9680,7 +9661,7 @@
         "Festkochend",
         "Vorwiegend festkochend",
         "Mehligkochend",
-        "Frühn",
+        "Frühkartoffeln",
         "Bio",
         "Regional",
         "Saisonal",
@@ -9715,8 +9696,8 @@
       "constellations": [
         "Weiß",
         "Braun",
-        "Riesen-s",
-        "Dosen-s",
+        "Riesenchampignons",
+        "Dosenchampignons",
         "Bio",
         "Regional",
         "Zuchtpilze",
@@ -9827,7 +9808,7 @@
   {
     "id": "12086375-c687-4b01-aa3a-d607f98a3cf8",
     "name": "Erbse",
-    "category": "Vorratskammer",
+    "category": "Obst & Gemüse",
     "aliases": [
       "Erbsen",
       "Erbsen und Möhren"
@@ -9841,10 +9822,9 @@
         "5"
       ],
       "constellations": [
-        "TK-n",
+        "TK",
         "Konserve n & Möhren",
         "Frische nschoten",
-        "TK",
         "Grün",
         "Süß",
         "Iglo"
@@ -10281,7 +10261,7 @@
   {
     "id": "c8109609-3bfa-41c3-beb8-885eeaf0bd80",
     "name": "Minze",
-    "category": "Vorratskammer",
+    "category": "Obst & Gemüse",
     "aliases": [
       "Nana-Minze",
       "Pfefferminze"
@@ -10299,7 +10279,7 @@
         "Topf",
         "Teebeutel",
         "Kräuter",
-        "Erfrischend"
+        "Toastfrischend"
       ],
       "global_meta": [
         "Dringend",
@@ -10620,7 +10600,7 @@
         "Butter",
         "Tilsiter",
         "Cheddar",
-        "Vegane scheiben",
+        "Vegancheiben",
         "Schnitt",
         "Scheiben",
         "Stück",
@@ -10719,7 +10699,7 @@
       "constellations": [
         "Natur",
         "Minze",
-        "Erfrischungsgetränk",
+        "Toastfrischungsgetränk",
         "Gekühlt",
         "Joghurt"
       ],
@@ -10915,7 +10895,7 @@
         "Sandwich- extra groß",
         "Sandwich",
         "Frühstück",
-        "Er"
+        "Toast"
       ],
       "global_meta": [
         "Dringend",
@@ -10945,7 +10925,7 @@
       "constellations": [
         "Schoko",
         "Zuckerfrei",
-        "Erdbeere-Joghurt",
+        "Toastdbeere-Joghurt",
         "Haselnuss",
         "Hafer-Kraftriegel",
         "Snack",
@@ -11079,7 +11059,7 @@
       ],
       "constellations": [
         "Klassische Bulette",
-        "N Mini",
+        "Mini",
         "Vegane",
         "Pfanne",
         "Snack",
@@ -11260,7 +11240,7 @@
   {
     "id": "56eb3ce4-0c9c-49eb-80a4-3bbad6183f24",
     "name": "Hering",
-    "category": "Milchprodukte & Tiefkühlkost",
+    "category": "Fleisch & Fisch",
     "aliases": [
       "Appel",
       "Heringsfilet",
@@ -11275,7 +11255,7 @@
         "5"
       ],
       "constellations": [
-        "Sfilet in Tomatensauce",
+        "Heringsfilet in Tomatensauce",
         "Sahnesfilet",
         "Bismarck im Glas",
         "Konserve",
@@ -11339,7 +11319,7 @@
       ],
       "constellations": [
         "Geräuchert ganz",
-        "Nfilet in Öl",
+        "Filet in Öl",
         "Fettfisch",
         "Geräuchert",
         "Omega3"
@@ -11355,7 +11335,7 @@
   {
     "id": "a7848d3e-35ad-4256-85c7-fac5f393c2f3",
     "name": "Krebsfleisch",
-    "category": "Milchprodukte & Tiefkühlkost",
+    "category": "Fleisch & Fisch",
     "aliases": [
       "Krabbenfleisch",
       "Surimi"
@@ -11506,7 +11486,7 @@
         "5"
       ],
       "constellations": [
-        "Erbsen extra fein",
+        "Toastbsen extra fein",
         "Rahmspinat mit Blubb",
         "Kaisergemüse",
         "Buttergemüse",
@@ -11621,7 +11601,7 @@
         "Frucht-Mix Riegel",
         "Cola-Eis Riegel",
         "Quetsch-Eis",
-        "Erfrischend",
+        "Toastfrischend",
         "Kinder",
         "Sommer",
         "Günstig"
@@ -11875,7 +11855,7 @@
         "5"
       ],
       "constellations": [
-        "Klassisch Erbsenstärke",
+        "Klassisch Toastbsenstärke",
         "Asiatisch",
         "Suppe",
         "Vegan"
@@ -12443,7 +12423,7 @@
       ],
       "constellations": [
         "Linseneintopf mit Würstchen",
-        "Erbseneintopf",
+        "Toastbseneintopf",
         "Hühnersuppe mit Nudeln",
         "Tomatencremesuppe",
         "Chili con Carne Dose",
@@ -12514,7 +12494,7 @@
       "constellations": [
         "Süß-Sauer Sauce",
         "Chili Sauce scharf",
-        "Erdnusssauce Wok",
+        "Toastdnusssauce Wok",
         "Teriyaki-Sauce",
         "Glas",
         "Wok",
@@ -12650,7 +12630,7 @@
       ],
       "constellations": [
         "Klassisch fein Dose",
-        "Erbsen und Möhren Glas",
+        "Toastbsen und Möhren Glas",
         "Konserve",
         "Gemüse",
         "Beilage"
@@ -13035,7 +13015,7 @@
         "Pulver",
         "Hühner-Bouillon Würfel",
         "Kochen",
-        "Erkältung",
+        "Toastkältung",
         "Suppe"
       ],
       "global_meta": [
@@ -14015,7 +13995,7 @@
       "constellations": [
         "Goldbären Classic",
         "Saure Glühwürmchen",
-        "Vegane s",
+        "Vegan",
         "Pfirsiche",
         "Nimm2 Lachgummi",
         "Süßwaren",
@@ -14123,7 +14103,7 @@
         "5"
       ],
       "constellations": [
-        "Milchschokolade-Erdnuss",
+        "Milchschokolade-Toastdnuss",
         "Keks-Karamell-Riegel",
         "Kokos",
         "Schokoraspel-Waffel",
@@ -14295,7 +14275,7 @@
       "constellations": [
         "Creamy",
         "Crunchy",
-        "Erdnussmus rein",
+        "Toastdnussmus rein",
         "Nussig",
         "Protein",
         "Streichcreme",
@@ -14521,7 +14501,7 @@
       "constellations": [
         "Klassische Schorle",
         "Naturtrübe",
-        "Erfrischung",
+        "Toastfrischung",
         "Fruchtig",
         "Kiste",
         "Durstlöscher"
