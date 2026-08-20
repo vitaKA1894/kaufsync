@@ -13,6 +13,7 @@ const items = ref([]);
 const currentList = ref(null);
 const newItemName = ref('');
 const isAddModalOpen = ref(false);
+const startScanner = ref(false);
 const itemToEdit = ref(null);
 const errorMessage = ref('');
 const successMessage = ref('');
@@ -42,8 +43,19 @@ const startPress = (item, event) => {
   pressTimer = setTimeout(() => {
     longPressTriggered = true;
     itemToEdit.value = item;
+    startScanner.value = false;
     isAddModalOpen.value = true;
   }, 500); // 500ms for long press
+};
+
+const openAddModal = () => {
+    startScanner.value = false;
+    isAddModalOpen.value = true;
+};
+
+const openScannerModal = () => {
+    startScanner.value = true;
+    isAddModalOpen.value = true;
 };
 
 const cancelPress = () => {
@@ -832,18 +844,24 @@ onUnmounted(() => {
 
     <!-- Add Item Trigger -->
     <div class="input-container">
-        <button class="add-trigger-btn" @click="isAddModalOpen = true">
-            <svg viewBox="0 0 24 24"><path d="M11 19v-6H5v-2h6V5h2v6h6v2h-6v6Z"/></svg>
-            Neuen Artikel hinzufügen
-        </button>
+        <div style="display: flex; gap: 8px; width: 100%; max-width: var(--ks-page-width);">
+            <button class="add-trigger-btn" @click="openAddModal" style="flex: 1;">
+                <svg viewBox="0 0 24 24"><path d="M11 19v-6H5v-2h6V5h2v6h6v2h-6v6Z"/></svg>
+                Neuen Artikel hinzufügen
+            </button>
+            <button class="add-trigger-btn barcode-trigger-btn ks-icon-btn" @click="openScannerModal" style="flex-shrink: 0; width: 56px; border-radius: 50%; padding: 0;">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M3 4h4v2H5v2H3V4m14 0h4v4h-2V6h-2V4M3 20v-4h2v2h2v2H3m14 0v-2h2v-2h2v4h-4M5 10h2v4H5v-4m4 0h2v4H9v-4m4 0h2v4h-2v-4m4 0h2v4h-2v-4Z"/></svg>
+            </button>
+        </div>
     </div>
 
     <!-- Modal -->
     <AddItemModal
         :is-open="isAddModalOpen"
+        :start-with-scanner="startScanner"
         :edit-item="itemToEdit"
         :active-items="items.filter(i => i.status === 'active')"
-        @close="isAddModalOpen = false; itemToEdit = null"
+        @close="isAddModalOpen = false; itemToEdit = null; startScanner = false"
         @add="handleAddItem"
         @update="handleUpdateItem"
     />
@@ -987,6 +1005,13 @@ onUnmounted(() => {
     box-shadow: 0 4px 12px var(--ks-primary-container);
 }
 .add-trigger-btn svg { width: 24px; height: 24px; fill: currentColor; }
+
+.barcode-trigger-btn {
+    background: var(--ks-surface-2);
+    color: var(--ks-text);
+    border: 1px solid var(--ks-border);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
 
 /* Modal & Sheets */
 .sheet-heading { font-size: 20px; font-weight: 500; margin: 0 0 8px; color: var(--ks-text); }

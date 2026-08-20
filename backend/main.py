@@ -404,7 +404,7 @@ def invite_user(
     return new_invite
 
 @app.post("/api/invitations/{invite_id}/respond")
-def respond_to_invitation(
+async def respond_to_invitation(
     invite_id: str,
     action: str, # "accept" oder "decline"
     db: Session = Depends(get_db),
@@ -435,10 +435,9 @@ def respond_to_invitation(
     db.commit()
 
     if action == "accept":
-        import asyncio
-        asyncio.create_task(manager.broadcast_user(str(current_user.id), {
+        await manager.broadcast_user(str(current_user.id), {
             "event": "LIST_UPDATED"
-        }))
+        })
 
     return {"status": "ok", "message": f"Einladung {'angenommen' if action == 'accept' else 'abgelehnt'}"}
 
