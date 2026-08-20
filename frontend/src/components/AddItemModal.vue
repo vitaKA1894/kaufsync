@@ -467,7 +467,7 @@ watch(() => props.isOpen, (newVal) => {
 
         <!-- STEP 2: Tags Selection -->
         <div v-else class="tags-step">
-           <div class="modal-header" style="justify-content: flex-start; gap: 12px;">
+           <div class="modal-header" style="justify-content: flex-start; gap: 12px; margin-top: 0; padding-bottom: 16px;">
               <button class="ks-icon-btn" @click="selectedItem = null">
                  <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
               </button>
@@ -696,9 +696,18 @@ watch(() => props.isOpen, (newVal) => {
 }
 
 /* Tags Step */
+.tags-step {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
+
 .tags-content {
     overflow-y: auto;
     padding-bottom: 16px;
+    flex: 1;
+    min-height: 0;
 }
 .tag-section {
     margin-bottom: 24px;
@@ -738,6 +747,8 @@ watch(() => props.isOpen, (newVal) => {
 .modal-footer {
     padding-top: 16px;
     padding-bottom: env(safe-area-inset-bottom);
+    margin-top: auto;
+    background: var(--ks-bg);
 }
 .full-width {
     width: 100%;
