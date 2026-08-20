@@ -3,6 +3,7 @@ import { ref, onMounted, onUnmounted, computed, nextTick, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import CategoryIcon from '../components/CategoryIcon.vue';
 import AddItemModal from '../components/AddItemModal.vue';
+import ConfirmModal from '../components/ConfirmModal.vue';
 import Sortable from 'sortablejs';
 
 const route = useRoute();
@@ -16,6 +17,9 @@ const isAddModalOpen = ref(false);
 const startScanner = ref(false);
 const itemToEdit = ref(null);
 const errorMessage = ref('');
+const showConfirmModal = ref(false);
+const confirmMessage = ref('');
+const confirmAction = ref(null);
 const successMessage = ref('');
 const showShareSheet = ref(false);
 const showSortSheet = ref(false);
@@ -407,15 +411,33 @@ const toggleItemStatus = async (item) => {
   }
 };
 
+const executeConfirmAction = async () => {
+  if (confirmAction.value) {
+    await confirmAction.value();
+  }
+  showConfirmModal.value = false;
+  confirmAction.value = null;
+};
+
 const clearCompleted = async () => {
   const completedIds = completedItems.value.map(item => item.id);
   if (completedIds.length === 0) return;
 
-  if (confirm(`Möchtest du wirklich alle ${completedIds.length} erledigten Artikel löschen?`)) {
+  confirmMessage.value = `Möchtest du wirklich alle ${completedIds.length} erledigten Artikel löschen?`;
+  confirmAction.value = async () => {
     for (const id of completedIds) {
       await deleteItem(id);
     }
-  }
+  };
+  showConfirmModal.value = true;
+};
+
+const confirmDeleteItem = (item) => {
+  confirmMessage.value = `Möchtest du '${item.name}' wirklich löschen?`;
+  confirmAction.value = async () => {
+    await deleteItem(item.id);
+  };
+  showConfirmModal.value = true;
 };
 
 const deleteItem = async (itemId) => {
@@ -834,7 +856,7 @@ onUnmounted(() => {
               <span class="item-name">{{ item.name }}</span>
               <span class="item-quantity" v-if="formatQuantity(item)">{{ formatQuantity(item) }}</span>
             </div>
-            <button class="delete-btn" @click.stop="deleteItem(item.id)" aria-label="Löschen">
+            <button class="delete-btn" @click.stop="confirmDeleteItem(item)" aria-label="Löschen">
               <svg viewBox="0 0 24 24"><path d="M7 21q-.825 0-1.412-.587Q5 19.825 5 19V6H4V4h5V3h6v1h5v2h-1v13q0 .825-.587 1.413Q17.825 21 17 21Zm2-4h2V8H9Zm4 0h2V8h-2Z"/></svg>
             </button>
           </div>
@@ -854,6 +876,16 @@ onUnmounted(() => {
             </button>
         </div>
     </div>
+
+    <!-- Confirm Modal -->
+    <ConfirmModal
+      :show="showConfirmModal"
+      title="Artikel löschen"
+      :message="confirmMessage"
+      confirmText="Löschen"
+      @confirm="executeConfirmAction"
+      @cancel="showConfirmModal = false"
+    />
 
     <!-- Modal -->
     <AddItemModal

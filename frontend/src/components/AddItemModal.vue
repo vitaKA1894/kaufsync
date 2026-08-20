@@ -164,15 +164,30 @@ const enhancedQuantities = computed(() => {
 });
 
 const selectItem = (item) => {
+  let finalItem = item;
+
+  if (item.aliases && query.value && query.value.trim() !== '') {
+    const qLower = query.value.trim().toLowerCase();
+    const nameLower = item.name.toLowerCase();
+
+    // Only replace name if the query does not match the primary name
+    if (!nameLower.includes(qLower)) {
+      const matchedAlias = item.aliases.find(a => a.toLowerCase().includes(qLower));
+      if (matchedAlias) {
+        finalItem = { ...item, name: matchedAlias };
+      }
+    }
+  }
+
   const isDuplicate = !props.editItem && props.activeItems.some(
-    i => i.name.trim().toLowerCase() === item.name.trim().toLowerCase()
+    i => i.name.trim().toLowerCase() === finalItem.name.trim().toLowerCase()
   );
   if (isDuplicate) {
     duplicateWarning.value = true;
     return;
   }
 
-  proceedToDetails(item);
+  proceedToDetails(finalItem);
 };
 
 const proceedToDetails = (item) => {
