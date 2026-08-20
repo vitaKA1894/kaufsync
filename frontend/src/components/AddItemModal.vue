@@ -30,6 +30,7 @@ const getCategoryDef = (catName) => {
 
 const props = defineProps({
   isOpen: Boolean,
+  startWithScanner: { type: Boolean, default: false },
   editItem: { type: Object, default: null },
   activeItems: { type: Array, default: () => [] }
 });
@@ -59,14 +60,20 @@ const handleScan = async (barcode) => {
         if (response.ok) {
             const data = await response.json();
             if (data.product) {
-                const productName = data.product.product_name || '';
-                const brands = data.product.brands || '';
+                const product = data.product;
+                const genericName = product.generic_name_de || product.generic_name || product.product_name_de || product.product_name || '';
+                const brandsStr = product.brands || '';
+                let brand = '';
 
-                // Set query to product name
-                query.value = productName;
+                if (brandsStr) {
+                    brand = brandsStr.split(',')[0].trim();
+                }
 
-                // Do taxonomy search
-                const searchResults = searchTaxonomy(productName);
+                // Set query to generic product name
+                query.value = genericName;
+
+                // Do taxonomy search using generic name
+                const searchResults = searchTaxonomy(genericName);
 
                 let matchingItem;
                 if (searchResults && searchResults.length > 0) {
@@ -75,7 +82,7 @@ const handleScan = async (barcode) => {
                 } else {
                     // Fall B: Not found -> "Sonstiges Produkt"
                     matchingItem = {
-                        name: productName,
+                        name: genericName,
                         category: 'Sonstiges',
                         tags: { quantities: [], constellations: [], global_meta: [] }
                     };
@@ -84,8 +91,8 @@ const handleScan = async (barcode) => {
                 proceedToDetails(matchingItem);
 
                 // Add brand to Ausprägung
-                if (brands) {
-                    manualUnit.value = brands;
+                if (brand) {
+                    manualUnit.value = brand;
                 }
             }
         } else {
@@ -326,6 +333,8 @@ onMounted(() => {
 import { watch } from 'vue';
 watch(() => props.isOpen, (newVal) => {
     if (newVal) {
+        showScanner.value = props.startWithScanner;
+
         if (props.editItem) {
             // Edit Mode Init
             const editItemMapped = { ...props.editItem, category: mapLegacyCategory(props.editItem.category || 'Sonstiges') };
@@ -453,9 +462,6 @@ watch(() => props.isOpen, (newVal) => {
                   placeholder="Artikel suchen..."
                   @keyup.enter="confirmSelection(false)"
                 />
-                <button class="ks-icon-btn barcode-btn" @click="showScanner = true" style="flex-shrink: 0; border-radius: 50%; width: 48px; height: 48px; background: var(--ks-surface-2); display: flex; align-items: center; justify-content: center; border: 1px solid transparent;">
-                    <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M3 4h4v2H5v2H3V4m14 0h4v4h-2V6h-2V4M3 20v-4h2v2h2v2H3m14 0v-2h2v-2h2v4h-4M5 10h2v4H5v-4m4 0h2v4H9v-4m4 0h2v4h-2v-4m4 0h2v4h-2v-4Z"/></svg>
-                </button>
               </div>
             </div>
             <button class="close-btn ks-icon-btn" @click="closeModal">
