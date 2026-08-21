@@ -1,13 +1,13 @@
 [
   {
     "id": "455cd713-86fd-43ba-8b1b-b010dbba8cea",
-    "name": "Apfel",
+    "name": "Äpfel",
     "category": "Obst & Gemüse",
     "aliases": [
       "Kulturapfel",
       "Pink Lady",
       "Tafelapfel",
-      "Äpfel"
+      "Apfel"
     ],
     "tags": {
       "quantities": [
@@ -9126,8 +9126,7 @@
     "name": "Himbeere",
     "category": "Obst & Gemüse",
     "aliases": [
-      "Himbeeren",
-      "Waldbeeren"
+      "Himbeeren"
     ],
     "tags": {
       "quantities": [
@@ -9349,8 +9348,7 @@
     "name": "Brombeere",
     "category": "Obst & Gemüse",
     "aliases": [
-      "Brombeeren",
-      "Beeren"
+      "Brombeeren"
     ],
     "tags": {
       "quantities": [
@@ -9677,13 +9675,14 @@
   },
   {
     "id": "1a0536e8-1181-4694-9f5c-85afea192a2e",
-    "name": "Champignon",
+    "name": "Pilze",
     "category": "Obst & Gemüse",
     "aliases": [
-      "Pilze",
       "Egerlinge",
       "Pilz",
-      "Champignons"
+      "Champignons",
+      "Champignon",
+      "Kräuterseitling"
     ],
     "tags": {
       "quantities": [
@@ -10021,7 +10020,6 @@
     "name": "Kräuterseitling",
     "category": "Obst & Gemüse",
     "aliases": [
-      "Pilze",
       "Kräuterseitlinge"
     ],
     "tags": {
@@ -16265,5 +16263,56 @@
       ]
     },
     "icon": "Allgemein"
+  },
+  {
+    "id": "1121a101-cc1c-444c-adcd-a15033e4b966",
+    "name": "Fleisch",
+    "category": "Fleisch & Fisch",
+    "aliases": [],
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "500g",
+        "1kg"
+      ],
+      "constellations": [
+        "Frisch",
+        "Bio"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot"
+      ]
+    },
+    "icon": "fleisch_allgemein"
+  },
+  {
+    "id": "d4082b55-5b61-422c-95a9-336cdcc7b47a",
+    "name": "Beeren",
+    "category": "Obst & Gemüse",
+    "aliases": [
+      "Himbeere",
+      "Brombeere"
+    ],
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "Schale"
+      ],
+      "constellations": [
+        "Frisch",
+        "Bio",
+        "TK"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot"
+      ]
+    },
+    "icon": "Beeren"
   }
 ]
