@@ -37,6 +37,11 @@ const changelogFilter = ref('all'); // 'all', 'added', 'completed'
 let ws = null;
 const isOnline = ref(navigator.onLine);
 
+const formatCategoryName = (name) => {
+  if (!name) return '';
+  return name.length > 13 ? name.substring(0, 13) + '.' : name;
+};
+
 // --- LONG PRESS GESTURE ---
 let pressTimer = null;
 let longPressTriggered = false;
@@ -791,7 +796,7 @@ onUnmounted(() => {
                  :style="{ background: `linear-gradient(to right, color-mix(in srgb, ${group.def.bg} 15%, transparent) 0%, transparent 100%)` }">
           
           <div class="category-lane" :style="{ backgroundColor: group.def.bg, color: group.def.color }">
-            <span class="category-name">{{ group.name }}</span>
+            <span class="category-name">{{ formatCategoryName(group.name) }}</span>
             <span class="category-count" style="margin-top: 8px;">{{ group.items.length }}</span>
           </div>
 
