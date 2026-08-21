@@ -123,8 +123,10 @@ def health_check():
     
 # --- AUTHENTIFIZIERUNG ---
 
+from fastapi import BackgroundTasks
+
 @app.post("/api/auth/register", response_model=schemas.UserResponse)
-def register(user_data: schemas.UserCreate, db: Session = Depends(get_db)):
+def register(user_data: schemas.UserCreate, background_tasks: BackgroundTasks, db: Session = Depends(get_db)):
     # Prüfen ob Email schon existiert
     db_user = db.query(models.User).filter(models.User.email == user_data.email).first()
     if db_user:
@@ -145,6 +147,41 @@ def register(user_data: schemas.UserCreate, db: Session = Depends(get_db)):
     db.add(new_user)
     db.commit()
     db.refresh(new_user)
+
+    if new_user.status == "pending":
+        admins = db.query(models.User).filter(
+            models.User.is_admin == True,
+            models.User.settings_push_admin_pending_users == True
+        ).all()
+
+        for admin in admins:
+            # Create notification
+            notification = models.Notification(
+                user_id=admin.id,
+                title="Neuer Nutzer wartet auf Freigabe",
+                body=f"Der Nutzer {new_user.display_name} hat sich registriert und wartet auf Freigabe.",
+                action_url="/admin"
+            )
+            db.add(notification)
+
+            # Send push notification
+            subscriptions = db.query(models.PushSubscription).filter(models.PushSubscription.user_id == admin.id).all()
+            for sub in subscriptions:
+                sub_info = {
+                    "endpoint": sub.endpoint,
+                    "keys": {
+                        "p256dh": sub.p256dh,
+                        "auth": sub.auth
+                    }
+                }
+                payload = {
+                    "title": notification.title,
+                    "body": notification.body,
+                    "url": notification.action_url
+                }
+                background_tasks.add_task(send_push_notification, sub_info, payload)
+        db.commit()
+
     return new_user
 
 @app.post("/api/auth/login")
@@ -192,7 +229,7 @@ def get_admin_stats(db: Session = Depends(get_db), admin: models.User = Depends(
         "user_list": [{"id": u.id, "email": u.email, "display_name": u.display_name, "is_admin": u.is_admin, "status": u.status} for u in users]
     }
 
-class UserRoleUpdate(schemas.BaseModel):
+class UserRoleUpdate(BaseModel):
     is_admin: bool
 
 @app.patch("/api/admin/users/{user_id}/role")
@@ -206,7 +243,9 @@ def change_user_role(user_id: str, payload: UserRoleUpdate, db: Session = Depend
     db.commit()
     return {"status": "ok", "message": f"{user.display_name} ist nun {'Admin' if user.is_admin else 'kein Admin mehr'}."}
 
-class UserStatusUpdate(schemas.BaseModel):
+from pydantic import BaseModel
+
+class UserStatusUpdate(BaseModel):
     status: str
 
 @app.patch("/api/admin/users/{user_id}/status")
@@ -247,7 +286,7 @@ def admin_generate_reset_token(user_id: str, db: Session = Depends(get_db), admi
     # Der Link enthält nun die user_id und den Token
     return {"status": "ok", "reset_link": f"/reset-password?user_id={user.id}&token={plain_token}"}
 
-class ResetPasswordConfirm(schemas.BaseModel):
+class ResetPasswordConfirm(BaseModel):
     user_id: str
     token: str
     new_password: str
@@ -282,12 +321,13 @@ def reset_password(payload: ResetPasswordConfirm, db: Session = Depends(get_db))
 
 # --- USER ENDPUNKTE ---
 
-class UserUpdate(schemas.BaseModel):
+class UserUpdate(BaseModel):
     display_name: str
     settings_push_async_events: bool | None = None
     settings_push_new_items: bool | None = None
+    settings_push_admin_pending_users: bool | None = None
 
-class PasswordUpdate(schemas.BaseModel):
+class PasswordUpdate(BaseModel):
     old_password: str
     new_password: str
 
@@ -326,6 +366,8 @@ def update_user_profile(
         current_user.settings_push_async_events = user_update.settings_push_async_events
     if user_update.settings_push_new_items is not None:
         current_user.settings_push_new_items = user_update.settings_push_new_items
+    if user_update.settings_push_admin_pending_users is not None:
+        current_user.settings_push_admin_pending_users = user_update.settings_push_admin_pending_users
     db.commit()
     db.refresh(current_user)
     return current_user

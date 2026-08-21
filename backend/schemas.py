@@ -13,6 +13,7 @@ class UserUpdate(BaseModel):
     display_name: str
     settings_push_async_events: Optional[bool] = None
     settings_push_new_items: Optional[bool] = None
+    settings_push_admin_pending_users: Optional[bool] = None
 
 # NEU: Für die Passwort-Änderung
 class PasswordUpdate(BaseModel):
@@ -27,6 +28,7 @@ class UserResponse(BaseModel):
     status: str
     settings_push_async_events: bool
     settings_push_new_items: bool
+    settings_push_admin_pending_users: bool = False
 
     class Config:
         from_attributes = True
