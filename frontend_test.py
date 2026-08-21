@@ -21,7 +21,7 @@ def verify_frontend():
         items = ["Bananen", "Tomaten", "Apfelsaft", "Milch"]
         for item in items:
             # Click the trigger button to open modal
-            page.click('.add-trigger-btn')
+            page.click('button:has-text("Neuen Artikel hinzufügen")', force=True)
             page.wait_for_timeout(500)
 
             # Type in the modal input
@@ -41,10 +41,13 @@ def verify_frontend():
                     page.wait_for_timeout(300)
 
                 # Confirm selection
-                page.click('.modal-footer button')
+                if page.locator('.modal-footer button:has-text("Zur Liste hinzufügen")').is_visible():
+                    page.click('.modal-footer button:has-text("Zur Liste hinzufügen")', force=True)
             else:
                 # Add custom item if no results
                 page.keyboard.press("Enter")
+                if page.locator('.modal-footer button:has-text("Zur Liste hinzufügen")').is_visible():
+                    page.click('.modal-footer button:has-text("Zur Liste hinzufügen")', force=True)
 
             page.wait_for_timeout(1000)
 

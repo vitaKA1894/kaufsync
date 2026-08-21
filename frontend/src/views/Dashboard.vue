@@ -298,6 +298,7 @@ const loadUserProfile = async () => {
     const response = await fetch('/api/users/me', { headers: { 'Authorization': `Bearer ${token}` } });
     if (!response.ok) throw new Error('Fehler beim Laden des Profils');
     currentUser.value = await response.json();
+    loadNotifications();
     setupWebSockets();
   } catch (error) {
     console.error(error);
@@ -327,13 +328,42 @@ onUnmounted(() => {
         <img src="/android-chrome-512x512.png" alt="Logo" style="height: 48px; object-fit: contain;" />
         <h1 style="margin: 0; font-size: 22px;">Meine Listen</h1>
       </div>
-      <button class="ks-icon-btn profile-btn" @click.stop="goToProfile" aria-label="Profil">
-        <div v-if="currentUser" class="member-avatar creator" style="width: 32px; height: 32px; font-size: 14px;">
-          {{ getInitial(currentUser.display_name) }}
+      <div style="display: flex; align-items: center; gap: 4px;">
+        <div style="position: relative;">
+          <button class="ks-icon-btn profile-btn" @click.stop="showNotifications = true" aria-label="Benachrichtigungen">
+            <svg viewBox="0 0 24 24"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>
+            <span v-if="unreadCount > 0" class="ks-badge">{{ unreadCount }}</span>
+          </button>
         </div>
-        <svg v-else viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 4c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm0 14c-2.03 0-4.43-.82-6.14-2.88C7.55 15.8 9.68 15 12 15s4.45.8 6.14 2.12C16.43 19.18 14.03 20 12 20z"/></svg>
-      </button>
+        <button class="ks-icon-btn profile-btn" @click.stop="goToProfile" aria-label="Profil">
+          <div v-if="currentUser" class="member-avatar creator" style="width: 32px; height: 32px; font-size: 14px;">
+            {{ getInitial(currentUser.display_name) }}
+          </div>
+          <svg v-else viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 4c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm0 14c-2.03 0-4.43-.82-6.14-2.88C7.55 15.8 9.68 15 12 15s4.45.8 6.14 2.12C16.43 19.18 14.03 20 12 20z"/></svg>
+        </button>
+      </div>
     </header>
+
+    <div v-if="showNotifications" class="ks-modal-overlay" @click.self="showNotifications = false">
+      <div class="ks-modal" style="max-height: 80vh; overflow-y: auto;">
+        <h2>Benachrichtigungen</h2>
+        <div v-if="notifications.length === 0" style="padding: 16px; text-align: center; color: var(--ks-text-muted);">
+          Keine neuen Benachrichtigungen
+        </div>
+        <div v-else style="display: flex; flex-direction: column; gap: 12px; margin-top: 16px;">
+          <div v-for="notif in notifications" :key="notif.id" style="padding: 12px; border-radius: 8px; background: var(--ks-surface-2); display: flex; flex-direction: column; gap: 4px;" :style="{ opacity: notif.is_read ? 0.6 : 1 }">
+            <div style="font-weight: 600; font-size: 14px;">{{ notif.title }}</div>
+            <div style="font-size: 14px;">{{ notif.body }}</div>
+            <div v-if="!notif.is_read" style="align-self: flex-end; margin-top: 8px;">
+                <button @click="markNotificationRead(notif.id, notif.action_url)" class="ks-btn-text" style="font-size: 13px; padding: 4px 8px;">Gelesen</button>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top: 24px; text-align: right;">
+            <button class="ks-btn-text" @click="showNotifications = false">Schließen</button>
+        </div>
+      </div>
+    </div>
 
     <div class="ks-snackbar-stack">
       <transition-group name="toast">
@@ -617,6 +647,23 @@ onUnmounted(() => {
 .store-logo-img { width: 100%; height: 100%; object-fit: contain; padding: 4px; }
 
 .card-title { font-size: 17px; font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+.ks-badge {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    background: var(--ks-error, #F44336);
+    color: white;
+    font-size: 10px;
+    font-weight: 700;
+    min-width: 16px;
+    height: 16px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 4px;
+}
 
 .profile-btn { padding: 4px; display: flex; align-items: center; justify-content: center; }
 .member-indicators { display: flex; align-items: center; }
