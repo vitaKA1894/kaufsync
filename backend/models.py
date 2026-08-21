@@ -29,6 +29,37 @@ class User(Base):
     password_hash = Column(String)
     display_name = Column(String)
     is_admin = Column(Boolean, default=False)
+    status = Column(String, default="pending") # 'pending', 'active', 'locked'
+    settings_push_async_events = Column(Boolean, default=False)
+    settings_push_new_items = Column(Boolean, default=False)
+    created_at = Column(DateTime, default=datetime.utcnow)
+
+class PasswordResetToken(Base):
+    __tablename__ = "password_reset_tokens"
+    id = Column(String, primary_key=True, default=generate_uuid)
+    user_id = Column(String, ForeignKey("users.id"))
+    token = Column(String, index=True)
+    expires_at = Column(DateTime)
+    is_used = Column(Boolean, default=False)
+    created_at = Column(DateTime, default=datetime.utcnow)
+
+class Notification(Base):
+    __tablename__ = "notifications"
+    id = Column(String, primary_key=True, default=generate_uuid)
+    user_id = Column(String, ForeignKey("users.id"), index=True)
+    title = Column(String)
+    body = Column(String)
+    action_url = Column(String, nullable=True)
+    is_read = Column(Boolean, default=False)
+    created_at = Column(DateTime, default=datetime.utcnow)
+
+class PushSubscription(Base):
+    __tablename__ = "push_subscriptions"
+    id = Column(String, primary_key=True, default=generate_uuid)
+    user_id = Column(String, ForeignKey("users.id"))
+    endpoint = Column(String)
+    p256dh = Column(String)
+    auth = Column(String)
     created_at = Column(DateTime, default=datetime.utcnow)
 
 class List(Base):

@@ -7,7 +7,9 @@ const router = useRouter();
 const user = ref({
   email: '',
   display_name: '',
-  is_admin: false
+  is_admin: false,
+  settings_push_async_events: false,
+  settings_push_new_items: false
 });
 
 const passwordData = ref({
@@ -40,6 +42,8 @@ const loadUserProfile = async () => {
     user.value.email = data.email;
     user.value.display_name = data.display_name;
     user.value.is_admin = data.is_admin || false;
+    user.value.settings_push_async_events = data.settings_push_async_events || false;
+    user.value.settings_push_new_items = data.settings_push_new_items || false;
   } catch (error) {
     console.error(error);
   }
@@ -58,10 +62,51 @@ const updateProfile = async () => {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}` 
       },
-      body: JSON.stringify({ display_name: user.value.display_name })
+      body: JSON.stringify({
+        display_name: user.value.display_name,
+        settings_push_async_events: user.value.settings_push_async_events,
+        settings_push_new_items: user.value.settings_push_new_items
+      })
     });
     
     if (!response.ok) throw new Error('Fehler beim Speichern des Profils');
+
+    if (user.value.settings_push_async_events || user.value.settings_push_new_items) {
+      if ('Notification' in window && navigator.serviceWorker) {
+        const permission = await Notification.requestPermission();
+        if (permission === 'granted') {
+          const registration = await navigator.serviceWorker.ready;
+          const keyResponse = await fetch('/api/push/public-key');
+          const keyData = await keyResponse.json();
+
+          const padding = '='.repeat((4 - keyData.public_key.length % 4) % 4);
+          const base64 = (keyData.public_key + padding).replace(/\-/g, '+').replace(/_/g, '/');
+          const rawData = window.atob(base64);
+          const outputArray = new Uint8Array(rawData.length);
+          for (let i = 0; i < rawData.length; ++i) {
+            outputArray[i] = rawData.charCodeAt(i);
+          }
+
+          const subscription = await registration.pushManager.subscribe({
+            userVisibleOnly: true,
+            applicationServerKey: outputArray
+          });
+
+          await fetch('/api/push/subscribe', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify({
+              endpoint: subscription.endpoint,
+              p256dh: btoa(String.fromCharCode.apply(null, new Uint8Array(subscription.getKey('p256dh')))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, ''),
+              auth: btoa(String.fromCharCode.apply(null, new Uint8Array(subscription.getKey('auth')))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '')
+            })
+          });
+        }
+      }
+    }
     
     successMessage.value = 'Profil erfolgreich aktualisiert!';
     setTimeout(() => successMessage.value = '', 3000);
@@ -171,6 +216,17 @@ onMounted(loadUserProfile);
         <div class="ks-field" style="margin-bottom: 20px;">
           <input type="text" v-model="user.display_name" placeholder=" " />
           <label>Anzeigename</label>
+        </div>
+
+        <div style="margin-bottom: 20px; display: flex; flex-direction: column; gap: 12px;">
+            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                <input type="checkbox" v-model="user.settings_push_async_events" />
+                Push-Benachrichtigungen für asynchrone Ereignisse
+            </label>
+            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                <input type="checkbox" v-model="user.settings_push_new_items" />
+                Push-Benachrichtigungen für neue Artikel
+            </label>
         </div>
 
         <button @click="updateProfile" :disabled="isLoading" class="ks-btn-filled full-width">
