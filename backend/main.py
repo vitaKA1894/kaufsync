@@ -542,7 +542,9 @@ async def join_list(
     db.refresh(db_list)
 
     # Push Notifications senden
-    members = db_list.members + ([db_list.creator] if db_list.creator else [])
+    # Deduplicate members to prevent sending duplicate notifications to the creator
+    members_list = db_list.members + ([db_list.creator] if db_list.creator else [])
+    members = {member.id: member for member in members_list}.values()
     for member in members:
         if member.id != current_user.id:
             notif = models.Notification(
@@ -675,6 +677,52 @@ async def create_item(
     )
     db.add(new_item)
     db.commit()
+
+@app.post("/api/lists/{list_id}/start-shopping")
+async def start_shopping(
+    list_id: str,
+    background_tasks: BackgroundTasks,
+    db: Session = Depends(get_db),
+    current_user: models.User = Depends(auth.get_current_user)
+):
+    db_list = db.query(models.List).filter(models.List.id == list_id).first()
+    if not db_list:
+        raise HTTPException(status_code=404, detail="Liste nicht gefunden")
+
+    # LOG ACTIVITY
+    log_entry = models.ActivityLog(
+        list_id=list_id,
+        user_id=current_user.id,
+        action_type="started",
+        item_name="Einkauf gestartet" # Placeholder
+    )
+    db.add(log_entry)
+    db.commit()
+
+    # Push Notification für Einkaufsstart an Listenmitglieder (nicht den der startet)
+    # Deduplicate members to prevent sending duplicate notifications to the creator
+    members_list = db_list.members + ([db_list.creator] if db_list.creator else [])
+    members = {member.id: member for member in members_list}.values()
+    for member in members:
+        if member.id != current_user.id:
+            notif = models.Notification(
+                user_id=member.id,
+                title="Einkauf gestartet",
+                body=f"{current_user.display_name} hat den Einkauf für '{db_list.name}' gestartet.",
+                action_url=f"/list/{db_list.id}"
+            )
+            db.add(notif)
+            if member.settings_push_async_events:
+                subs = db.query(models.PushSubscription).filter(models.PushSubscription.user_id == member.id).all()
+                for sub in subs:
+                    background_tasks.add_task(
+                        send_push_notification,
+                        {"endpoint": sub.endpoint, "keys": {"p256dh": sub.p256dh, "auth": sub.auth}},
+                        {"title": notif.title, "body": notif.body, "url": notif.action_url}
+                    )
+    db.commit()
+    return {"status": "ok"}
+
     db.refresh(new_item)
 
     # LOG ACTIVITY
@@ -688,7 +736,9 @@ async def create_item(
     db.commit()
 
     # Push Notification für neue Items
-    members = db_list.members + ([db_list.creator] if db_list.creator else [])
+    # Deduplicate members to prevent sending duplicate notifications to the creator
+    members_list = db_list.members + ([db_list.creator] if db_list.creator else [])
+    members = {member.id: member for member in members_list}.values()
     for member in members:
         if member.id != current_user.id:
             notif = models.Notification(

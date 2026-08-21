@@ -634,6 +634,31 @@ const completedItems = computed(() => items.value.filter(i => i.status === 'comp
   return { ...item, category: mapLegacyCategory(catName) };
 }));
 
+
+const startShopping = async () => {
+  try {
+    const token = localStorage.getItem('token');
+    if (!token) return;
+
+    const response = await fetch(`/api/lists/${listId}/start-shopping`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    });
+
+    if (response.ok) {
+        successMessage.value = 'Einkauf gestartet!';
+        setTimeout(() => successMessage.value = '', 3000);
+    } else {
+        const data = await response.json();
+        errorMessage.value = data.detail || 'Fehler beim Starten des Einkaufs';
+    }
+  } catch (error) {
+    errorMessage.value = error.message;
+  }
+};
+
 onMounted(() => {
   loadItems(); // loadItems ruft am Ende loadCategoryOrder() auf
   setupWebSocket();
@@ -661,6 +686,10 @@ onUnmounted(() => {
         <h1 class="list-title">{{ currentList ? currentList.name : 'Laden...' }}</h1>
       </div>
       <div style="display: flex; gap: 8px;">
+
+        <button class="ks-icon-btn" @click.stop="startShopping" aria-label="Einkauf starten">
+           <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        </button>
         <button class="ks-icon-btn" @click.stop="openChangelog" aria-label="Aktivitätenprotokoll">
            <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
         </button>

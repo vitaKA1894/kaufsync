@@ -10,6 +10,9 @@ export default defineConfig({
 
     vue(),
     VitePWA({
+      strategies: 'injectManifest',
+      srcDir: 'src',
+      filename: 'sw.js',
       registerType: 'autoUpdate',
       includeAssets: ['favicon-32x32.png', 'android-chrome-192x192.png', 'android-chrome-512x512.png'],
       manifest: {
