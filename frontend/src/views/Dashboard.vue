@@ -10,13 +10,7 @@ const currentUser = ref(null);
 const successMessage = ref('');
 
 const showActionSheet = ref(false);
-const notifications = ref([]);
-const showNotifications = ref(false);
 const activeModal = ref(null);
-
-const unreadCount = computed(() => {
-  return notifications.value.filter(n => !n.is_read).length;
-});
 
 const showOptionsSheet = ref(false);
 const selectedListForOptions = ref(null);
@@ -144,39 +138,6 @@ const closeWebSockets = () => {
 const updateOnlineStatus = () => {
   if (navigator.onLine) {
     setupWebSockets();
-  }
-};
-
-const loadNotifications = async () => {
-  try {
-    const token = localStorage.getItem('token');
-    if (!token) return;
-    const response = await fetch('/api/notifications', { headers: { 'Authorization': `Bearer ${token}` } });
-    if (response.ok) {
-      notifications.value = await response.json();
-    }
-  } catch (err) {
-    console.error('Fehler beim Laden der Benachrichtigungen:', err);
-  }
-};
-
-const markNotificationRead = async (id, action_url) => {
-  try {
-    const token = localStorage.getItem('token');
-    await fetch(`/api/notifications/${id}/read`, {
-      method: 'PATCH',
-      headers: { 'Authorization': `Bearer ${token}` }
-    });
-
-    // Update local state
-    const notif = notifications.value.find(n => n.id === id);
-    if (notif) notif.is_read = true;
-
-    if (action_url) {
-      router.push(action_url);
-    }
-  } catch (err) {
-    console.error('Fehler beim Aktualisieren der Benachrichtigung:', err);
   }
 };
 
@@ -337,7 +298,6 @@ const loadUserProfile = async () => {
     const response = await fetch('/api/users/me', { headers: { 'Authorization': `Bearer ${token}` } });
     if (!response.ok) throw new Error('Fehler beim Laden des Profils');
     currentUser.value = await response.json();
-    loadNotifications();
     setupWebSockets();
   } catch (error) {
     console.error(error);
@@ -348,7 +308,6 @@ onMounted(() => {
   loadLists();
   loadInvitations();
   loadUserProfile();
-  loadNotifications();
   window.addEventListener('online', updateOnlineStatus);
   window.addEventListener('offline', updateOnlineStatus);
 });
@@ -369,12 +328,6 @@ onUnmounted(() => {
         <h1 style="margin: 0; font-size: 22px;">Meine Listen</h1>
       </div>
       <div style="display: flex; align-items: center; gap: 4px;">
-        <div style="position: relative;">
-          <button class="ks-icon-btn profile-btn" @click.stop="showNotifications = true" aria-label="Benachrichtigungen">
-            <svg viewBox="0 0 24 24"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>
-            <span v-if="unreadCount > 0" class="ks-badge">{{ unreadCount }}</span>
-          </button>
-        </div>
         <button class="ks-icon-btn profile-btn" @click.stop="goToProfile" aria-label="Profil">
           <div v-if="currentUser" class="member-avatar creator" style="width: 32px; height: 32px; font-size: 14px;">
             {{ getInitial(currentUser.display_name) }}
@@ -383,27 +336,6 @@ onUnmounted(() => {
         </button>
       </div>
     </header>
-
-    <div v-if="showNotifications" class="ks-modal-overlay" @click.self="showNotifications = false">
-      <div class="ks-modal" style="max-height: 80vh; overflow-y: auto;">
-        <h2>Benachrichtigungen</h2>
-        <div v-if="notifications.length === 0" style="padding: 16px; text-align: center; color: var(--ks-text-muted);">
-          Keine neuen Benachrichtigungen
-        </div>
-        <div v-else style="display: flex; flex-direction: column; gap: 12px; margin-top: 16px;">
-          <div v-for="notif in notifications" :key="notif.id" style="padding: 12px; border-radius: 8px; background: var(--ks-surface-2); display: flex; flex-direction: column; gap: 4px;" :style="{ opacity: notif.is_read ? 0.6 : 1 }">
-            <div style="font-weight: 600; font-size: 14px;">{{ notif.title }}</div>
-            <div style="font-size: 14px;">{{ notif.body }}</div>
-            <div v-if="!notif.is_read" style="align-self: flex-end; margin-top: 8px;">
-                <button @click="markNotificationRead(notif.id, notif.action_url)" class="ks-btn-text" style="font-size: 13px; padding: 4px 8px;">Gelesen</button>
-            </div>
-          </div>
-        </div>
-        <div style="margin-top: 24px; text-align: right;">
-            <button class="ks-btn-text" @click="showNotifications = false">Schließen</button>
-        </div>
-      </div>
-    </div>
 
     <div class="ks-snackbar-stack">
       <transition-group name="toast">
