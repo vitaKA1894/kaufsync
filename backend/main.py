@@ -677,6 +677,56 @@ async def create_item(
     )
     db.add(new_item)
     db.commit()
+    db.refresh(new_item)
+
+    # LOG ACTIVITY
+    log_entry = models.ActivityLog(
+        list_id=list_id,
+        user_id=current_user.id,
+        action_type="added",
+        item_name=new_item.name
+    )
+    db.add(log_entry)
+    db.commit()
+
+    # Push Notification für neue Items
+    # Deduplicate members to prevent sending duplicate notifications to the creator
+    members_list = db_list.members + ([db_list.creator] if db_list.creator else [])
+    members = {member.id: member for member in members_list}.values()
+    for member in members:
+        if member.id != current_user.id:
+            notif = models.Notification(
+                user_id=member.id,
+                title="Neuer Artikel",
+                body=f"{current_user.display_name} hat {new_item.name} zu '{db_list.name}' hinzugefügt.",
+                action_url=f"/list/{db_list.id}"
+            )
+            db.add(notif)
+            if member.settings_push_new_items:
+                subs = db.query(models.PushSubscription).filter(models.PushSubscription.user_id == member.id).all()
+                for sub in subs:
+                    background_tasks.add_task(
+                        send_push_notification,
+                        {"endpoint": sub.endpoint, "keys": {"p256dh": sub.p256dh, "auth": sub.auth}},
+                        {"title": notif.title, "body": notif.body, "url": notif.action_url}
+                    )
+    db.commit()
+
+    # WEBSOCKET BROADCAST - Jetzt inklusive Kategorie
+    await manager.broadcast(list_id, {
+        "event": "ITEM_UPDATED",
+        "payload": {
+            "list_id": list_id,
+            "item": { "id": new_item.id, "name": new_item.name, "status": new_item.status, "quantity": new_item.quantity, "unit": new_item.unit, "category": new_item.category, "tags": new_item.tags }
+        }
+    })
+
+    await manager.broadcast(list_id, {
+        "event": "CHANGELOG_UPDATED",
+        "payload": {}
+    })
+
+    return new_item
 
 @app.post("/api/lists/{list_id}/start-shopping")
 async def start_shopping(
@@ -722,57 +772,6 @@ async def start_shopping(
                     )
     db.commit()
     return {"status": "ok"}
-
-    db.refresh(new_item)
-
-    # LOG ACTIVITY
-    log_entry = models.ActivityLog(
-        list_id=list_id,
-        user_id=current_user.id,
-        action_type="added",
-        item_name=new_item.name
-    )
-    db.add(log_entry)
-    db.commit()
-
-    # Push Notification für neue Items
-    # Deduplicate members to prevent sending duplicate notifications to the creator
-    members_list = db_list.members + ([db_list.creator] if db_list.creator else [])
-    members = {member.id: member for member in members_list}.values()
-    for member in members:
-        if member.id != current_user.id:
-            notif = models.Notification(
-                user_id=member.id,
-                title="Neuer Artikel",
-                body=f"{current_user.display_name} hat {new_item.name} zu '{db_list.name}' hinzugefügt.",
-                action_url=f"/list/{db_list.id}"
-            )
-            db.add(notif)
-            if member.settings_push_new_items:
-                subs = db.query(models.PushSubscription).filter(models.PushSubscription.user_id == member.id).all()
-                for sub in subs:
-                    background_tasks.add_task(
-                        send_push_notification,
-                        {"endpoint": sub.endpoint, "keys": {"p256dh": sub.p256dh, "auth": sub.auth}},
-                        {"title": notif.title, "body": notif.body, "url": notif.action_url}
-                    )
-    db.commit()
-
-    # WEBSOCKET BROADCAST - Jetzt inklusive Kategorie
-    await manager.broadcast(list_id, {
-        "event": "ITEM_UPDATED",
-        "payload": {
-            "list_id": list_id,
-            "item": { "id": new_item.id, "name": new_item.name, "status": new_item.status, "quantity": new_item.quantity, "unit": new_item.unit, "category": new_item.category, "tags": new_item.tags }
-        }
-    })
-    
-    await manager.broadcast(list_id, {
-        "event": "CHANGELOG_UPDATED",
-        "payload": {}
-    })
-
-    return new_item
 
 @app.get("/api/lists/{list_id}/changelog", response_model=List[schemas.ActivityLogResponse])
 async def get_list_changelog(
