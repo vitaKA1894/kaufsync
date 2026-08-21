@@ -1,13 +1,578 @@
 [
   {
+    "id": "b438e1d4-3952-4bd2-ad19-0f3ac1d00f1c",
+    "name": "Erdbeeren",
+    "aliases": [
+      "Erdbeere",
+      "Früchte"
+    ],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "250g Schale",
+        "500g Schale"
+      ],
+      "constellations": [
+        "Bio",
+        "Regional",
+        "Süß",
+        "Gewaschen"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    },
+    "icon": "Erdbeeren"
+  },
+  {
+    "id": "bc82bebd-75a6-4d99-8ec6-fbc66e71d93c",
+    "name": "Himbeeren",
+    "aliases": [
+      "Himbeere",
+      "Waldbeeren"
+    ],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "125g Schale",
+        "250g Schale"
+      ],
+      "constellations": [
+        "Bio",
+        "Regional"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    },
+    "icon": "Himbeeren"
+  },
+  {
+    "id": "22cea1aa-ea4f-41e4-816c-80ac29d4c8e5",
+    "name": "Heidelbeeren",
+    "aliases": [
+      "Blaubeeren",
+      "Heidelbeere",
+      "Blaubeere"
+    ],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "125 g",
+        "300 g",
+        "500g Schale"
+      ],
+      "constellations": [
+        "Bio",
+        "Kulturheidelbeeren",
+        "Waldheidelbeeren"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    },
+    "icon": "Heidelbeeren"
+  },
+  {
+    "id": "52cf5933-94a2-4a34-8f8e-adbfaf4974d8",
+    "name": "Brombeeren",
+    "aliases": [
+      "Brombeere",
+      "Beeren"
+    ],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "125g Schale"
+      ],
+      "constellations": [
+        "Bio",
+        "Regional"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    },
+    "icon": "Brombeeren"
+  },
+  {
+    "id": "34ef71c9-2ae9-49dd-90ca-e46ad136a5c9",
+    "name": "Johannisbeeren",
+    "aliases": [
+      "Johannisbeere",
+      "Träuble"
+    ],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "250g Schale"
+      ],
+      "constellations": [
+        "Rot",
+        "Schwarz",
+        "Bio"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    },
+    "icon": "Beeren"
+  },
+  {
+    "id": "81dddf90-e8cf-4574-b283-1b3f8a37268c",
+    "name": "Weintrauben",
+    "aliases": [
+      "Trauben",
+      "Weintraube",
+      "Sultanas",
+      "Traube"
+    ],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1",
+        "500g Schale",
+        "1 kg"
+      ],
+      "constellations": [
+        "Hell",
+        "Dunkel",
+        "Kernlos",
+        "Bio",
+        "Süß"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    },
+    "icon": "Trauben"
+  },
+  {
+    "id": "0acd307b-eb71-48c1-ad46-fdb7daad23a8",
+    "name": "Gurke",
+    "category": "Obst & Gemüse",
+    "aliases": [
+      "Spreewaldgurken",
+      "Schlangengurke",
+      "Salatgurke",
+      "Gurken"
+    ],
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "constellations": [
+        "Schlangen",
+        "Mini",
+        "Land",
+        "Gewürz",
+        "Bio",
+        "Regional",
+        "Saisonal",
+        "Gemüse"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    },
+    "icon": "Gurke"
+  },
+  {
+    "id": "a4fd25d4-4976-41d5-98fe-c340f0c42e7b",
+    "name": "Kartoffeln",
+    "aliases": [
+      "Kartoffel",
+      "Grumbeere",
+      "Erdäpfel"
+    ],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1 kg",
+        "1",
+        "5 kg",
+        "2 kg",
+        "2",
+        "5kg Sack"
+      ],
+      "constellations": [
+        "Bio",
+        "Festkochend",
+        "Vorwiegend festk.",
+        "Mehlig"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    },
+    "icon": "Kartoffeln"
+  },
+  {
+    "id": "63de1a2f-f126-41d2-9980-5cf1a516bec5",
+    "name": "Zwiebeln",
+    "aliases": [
+      "Zwiebel",
+      "Schalotte",
+      "Frühlingszwiebel",
+      "Lauchzwiebel"
+    ],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "1kg Netz",
+        "2kg Netz"
+      ],
+      "constellations": [
+        "Gemüsezwiebeln",
+        "Rote Zwiebeln",
+        "Bio",
+        "Schalotten"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    },
+    "icon": "Zwiebeln"
+  },
+  {
+    "id": "df0a94c0-7ec1-4717-847c-ab9be01eaa09",
+    "name": "Karotten",
+    "aliases": [
+      "Möhren",
+      "Karotte",
+      "Rüben",
+      "Möhre",
+      "Wurzeln"
+    ],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "1kg Bund",
+        "1kg Sack",
+        "2kg Sack"
+      ],
+      "constellations": [
+        "Bio",
+        "Bundmöhren (mit Grün)",
+        "Waschmöhren"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    },
+    "icon": "Karotten"
+  },
+  {
+    "id": "05ef31cc-4918-4271-9e32-0ab1aab9df74",
+    "name": "Champignons",
+    "aliases": [
+      "Champignon",
+      "Pilze",
+      "Egerlinge",
+      "Pilz"
+    ],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "250g Schale",
+        "400g Schale"
+      ],
+      "constellations": [
+        "Weiß",
+        "Braun",
+        "Bio",
+        "Riesenchampignons"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    },
+    "icon": "Champignons"
+  },
+  {
+    "id": "ea5b4a23-8b2b-4bb2-b741-c228cb79f177",
+    "name": "Pfifferlinge",
+    "aliases": [
+      "Pfifferling",
+      "Eierschwammerl",
+      "Reherl"
+    ],
+    "category": "Obst & Gemüse",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "200 g",
+        "400g Korb"
+      ],
+      "constellations": [
+        "Bio",
+        "Saison"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    },
+    "icon": "Obst"
+  },
+  {
+    "id": "e62fab4c-b160-4044-bb8a-42ff069021ef",
+    "name": "Schlagsahne",
+    "category": "Milchprodukte & Tiefkühlkost",
+    "aliases": [
+      "Rahm",
+      "Weihenstephan Sahne",
+      "Sahne",
+      "Rama Cremefine zum Schlagen",
+      "Obers"
+    ],
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "constellations": [
+        "Frische",
+        "H",
+        "Vegane Schlagcreme",
+        "Gekühlt",
+        "Backen",
+        "Kochen"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    },
+    "icon": "Rahm"
+  },
+  {
+    "id": "f64a9a9a-265f-42b0-a8ec-2e3f3218caaa",
+    "name": "Harzer Roller",
+    "category": "Milchprodukte & Tiefkühlkost",
+    "aliases": [
+      "Harzer Käse",
+      "Sauermilchkäse",
+      "Handkäse mit Musik",
+      "Handkäse"
+    ],
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "constellations": [
+        "Klassisch mit Kümmel",
+        "Harzer Käse ohne Kümmel",
+        "Fettarm",
+        "Protein",
+        "Sauerteigkäse"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    },
+    "icon": "Käse"
+  },
+  {
+    "id": "e1364d62-6971-462a-bd39-68a7b781280f",
+    "name": "Pommes Frites",
+    "aliases": [
+      "Pommes frites",
+      "McCain Pommes",
+      "Agrarfrost",
+      "Fritten"
+    ],
+    "category": "Milchprodukte & Tiefkühlkost",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "750 g",
+        "1 kg"
+      ],
+      "constellations": [
+        "Feinschnitt",
+        "Wellenschnitt",
+        "Backofen-Pommes"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    },
+    "icon": "Pommes Frites"
+  },
+  {
+    "id": "7499f12c-33aa-48b3-b473-af2af62152e0",
+    "name": "Tiefkühl-Gemüse",
+    "aliases": [
+      "TK-Gemüse",
+      "Frosta Gemüse",
+      "Rahmspinat",
+      "Iglo Gemüse",
+      "Erbsen TK"
+    ],
+    "category": "Milchprodukte & Tiefkühlkost",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "400 g",
+        "750 g",
+        "1 kg"
+      ],
+      "constellations": [
+        "Bio",
+        "Iglo",
+        "Rahmspinat",
+        "Junge Toastbsen",
+        "Toastbsen",
+        "Spinat"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    },
+    "icon": "Erbsen"
+  },
+  {
+    "id": "9fe58540-2754-4080-96fc-c73c0fe4f78a",
+    "name": "Speiseeis",
+    "aliases": [
+      "Eiscreme",
+      "Ben & Jerry's",
+      "Cremissimo",
+      "Häagen-Dazs",
+      "Langnese",
+      "Magnum"
+    ],
+    "category": "Milchprodukte & Tiefkühlkost",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "500ml",
+        "1 L",
+        "3er Pack"
+      ],
+      "constellations": [
+        "Vanille",
+        "Schoko",
+        "Magnum",
+        "Ben & Jerry's",
+        "Vegan"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    },
+    "icon": "Allgemein"
+  },
+  {
+    "id": "6a33bfa2-9d86-4b72-8f13-c09c80e425e3",
+    "name": "Gewürzgurken",
+    "aliases": [
+      "Essiggurken",
+      "Gewürzgurke",
+      "Gurkenglas",
+      "Burgergurken",
+      "Spreewaldhof",
+      "Spreewaldgurken",
+      "Kühne Gewürzgurken"
+    ],
+    "category": "Vorratskammer",
+    "tags": {
+      "quantities": [
+        "1",
+        "2",
+        "3",
+        "720ml (Glas)"
+      ],
+      "constellations": [
+        "Cornichons",
+        "Mild",
+        "Scharf",
+        "Kühne (Marke)"
+      ],
+      "global_meta": [
+        "Dringend",
+        "Angebot",
+        "Wenn's passt"
+      ]
+    },
+    "icon": "Essiggurken"
+  },
+  {
     "id": "455cd713-86fd-43ba-8b1b-b010dbba8cea",
-    "name": "Äpfel",
+    "name": "Apfel",
     "category": "Obst & Gemüse",
     "aliases": [
       "Kulturapfel",
       "Pink Lady",
       "Tafelapfel",
-      "Apfel"
+      "Äpfel"
     ],
     "tags": {
       "quantities": [
@@ -116,159 +681,6 @@
       ]
     },
     "icon": "Birnen"
-  },
-  {
-    "id": "b438e1d4-3952-4bd2-ad19-0f3ac1d00f1c",
-    "name": "Erdbeeren",
-    "aliases": [],
-    "category": "Obst & Gemüse",
-    "tags": {
-      "quantities": [
-        "1",
-        "2",
-        "250g Schale",
-        "500g Schale"
-      ],
-      "constellations": [
-        "Bio",
-        "Regional",
-        "Süß",
-        "Gewaschen"
-      ],
-      "global_meta": [
-        "Dringend",
-        "Angebot",
-        "Wenn's passt"
-      ]
-    },
-    "icon": "Erdbeeren"
-  },
-  {
-    "id": "bc82bebd-75a6-4d99-8ec6-fbc66e71d93c",
-    "name": "Himbeeren",
-    "aliases": [],
-    "category": "Obst & Gemüse",
-    "tags": {
-      "quantities": [
-        "1",
-        "2",
-        "125g Schale",
-        "250g Schale"
-      ],
-      "constellations": [
-        "Bio",
-        "Regional"
-      ],
-      "global_meta": [
-        "Dringend",
-        "Angebot",
-        "Wenn's passt"
-      ]
-    },
-    "icon": "Himbeeren"
-  },
-  {
-    "id": "22cea1aa-ea4f-41e4-816c-80ac29d4c8e5",
-    "name": "Heidelbeeren",
-    "aliases": [
-      "Blaubeeren"
-    ],
-    "category": "Obst & Gemüse",
-    "tags": {
-      "quantities": [
-        "1",
-        "2",
-        "125 g",
-        "300 g",
-        "500g Schale"
-      ],
-      "constellations": [
-        "Bio",
-        "Kulturheidelbeeren",
-        "Waldheidelbeeren"
-      ],
-      "global_meta": [
-        "Dringend",
-        "Angebot",
-        "Wenn's passt"
-      ]
-    },
-    "icon": "Heidelbeeren"
-  },
-  {
-    "id": "52cf5933-94a2-4a34-8f8e-adbfaf4974d8",
-    "name": "Brombeeren",
-    "aliases": [],
-    "category": "Obst & Gemüse",
-    "tags": {
-      "quantities": [
-        "1",
-        "2",
-        "125g Schale"
-      ],
-      "constellations": [
-        "Bio",
-        "Regional"
-      ],
-      "global_meta": [
-        "Dringend",
-        "Angebot",
-        "Wenn's passt"
-      ]
-    },
-    "icon": "Brombeeren"
-  },
-  {
-    "id": "34ef71c9-2ae9-49dd-90ca-e46ad136a5c9",
-    "name": "Johannisbeeren",
-    "aliases": [],
-    "category": "Obst & Gemüse",
-    "tags": {
-      "quantities": [
-        "1",
-        "2",
-        "250g Schale"
-      ],
-      "constellations": [
-        "Rot",
-        "Schwarz",
-        "Bio"
-      ],
-      "global_meta": [
-        "Dringend",
-        "Angebot",
-        "Wenn's passt"
-      ]
-    },
-    "icon": "Beeren"
-  },
-  {
-    "id": "81dddf90-e8cf-4574-b283-1b3f8a37268c",
-    "name": "Weintrauben",
-    "aliases": [
-      "Trauben"
-    ],
-    "category": "Obst & Gemüse",
-    "tags": {
-      "quantities": [
-        "1",
-        "500g Schale",
-        "1 kg"
-      ],
-      "constellations": [
-        "Hell",
-        "Dunkel",
-        "Kernlos",
-        "Bio",
-        "Süß"
-      ],
-      "global_meta": [
-        "Dringend",
-        "Angebot",
-        "Wenn's passt"
-      ]
-    },
-    "icon": "Trauben"
   },
   {
     "id": "6190fcce-0dea-4307-bf71-d8d5505d0484",
@@ -990,31 +1402,6 @@
     "icon": "Fleisch"
   },
   {
-    "id": "40e5b4c0-2952-4700-9755-0c65e911eb1b",
-    "name": "Salatgurke",
-    "aliases": [],
-    "category": "Obst & Gemüse",
-    "tags": {
-      "quantities": [
-        "1",
-        "2",
-        "3"
-      ],
-      "constellations": [
-        "Bio",
-        "Regional",
-        "Minigurken",
-        "Snackgurken"
-      ],
-      "global_meta": [
-        "Dringend",
-        "Angebot",
-        "Wenn's passt"
-      ]
-    },
-    "icon": "Gurke"
-  },
-  {
     "id": "5e462805-30fa-4d1e-b34b-92754d7cdbbe",
     "name": "Paprika",
     "category": "Obst & Gemüse",
@@ -1056,34 +1443,6 @@
     "icon": "Obst"
   },
   {
-    "id": "a4fd25d4-4976-41d5-98fe-c340f0c42e7b",
-    "name": "Kartoffeln",
-    "aliases": [],
-    "category": "Obst & Gemüse",
-    "tags": {
-      "quantities": [
-        "1 kg",
-        "1",
-        "5 kg",
-        "2 kg",
-        "2",
-        "5kg Sack"
-      ],
-      "constellations": [
-        "Bio",
-        "Festkochend",
-        "Vorwiegend festk.",
-        "Mehlig"
-      ],
-      "global_meta": [
-        "Dringend",
-        "Angebot",
-        "Wenn's passt"
-      ]
-    },
-    "icon": "Kartoffeln"
-  },
-  {
     "id": "9e022680-e729-49ce-841a-2ee039989e56",
     "name": "Süßkartoffel",
     "category": "Obst & Gemüse",
@@ -1114,33 +1473,6 @@
       ]
     },
     "icon": "Süsskartoffeln"
-  },
-  {
-    "id": "63de1a2f-f126-41d2-9980-5cf1a516bec5",
-    "name": "Zwiebeln",
-    "aliases": [],
-    "category": "Obst & Gemüse",
-    "tags": {
-      "quantities": [
-        "1",
-        "2",
-        "3",
-        "1kg Netz",
-        "2kg Netz"
-      ],
-      "constellations": [
-        "Gemüsezwiebeln",
-        "Rote Zwiebeln",
-        "Bio",
-        "Schalotten"
-      ],
-      "global_meta": [
-        "Dringend",
-        "Angebot",
-        "Wenn's passt"
-      ]
-    },
-    "icon": "Zwiebeln"
   },
   {
     "id": "cb4dffb2-411a-4569-93b2-31d3e20f055e",
@@ -1179,34 +1511,6 @@
       ]
     },
     "icon": "Knoblauch"
-  },
-  {
-    "id": "df0a94c0-7ec1-4717-847c-ab9be01eaa09",
-    "name": "Karotten",
-    "aliases": [
-      "Möhren"
-    ],
-    "category": "Obst & Gemüse",
-    "tags": {
-      "quantities": [
-        "1",
-        "2",
-        "1kg Bund",
-        "1kg Sack",
-        "2kg Sack"
-      ],
-      "constellations": [
-        "Bio",
-        "Bundmöhren (mit Grün)",
-        "Waschmöhren"
-      ],
-      "global_meta": [
-        "Dringend",
-        "Angebot",
-        "Wenn's passt"
-      ]
-    },
-    "icon": "Karotten"
   },
   {
     "id": "42814715-a82b-4398-ad8a-0d0fb187d818",
@@ -2028,56 +2332,6 @@
       ]
     },
     "icon": "Kürbis"
-  },
-  {
-    "id": "05ef31cc-4918-4271-9e32-0ab1aab9df74",
-    "name": "Champignons",
-    "aliases": [],
-    "category": "Obst & Gemüse",
-    "tags": {
-      "quantities": [
-        "1",
-        "2",
-        "250g Schale",
-        "400g Schale"
-      ],
-      "constellations": [
-        "Weiß",
-        "Braun",
-        "Bio",
-        "Riesenchampignons"
-      ],
-      "global_meta": [
-        "Dringend",
-        "Angebot",
-        "Wenn's passt"
-      ]
-    },
-    "icon": "Champignons"
-  },
-  {
-    "id": "ea5b4a23-8b2b-4bb2-b741-c228cb79f177",
-    "name": "Pfifferlinge",
-    "aliases": [],
-    "category": "Obst & Gemüse",
-    "tags": {
-      "quantities": [
-        "1",
-        "2",
-        "200 g",
-        "400g Korb"
-      ],
-      "constellations": [
-        "Bio",
-        "Saison"
-      ],
-      "global_meta": [
-        "Dringend",
-        "Angebot",
-        "Wenn's passt"
-      ]
-    },
-    "icon": "Obst"
   },
   {
     "id": "da2a1c58-4ed8-4b07-8624-656d05b9f950",
@@ -4226,37 +4480,6 @@
     "icon": "Kräuter"
   },
   {
-    "id": "1665f09a-e1e6-48b5-8859-b388e6fbcc61",
-    "name": "Sahne",
-    "aliases": [
-      "Schlagsahne"
-    ],
-    "category": "Milchprodukte & Tiefkühlkost",
-    "tags": {
-      "quantities": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "200 g",
-        "250g Becher"
-      ],
-      "constellations": [
-        "Min. 30% Fett",
-        "Bio",
-        "Laktosefrei",
-        "haltbar (H-Sahne)",
-        "Vegan"
-      ],
-      "global_meta": [
-        "Dringend",
-        "Angebot",
-        "Wenn's passt"
-      ]
-    },
-    "icon": "Allgemein"
-  },
-  {
     "id": "bdba576c-69c2-4450-a926-ae386687e689",
     "name": "Saure Sahne",
     "category": "Milchprodukte & Tiefkühlkost",
@@ -4824,32 +5047,6 @@
     "icon": "Frischkäse"
   },
   {
-    "id": "99f012ae-6a5e-4da4-91bc-61d3bb8dfbff",
-    "name": "Harzer Käse",
-    "aliases": [
-      "Handkäse"
-    ],
-    "category": "Milchprodukte & Tiefkühlkost",
-    "tags": {
-      "quantities": [
-        "1",
-        "2",
-        "200g Rolle"
-      ],
-      "constellations": [
-        "Proteinreich",
-        "Fettarm",
-        "Kümmel"
-      ],
-      "global_meta": [
-        "Dringend",
-        "Angebot",
-        "Wenn's passt"
-      ]
-    },
-    "icon": "Käse"
-  },
-  {
     "id": "d2406cb5-37b2-4030-9a19-6606f4fa0ad1",
     "name": "Hüttenkäse",
     "category": "Milchprodukte & Tiefkühlkost",
@@ -5174,61 +5371,6 @@
     "icon": "Pizza"
   },
   {
-    "id": "e1364d62-6971-462a-bd39-68a7b781280f",
-    "name": "Pommes Frites",
-    "aliases": [],
-    "category": "Milchprodukte & Tiefkühlkost",
-    "tags": {
-      "quantities": [
-        "1",
-        "2",
-        "750 g",
-        "1 kg"
-      ],
-      "constellations": [
-        "Feinschnitt",
-        "Wellenschnitt",
-        "Backofen-Pommes"
-      ],
-      "global_meta": [
-        "Dringend",
-        "Angebot",
-        "Wenn's passt"
-      ]
-    },
-    "icon": "Pommes Frites"
-  },
-  {
-    "id": "7499f12c-33aa-48b3-b473-af2af62152e0",
-    "name": "Tiefkühl-Gemüse",
-    "aliases": [],
-    "category": "Milchprodukte & Tiefkühlkost",
-    "tags": {
-      "quantities": [
-        "1",
-        "2",
-        "3",
-        "400 g",
-        "750 g",
-        "1 kg"
-      ],
-      "constellations": [
-        "Bio",
-        "Iglo",
-        "Rahmspinat",
-        "Junge Toastbsen",
-        "Toastbsen",
-        "Spinat"
-      ],
-      "global_meta": [
-        "Dringend",
-        "Angebot",
-        "Wenn's passt"
-      ]
-    },
-    "icon": "Erbsen"
-  },
-  {
     "id": "61517e04-9b58-4b7b-a873-330efc06079c",
     "name": "Tiefkühl-Kräuter",
     "aliases": [],
@@ -5280,37 +5422,6 @@
       ]
     },
     "icon": "Beeren"
-  },
-  {
-    "id": "9fe58540-2754-4080-96fc-c73c0fe4f78a",
-    "name": "Speiseeis",
-    "aliases": [
-      "Eiscreme"
-    ],
-    "category": "Milchprodukte & Tiefkühlkost",
-    "tags": {
-      "quantities": [
-        "1",
-        "2",
-        "3",
-        "500ml",
-        "1 L",
-        "3er Pack"
-      ],
-      "constellations": [
-        "Vanille",
-        "Schoko",
-        "Magnum",
-        "Ben & Jerry's",
-        "Vegan"
-      ],
-      "global_meta": [
-        "Dringend",
-        "Angebot",
-        "Wenn's passt"
-      ]
-    },
-    "icon": "Allgemein"
   },
   {
     "id": "568cc1ba-4d7c-47eb-ade6-c533a3cc5b2e",
@@ -6593,34 +6704,6 @@
       ]
     },
     "icon": "Mais"
-  },
-  {
-    "id": "6a33bfa2-9d86-4b72-8f13-c09c80e425e3",
-    "name": "Gewürzgurken",
-    "aliases": [
-      "Essiggurken"
-    ],
-    "category": "Vorratskammer",
-    "tags": {
-      "quantities": [
-        "1",
-        "2",
-        "3",
-        "720ml (Glas)"
-      ],
-      "constellations": [
-        "Cornichons",
-        "Mild",
-        "Scharf",
-        "Kühne (Marke)"
-      ],
-      "global_meta": [
-        "Dringend",
-        "Angebot",
-        "Wenn's passt"
-      ]
-    },
-    "icon": "Essiggurken"
   },
   {
     "id": "0fc187fe-7aa1-4b6c-9bcc-ad334869fe7c",
@@ -9090,136 +9173,6 @@
     "icon": "Salz"
   },
   {
-    "id": "995efdfa-64b8-4b5a-8118-9bb3c194cd01",
-    "name": "Erdbeere",
-    "category": "Obst & Gemüse",
-    "aliases": [
-      "Erdbeeren",
-      "Früchte"
-    ],
-    "tags": {
-      "quantities": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5"
-      ],
-      "constellations": [
-        "Frisch",
-        "TK",
-        "Bio",
-        "Regional",
-        "Saisonal",
-        "Beeren"
-      ],
-      "global_meta": [
-        "Dringend",
-        "Angebot",
-        "Wenn's passt"
-      ]
-    },
-    "icon": "Erdbeeren"
-  },
-  {
-    "id": "9e13128b-74c6-4dc1-a070-5bb89697960c",
-    "name": "Himbeere",
-    "category": "Obst & Gemüse",
-    "aliases": [
-      "Himbeeren"
-    ],
-    "tags": {
-      "quantities": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5"
-      ],
-      "constellations": [
-        "Frisch",
-        "TK",
-        "Bio",
-        "Regional",
-        "Saisonal",
-        "Beeren"
-      ],
-      "global_meta": [
-        "Dringend",
-        "Angebot",
-        "Wenn's passt"
-      ]
-    },
-    "icon": "Himbeeren"
-  },
-  {
-    "id": "c0b40d0f-2952-41d3-8724-0f5bad7dfc3c",
-    "name": "Heidelbeere",
-    "category": "Obst & Gemüse",
-    "aliases": [
-      "Blaubeere",
-      "Blaubeeren",
-      "Heidelbeeren"
-    ],
-    "tags": {
-      "quantities": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5"
-      ],
-      "constellations": [
-        "Frisch",
-        "TK",
-        "Bio",
-        "Regional",
-        "Beeren"
-      ],
-      "global_meta": [
-        "Dringend",
-        "Angebot",
-        "Wenn's passt"
-      ]
-    },
-    "icon": "Heidelbeeren"
-  },
-  {
-    "id": "28b2d18b-dfa4-499d-afcc-1f0eda1ad001",
-    "name": "Weintraube",
-    "category": "Obst & Gemüse",
-    "aliases": [
-      "Trauben",
-      "Sultanas",
-      "Weintrauben",
-      "Traube"
-    ],
-    "tags": {
-      "quantities": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5"
-      ],
-      "constellations": [
-        "Hell kernlos",
-        "Dunkel kernlos",
-        "Mit Kernen",
-        "Rosé kernlos",
-        "Bio",
-        "Obst",
-        "Süß"
-      ],
-      "global_meta": [
-        "Dringend",
-        "Angebot",
-        "Wenn's passt"
-      ]
-    },
-    "icon": "Trauben"
-  },
-  {
     "id": "12b44533-f51d-4c5f-bdfa-4a38e254e8fc",
     "name": "Honigmelone",
     "category": "Obst & Gemüse",
@@ -9344,68 +9297,6 @@
     "icon": "Aprikosen"
   },
   {
-    "id": "56261944-498b-4071-91c5-34a27a285e2a",
-    "name": "Brombeere",
-    "category": "Obst & Gemüse",
-    "aliases": [
-      "Brombeeren"
-    ],
-    "tags": {
-      "quantities": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5"
-      ],
-      "constellations": [
-        "Frisch",
-        "TK",
-        "Bio",
-        "Regional",
-        "Saisonal"
-      ],
-      "global_meta": [
-        "Dringend",
-        "Angebot",
-        "Wenn's passt"
-      ]
-    },
-    "icon": "Brombeeren"
-  },
-  {
-    "id": "1e99885c-9246-4358-a431-d887b514b4a0",
-    "name": "Johannisbeere",
-    "category": "Obst & Gemüse",
-    "aliases": [
-      "Träuble",
-      "Johannisbeeren"
-    ],
-    "tags": {
-      "quantities": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5"
-      ],
-      "constellations": [
-        "Rot",
-        "Schwarz",
-        "Weiß",
-        "Regional",
-        "Sauer",
-        "Saisonal"
-      ],
-      "global_meta": [
-        "Dringend",
-        "Angebot",
-        "Wenn's passt"
-      ]
-    },
-    "icon": "Beeren"
-  },
-  {
     "id": "d0c7f2b3-0db8-460e-8a51-e0e29fc76a23",
     "name": "Physalis",
     "category": "Obst & Gemüse",
@@ -9527,188 +9418,6 @@
       ]
     },
     "icon": "Obst"
-  },
-  {
-    "id": "d83f6d96-b61d-4f41-9632-e94f91893244",
-    "name": "Karotte",
-    "category": "Obst & Gemüse",
-    "aliases": [
-      "Karotten",
-      "Rüben",
-      "Möhre",
-      "Wurzeln",
-      "Möhren"
-    ],
-    "tags": {
-      "quantities": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5"
-      ],
-      "constellations": [
-        "Klassisch",
-        "Bundmöhren",
-        "Bio-Möhren",
-        "Urmöhren",
-        "Bio",
-        "Regional",
-        "Saisonal",
-        "Gemüse"
-      ],
-      "global_meta": [
-        "Dringend",
-        "Angebot",
-        "Wenn's passt"
-      ]
-    },
-    "icon": "Karotten"
-  },
-  {
-    "id": "0acd307b-eb71-48c1-ad46-fdb7daad23a8",
-    "name": "Gurke",
-    "category": "Obst & Gemüse",
-    "aliases": [
-      "Spreewaldgurken",
-      "Schlangengurke",
-      "Salatgurke",
-      "Gurken"
-    ],
-    "tags": {
-      "quantities": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5"
-      ],
-      "constellations": [
-        "Schlangen",
-        "Mini",
-        "Land",
-        "Gewürz",
-        "Bio",
-        "Regional",
-        "Saisonal",
-        "Gemüse"
-      ],
-      "global_meta": [
-        "Dringend",
-        "Angebot",
-        "Wenn's passt"
-      ]
-    },
-    "icon": "Gurke"
-  },
-  {
-    "id": "90b1107b-bc12-425e-adde-c59b5614e82d",
-    "name": "Zwiebel",
-    "category": "Obst & Gemüse",
-    "aliases": [
-      "Schalotte",
-      "Frühlingszwiebel",
-      "Lauchzwiebel",
-      "Zwiebeln"
-    ],
-    "tags": {
-      "quantities": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5"
-      ],
-      "constellations": [
-        "Gelb",
-        "Rot",
-        "Gemüse",
-        "Schalotten",
-        "Frühlingszwiebeln",
-        "Bio",
-        "Regional",
-        "Netz",
-        "Kochen"
-      ],
-      "global_meta": [
-        "Dringend",
-        "Angebot",
-        "Wenn's passt"
-      ]
-    },
-    "icon": "Zwiebeln"
-  },
-  {
-    "id": "64bdcbbe-35e4-4bef-9039-8544bc4598b1",
-    "name": "Kartoffel",
-    "category": "Obst & Gemüse",
-    "aliases": [
-      "Kartoffeln",
-      "Grumbeere",
-      "Erdäpfel"
-    ],
-    "tags": {
-      "quantities": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5"
-      ],
-      "constellations": [
-        "Festkochend",
-        "Vorwiegend festkochend",
-        "Mehligkochend",
-        "Frühkartoffeln",
-        "Bio",
-        "Regional",
-        "Saisonal",
-        "Beilage"
-      ],
-      "global_meta": [
-        "Dringend",
-        "Angebot",
-        "Wenn's passt"
-      ]
-    },
-    "icon": "Kartoffeln"
-  },
-  {
-    "id": "1a0536e8-1181-4694-9f5c-85afea192a2e",
-    "name": "Pilze",
-    "category": "Obst & Gemüse",
-    "aliases": [
-      "Egerlinge",
-      "Pilz",
-      "Champignons",
-      "Champignon",
-      "Kräuterseitling"
-    ],
-    "tags": {
-      "quantities": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5"
-      ],
-      "constellations": [
-        "Weiß",
-        "Braun",
-        "Riesenchampignons",
-        "Dosenchampignons",
-        "Bio",
-        "Regional",
-        "Zuchtpilze",
-        "Pilz"
-      ],
-      "global_meta": [
-        "Dringend",
-        "Angebot",
-        "Wenn's passt"
-      ]
-    },
-    "icon": "Pilze"
   },
   {
     "id": "3beea4c5-2a4f-4bd9-82c9-26312dff15fb",
@@ -10020,6 +9729,7 @@
     "name": "Kräuterseitling",
     "category": "Obst & Gemüse",
     "aliases": [
+      "Pilze",
       "Kräuterseitlinge"
     ],
     "tags": {
@@ -10042,38 +9752,6 @@
       ]
     },
     "icon": "Pilze"
-  },
-  {
-    "id": "93594080-b32c-4816-a31c-ae018adb824c",
-    "name": "Pfifferling",
-    "category": "Obst & Gemüse",
-    "aliases": [
-      "Eierschwammerl",
-      "Reherl",
-      "Pfifferlinge"
-    ],
-    "tags": {
-      "quantities": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5"
-      ],
-      "constellations": [
-        "Frisch",
-        "Getrocknet",
-        "Dose",
-        "Saisonal",
-        "Waldpilze"
-      ],
-      "global_meta": [
-        "Dringend",
-        "Angebot",
-        "Wenn's passt"
-      ]
-    },
-    "icon": "Eier"
   },
   {
     "id": "e2fd7661-2c57-4d9a-9471-229a46476b39",
@@ -10445,41 +10123,6 @@
     "icon": "Ricotta"
   },
   {
-    "id": "e62fab4c-b160-4044-bb8a-42ff069021ef",
-    "name": "Schlagsahne",
-    "category": "Milchprodukte & Tiefkühlkost",
-    "aliases": [
-      "Rahm",
-      "Weihenstephan Sahne",
-      "Sahne",
-      "Rama Cremefine zum Schlagen",
-      "Obers"
-    ],
-    "tags": {
-      "quantities": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5"
-      ],
-      "constellations": [
-        "Frische",
-        "H",
-        "Vegane Schlagcreme",
-        "Gekühlt",
-        "Backen",
-        "Kochen"
-      ],
-      "global_meta": [
-        "Dringend",
-        "Angebot",
-        "Wenn's passt"
-      ]
-    },
-    "icon": "Rahm"
-  },
-  {
     "id": "f2645aba-fd85-4cc3-8f98-fcc22ae350d9",
     "name": "Sprühsahne",
     "category": "Milchprodukte & Tiefkühlkost",
@@ -10805,38 +10448,6 @@
       ]
     },
     "icon": "Grill"
-  },
-  {
-    "id": "f64a9a9a-265f-42b0-a8ec-2e3f3218caaa",
-    "name": "Harzer Roller",
-    "category": "Milchprodukte & Tiefkühlkost",
-    "aliases": [
-      "Harzer Käse",
-      "Sauermilchkäse",
-      "Handkäse mit Musik"
-    ],
-    "tags": {
-      "quantities": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5"
-      ],
-      "constellations": [
-        "Klassisch mit Kümmel",
-        "Harzer Käse ohne Kümmel",
-        "Fettarm",
-        "Protein",
-        "Sauerteigkäse"
-      ],
-      "global_meta": [
-        "Dringend",
-        "Angebot",
-        "Wenn's passt"
-      ]
-    },
-    "icon": "Käse"
   },
   {
     "id": "ada0da40-eb86-40d5-aac0-48c2a0a657d5",
@@ -11392,43 +11003,6 @@
     "icon": "Fisch"
   },
   {
-    "id": "1136862b-a8a3-4fb1-bb35-0223837b5e25",
-    "name": "Pommes frites",
-    "category": "Milchprodukte & Tiefkühlkost",
-    "aliases": [
-      "McCain Pommes",
-      "Agrarfrost",
-      "Fritten"
-    ],
-    "tags": {
-      "quantities": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5"
-      ],
-      "constellations": [
-        "Backofen-Pommes",
-        "Friteusen-Pommes",
-        "Wellenschnitt-Pommes",
-        "Süßkartoffel-Pommes",
-        "Gitterkartoffeln",
-        "Herzoginkartoffeln",
-        "TK",
-        "Beilage",
-        "Vegan",
-        "Kartoffel"
-      ],
-      "global_meta": [
-        "Dringend",
-        "Angebot",
-        "Wenn's passt"
-      ]
-    },
-    "icon": "Pommes Frites"
-  },
-  {
     "id": "f03e9b58-8145-4e8e-8fee-61ce86fd6217",
     "name": "Pizza",
     "category": "Milchprodukte & Tiefkühlkost",
@@ -11466,44 +11040,6 @@
     "icon": "Pizza"
   },
   {
-    "id": "c35e1cd9-bdf7-40d5-a69b-bffcfd804b2d",
-    "name": "TK-Gemüse",
-    "category": "Milchprodukte & Tiefkühlkost",
-    "aliases": [
-      "Frosta Gemüse",
-      "Rahmspinat",
-      "Iglo Gemüse",
-      "Erbsen TK"
-    ],
-    "tags": {
-      "quantities": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5"
-      ],
-      "constellations": [
-        "Toastbsen extra fein",
-        "Rahmspinat mit Blubb",
-        "Kaisergemüse",
-        "Buttergemüse",
-        "Prinzessbohnen",
-        "Suppengemüse-Mischung",
-        "TK",
-        "Bio",
-        "Gesund",
-        "Convenience"
-      ],
-      "global_meta": [
-        "Dringend",
-        "Angebot",
-        "Wenn's passt"
-      ]
-    },
-    "icon": "Gemüse"
-  },
-  {
     "id": "c3f2990f-5f36-491c-939c-f314846a5d83",
     "name": "TK-Pfannengericht",
     "category": "Milchprodukte & Tiefkühlkost",
@@ -11530,45 +11066,6 @@
         "Schnell",
         "Pfanne",
         "Fertiggericht"
-      ],
-      "global_meta": [
-        "Dringend",
-        "Angebot",
-        "Wenn's passt"
-      ]
-    },
-    "icon": "Allgemein"
-  },
-  {
-    "id": "9ae7ca74-e81c-4dd6-9e6e-711d4ac9e993",
-    "name": "Eiscreme",
-    "category": "Milchprodukte & Tiefkühlkost",
-    "aliases": [
-      "Ben & Jerry's",
-      "Speiseeis",
-      "Cremissimo",
-      "Häagen-Dazs",
-      "Langnese",
-      "Magnum"
-    ],
-    "tags": {
-      "quantities": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5"
-      ],
-      "constellations": [
-        "Vanille-Eis",
-        "Schoko-Eis",
-        "Fürst-Pückler",
-        "Veganes Eis Becher",
-        "Magnum Mandel",
-        "Süß",
-        "Sommer",
-        "Dessert",
-        "TK"
       ],
       "global_meta": [
         "Dringend",
@@ -12064,43 +11561,6 @@
       ]
     },
     "icon": "Champignons"
-  },
-  {
-    "id": "4e3a61e5-ad96-4a07-ad93-84dcb38e9de0",
-    "name": "Gewürzgurke",
-    "category": "Vorratskammer",
-    "aliases": [
-      "Gurkenglas",
-      "Burgergurken",
-      "Spreewaldhof",
-      "Spreewaldgurken",
-      "Kühne Gewürzgurken"
-    ],
-    "tags": {
-      "quantities": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5"
-      ],
-      "constellations": [
-        "N knackig",
-        "Cornichons extra fein",
-        "Salz-Dill-Gurken",
-        "Gewürzhappen-Scheiben",
-        "Sauer",
-        "Beilage",
-        "Vesper",
-        "Glas"
-      ],
-      "global_meta": [
-        "Dringend",
-        "Angebot",
-        "Wenn's passt"
-      ]
-    },
-    "icon": "Gurke"
   },
   {
     "id": "d1ecfffd-fbb0-4afe-82d5-4c1d78b0699e",
@@ -16263,56 +15723,5 @@
       ]
     },
     "icon": "Allgemein"
-  },
-  {
-    "id": "1121a101-cc1c-444c-adcd-a15033e4b966",
-    "name": "Fleisch",
-    "category": "Fleisch & Fisch",
-    "aliases": [],
-    "tags": {
-      "quantities": [
-        "1",
-        "2",
-        "3",
-        "500g",
-        "1kg"
-      ],
-      "constellations": [
-        "Frisch",
-        "Bio"
-      ],
-      "global_meta": [
-        "Dringend",
-        "Angebot"
-      ]
-    },
-    "icon": "fleisch_allgemein"
-  },
-  {
-    "id": "d4082b55-5b61-422c-95a9-336cdcc7b47a",
-    "name": "Beeren",
-    "category": "Obst & Gemüse",
-    "aliases": [
-      "Himbeere",
-      "Brombeere"
-    ],
-    "tags": {
-      "quantities": [
-        "1",
-        "2",
-        "3",
-        "Schale"
-      ],
-      "constellations": [
-        "Frisch",
-        "Bio",
-        "TK"
-      ],
-      "global_meta": [
-        "Dringend",
-        "Angebot"
-      ]
-    },
-    "icon": "Beeren"
   }
 ]
