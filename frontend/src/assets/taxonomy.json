@@ -171,13 +171,13 @@
   },
   {
     "id": "0acd307b-eb71-48c1-ad46-fdb7daad23a8",
-    "name": "Gurke",
+    "name": "Gurken",
     "category": "Obst & Gemüse",
     "aliases": [
       "Spreewaldgurken",
       "Schlangengurke",
       "Salatgurke",
-      "Gurken"
+      "Gurke"
     ],
     "tags": {
       "quantities": [
@@ -566,13 +566,13 @@
   },
   {
     "id": "455cd713-86fd-43ba-8b1b-b010dbba8cea",
-    "name": "Apfel",
+    "name": "Äpfel",
     "category": "Obst & Gemüse",
     "aliases": [
       "Kulturapfel",
       "Pink Lady",
       "Tafelapfel",
-      "Äpfel"
+      "Apfel"
     ],
     "tags": {
       "quantities": [
@@ -611,11 +611,11 @@
   },
   {
     "id": "d2ca7ad4-1116-46d9-ac13-2f434a2f8dd6",
-    "name": "Banane",
+    "name": "Bananen",
     "category": "Obst & Gemüse",
     "aliases": [
       "Chiquita",
-      "Bananen"
+      "Banane"
     ],
     "tags": {
       "quantities": [
@@ -648,10 +648,10 @@
   },
   {
     "id": "5fb82042-2a88-4c62-a2a9-2d997289ece8",
-    "name": "Birne",
+    "name": "Birnen",
     "category": "Obst & Gemüse",
     "aliases": [
-      "Birnen"
+      "Birne"
     ],
     "tags": {
       "quantities": [
@@ -684,11 +684,11 @@
   },
   {
     "id": "6190fcce-0dea-4307-bf71-d8d5505d0484",
-    "name": "Wassermelone",
+    "name": "Wassermelonen",
     "category": "Obst & Gemüse",
     "aliases": [
       "Melone",
-      "Wassermelonen"
+      "Wassermelone"
     ],
     "tags": {
       "quantities": [
@@ -745,12 +745,12 @@
   },
   {
     "id": "d6896d9b-1773-44bb-90a1-9ab525c8d3e7",
-    "name": "Orange",
+    "name": "Orangen",
     "category": "Obst & Gemüse",
     "aliases": [
       "Apfelsine",
-      "Orangen",
-      "Apfelsinen"
+      "Apfelsinen",
+      "Orange"
     ],
     "tags": {
       "quantities": [
@@ -783,12 +783,12 @@
   },
   {
     "id": "5007fc10-5c56-420b-be4b-aae523401944",
-    "name": "Mandarine",
+    "name": "Mandarinen",
     "category": "Obst & Gemüse",
     "aliases": [
       "Clementinen",
       "Clementine",
-      "Mandarinen"
+      "Mandarine"
     ],
     "tags": {
       "quantities": [
@@ -820,11 +820,11 @@
   },
   {
     "id": "0fe1aaf9-26e4-44be-9c62-93618aed14a7",
-    "name": "Zitrone",
+    "name": "Zitronen",
     "category": "Obst & Gemüse",
     "aliases": [
       "Zitronensaft",
-      "Zitronen"
+      "Zitrone"
     ],
     "tags": {
       "quantities": [
@@ -854,11 +854,11 @@
   },
   {
     "id": "cfd7e508-db8a-4731-99ab-6b5d494f3357",
-    "name": "Limette",
+    "name": "Limetten",
     "category": "Obst & Gemüse",
     "aliases": [
-      "Limetten",
-      "Mojito"
+      "Mojito",
+      "Limette"
     ],
     "tags": {
       "quantities": [
@@ -886,12 +886,12 @@
   },
   {
     "id": "01d42916-2d1b-4424-b55a-085d57376554",
-    "name": "Grapefruit",
+    "name": "Grapefruits",
     "category": "Obst & Gemüse",
     "aliases": [
       "Pampelmuse",
       "Pink Grapefruit",
-      "Grapefruits"
+      "Grapefruit"
     ],
     "tags": {
       "quantities": [
@@ -919,11 +919,11 @@
   },
   {
     "id": "afef5946-ebbd-4c88-9543-c9cea5f2d55a",
-    "name": "Pfirsich",
+    "name": "Pfirsiche",
     "category": "Obst & Gemüse",
     "aliases": [
-      "Pfirsiche",
-      "Plattpfirsiche"
+      "Plattpfirsiche",
+      "Pfirsich"
     ],
     "tags": {
       "quantities": [
@@ -956,10 +956,10 @@
   },
   {
     "id": "8be2cb8e-3a32-4448-ac30-c9b0cd7470c2",
-    "name": "Nektarine",
+    "name": "Nektarinen",
     "category": "Obst & Gemüse",
     "aliases": [
-      "Nektarinen"
+      "Nektarine"
     ],
     "tags": {
       "quantities": [
@@ -989,13 +989,13 @@
   },
   {
     "id": "fd06b56f-afe7-40ff-be87-dc956e84da88",
-    "name": "Pflaume",
+    "name": "Pflaumen",
     "category": "Obst & Gemüse",
     "aliases": [
       "Zwetschgen",
-      "Pflaumen",
       "Zwetschge",
-      "Mirabellen"
+      "Mirabellen",
+      "Pflaume"
     ],
     "tags": {
       "quantities": [
@@ -1049,11 +1049,11 @@
   },
   {
     "id": "2a13ac48-9934-44ab-aa56-3904848757a7",
-    "name": "Kiwi",
+    "name": "Kiwis",
     "category": "Obst & Gemüse",
     "aliases": [
-      "Kiwis",
-      "Zespri"
+      "Zespri",
+      "Kiwi"
     ],
     "tags": {
       "quantities": [
@@ -1084,10 +1084,10 @@
   },
   {
     "id": "eaeaa69c-059b-4f6e-a17a-2bfb7b8c78ad",
-    "name": "Mango",
+    "name": "Mangos",
     "category": "Obst & Gemüse",
     "aliases": [
-      "Mangos"
+      "Mango"
     ],
     "tags": {
       "quantities": [
@@ -1116,10 +1116,10 @@
   },
   {
     "id": "ead6cfa6-ed7f-48a5-8e09-3ef0aa0106a3",
-    "name": "Avocado",
+    "name": "Avocados",
     "category": "Obst & Gemüse",
     "aliases": [
-      "Avocados"
+      "Avocado"
     ],
     "tags": {
       "quantities": [
@@ -1148,11 +1148,11 @@
   },
   {
     "id": "e0f30693-5028-4aae-8c95-4985b271426b",
-    "name": "Ananas",
+    "name": "Ananasse",
     "category": "Obst & Gemüse",
     "aliases": [
-      "Ananasse",
-      "Del Monte"
+      "Del Monte",
+      "Ananas"
     ],
     "tags": {
       "quantities": [
@@ -1183,11 +1183,11 @@
   },
   {
     "id": "066c2a80-9735-45ae-89b7-ccbea90dd8ee",
-    "name": "Granatapfel",
+    "name": "Granatäpfel",
     "category": "Obst & Gemüse",
     "aliases": [
       "Kerne",
-      "Granatäpfel"
+      "Granatapfel"
     ],
     "tags": {
       "quantities": [
@@ -1215,10 +1215,10 @@
   },
   {
     "id": "9dd088ea-51a7-4a16-8023-8960d6f16612",
-    "name": "Papaya",
+    "name": "Papayas",
     "category": "Obst & Gemüse",
     "aliases": [
-      "Papayas"
+      "Papaya"
     ],
     "tags": {
       "quantities": [
@@ -1244,10 +1244,10 @@
   },
   {
     "id": "1592d899-ed89-477f-990a-8f70ea5abb5c",
-    "name": "Feige",
+    "name": "Feigen",
     "aliases": [
       "Trockenfeigen",
-      "Feigen"
+      "Feige"
     ],
     "category": "Obst & Gemüse",
     "tags": {
@@ -1277,12 +1277,12 @@
   },
   {
     "id": "352a3ace-aa90-4f73-92fd-99afd20904c0",
-    "name": "Kaki",
+    "name": "Kakis",
     "category": "Obst & Gemüse",
     "aliases": [
-      "Kakis",
       "Sharonfrucht",
-      "Persimon"
+      "Persimon",
+      "Kaki"
     ],
     "tags": {
       "quantities": [
@@ -1312,14 +1312,14 @@
   },
   {
     "id": "11aa5bf9-a636-4574-8e20-4d044706c109",
-    "name": "Tomate",
+    "name": "Tomaten",
     "category": "Obst & Gemüse",
     "aliases": [
       "Cherrytomate",
       "Paradeiser",
       "Cocktailtomaten",
-      "Tomaten",
-      "Rispentomaten"
+      "Rispentomaten",
+      "Tomate"
     ],
     "tags": {
       "quantities": [
@@ -1444,11 +1444,11 @@
   },
   {
     "id": "9e022680-e729-49ce-841a-2ee039989e56",
-    "name": "Süßkartoffel",
+    "name": "Süßkartoffeln",
     "category": "Obst & Gemüse",
     "aliases": [
       "Batate",
-      "Süßkartoffeln"
+      "Süßkartoffel"
     ],
     "tags": {
       "quantities": [
@@ -1711,11 +1711,11 @@
   },
   {
     "id": "15810aac-3cc9-4830-bb90-24e4ad4c453d",
-    "name": "Zucchini",
+    "name": "Zucchinis",
     "category": "Obst & Gemüse",
     "aliases": [
       "Zucchino",
-      "Zucchinis"
+      "Zucchini"
     ],
     "tags": {
       "quantities": [
@@ -1745,11 +1745,11 @@
   },
   {
     "id": "91fe6a5e-4522-410e-a01c-0494d2eb923f",
-    "name": "Aubergine",
+    "name": "Auberginen",
     "category": "Obst & Gemüse",
     "aliases": [
-      "Auberginen",
-      "Melanzani"
+      "Melanzani",
+      "Aubergine"
     ],
     "tags": {
       "quantities": [
@@ -1841,11 +1841,11 @@
   },
   {
     "id": "7c531cc0-c324-49c0-a300-a39d1951cb31",
-    "name": "Kohlrabi",
+    "name": "Kohlrabis",
     "category": "Obst & Gemüse",
     "aliases": [
       "Oberrübe",
-      "Kohlrabis"
+      "Kohlrabi"
     ],
     "tags": {
       "quantities": [
@@ -2303,10 +2303,10 @@
   },
   {
     "id": "1413c58b-456c-475d-b878-b8169dc6926f",
-    "name": "Kürbis",
+    "name": "Kürbisse",
     "category": "Obst & Gemüse",
     "aliases": [
-      "Kürbisse"
+      "Kürbis"
     ],
     "tags": {
       "quantities": [
@@ -8086,14 +8086,14 @@
   },
   {
     "id": "06b8733d-a7e0-4ccf-ad6c-82108aba8575",
-    "name": "Zahnbürste",
+    "name": "Zahnbürsten",
     "category": "Drogerie, Haushalt & Tierbedarf",
     "aliases": [
       "Oral-B Aufsteckbürsten",
-      "Zahnbürsten",
       "Dr. Best",
       "Aufsteckbürsten",
-      "Colgate Zahnbürste"
+      "Colgate Zahnbürste",
+      "Zahnbürste"
     ],
     "tags": {
       "quantities": [
@@ -8172,15 +8172,15 @@
   },
   {
     "id": "00f01808-93e2-46ef-94b9-ba7f4496a204",
-    "name": "Küchenrolle",
+    "name": "Küchenrollen",
     "category": "Drogerie, Haushalt & Tierbedarf",
     "aliases": [
-      "Küchenrollen",
       "Haushaltspapier",
       "Plenty Küchenrolle",
       "Zewa",
       "Zewa Wisch und Weg",
-      "Küchenkrepp"
+      "Küchenkrepp",
+      "Küchenrolle"
     ],
     "tags": {
       "quantities": [
@@ -9205,11 +9205,11 @@
   },
   {
     "id": "07f55684-a1f9-486f-897a-43c04cac68f9",
-    "name": "Kirsche",
+    "name": "Kirschen",
     "category": "Obst & Gemüse",
     "aliases": [
       "Herzkirschen",
-      "Kirschen"
+      "Kirsche"
     ],
     "tags": {
       "quantities": [
@@ -9266,12 +9266,12 @@
   },
   {
     "id": "18362bae-4634-4477-a705-36da1f2f7aa0",
-    "name": "Aprikose",
+    "name": "Aprikosen",
     "category": "Obst & Gemüse",
     "aliases": [
       "Marille",
       "Marillen",
-      "Aprikosen"
+      "Aprikose"
     ],
     "tags": {
       "quantities": [
@@ -9327,11 +9327,11 @@
   },
   {
     "id": "686a3f2b-a5cd-4dd7-a32b-d69a45b245f7",
-    "name": "Maracuja",
+    "name": "Maracujas",
     "category": "Obst & Gemüse",
     "aliases": [
-      "Maracujas",
-      "Passionsfrucht"
+      "Passionsfrucht",
+      "Maracuja"
     ],
     "tags": {
       "quantities": [
@@ -9357,11 +9357,11 @@
   },
   {
     "id": "87211309-00ac-4582-8f2b-a44604a7ee29",
-    "name": "Preiselbeere",
+    "name": "Preiselbeeren",
     "category": "Obst & Gemüse",
     "aliases": [
       "Kronsbeere",
-      "Preiselbeeren"
+      "Preiselbeere"
     ],
     "tags": {
       "quantities": [
@@ -9484,12 +9484,12 @@
   },
   {
     "id": "749fd9fe-43b5-4b4e-aa1a-32700a72f8ef",
-    "name": "Zuckererbse",
+    "name": "Zuckererbsen",
     "category": "Obst & Gemüse",
     "aliases": [
       "Kaiserschoten",
       "Zuckerschoten",
-      "Zuckererbsen"
+      "Zuckererbse"
     ],
     "tags": {
       "quantities": [
@@ -9515,11 +9515,11 @@
   },
   {
     "id": "12086375-c687-4b01-aa3a-d607f98a3cf8",
-    "name": "Erbse",
+    "name": "Erbsen",
     "category": "Obst & Gemüse",
     "aliases": [
-      "Erbsen",
-      "Erbsen und Möhren"
+      "Erbsen und Möhren",
+      "Erbse"
     ],
     "tags": {
       "quantities": [
@@ -9547,11 +9547,11 @@
   },
   {
     "id": "8109a1f6-3dfb-4ee8-b7f8-47949336319d",
-    "name": "Pastinake",
+    "name": "Pastinaken",
     "category": "Obst & Gemüse",
     "aliases": [
       "Moorwurzel",
-      "Pastinaken"
+      "Pastinake"
     ],
     "tags": {
       "quantities": [
@@ -9606,11 +9606,11 @@
   },
   {
     "id": "380d0917-a82c-4c0d-b621-3264a71d3cf4",
-    "name": "Schwarzwurzel",
+    "name": "Schwarzwurzeln",
     "category": "Obst & Gemüse",
     "aliases": [
-      "Schwarzwurzeln",
-      "Spargel des armen Mannes"
+      "Spargel des armen Mannes",
+      "Schwarzwurzel"
     ],
     "tags": {
       "quantities": [
@@ -9726,11 +9726,11 @@
   },
   {
     "id": "d7028237-9ee7-471a-ba95-fee4fa022b45",
-    "name": "Kräuterseitling",
+    "name": "Kräuterseitlinge",
     "category": "Obst & Gemüse",
     "aliases": [
       "Pilze",
-      "Kräuterseitlinge"
+      "Kräuterseitling"
     ],
     "tags": {
       "quantities": [
@@ -9755,11 +9755,11 @@
   },
   {
     "id": "e2fd7661-2c57-4d9a-9471-229a46476b39",
-    "name": "Steinpilz",
+    "name": "Steinpilze",
     "category": "Obst & Gemüse",
     "aliases": [
       "Herrenpilz",
-      "Steinpilze"
+      "Steinpilz"
     ],
     "tags": {
       "quantities": [
@@ -11564,12 +11564,12 @@
   },
   {
     "id": "d1ecfffd-fbb0-4afe-82d5-4c1d78b0699e",
-    "name": "Olive",
+    "name": "Oliven",
     "category": "Obst & Gemüse",
     "aliases": [
       "Kühne Oliven",
-      "Oliven",
-      "Dittmann Oliven"
+      "Dittmann Oliven",
+      "Olive"
     ],
     "tags": {
       "quantities": [
@@ -12833,11 +12833,11 @@
   },
   {
     "id": "5a892301-d92a-4a09-8635-84b9b9be07ae",
-    "name": "Vanilleschote",
+    "name": "Vanilleschoten",
     "category": "Vorratskammer",
     "aliases": [
-      "Vanilleschoten",
-      "Dr. Oetker Vanilleschote"
+      "Dr. Oetker Vanilleschote",
+      "Vanilleschote"
     ],
     "tags": {
       "quantities": [
