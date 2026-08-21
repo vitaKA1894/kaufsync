@@ -787,16 +787,15 @@ onUnmounted(() => {
     <!-- GRUPPIERTE AKTIVE ARTIKEL -->
     <div class="list-scroll-area">
       <template v-if="groupedActiveItems.length > 0">
-        <section v-for="group in groupedActiveItems" :key="group.name" class="items-section">
+        <section v-for="group in groupedActiveItems" :key="group.name" class="category-group"
+                 :style="{ background: `linear-gradient(to right, color-mix(in srgb, ${group.def.bg} 15%, transparent) 0%, transparent 100%)` }">
           
-          <div class="category-header">
-            <span class="category-badge" :style="{ background: group.def.bg, color: group.def.color }">
-              {{ group.name }}
-            </span>
-            <span class="category-count">{{ group.items.length }}</span>
+          <div class="category-lane" :style="{ backgroundColor: group.def.bg, color: group.def.color }">
+            <span class="category-name">{{ group.name }}</span>
+            <span class="category-count" style="margin-top: 8px;">{{ group.items.length }}</span>
           </div>
 
-          <div class="ks-grid">
+          <div class="ks-grid items-grid">
             <div v-for="item in group.items" :key="item.id" class="grid-card active" :id="'item-' + item.id"
                  @click="toggleItemStatus(item)"
                  @mousedown="startPress(item, $event)"
@@ -836,18 +835,19 @@ onUnmounted(() => {
       </div>
 
       <!-- ERLEDIGTE ARTIKEL -->
-      <section v-if="completedItems.length > 0" class="items-section completed-section">
-        <div class="category-header" style="justify-content: space-between;">
-          <div style="display: flex; align-items: center; gap: 12px;">
-            <span class="category-badge completed-badge">Erledigt</span>
-            <span class="category-count">{{ completedItems.length }}</span>
-          </div>
-          <button class="clear-completed-btn" @click="clearCompleted" aria-label="Alle erledigten löschen">
-            Alle löschen <svg viewBox="0 0 24 24"><path d="M7 21q-.825 0-1.412-.587Q5 19.825 5 19V6H4V4h5V3h6v1h5v2h-1v13q0 .825-.587 1.413Q17.825 21 17 21Zm2-4h2V8H9Zm4 0h2V8h-2Z"/></svg>
+      <section v-if="completedItems.length > 0" class="category-group completed-section"
+               style="background: linear-gradient(to right, rgba(255,255,255,0.02) 0%, transparent 100%); margin-top: 32px;">
+
+        <div class="category-lane" style="background-color: var(--ks-surface-3); color: var(--ks-text-muted);">
+          <span class="category-name">Erledigt</span>
+          <span class="category-count" style="margin-top: 8px;">{{ completedItems.length }}</span>
+
+          <button class="clear-completed-btn-vertical" @click="clearCompleted" aria-label="Alle erledigten löschen" style="margin-top: auto; margin-bottom: 8px; background: transparent; border: none; color: var(--ks-error); cursor: pointer; padding: 8px;">
+            <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; fill: currentColor;"><path d="M7 21q-.825 0-1.412-.587Q5 19.825 5 19V6H4V4h5V3h6v1h5v2h-1v13q0 .825-.587 1.413Q17.825 21 17 21Zm2-4h2V8H9Zm4 0h2V8h-2Z"/></svg>
           </button>
         </div>
         
-        <div class="ks-grid">
+        <div class="ks-grid items-grid">
           <div v-for="item in completedItems" :key="item.id" class="grid-card completed" @click="toggleItemStatus(item)">
             <div class="card-icon-area">
                <CategoryIcon class="icon-svg" :name="item.name" :category="item.category" size="40" style="opacity: 0.5;" />
@@ -871,8 +871,10 @@ onUnmounted(() => {
                 <svg viewBox="0 0 24 24"><path d="M11 19v-6H5v-2h6V5h2v6h6v2h-6v6Z"/></svg>
                 Neuen Artikel hinzufügen
             </button>
-            <button class="add-trigger-btn barcode-trigger-btn ks-icon-btn" @click="openScannerModal" style="flex-shrink: 0; width: 56px; border-radius: 50%; padding: 0;">
-                <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M3 4h4v2H5v2H3V4m14 0h4v4h-2V6h-2V4M3 20v-4h2v2h2v2H3m14 0v-2h2v-2h2v4h-4M5 10h2v4H5v-4m4 0h2v4H9v-4m4 0h2v4h-2v-4m4 0h2v4h-2v-4Z"/></svg>
+            <button class="add-trigger-btn barcode-trigger-btn" @click="openScannerModal" aria-label="Scanner öffnen">
+                <svg viewBox="0 0 24 24" fill="currentColor" class="barcode-icon">
+                  <path d="M3 4h4v2H5v2H3V4zm2 16H3v-4h2v2h2v2zm16-4h-2v2h-2v2h4v-4zm-2-12h-2V2h4v4h-2V4zM7 6h2v12H7V6zm3 0h1v12h-1V6zm2 0h3v12h-3V6zm4 0h1v12h-1V6zm2 0h1v12h-1V6z"/>
+                </svg>
             </button>
         </div>
     </div>
@@ -911,9 +913,37 @@ onUnmounted(() => {
 
 .items-section { margin-bottom: 32px; }
 
-.category-header {
-  display: flex; align-items: center; gap: 12px;
-  margin-bottom: 16px; padding-left: 4px;
+.category-group {
+  display: flex;
+  position: relative;
+  margin-bottom: 16px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.category-lane {
+  flex: 0 0 36px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 0;
+}
+
+.category-name {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.items-grid {
+  flex: 1;
+  padding: 12px;
+  z-index: 1;
 }
 
 .category-badge {
@@ -1039,10 +1069,18 @@ onUnmounted(() => {
 .add-trigger-btn svg { width: 24px; height: 24px; fill: currentColor; }
 
 .barcode-trigger-btn {
-    background: var(--ks-surface-2);
-    color: var(--ks-text);
-    border: 1px solid var(--ks-border);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    flex-shrink: 0;
+    width: 56px;
+    padding: 0;
+    border-radius: 32px;
+    background: var(--ks-surface-3);
+    color: var(--ks-primary);
+    border: none;
+    box-shadow: 0 4px 12px var(--ks-primary-container);
+}
+.barcode-trigger-btn svg {
+    width: 24px;
+    height: 24px;
 }
 
 /* Modal & Sheets */
