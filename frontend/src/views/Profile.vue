@@ -1,5 +1,4 @@
 <script setup>
-import { subscribeToPush } from '../utils/push';
 import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 
@@ -8,10 +7,7 @@ const router = useRouter();
 const user = ref({
   email: '',
   display_name: '',
-  is_admin: false,
-  settings_push_async_events: false,
-  settings_push_new_items: false,
-  settings_push_admin_pending_users: false
+  is_admin: false
 });
 
 const passwordData = ref({
@@ -44,9 +40,6 @@ const loadUserProfile = async () => {
     user.value.email = data.email;
     user.value.display_name = data.display_name;
     user.value.is_admin = data.is_admin || false;
-    user.value.settings_push_async_events = data.settings_push_async_events || false;
-    user.value.settings_push_new_items = data.settings_push_new_items || false;
-    user.value.settings_push_admin_pending_users = data.settings_push_admin_pending_users || false;
   } catch (error) {
     console.error(error);
   }
@@ -66,18 +59,11 @@ const updateProfile = async () => {
         'Authorization': `Bearer ${token}` 
       },
       body: JSON.stringify({
-        display_name: user.value.display_name,
-        settings_push_async_events: user.value.settings_push_async_events,
-        settings_push_new_items: user.value.settings_push_new_items,
-        settings_push_admin_pending_users: user.value.settings_push_admin_pending_users
+        display_name: user.value.display_name
       })
     });
     
     if (!response.ok) throw new Error('Fehler beim Speichern des Profils');
-
-    if (user.value.settings_push_async_events || user.value.settings_push_new_items || user.value.settings_push_admin_pending_users) {
-      await subscribeToPush(token);
-    }
     
     successMessage.value = 'Profil erfolgreich aktualisiert!';
     setTimeout(() => successMessage.value = '', 3000);
@@ -173,18 +159,6 @@ onMounted(loadUserProfile);
         <button @click="router.push('/admin')" class="ks-btn-filled full-width" style="background: var(--ks-primary); margin-bottom: 20px;">
           Admin Dashboard öffnen
         </button>
-
-        <div class="settings-list">
-          <label class="setting-item">
-            <div class="setting-text">
-              <span class="setting-title">Benachrichtigung bei neuen Registrierungen</span>
-              <span class="setting-desc">Push-Nachricht erhalten, wenn ein neuer Nutzer freigeschaltet werden muss</span>
-            </div>
-            <div class="setting-control">
-                <input type="checkbox" v-model="user.settings_push_admin_pending_users" />
-            </div>
-          </label>
-        </div>
       </section>
 
       <!-- Profil Info -->
@@ -199,17 +173,6 @@ onMounted(loadUserProfile);
         <div class="ks-field" style="margin-bottom: 20px;">
           <input type="text" v-model="user.display_name" placeholder=" " />
           <label>Anzeigename</label>
-        </div>
-
-        <div style="margin-bottom: 20px; display: flex; flex-direction: column; gap: 12px;">
-            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
-                <input type="checkbox" v-model="user.settings_push_async_events" />
-                Push-Benachrichtigungen für asynchrone Ereignisse
-            </label>
-            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
-                <input type="checkbox" v-model="user.settings_push_new_items" />
-                Push-Benachrichtigungen für neue Artikel
-            </label>
         </div>
 
         <button @click="updateProfile" :disabled="isLoading" class="ks-btn-filled full-width">
