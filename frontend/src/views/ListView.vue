@@ -979,13 +979,13 @@ onUnmounted(() => {
 
 .ks-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
   gap: 12px;
 }
 
 .grid-card {
   display: flex; flex-direction: column;
-  border-radius: var(--ks-radius-sm); padding: 12px 8px;
+  border-radius: var(--ks-radius-sm); padding: 8px 4px;
   cursor: pointer; text-align: center;
   transition: transform 0.1s, opacity 0.2s, background 0.2s, border-color 0.3s;
   position: relative;
@@ -1017,10 +1017,10 @@ onUnmounted(() => {
 
 .card-icon-area { 
   display: flex; align-items: center; justify-content: center; 
-  height: 50px; margin-bottom: 12px; border-radius: var(--ks-radius-xs);
+  height: 40px; margin-bottom: 12px; border-radius: var(--ks-radius-xs);
 }
 .initials { font-size: 24px; font-weight: 700; }
-.icon-svg { display: flex; align-items: center; justify-content: center; width: 45px; height: 45px; }
+.icon-svg { display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; }
 .icon-svg :deep(svg) { width: 100%; height: 100%; }
 
 .item-quantity {
@@ -1031,9 +1031,9 @@ onUnmounted(() => {
 
 .card-text-area { display: flex; flex-direction: column; }
 .item-name { 
-  font-size: 14px; font-weight: 600; 
+  font-size: 12px; font-weight: 600;
   display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; 
-  overflow: hidden; line-height: 1.3; color: var(--ks-text);
+  overflow: hidden; line-height: 1.2; color: var(--ks-text);
 }
 .item-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px; justify-content: center; }
 .tag-pill { font-size: 10px; background: var(--ks-surface-4); padding: 2px 6px; border-radius: 8px; color: var(--ks-text-muted); }
