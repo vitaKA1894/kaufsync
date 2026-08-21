@@ -261,6 +261,17 @@ const parseQuantity = (input) => {
 };
 
 const confirmSelection = (bypassWarning = false) => {
+  if (!selectedItem.value && query.value && query.value.trim() !== '') {
+    // If no item selected, try to find an exact match in the taxonomy
+    const qLower = query.value.trim().toLowerCase();
+    const taxonomyMatch = searchTaxonomy(query.value).find(
+      t => t.name.toLowerCase() === qLower || t.aliases.some(a => a.toLowerCase() === qLower)
+    );
+    if (taxonomyMatch) {
+      selectedItem.value = taxonomyMatch;
+    }
+  }
+
   const finalName = selectedItem.value ? selectedItem.value.name : query.value;
 
   if (!bypassWarning && !selectedItem.value && finalName.trim() !== '') {
