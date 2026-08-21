@@ -513,7 +513,7 @@ watch(() => props.isOpen, (newVal) => {
                        <input
                            type="text"
                            v-model="manualQuantity"
-                           placeholder="Menge (z.B. 2 6er-Träger)"
+                           placeholder="Menge"
                            class="modal-input"
                            style="background: var(--ks-surface-3); font-size: 16px; padding: 10px 14px; flex: 1; min-width: 0;"
                            @keyup.enter="confirmSelection(false)"
@@ -538,7 +538,7 @@ watch(() => props.isOpen, (newVal) => {
                        <input
                            type="text"
                            v-model="manualUnit"
-                           placeholder="Ausprägung (z.B. Bio)"
+                           placeholder="Ausprägung"
                            class="modal-input"
                            style="background: var(--ks-surface-3); font-size: 16px; padding: 10px 14px; flex: 1; min-width: 0;"
                            @keyup.enter="confirmSelection(false)"
