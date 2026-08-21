@@ -32,6 +32,7 @@ class User(Base):
     status = Column(String, default="pending") # 'pending', 'active', 'locked'
     settings_push_async_events = Column(Boolean, default=False)
     settings_push_new_items = Column(Boolean, default=False)
+    settings_push_admin_pending_users = Column(Boolean, default=False)
     created_at = Column(DateTime, default=datetime.utcnow)
 
 class PasswordResetToken(Base):

@@ -10,7 +10,13 @@ const currentUser = ref(null);
 const successMessage = ref('');
 
 const showActionSheet = ref(false);
+const notifications = ref([]);
+const showNotifications = ref(false);
 const activeModal = ref(null);
+
+const unreadCount = computed(() => {
+  return notifications.value.filter(n => !n.is_read).length;
+});
 
 const showOptionsSheet = ref(false);
 const selectedListForOptions = ref(null);
@@ -138,6 +144,39 @@ const closeWebSockets = () => {
 const updateOnlineStatus = () => {
   if (navigator.onLine) {
     setupWebSockets();
+  }
+};
+
+const loadNotifications = async () => {
+  try {
+    const token = localStorage.getItem('token');
+    if (!token) return;
+    const response = await fetch('/api/notifications', { headers: { 'Authorization': `Bearer ${token}` } });
+    if (response.ok) {
+      notifications.value = await response.json();
+    }
+  } catch (err) {
+    console.error('Fehler beim Laden der Benachrichtigungen:', err);
+  }
+};
+
+const markNotificationRead = async (id, action_url) => {
+  try {
+    const token = localStorage.getItem('token');
+    await fetch(`/api/notifications/${id}/read`, {
+      method: 'PATCH',
+      headers: { 'Authorization': `Bearer ${token}` }
+    });
+
+    // Update local state
+    const notif = notifications.value.find(n => n.id === id);
+    if (notif) notif.is_read = true;
+
+    if (action_url) {
+      router.push(action_url);
+    }
+  } catch (err) {
+    console.error('Fehler beim Aktualisieren der Benachrichtigung:', err);
   }
 };
 
@@ -309,6 +348,7 @@ onMounted(() => {
   loadLists();
   loadInvitations();
   loadUserProfile();
+  loadNotifications();
   window.addEventListener('online', updateOnlineStatus);
   window.addEventListener('offline', updateOnlineStatus);
 });

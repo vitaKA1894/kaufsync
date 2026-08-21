@@ -9,7 +9,8 @@ const user = ref({
   display_name: '',
   is_admin: false,
   settings_push_async_events: false,
-  settings_push_new_items: false
+  settings_push_new_items: false,
+  settings_push_admin_pending_users: false
 });
 
 const passwordData = ref({
@@ -44,6 +45,7 @@ const loadUserProfile = async () => {
     user.value.is_admin = data.is_admin || false;
     user.value.settings_push_async_events = data.settings_push_async_events || false;
     user.value.settings_push_new_items = data.settings_push_new_items || false;
+    user.value.settings_push_admin_pending_users = data.settings_push_admin_pending_users || false;
   } catch (error) {
     console.error(error);
   }
@@ -65,13 +67,14 @@ const updateProfile = async () => {
       body: JSON.stringify({
         display_name: user.value.display_name,
         settings_push_async_events: user.value.settings_push_async_events,
-        settings_push_new_items: user.value.settings_push_new_items
+        settings_push_new_items: user.value.settings_push_new_items,
+        settings_push_admin_pending_users: user.value.settings_push_admin_pending_users
       })
     });
     
     if (!response.ok) throw new Error('Fehler beim Speichern des Profils');
 
-    if (user.value.settings_push_async_events || user.value.settings_push_new_items) {
+    if (user.value.settings_push_async_events || user.value.settings_push_new_items || user.value.settings_push_admin_pending_users) {
       if ('Notification' in window && navigator.serviceWorker) {
         const permission = await Notification.requestPermission();
         if (permission === 'granted') {
@@ -79,31 +82,35 @@ const updateProfile = async () => {
           const keyResponse = await fetch('/api/push/public-key');
           const keyData = await keyResponse.json();
 
-          const padding = '='.repeat((4 - keyData.public_key.length % 4) % 4);
-          const base64 = (keyData.public_key + padding).replace(/\-/g, '+').replace(/_/g, '/');
-          const rawData = window.atob(base64);
-          const outputArray = new Uint8Array(rawData.length);
-          for (let i = 0; i < rawData.length; ++i) {
-            outputArray[i] = rawData.charCodeAt(i);
+          if (keyData && keyData.public_key) {
+            const padding = '='.repeat((4 - keyData.public_key.length % 4) % 4);
+            const base64 = (keyData.public_key + padding).replace(/\-/g, '+').replace(/_/g, '/');
+            const rawData = window.atob(base64);
+            const outputArray = new Uint8Array(rawData.length);
+            for (let i = 0; i < rawData.length; ++i) {
+              outputArray[i] = rawData.charCodeAt(i);
+            }
+
+            const subscription = await registration.pushManager.subscribe({
+              userVisibleOnly: true,
+              applicationServerKey: outputArray
+            });
+
+            await fetch('/api/push/subscribe', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+              },
+              body: JSON.stringify({
+                endpoint: subscription.endpoint,
+                p256dh: btoa(String.fromCharCode.apply(null, new Uint8Array(subscription.getKey('p256dh')))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, ''),
+                auth: btoa(String.fromCharCode.apply(null, new Uint8Array(subscription.getKey('auth')))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '')
+              })
+            });
+          } else {
+            console.warn("VAPID public key is missing from backend, skipping push subscription.");
           }
-
-          const subscription = await registration.pushManager.subscribe({
-            userVisibleOnly: true,
-            applicationServerKey: outputArray
-          });
-
-          await fetch('/api/push/subscribe', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              'Authorization': `Bearer ${token}`
-            },
-            body: JSON.stringify({
-              endpoint: subscription.endpoint,
-              p256dh: btoa(String.fromCharCode.apply(null, new Uint8Array(subscription.getKey('p256dh')))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, ''),
-              auth: btoa(String.fromCharCode.apply(null, new Uint8Array(subscription.getKey('auth')))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '')
-            })
-          });
         }
       }
     }
@@ -199,9 +206,21 @@ onMounted(loadUserProfile);
         <p style="margin-top: 0; color: var(--ks-text-muted); font-size: 14px; margin-bottom: 20px;">
           Du hast Administrator-Rechte.
         </p>
-        <button @click="router.push('/admin')" class="ks-btn-filled full-width" style="background: var(--ks-primary);">
+        <button @click="router.push('/admin')" class="ks-btn-filled full-width" style="background: var(--ks-primary); margin-bottom: 20px;">
           Admin Dashboard öffnen
         </button>
+
+        <div class="settings-list">
+          <label class="setting-item">
+            <div class="setting-text">
+              <span class="setting-title">Benachrichtigung bei neuen Registrierungen</span>
+              <span class="setting-desc">Push-Nachricht erhalten, wenn ein neuer Nutzer freigeschaltet werden muss</span>
+            </div>
+            <div class="setting-control">
+                <input type="checkbox" v-model="user.settings_push_admin_pending_users" />
+            </div>
+          </label>
+        </div>
       </section>
 
       <!-- Profil Info -->

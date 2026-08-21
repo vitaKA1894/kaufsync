@@ -1,0 +1,44 @@
+INFO:     Started server process [629564]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+/home/jules/.pyenv/versions/3.12.13/lib/python3.12/site-packages/jwt/api_jwt.py:147: InsecureKeyLengthWarning: The HMAC key is 27 bytes long, which is below the minimum recommended length of 32 bytes for SHA256. See RFC 7518 Section 3.2.
+  return self._jws.encode(
+INFO:     127.0.0.1:38366 - "POST /api/auth/login HTTP/1.1" 200 OK
+/home/jules/.pyenv/versions/3.12.13/lib/python3.12/site-packages/jwt/api_jwt.py:368: InsecureKeyLengthWarning: The HMAC key is 27 bytes long, which is below the minimum recommended length of 32 bytes for SHA256. See RFC 7518 Section 3.2.
+  decoded = self.decode_complete(
+INFO:     127.0.0.1:38370 - "PATCH /api/admin/users/7e4524e1-2f83-485e-ba32-fe9925e03560/status HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:36760 - "POST /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36770 - "PATCH /api/admin/users/7e4524e1-2f83-485e-ba32-fe9925e03560/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46268 - "POST /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46270 - "PATCH /api/admin/users/7e4524e1-2f83-485e-ba32-fe9925e03560/status HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:32816 - "POST /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:32850 - "GET /api/users/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:32838 - "GET /api/invitations HTTP/1.1" 200 OK
+INFO:     127.0.0.1:32866 - "WebSocket /ws/user/7e4524e1-2f83-485e-ba32-fe9925e03560" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:32862 - "GET /api/notifications HTTP/1.1" 200 OK
+INFO:     127.0.0.1:32828 - "GET /api/lists HTTP/1.1" 200 OK
+INFO:     127.0.0.1:32874 - "GET /api/notifications HTTP/1.1" 200 OK
+INFO:     127.0.0.1:32882 - "WebSocket /ws/26b3315f-fba3-4e13-bede-0310f0abd0d6" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:32908 - "WebSocket /ws/26b3315f-fba3-4e13-bede-0310f0abd0d6" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:32898 - "GET /api/lists HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50208 - "POST /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50230 - "GET /api/invitations HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50234 - "GET /api/users/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50214 - "GET /api/lists HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50244 - "GET /api/notifications HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50260 - "WebSocket /ws/user/7e4524e1-2f83-485e-ba32-fe9925e03560" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:50256 - "GET /api/notifications HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50272 - "WebSocket /ws/26b3315f-fba3-4e13-bede-0310f0abd0d6" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:50288 - "WebSocket /ws/26b3315f-fba3-4e13-bede-0310f0abd0d6" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:50284 - "GET /api/lists HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [629564]
