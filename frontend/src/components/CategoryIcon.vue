@@ -239,5 +239,5 @@ const onImageError = (event) => {
 .cat-vorratskammer { color: #E65100; }
 .cat-getraenke-genuss { color: #1A237E; }
 .cat-drogerie-haushalt { color: #006064; }
-.cat-sonstiges { color: var(--ks-text-muted); }
+.cat-sonstiges { color: #4A148C; }
 </style>

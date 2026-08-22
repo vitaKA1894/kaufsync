@@ -13,7 +13,7 @@ const predefinedCategories = [
   { name: 'Vorratskammer', color: '#E65100', bg: '#FFE0B2' },
   { name: 'Getränke & Genussmittel', color: '#1A237E', bg: '#C5CAE9' },
   { name: 'Drogerie, Haushalt & Tierbedarf', color: '#006064', bg: '#B2EBF2' },
-  { name: 'Sonstiges', color: 'var(--ks-text-muted)', bg: 'var(--ks-surface-3)' }
+  { name: 'Sonstiges', color: '#4A148C', bg: '#E1BEE7' }
 ];
 
 const mapLegacyCategory = (catName) => {
