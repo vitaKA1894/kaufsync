@@ -208,7 +208,7 @@ const onImageError = (event) => {
       {{ name.charAt(0).toUpperCase() }}
     </div>
     <component
-      v-else-if="!name"
+      v-else-if="!name && showSvg"
       :is="iconComponent"
       :size="size"
       :stroke-width="strokeWidth"
@@ -217,7 +217,7 @@ const onImageError = (event) => {
       :class="categoryClass"
     />
     <div
-      v-else
+      v-else-if="!showSvg"
       class="item-icon-svg"
       :class="categoryClass"
       :style="{
