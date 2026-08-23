@@ -27,35 +27,35 @@ def run_cuj(page):
         page.wait_for_timeout(2000)
 
         # Dashboard -> click first list
-        page.locator(".ks-card").first.click()
+        page.locator(".banner-card").first.click()
         page.wait_for_timeout(1000)
     except Exception as e:
         print("Login/Navigation failed, continuing with direct view if possible...", e)
 
     try:
         # Click add item
-        page.locator(".fab").click()
+        page.get_by_text("Neuen Artikel hinzufügen").click()
         page.wait_for_timeout(1000)
 
         # Type something unknown
         page.get_by_placeholder("Artikel suchen...").fill("Gegnerischer")
         page.wait_for_timeout(1000)
-
-        # Click the "Neuen Artikel anlegen" button
-        page.get_by_text("Neuen Artikel anlegen:").click()
+        page.keyboard.press("Enter")
         page.wait_for_timeout(1000)
 
         page.screenshot(path="verification/screenshots/verification1.png")
 
         # Change category to something else
-        page.locator("select").select_option("Obst & Gemüse")
+        page.get_by_text("Kategorie ändern").click()
+        page.wait_for_timeout(1000)
+        page.get_by_text("Obst & Gemüse").first.click()
         page.wait_for_timeout(1000)
 
         page.get_by_role("button", name="Zur Liste hinzufügen").click()
         page.wait_for_timeout(2000)
 
         # Search for "Wurst"
-        page.locator(".fab").click()
+        page.get_by_text("Neuen Artikel hinzufügen").click()
         page.wait_for_timeout(1000)
         page.get_by_placeholder("Artikel suchen...").fill("Wurst")
         page.wait_for_timeout(1000)

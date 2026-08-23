@@ -52,6 +52,11 @@ const routes = [
     path: '/reset-password',
     name: 'ResetPassword',
     component: ResetPassword,
+  },
+  {
+    path: '/join',
+    name: 'JoinList',
+    component: Dashboard, // Doesn't matter, will be redirected by guard
   }
 ]
 
@@ -65,6 +70,15 @@ router.beforeEach((to, from, next) => {
   const token = localStorage.getItem('token');
   const isLoggedIn = token !== null && token !== 'undefined';
   const status = localStorage.getItem('status');
+
+  if (to.name === 'JoinList') {
+    const code = to.query.code;
+    if (code) {
+      localStorage.setItem('pending_join_code', code);
+    }
+    next('/login'); // Redirect to login, which will handle the join if already logged in or after logging in
+    return;
+  }
 
   if (to.meta.requiresAuth && !isLoggedIn) {
     next('/login');

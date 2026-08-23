@@ -46,7 +46,7 @@ export function levenshteinDistance(a, b) {
 import taxonomy from '../assets/taxonomy.json' with { type: 'json' };
 
 export function searchTaxonomy(query) {
-  if (!query || query.length < 3) return [];
+  if (!query || query.length < 1) return [];
 
   const lowerQuery = query.toLowerCase();
 

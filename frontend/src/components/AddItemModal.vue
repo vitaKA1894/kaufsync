@@ -108,36 +108,13 @@ const handleScan = async (barcode) => {
 const showManualAmount = ref(false);
 const manualQuantity = ref('');
 const manualUnit = ref('');
+const showCategorySelector = ref(false);
 
 // Active tags state
 const activeTags = ref([]);
-const frequentItems = ref([]);
-
-const calculateFrequentItems = () => {
-    try {
-        const cachedData = localStorage.getItem('cachedLists');
-        if (!cachedData) return [];
-        const lists = JSON.parse(cachedData);
-        const counts = {};
-        const itemsMap = {};
-
-        lists.forEach(list => {
-            list.items.forEach(item => {
-                const name = item.name.toLowerCase();
-                counts[name] = (counts[name] || 0) + 1;
-                if (!itemsMap[name]) itemsMap[name] = item;
-            });
-        });
-
-        const sorted = Object.keys(counts).sort((a, b) => counts[b] - counts[a]).slice(0, 5);
-        return sorted.map(name => itemsMap[name]);
-    } catch (e) {
-        return [];
-    }
-};
 
 const search = debounce((val) => {
-  if (val && val.length >= 3) {
+  if (val && val.length >= 1) {
     results.value = searchTaxonomy(val).reverse();
   } else {
     results.value = [];
@@ -406,7 +383,6 @@ watch(() => props.isOpen, (newVal) => {
             });
         } else {
             // Add Mode Init
-            frequentItems.value = calculateFrequentItems().reverse();
             nextTick(() => {
                 inputRef.value?.focus();
             });
@@ -437,35 +413,24 @@ watch(() => props.isOpen, (newVal) => {
         <!-- STEP 1: Search -->
         <div class="search-step" v-show="!showScanner">
           <div class="results-list">
-            <!-- Frequent Items View -->
-            <div v-if="query.length === 0 && frequentItems.length > 0">
-              <p class="history-label">Häufig gekauft</p>
-              <div
-                v-for="item in frequentItems"
-                :key="item.id"
-                class="result-item"
-                @click="selectItem(item)"
-              >
-                <CategoryIcon :name="item.name" :category="item.category" class="result-icon" size="40" :color="getCategoryDef(item.category).color" :style="{ background: getCategoryDef(item.category).bg, borderRadius: '12px', padding: '4px' }" />
-                <div class="result-text">{{ item.name }}</div>
-                <span class="result-category" :style="{ background: getCategoryDef(item.category).bg, color: getCategoryDef(item.category).color, border: `1px solid ${getCategoryDef(item.category).color}` }">{{ item.category }}</span>
-              </div>
-            </div>
-
-            <!-- Search Results View -->
-            <template v-else>
-              <div
-                v-for="item in results"
-                :key="item.id"
-                class="result-item"
-                @click="selectItem(item)"
-              >
-                <CategoryIcon :name="item.name" :category="item.category" class="result-icon" size="40" :color="getCategoryDef(item.category).color" :style="{ background: getCategoryDef(item.category).bg, borderRadius: '12px', padding: '4px' }" />
-                <div class="result-text" v-html="highlightText(item.name, query)"></div>
-                <span class="result-category" :style="{ background: getCategoryDef(item.category).bg, color: getCategoryDef(item.category).color, border: `1px solid ${getCategoryDef(item.category).color}` }">{{ item.category }}</span>
+            <template v-if="query.length >= 1">
+              <div class="ks-grid items-grid" style="padding: 0 4px;">
+                <div
+                  v-for="item in results"
+                  :key="item.id"
+                  class="grid-card"
+                  @click="selectItem(item)"
+                >
+                  <div class="card-icon-area" :style="{ background: getCategoryDef(item.category).bg, color: getCategoryDef(item.category).color }">
+                    <CategoryIcon class="icon-svg" :name="item.name" :category="item.category" size="40" />
+                  </div>
+                  <div class="card-text-area">
+                    <span class="item-name" v-html="highlightText(item.name, query)"></span>
+                  </div>
+                </div>
               </div>
 
-              <div v-if="query.length >= 3 && results.length === 0" class="no-results">
+              <div v-if="query.length >= 1 && results.length === 0" class="no-results">
                   Keine Vorschläge gefunden. Drücke Enter, um "{{ query }}" als eigenen Artikel hinzuzufügen.
               </div>
             </template>
@@ -507,69 +472,54 @@ watch(() => props.isOpen, (newVal) => {
            </div>
 
            <div class="tags-content">
-               <!-- Numerische Quantifikatoren -->
-               <div class="tag-section">
-                   <p class="tag-label">Menge</p>
-                   <div class="tag-group">
-                       <button
-                           v-for="tag in enhancedQuantities" :key="tag"
-                           class="ks-chip tag-chip"
-                           :class="{ active: activeTags.includes(tag) }"
-                           @click="toggleTag(tag)"
-                       >
-                           {{ tag }}
-                       </button>
-                   </div>
-                   <div class="manual-amount-input mt-3" style="display: flex; gap: 8px; align-items: center;">
-                       <input
-                           type="text"
-                           v-model="manualQuantity"
-                           placeholder="Menge"
-                           class="modal-input"
-                           style="background: var(--ks-surface-3); font-size: 16px; padding: 10px 14px; flex: 1; min-width: 0;"
-                           @keyup.enter="confirmSelection(false)"
-                       />
-                   </div>
+               <div class="manual-amount-input mb-3" style="display: flex; gap: 8px; align-items: center;">
+                   <input
+                       type="text"
+                       v-model="manualQuantity"
+                       placeholder="Menge, Beschreibung..."
+                       class="modal-input"
+                       style="background: var(--ks-surface-3); font-size: 16px; padding: 10px 14px; flex: 1; min-width: 0;"
+                       @keyup.enter="confirmSelection(false)"
+                   />
                </div>
 
-               <!-- Produktspezifische Eigenschaften -->
-               <div class="tag-section">
-                   <p class="tag-label">Ausprägung</p>
-                   <div class="tag-group" v-if="selectedItem.tags.constellations?.length > 0">
-                       <button
-                           v-for="tag in selectedItem.tags.constellations" :key="tag"
-                           class="ks-chip tag-chip"
-                           :class="{ active: activeTags.includes(tag) }"
-                           @click="toggleTag(tag)"
-                       >
-                           {{ tag }}
-                       </button>
-                   </div>
-                   <div class="manual-amount-input mt-3" style="display: flex; gap: 8px; align-items: center;">
-                       <input
-                           type="text"
-                           v-model="manualUnit"
-                           placeholder="Ausprägung"
-                           class="modal-input"
-                           style="background: var(--ks-surface-3); font-size: 16px; padding: 10px 14px; flex: 1; min-width: 0;"
-                           @keyup.enter="confirmSelection(false)"
-                       />
-                   </div>
+               <!-- Flat List of Tags -->
+               <div class="tag-group" style="margin-bottom: 24px;">
+                   <!-- Quantities -->
+                   <button
+                       v-for="tag in enhancedQuantities" :key="'q-'+tag"
+                       class="ks-chip tag-chip tag-quantity"
+                       :class="{ active: activeTags.includes(tag) }"
+                       @click="toggleTag(tag)"
+                   >
+                       {{ tag }}
+                   </button>
+                   <!-- Constellations -->
+                   <button
+                       v-for="tag in selectedItem.tags.constellations" :key="'c-'+tag"
+                       class="ks-chip tag-chip tag-meta"
+                       :class="{ active: activeTags.includes(tag) }"
+                       @click="toggleTag(tag)"
+                   >
+                       {{ tag }}
+                   </button>
+                   <!-- Meta Tags -->
+                   <button
+                       v-for="tag in selectedItem.tags.global_meta" :key="'m-'+tag"
+                       class="ks-chip tag-chip tag-meta"
+                       :class="{ active: activeTags.includes(tag) }"
+                       @click="toggleTag(tag)"
+                   >
+                       {{ tag }}
+                   </button>
                </div>
 
-               <!-- Globale Meta Tags -->
-               <div class="tag-section">
-                   <p class="tag-label">Priorität</p>
-                   <div class="tag-group">
-                       <button
-                           v-for="tag in selectedItem.tags.global_meta" :key="tag"
-                           class="ks-chip tag-chip"
-                           :class="{ active: activeTags.includes(tag) }"
-                           @click="toggleTag(tag)"
-                       >
-                           {{ tag }}
-                       </button>
-                   </div>
+               <p class="tag-label">Einstellungen</p>
+               <div class="settings-grid">
+                   <button class="settings-btn" @click="showCategorySelector = true">
+                       <svg viewBox="0 0 24 24"><path d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/></svg>
+                       <span>Kategorie ändern</span>
+                   </button>
                </div>
            </div>
 
@@ -579,6 +529,27 @@ watch(() => props.isOpen, (newVal) => {
                </button>
            </div>
         </div>
+
+        <!-- Category Selector Sheet -->
+        <transition name="sheet-slide">
+          <div v-if="showCategorySelector" class="ks-sheet" @click.stop style="z-index: 101;">
+            <div class="ks-sheet__handle"></div>
+            <h3 class="sheet-heading">Kategorie auswählen</h3>
+            <div class="category-list">
+              <button
+                v-for="cat in predefinedCategories"
+                :key="cat.name"
+                class="category-list-item"
+                @click="selectedItem.category = cat.name; showCategorySelector = false"
+              >
+                <span class="cat-color-dot" :style="{ backgroundColor: cat.color }"></span>
+                <span class="cat-name">{{ cat.name }}</span>
+                <svg v-if="selectedItem.category === cat.name" class="check-icon" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+              </button>
+            </div>
+            <button class="ks-btn-text full-width mt-3" @click="showCategorySelector = false">Abbrechen</button>
+          </div>
+        </transition>
 
       </div>
     </div>
@@ -687,37 +658,36 @@ watch(() => props.isOpen, (newVal) => {
   margin-bottom: 16px;
 }
 
-.result-item {
-  display: flex;
-  align-items: center;
-  padding: 16px;
+.ks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  gap: 12px;
+}
+
+.grid-card {
+  display: flex; flex-direction: column;
+  border-radius: var(--ks-radius-sm); padding: 8px 4px;
+  cursor: pointer; text-align: center;
+  transition: transform 0.1s, opacity 0.2s, background 0.2s, border-color 0.3s;
+  position: relative;
   background: var(--ks-surface-2);
-  border-radius: 12px;
-  cursor: pointer;
-  transition: background 0.2s;
+  border: 1px solid var(--ks-border);
 }
-.result-item:active {
-  background: var(--ks-surface-3);
-}
+.grid-card:active { transform: scale(0.95); }
+.grid-card:hover { background: var(--ks-surface-3); }
 
-.result-icon {
-  width: 24px; height: 24px;
-  margin-right: 12px;
-  color: var(--ks-text-muted);
+.card-icon-area {
+  display: flex; align-items: center; justify-content: center;
+  height: 40px; margin-bottom: 12px; border-radius: var(--ks-radius-xs);
 }
+.icon-svg { display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; }
+.icon-svg :deep(svg) { width: 100%; height: 100%; }
 
-.result-text {
-  flex: 1;
-  font-size: 16px;
-  color: var(--ks-text);
-}
-
-.result-category {
-  font-size: 12px;
-  color: var(--ks-text-muted);
-  background: var(--ks-surface-4);
-  padding: 4px 8px;
-  border-radius: 12px;
+.card-text-area { display: flex; flex-direction: column; }
+.item-name {
+  font-size: 12px; font-weight: 600;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+  overflow: hidden; line-height: 1.2; color: var(--ks-text);
 }
 
 .no-results {
@@ -767,6 +737,42 @@ watch(() => props.isOpen, (newVal) => {
     color: var(--ks-primary);
     border-color: var(--ks-primary);
 }
+.tag-meta {
+    background: var(--ks-surface-3); /* Slightly different background for meta tags */
+}
+.settings-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+.settings-btn {
+    background: var(--ks-surface-2);
+    border: none;
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: var(--ks-text);
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+}
+.settings-btn svg { width: 24px; height: 24px; fill: currentColor; }
+
+.category-list {
+  display: flex; flex-direction: column; gap: 4px; max-height: 40vh; overflow-y: auto; margin-top: 12px;
+}
+.category-list-item {
+  display: flex; align-items: center; padding: 12px 16px;
+  background: var(--ks-surface-2); border: none; border-radius: 12px;
+  cursor: pointer; color: var(--ks-text); font-size: 16px; text-align: left;
+}
+.cat-color-dot { width: 12px; height: 12px; border-radius: 50%; margin-right: 12px; }
+.cat-name { flex: 1; }
+.check-icon { width: 20px; height: 20px; fill: var(--ks-primary); }
+
 .history-label {
     font-size: 14px;
     font-weight: 600;
