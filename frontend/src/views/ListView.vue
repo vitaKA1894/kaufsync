@@ -5,6 +5,7 @@ import CategoryIcon from '../components/CategoryIcon.vue';
 import AddItemModal from '../components/AddItemModal.vue';
 import ConfirmModal from '../components/ConfirmModal.vue';
 import Sortable from 'sortablejs';
+import QrcodeVue from 'qrcode.vue';
 
 const route = useRoute();
 const router = useRouter();
@@ -483,24 +484,57 @@ const openChangelog = () => {
 };
 
 const filteredChangelog = computed(() => {
-  if (changelogFilter.value === 'added') return changelog.value.filter(log => log.action_type === 'added');
-  if (changelogFilter.value === 'completed') return changelog.value.filter(log => log.action_type === 'completed');
-  return changelog.value;
+  let logs = changelog.value;
+  if (changelogFilter.value === 'added') logs = logs.filter(log => log.action_type === 'added');
+  if (changelogFilter.value === 'completed') logs = logs.filter(log => log.action_type === 'completed');
+
+  const grouped = [];
+
+  logs.forEach(log => {
+      const d = new Date(log.created_at + 'Z');
+      const today = new Date();
+      const yesterday = new Date(today);
+      yesterday.setDate(yesterday.getDate() - 1);
+
+      let dayKey = '';
+      if (d.toDateString() === today.toDateString()) {
+          dayKey = `Heute – ${d.toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit', year: '2-digit' })}`;
+      } else if (d.toDateString() === yesterday.toDateString()) {
+          dayKey = `Gestern – ${d.toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit', year: '2-digit' })}`;
+      } else {
+          dayKey = d.toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit', year: '2-digit' });
+      }
+
+      let dayGroup = grouped.find(g => g.day === dayKey);
+      if (!dayGroup) {
+          dayGroup = { day: dayKey, actions: [] };
+          grouped.push(dayGroup);
+      }
+
+      const userName = log.user_name || 'Unbekannt';
+      const actionType = log.action_type;
+
+      let actionGroup = dayGroup.actions.find(a => a.userName === userName && a.actionType === actionType);
+      if (!actionGroup) {
+          actionGroup = { userName, actionType, items: [] };
+          dayGroup.actions.push(actionGroup);
+      }
+
+      actionGroup.items.push(log.item_name);
+  });
+
+  return grouped;
 });
 
-const formatChangelogTime = (dateStr) => {
-  const d = new Date(dateStr + 'Z');
-  return d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) + ' Uhr';
-};
-
-const formatChangelogAction = (action) => {
+const formatChangelogActionText = (userName, actionType, count) => {
   const map = {
-    'added': 'hat hinzugefügt:',
-    'completed': 'hat abgehakt:',
-    'deleted': 'hat gelöscht:',
-    'reactivated': 'hat wiederhergestellt:'
+    'added': 'hinzugefügt',
+    'completed': 'abgehakt',
+    'deleted': 'entfernt',
+    'reactivated': 'wiederhergestellt'
   };
-  return map[action] || action;
+  const actionWord = map[actionType] || actionType;
+  return `${userName} hat ${count} Artikel ${actionWord}`;
 };
 
 const getInitial = (name) => {
@@ -511,8 +545,9 @@ const getInitial = (name) => {
 const copyToClipboard = async () => {
   if (!currentList.value) return;
   try {
-    await navigator.clipboard.writeText(currentList.value.share_code);
-    successMessage.value = "Code kopiert!";
+    const joinLink = `${window.location.origin}/join?code=${currentList.value.share_code}`;
+    await navigator.clipboard.writeText(joinLink);
+    successMessage.value = "Link kopiert!";
     setTimeout(() => successMessage.value = '', 2000);
   } catch (err) {
     console.error('Kopieren fehlgeschlagen', err);
@@ -685,11 +720,15 @@ onUnmounted(() => {
         <div class="ks-sheet__handle"></div>
         <h3 class="sheet-heading">Liste teilen</h3>
 
-        <div class="share-section">
-          <p class="section-label">Per Code einladen</p>
-          <button class="code-box" @click="copyToClipboard">
-            <span class="code">{{ currentList?.share_code }}</span>
-            <svg viewBox="0 0 24 24"><path d="M9 18q-.825 0-1.412-.587Q7 16.825 7 16V4q0-.825.588-1.412Q8.175 2 9 2h9q.825 0 1.413.588Q20 3.175 20 4v12q0 .825-.587 1.413Q18.825 18 18 18Zm0-2h9V4H9v12Zm-4 6q-.825 0-1.412-.587Q3 20.825 3 20V6h2v14h11v2Z"/></svg>
+        <div class="share-section" style="display: flex; flex-direction: column; align-items: center; gap: 16px;">
+          <p class="section-label" style="align-self: flex-start;">QR-Code scannen</p>
+          <div v-if="currentList?.share_code" style="background: white; padding: 16px; border-radius: 12px;">
+            <qrcode-vue :value="`${window.location.origin}/join?code=${currentList.share_code}`" :size="150" level="M" />
+          </div>
+
+          <button class="ks-btn-filled full-width" style="display: flex; align-items: center; justify-content: center; gap: 8px;" @click="copyToClipboard">
+             <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M9 18q-.825 0-1.412-.587Q7 16.825 7 16V4q0-.825.588-1.412Q8.175 2 9 2h9q.825 0 1.413.588Q20 3.175 20 4v12q0 .825-.587 1.413Q18.825 18 18 18Zm0-2h9V4H9v12Zm-4 6q-.825 0-1.412-.587Q3 20.825 3 20V6h2v14h11v2Z"/></svg>
+             Link kopieren
           </button>
         </div>
 
@@ -736,16 +775,21 @@ onUnmounted(() => {
             <button class="ks-chip tag-chip" :class="{ active: changelogFilter === 'completed' }" @click="changelogFilter = 'completed'">Abgehakt</button>
         </div>
 
-        <div class="changelog-list" style="max-height: 50vh; overflow-y: auto;">
-            <div v-for="log in filteredChangelog" :key="log.id" class="changelog-item">
-                <div class="changelog-avatar">{{ getInitial(log.user_name) }}</div>
-                <div class="changelog-content">
-                    <div class="changelog-meta">
-                        <span class="changelog-user">{{ log.user_name || 'Unbekannt' }}</span>
-                        <span class="changelog-time">{{ formatChangelogTime(log.created_at) }}</span>
+        <div class="changelog-list" style="max-height: 50vh; overflow-y: auto; padding-right: 8px;">
+            <div v-for="dayGroup in filteredChangelog" :key="dayGroup.day" class="changelog-day-group">
+                <div v-for="(actionGroup, index) in dayGroup.actions" :key="index" class="changelog-action-group">
+                    <div class="changelog-group-header">
+                        <div class="changelog-avatar">{{ getInitial(actionGroup.userName) }}</div>
+                        <div class="changelog-group-title">
+                            <span class="changelog-day">{{ dayGroup.day }}</span>
+                            <span class="changelog-action-text">{{ formatChangelogActionText(actionGroup.userName, actionGroup.actionType, actionGroup.items.length) }}</span>
+                        </div>
                     </div>
-                    <div class="changelog-action">
-                        {{ formatChangelogAction(log.action_type) }} <strong>{{ log.item_name }}</strong>
+                    <div class="changelog-items-list">
+                        <div v-for="(itemName, idx) in actionGroup.items" :key="idx" class="changelog-item-row">
+                            <CategoryIcon class="changelog-item-icon" :name="itemName" size="24" color="var(--ks-text-muted)" />
+                            <span class="changelog-item-name">{{ itemName }}</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1104,15 +1148,18 @@ onUnmounted(() => {
 .code-box svg { width: 24px; height: 24px; fill: currentColor; opacity: 0.6; }
 
 /* Changelog */
-.changelog-list { display: flex; flex-direction: column; gap: 12px; }
-.changelog-item { display: flex; align-items: flex-start; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--ks-border); }
-.changelog-item:last-child { border-bottom: none; }
-.changelog-avatar { width: 32px; height: 32px; border-radius: 50%; background: var(--ks-primary); color: var(--ks-on-primary); display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 14px; flex-shrink: 0; }
-.changelog-content { flex: 1; min-width: 0; }
-.changelog-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px; }
-.changelog-user { font-weight: 600; font-size: 14px; color: var(--ks-text); }
-.changelog-time { font-size: 12px; color: var(--ks-text-muted); }
-.changelog-action { font-size: 14px; color: var(--ks-text); line-height: 1.4; word-break: break-word; }
+.changelog-list { display: flex; flex-direction: column; gap: 24px; padding-bottom: 24px; }
+.changelog-day-group { display: flex; flex-direction: column; gap: 20px; }
+.changelog-action-group { display: flex; flex-direction: column; gap: 12px; background: var(--ks-surface-2); padding: 16px; border-radius: 12px; }
+.changelog-group-header { display: flex; align-items: center; gap: 12px; }
+.changelog-avatar { width: 40px; height: 40px; border-radius: 50%; background: #a58f84; color: white; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 18px; flex-shrink: 0; }
+.changelog-group-title { display: flex; flex-direction: column; gap: 2px; }
+.changelog-day { font-size: 13px; color: var(--ks-text-muted); }
+.changelog-action-text { font-size: 15px; font-weight: 600; color: var(--ks-text); }
+.changelog-items-list { display: flex; flex-direction: column; gap: 8px; margin-left: 12px; border-left: 2px solid var(--ks-primary); padding-left: 12px; padding-top: 4px; padding-bottom: 4px; }
+.changelog-item-row { display: flex; align-items: center; gap: 12px; }
+.changelog-item-icon { width: 24px; height: 24px; color: var(--ks-text); }
+.changelog-item-name { font-size: 15px; font-weight: 600; color: var(--ks-text); }
 
 /* Tags/Chips (reused from AddItemModal) */
 .tag-group { display: flex; flex-wrap: wrap; gap: 8px; }

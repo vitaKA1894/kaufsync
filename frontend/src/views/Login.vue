@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 
 const router = useRouter();
@@ -19,6 +19,35 @@ const toggleMode = () => {
   errorMessage.value = '';
   successMessage.value = '';
 };
+
+// Check if user is already logged in and there is a pending join code
+onMounted(async () => {
+    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    const pendingJoinCode = localStorage.getItem('pending_join_code');
+
+    if (isLoggedIn && pendingJoinCode) {
+      try {
+        const token = localStorage.getItem('token');
+        const joinRes = await fetch('/api/lists/join', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
+          body: JSON.stringify({ share_code: pendingJoinCode })
+        });
+        if (joinRes.ok) {
+          const joinedList = await joinRes.json();
+          localStorage.removeItem('pending_join_code');
+          router.push(`/list/${joinedList.id}`);
+        } else {
+            // Might be unauthorized or invalid code, just redirect to dashboard
+             localStorage.removeItem('pending_join_code');
+             router.push('/');
+        }
+      } catch (e) {
+        console.error("Failed to auto-join pending list", e);
+        router.push('/');
+      }
+    }
+});
 
 const submitForm = async () => {
   if (!formData.value.email || !formData.value.password) {
@@ -58,6 +87,26 @@ const submitForm = async () => {
       if (data.user && data.user.status) {
         localStorage.setItem('status', data.user.status);
       }
+
+      const pendingJoinCode = localStorage.getItem('pending_join_code');
+      if (pendingJoinCode) {
+        try {
+          const joinRes = await fetch('/api/lists/join', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${data.access_token}` },
+            body: JSON.stringify({ share_code: pendingJoinCode })
+          });
+          if (joinRes.ok) {
+            const joinedList = await joinRes.json();
+            localStorage.removeItem('pending_join_code');
+            router.push(`/list/${joinedList.id}`);
+            return; // prevent default redirect
+          }
+        } catch (e) {
+          console.error("Failed to join pending list", e);
+        }
+      }
+
       router.push('/');
     } else {
       isLogin.value = true;

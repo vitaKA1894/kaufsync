@@ -183,8 +183,29 @@ const onImageError = (event) => {
 </script>
 
 <template>
+  <div
+    v-if="showSvg && name"
+    class="fallback-initial-icon"
+    :class="categoryClass"
+    :style="{
+      backgroundColor: color === 'currentColor' ? 'var(--ks-surface-4)' : color,
+      color: 'white',
+      width: typeof size === 'number' ? `${size}px` : size,
+      height: typeof size === 'number' ? `${size}px` : size,
+      borderRadius: '50%',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      fontSize: typeof size === 'number' ? `${size * 0.5}px` : '1em',
+      fontWeight: 'bold',
+      opacity: 0.8
+    }"
+    :title="name"
+  >
+    {{ name.charAt(0).toUpperCase() }}
+  </div>
   <component
-    v-if="showSvg || !name"
+    v-else-if="!name"
     :is="iconComponent"
     :size="size"
     :stroke-width="strokeWidth"
