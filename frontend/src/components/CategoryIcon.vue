@@ -161,11 +161,12 @@ const currentImageSrc = computed(() => {
       }
     }
     // If no category match, force the next error level by returning a path we know will trigger an error or directly advance
-    // Returning `sonstiges.png` here handles it natively.
-    return '/icons/Allgemein.svg';
+    showSvg.value = true;
+    return '';
   }
   if (errorLevel.value === 2) {
-    return '/icons/Allgemein.svg';
+    showSvg.value = true;
+    return '';
   }
   return '';
 });
@@ -175,6 +176,7 @@ const onImageError = (event) => {
     errorLevel.value = 1;
   } else if (errorLevel.value === 1) {
     errorLevel.value = 2;
+    showSvg.value = true;
   } else {
     showSvg.value = true;
   }
@@ -183,54 +185,56 @@ const onImageError = (event) => {
 </script>
 
 <template>
-  <div
-    v-if="showSvg && name"
-    class="fallback-initial-icon"
-    :class="categoryClass"
-    :style="{
-      backgroundColor: color === 'currentColor' ? 'var(--ks-surface-4)' : color,
-      color: 'white',
-      width: typeof size === 'number' ? `${size}px` : size,
-      height: typeof size === 'number' ? `${size}px` : size,
-      borderRadius: '50%',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      fontSize: typeof size === 'number' ? `${size * 0.5}px` : '1em',
-      fontWeight: 'bold',
-      opacity: 0.8
-    }"
-    :title="name"
-  >
-    {{ name.charAt(0).toUpperCase() }}
-  </div>
-  <component
-    v-else-if="!name"
-    :is="iconComponent"
-    :size="size"
-    :stroke-width="strokeWidth"
-    :color="color"
-    class="lucide-icon"
-    :class="categoryClass"
-  />
-  <div
-    v-else
-    class="item-icon-svg"
-    :class="categoryClass"
-    :style="{
-      '--icon-src': `url(${currentImageSrc})`,
-      'background-color': color || 'currentColor',
-      width: typeof size === 'number' ? `${size}px` : size,
-      height: typeof size === 'number' ? `${size}px` : size
-    }"
-    :title="name"
-  >
-    <img
-      :src="currentImageSrc"
-      @error="onImageError"
-      style="display: none;"
-      :alt="name"
+  <div class="icon-wrapper flex items-center justify-center shrink-0">
+    <div
+      v-if="showSvg && name"
+      class="fallback-initial-icon"
+      :class="categoryClass"
+      :style="{
+        backgroundColor: color === 'currentColor' ? 'var(--ks-surface-4)' : color,
+        color: 'white',
+        width: typeof size === 'number' ? `${size}px` : size,
+        height: typeof size === 'number' ? `${size}px` : size,
+        borderRadius: '50%',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        fontSize: typeof size === 'number' ? `${size * 0.55}px` : '1em',
+        fontWeight: 'bold',
+        opacity: 0.8
+      }"
+      :title="name"
+    >
+      {{ name.charAt(0).toUpperCase() }}
+    </div>
+    <component
+      v-else-if="!name"
+      :is="iconComponent"
+      :size="size"
+      :stroke-width="strokeWidth"
+      :color="color"
+      class="lucide-icon"
+      :class="categoryClass"
     />
+    <div
+      v-else
+      class="item-icon-svg"
+      :class="categoryClass"
+      :style="{
+        '--icon-src': `url(${currentImageSrc})`,
+        'background-color': color || 'currentColor',
+        width: typeof size === 'number' ? `${size}px` : size,
+        height: typeof size === 'number' ? `${size}px` : size
+      }"
+      :title="name"
+    >
+      <img
+        :src="currentImageSrc"
+        @error="onImageError"
+        style="display: none;"
+        :alt="name"
+      />
+    </div>
   </div>
 </template>
 
