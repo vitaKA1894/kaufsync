@@ -721,10 +721,10 @@ onUnmounted(() => {
         <h3 class="sheet-heading">Liste teilen</h3>
 
         <div class="share-section" style="display: flex; flex-direction: column; align-items: center; gap: 16px;">
-          <p class="section-label" style="align-self: flex-start;">QR-Code scannen</p>
-          <div class="flex justify-center mb-4 p-4 bg-white rounded-lg" style="background: white; padding: 16px; border-radius: 12px;">
-             <qrcode-vue v-if="currentList?.share_code" :value="`${window.location.origin}/join?code=${currentList.share_code}`" :size="150" level="M" />
-             <div v-else class="h-[150px] w-[150px] flex items-center justify-center border-2 border-dashed border-gray-300 text-gray-400" style="height: 150px; width: 150px; display: flex; align-items: center; justify-content: center; border: 2px dashed #ccc; color: #999;">Lädt...</div>
+          <p class="section-label" style="align-self: flex-start;">Per Code beitreten</p>
+          <div class="code-box" @click="copyToClipboard">
+            <span class="code">{{ currentList?.share_code }}</span>
+            <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
           </div>
 
           <button class="ks-btn-filled full-width" style="display: flex; align-items: center; justify-content: center; gap: 8px;" @click="copyToClipboard">

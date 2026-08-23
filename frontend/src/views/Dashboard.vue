@@ -1,7 +1,6 @@
 <script setup>
 import { ref, onMounted, onUnmounted, watch, computed } from 'vue';
 import { useRouter } from 'vue-router';
-import BarcodeScanner from '../components/BarcodeScanner.vue';
 
 const router = useRouter();
 const shoppingLists = ref([]);
@@ -506,31 +505,19 @@ onUnmounted(() => {
 
           <template v-else-if="activeModal === 'join'">
             <h2 style="margin: 0 0 20px; font-size: 20px;">Code einlösen</h2>
-            <div class="ks-field" style="margin-bottom: 24px; display: flex; gap: 8px; align-items: center;">
-              <input v-model="shareCodeInput" type="text" maxlength="6" placeholder=" " class="code-input flex-1" style="flex: 1;" @keyup.enter="joinList" />
+            <div class="ks-field" style="margin-bottom: 24px;">
+              <input v-model="shareCodeInput" type="text" maxlength="6" placeholder=" " class="code-input" @keyup.enter="joinList" />
               <label>6-stelliger Code</label>
-
-              <button @click="showScanner = true" class="p-3 bg-gray-100 dark:bg-gray-700 rounded-lg text-gray-700 dark:text-gray-200 hover:bg-gray-200" style="padding: 12px; background: var(--ks-surface-2); border-radius: 8px; border: none; cursor: pointer; color: var(--ks-text);">
-                <svg class="w-6 h-6" style="width: 24px; height: 24px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h4a1 1 0 010 2H5v3a1 1 0 01-2 0V4zm18 0a1 1 0 00-1-1h-4a1 1 0 100 2h3v3a1 1 0 102 0V4zM3 20a1 1 0 001 1h4a1 1 0 100-2H5v-3a1 1 0 10-2 0v3zm18 0a1 1 0 01-1 1h-4a1 1 0 110-2h3v-3a1 1 0 112 0v3z"></path></svg>
-              </button>
             </div>
             <div class="ks-btn-row">
               <button class="ks-btn-text" @click="closeModal">Abbrechen</button>
-              <button class="ks-btn-filled" @click="joinList" :disabled="!shareCodeInput">Beitreten</button>
+              <button class="ks-btn-filled" @click="joinList">Beitreten</button>
             </div>
           </template>
           
         </div>
       </div>
     </transition>
-
-    <!-- Scanner Modal -->
-    <BarcodeScanner
-      v-if="showScanner"
-      @close="showScanner = false"
-      @scanned="handleScanCode"
-      style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 1000;"
-    />
 
   </div>
 </template>
