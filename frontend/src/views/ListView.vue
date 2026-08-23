@@ -722,8 +722,9 @@ onUnmounted(() => {
 
         <div class="share-section" style="display: flex; flex-direction: column; align-items: center; gap: 16px;">
           <p class="section-label" style="align-self: flex-start;">QR-Code scannen</p>
-          <div v-if="currentList?.share_code" style="background: white; padding: 16px; border-radius: 12px;">
-            <qrcode-vue :value="`${window.location.origin}/join?code=${currentList.share_code}`" :size="150" level="M" />
+          <div class="flex justify-center mb-4 p-4 bg-white rounded-lg" style="background: white; padding: 16px; border-radius: 12px;">
+             <qrcode-vue v-if="currentList?.share_code" :value="`${window.location.origin}/join?code=${currentList.share_code}`" :size="150" level="M" />
+             <div v-else class="h-[150px] w-[150px] flex items-center justify-center border-2 border-dashed border-gray-300 text-gray-400" style="height: 150px; width: 150px; display: flex; align-items: center; justify-content: center; border: 2px dashed #ccc; color: #999;">Lädt...</div>
           </div>
 
           <button class="ks-btn-filled full-width" style="display: flex; align-items: center; justify-content: center; gap: 8px;" @click="copyToClipboard">

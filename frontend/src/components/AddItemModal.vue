@@ -494,6 +494,11 @@ watch(() => props.isOpen, (newVal) => {
                    >
                        {{ tag }}
                    </button>
+
+                   <!-- Separator for Constellations & Meta Tags -->
+                   <div v-if="selectedItem.tags.constellations?.length || selectedItem.tags.global_meta?.filter(t => !['Dringend', 'Angebot', 'Wenn\'s passt'].includes(t)).length" style="flex-basis: 100%; height: 0;"></div>
+                   <hr v-if="selectedItem.tags.constellations?.length || selectedItem.tags.global_meta?.filter(t => !['Dringend', 'Angebot', 'Wenn\'s passt'].includes(t)).length" class="border-t border-gray-200 dark:border-gray-700 opacity-60 w-full my-2" style="border-top: 1px solid var(--ks-border); opacity: 0.6; width: 100%; margin: 8px 0;" />
+
                    <!-- Constellations -->
                    <button
                        v-for="tag in selectedItem.tags.constellations" :key="'c-'+tag"
@@ -503,10 +508,24 @@ watch(() => props.isOpen, (newVal) => {
                    >
                        {{ tag }}
                    </button>
+
                    <!-- Meta Tags -->
                    <button
-                       v-for="tag in selectedItem.tags.global_meta" :key="'m-'+tag"
+                       v-for="tag in selectedItem.tags.global_meta?.filter(t => !['Dringend', 'Angebot', 'Wenn\'s passt'].includes(t))" :key="'m-'+tag"
                        class="ks-chip tag-chip tag-meta"
+                       :class="{ active: activeTags.includes(tag) }"
+                       @click="toggleTag(tag)"
+                   >
+                       {{ tag }}
+                   </button>
+
+                   <!-- Separator for Dringlichkeit -->
+                   <div style="flex-basis: 100%; height: 0;"></div>
+                   <hr class="border-t border-gray-200 dark:border-gray-700 opacity-60 w-full my-2" style="border-top: 1px solid var(--ks-border); opacity: 0.6; width: 100%; margin: 8px 0;" />
+
+                   <button
+                       v-for="tag in ['Dringend', 'Angebot', 'Wenn\'s passt']" :key="'u-'+tag"
+                       class="ks-chip tag-chip tag-meta urgency-tag"
                        :class="{ active: activeTags.includes(tag) }"
                        @click="toggleTag(tag)"
                    >
