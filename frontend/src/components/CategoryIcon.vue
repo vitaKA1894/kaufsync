@@ -193,13 +193,13 @@ const onImageError = (event) => {
       :style="{
         backgroundColor: color === 'currentColor' ? 'var(--ks-surface-4)' : color,
         color: 'white',
-        width: typeof size === 'number' ? `${size}px` : size,
-        height: typeof size === 'number' ? `${size}px` : size,
+        width: !isNaN(size) ? `${size}px` : size,
+        height: !isNaN(size) ? `${size}px` : size,
         borderRadius: '50%',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        fontSize: typeof size === 'number' ? `${size * 0.55}px` : '1em',
+        fontSize: !isNaN(size) ? `${size * 0.55}px` : '1em',
         fontWeight: 'bold',
         opacity: 0.8
       }"
@@ -223,8 +223,8 @@ const onImageError = (event) => {
       :style="{
         '--icon-src': `url(${currentImageSrc})`,
         'background-color': color && color !== 'currentColor' ? color : 'var(--ks-text)',
-        width: typeof size === 'number' ? `${size}px` : size,
-        height: typeof size === 'number' ? `${size}px` : size
+        width: !isNaN(size) ? `${size}px` : size,
+        height: !isNaN(size) ? `${size}px` : size
       }"
       :title="name"
     >
