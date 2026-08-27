@@ -222,7 +222,7 @@ const onImageError = (event) => {
       :class="categoryClass"
       :style="{
         '--icon-src': `url(${currentImageSrc})`,
-        'background-color': color && color !== 'currentColor' ? color : 'var(--ks-text)',
+        'background-color': color && color !== 'currentColor' ? color : 'currentColor',
         width: !isNaN(size) ? `${size}px` : size,
         height: !isNaN(size) ? `${size}px` : size
       }"
