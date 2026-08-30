@@ -849,6 +849,7 @@ onUnmounted(() => {
 
           <div class="ks-grid items-grid">
             <div v-for="item in group.items" :key="item.id" class="grid-card active" :id="'item-' + item.id"
+                 :style="{ background: group.def.bg, color: group.def.color }"
                  @click="toggleItemStatus(item)"
                  @mousedown="startPress(item, $event)"
                  @touchstart="startPress(item, $event)"
@@ -856,7 +857,7 @@ onUnmounted(() => {
                  @mouseleave="cancelPress"
                  @touchend="cancelPress"
                  @touchmove="cancelPress">
-              <div class="card-icon-area" :style="{ background: group.def.bg, color: group.def.color }">
+              <div class="card-icon-area">
                  <CategoryIcon class="icon-svg" :name="item.name" :category="item.category" size="40" />
               </div>
               <div class="card-text-area">
@@ -901,8 +902,8 @@ onUnmounted(() => {
         
         <div class="ks-grid items-grid">
           <div v-for="item in completedItems" :key="item.id" class="grid-card completed" @click="toggleItemStatus(item)">
-            <div class="card-icon-area">
-               <CategoryIcon class="icon-svg" :name="item.name" :category="item.category" size="40" style="opacity: 0.5;" />
+            <div class="card-icon-area" :style="{ color: getCategoryDef(item.category).bg }">
+               <CategoryIcon class="icon-svg" :name="item.name" :category="item.category" size="40" />
             </div>
             <div class="card-text-area">
               <span class="item-name">{{ item.name }}</span>
@@ -968,7 +969,7 @@ onUnmounted(() => {
 .category-group {
   display: flex;
   position: relative;
-  margin-bottom: 16px;
+  margin-bottom: 8px;
   border-radius: 12px;
   overflow: hidden;
 }
@@ -1027,7 +1028,7 @@ onUnmounted(() => {
 .ks-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-  gap: 12px;
+  gap: 8px;
 }
 
 .grid-card {
@@ -1056,15 +1057,18 @@ onUnmounted(() => {
   border-color: rgba(255,255,255,0.04);
 }
 .grid-card.completed .card-icon-area {
-  background: var(--ks-surface-4); color: var(--ks-text-muted);
+  background: transparent;
 }
 .grid-card.completed .item-name {
   text-decoration: line-through; color: var(--ks-text-muted); font-weight: 500;
 }
+.grid-card.completed .item-quantity {
+  color: var(--ks-text-muted); opacity: 1;
+}
 
 .card-icon-area { 
   display: flex; align-items: center; justify-content: center; 
-  height: 40px; margin-bottom: 12px; border-radius: var(--ks-radius-xs);
+  height: 36px; margin-bottom: 4px; border-radius: var(--ks-radius-xs);
 }
 .initials { font-size: 24px; font-weight: 700; }
 .icon-svg { display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; }
@@ -1072,7 +1076,8 @@ onUnmounted(() => {
 
 .item-quantity {
   font-size: 13px;
-  color: var(--ks-text-muted);
+  color: inherit;
+  opacity: 0.8;
   margin-top: 4px;
 }
 
@@ -1080,7 +1085,7 @@ onUnmounted(() => {
 .item-name { 
   font-size: 12px; font-weight: 600;
   display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; 
-  overflow: hidden; line-height: 1.2; color: var(--ks-text);
+  overflow: hidden; line-height: 1.2; color: inherit;
 }
 .item-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px; justify-content: center; }
 .tag-pill { font-size: 10px; background: var(--ks-surface-4); padding: 2px 6px; border-radius: 8px; color: var(--ks-text-muted); }
