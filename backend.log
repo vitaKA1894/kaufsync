@@ -1,11 +1,87 @@
-INFO:     Started server process [585993]
+INFO:     Started server process [78774]
 INFO:     Waiting for application startup.
 INFO:     Application startup complete.
 INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
 /home/jules/.pyenv/versions/3.12.13/lib/python3.12/site-packages/jwt/api_jwt.py:147: InsecureKeyLengthWarning: The HMAC key is 27 bytes long, which is below the minimum recommended length of 32 bytes for SHA256. See RFC 7518 Section 3.2.
   return self._jws.encode(
-INFO:     127.0.0.1:47768 - "POST /api/auth/login HTTP/1.1" 200 OK
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [585993]
+INFO:     127.0.0.1:42112 - "POST /api/auth/login HTTP/1.1" 200 OK
+/home/jules/.pyenv/versions/3.12.13/lib/python3.12/site-packages/jwt/api_jwt.py:368: InsecureKeyLengthWarning: The HMAC key is 27 bytes long, which is below the minimum recommended length of 32 bytes for SHA256. See RFC 7518 Section 3.2.
+  decoded = self.decode_complete(
+INFO:     127.0.0.1:42118 - "GET /api/invitations HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42126 - "GET /api/users/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42114 - "GET /api/lists HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42130 - "WebSocket /ws/user/test-user-id" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:42146 - "WebSocket /ws/test-list-id" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59118 - "POST /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59124 - "GET /api/invitations HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59126 - "GET /api/users/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59120 - "GET /api/lists HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59134 - "WebSocket /ws/user/test-user-id" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59136 - "WebSocket /ws/test-list-id" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59154 - "WebSocket /ws/test-list-id" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59144 - "GET /api/lists HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53466 - "POST /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53496 - "GET /api/users/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53480 - "GET /api/lists HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53492 - "GET /api/invitations HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53498 - "WebSocket /ws/user/test-user-id" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:53508 - "WebSocket /ws/test-list-id" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:53520 - "WebSocket /ws/test-list-id" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:53516 - "GET /api/lists HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54190 - "POST /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54198 - "GET /api/lists HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54222 - "GET /api/users/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54214 - "GET /api/invitations HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54228 - "WebSocket /ws/test-list-id" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:54240 - "WebSocket /ws/user/test-user-id" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:54254 - "WebSocket /ws/test-list-id" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:54246 - "GET /api/lists HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54262 - "POST /api/lists/test-list-id/items HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58270 - "POST /api/lists/test-list-id/items HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52126 - "POST /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52156 - "GET /api/users/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52140 - "GET /api/lists HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52144 - "GET /api/invitations HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52168 - "WebSocket /ws/user/test-user-id" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:52176 - "WebSocket /ws/test-list-id" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:52182 - "WebSocket /ws/test-list-id" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:52178 - "GET /api/lists HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52192 - "PUT /api/items/4f9b964f-e421-4475-a73b-8ac8ae030e74 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55840 - "POST /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55874 - "GET /api/users/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55868 - "GET /api/invitations HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55854 - "GET /api/lists HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55886 - "WebSocket /ws/user/test-user-id" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:55894 - "WebSocket /ws/test-list-id" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:55908 - "WebSocket /ws/test-list-id" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:55896 - "GET /api/lists HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55910 - "PUT /api/items/4f9b964f-e421-4475-a73b-8ac8ae030e74 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48212 - "POST /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48226 - "GET /api/invitations HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48220 - "GET /api/lists HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48236 - "GET /api/users/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48242 - "WebSocket /ws/test-list-id" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:48250 - "WebSocket /ws/user/test-user-id" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:48270 - "WebSocket /ws/test-list-id" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:48262 - "GET /api/lists HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48280 - "PUT /api/items/5c3c0243-24fb-43a0-a962-492c3823fc44 HTTP/1.1" 200 OK
