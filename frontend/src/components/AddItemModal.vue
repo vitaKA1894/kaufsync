@@ -411,8 +411,8 @@ watch(() => props.isOpen, (newVal) => {
         <BarcodeScanner v-if="showScanner" @close="showScanner = false" @scan="handleScan" />
 
         <!-- STEP 1: Search -->
-        <div class="search-step" v-show="!showScanner">
-          <div class="results-list">
+        <div class="search-step" v-show="!showScanner" style="flex-direction: column-reverse;">
+          <div class="results-list" style="margin-top: 16px;">
             <template v-if="query.length >= 1">
               <div class="ks-grid items-grid" style="padding: 0 4px;">
                 <div
@@ -422,7 +422,7 @@ watch(() => props.isOpen, (newVal) => {
                   @click="selectItem(item)"
                 >
                   <div class="card-icon-area" :style="{ background: getCategoryDef(item.category).bg, color: getCategoryDef(item.category).color }">
-                    <CategoryIcon class="icon-svg" :name="item.name" :category="item.category" size="40" />
+                    <CategoryIcon class="icon-svg" :name="item.name" :category="item.category" size="64" />
                   </div>
                   <div class="card-text-area">
                     <span class="item-name" v-html="highlightText(item.name, query)"></span>
@@ -579,10 +579,10 @@ watch(() => props.isOpen, (newVal) => {
 .modal-backdrop {
   position: fixed;
   top: 0; left: 0; width: 100%; height: 100%;
-  background: rgba(0,0,0,0.6);
+  background: var(--ks-bg); /* Opaque background as requested */
   z-index: 100;
   display: flex;
-  align-items: flex-end;
+  align-items: flex-start; /* Align top */
   justify-content: center;
 }
 
@@ -590,9 +590,9 @@ watch(() => props.isOpen, (newVal) => {
   background: var(--ks-bg);
   width: 100%;
   max-width: var(--ks-page-width);
-  border-radius: 20px 20px 0 0;
   padding: 16px;
-  max-height: 90vh;
+  padding-top: max(16px, env(safe-area-inset-top));
+  height: 100%;
   display: flex;
   flex-direction: column;
 }
@@ -608,8 +608,7 @@ watch(() => props.isOpen, (newVal) => {
 .modal-header {
   display: flex;
   align-items: center;
-  margin-top: auto; /* Push down to bottom */
-  padding-bottom: env(safe-area-inset-bottom);
+  margin-bottom: 16px; /* Space below header instead of pushing down */
 }
 
 .modal-input {
@@ -669,12 +668,8 @@ watch(() => props.isOpen, (newVal) => {
   flex-direction: column;
   overflow-y: auto;
   gap: 8px;
-  max-height: 50vh;
-  position: absolute;
-  bottom: 100%;
-  left: 0;
-  right: 0;
-  margin-bottom: 16px;
+  flex: 1;
+  min-height: 0;
 }
 
 .ks-grid {
@@ -697,9 +692,9 @@ watch(() => props.isOpen, (newVal) => {
 
 .card-icon-area {
   display: flex; align-items: center; justify-content: center;
-  height: 40px; margin-bottom: 12px; border-radius: var(--ks-radius-xs);
+  height: 64px; margin-bottom: 12px; border-radius: var(--ks-radius-xs);
 }
-.icon-svg { display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; }
+.icon-svg { display: flex; align-items: center; justify-content: center; width: 64px; height: 64px; }
 .icon-svg :deep(svg) { width: 100%; height: 100%; }
 
 .card-text-area { display: flex; flex-direction: column; }

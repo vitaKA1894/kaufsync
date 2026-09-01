@@ -847,7 +847,7 @@ onUnmounted(() => {
             <span class="category-count" style="margin-top: 8px;">{{ group.items.length }}</span>
           </div>
 
-          <div class="ks-grid items-grid">
+          <transition-group name="list" tag="div" class="ks-grid items-grid">
             <div v-for="item in group.items" :key="item.id" class="grid-card active" :id="'item-' + item.id"
                  :style="{ background: group.def.bg, color: group.def.color }"
                  @click="toggleItemStatus(item)"
@@ -858,7 +858,7 @@ onUnmounted(() => {
                  @touchend="cancelPress"
                  @touchmove="cancelPress">
               <div class="card-icon-area">
-                 <CategoryIcon class="icon-svg" :name="item.name" :category="item.category" size="40" />
+                <CategoryIcon class="icon-svg" :name="item.name" :category="item.category" size="64" />
               </div>
               <div class="card-text-area">
                 <span class="item-name">{{ item.name }}</span>
@@ -873,7 +873,7 @@ onUnmounted(() => {
                 </div>
               </div>
             </div>
-          </div>
+          </transition-group>
         </section>
       </template>
 
@@ -903,7 +903,7 @@ onUnmounted(() => {
         <div class="ks-grid items-grid">
           <div v-for="item in completedItems" :key="item.id" class="grid-card completed" @click="toggleItemStatus(item)">
             <div class="card-icon-area" :style="{ color: getCategoryDef(item.category).bg }">
-               <CategoryIcon class="icon-svg" :name="item.name" :category="item.category" size="40" />
+               <CategoryIcon class="icon-svg" :name="item.name" :category="item.category" size="64" />
             </div>
             <div class="card-text-area">
               <span class="item-name">{{ item.name }}</span>
@@ -1050,6 +1050,17 @@ onUnmounted(() => {
 .grid-card:active { transform: scale(0.95); }
 .grid-card:hover { background: var(--ks-surface-3); }
 
+/* List Transition Animation */
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.4s ease;
+}
+.list-enter-from,
+.list-leave-to {
+  opacity: 0;
+  transform: scale(0.5);
+}
+
 /* Erledigte Artikel Styles */
 .completed-section { opacity: 0.7; }
 .grid-card.completed { 
@@ -1068,10 +1079,10 @@ onUnmounted(() => {
 
 .card-icon-area { 
   display: flex; align-items: center; justify-content: center; 
-  height: 36px; margin-bottom: 4px; border-radius: var(--ks-radius-xs);
+  height: 64px; margin-bottom: 4px; border-radius: var(--ks-radius-xs);
 }
 .initials { font-size: 24px; font-weight: 700; }
-.icon-svg { display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; }
+.icon-svg { display: flex; align-items: center; justify-content: center; width: 64px; height: 64px; }
 .icon-svg :deep(svg) { width: 100%; height: 100%; }
 
 .item-quantity {
