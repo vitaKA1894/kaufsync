@@ -669,6 +669,16 @@ const completedItems = computed(() => items.value.filter(i => i.status === 'comp
   return { ...item, category: mapLegacyCategory(catName) };
 }));
 
+const getRegularTags = (tagsStr) => {
+  const tags = parseTags(tagsStr);
+  return tags.filter(t => !['dringend', 'angebot', "wenn's passt"].includes(t.toLowerCase()));
+};
+
+const getUrgencyTags = (tagsStr) => {
+  const tags = parseTags(tagsStr);
+  return tags.filter(t => ['dringend', 'angebot', "wenn's passt"].includes(t.toLowerCase()));
+};
+
 
 onMounted(() => {
   loadItems(); // loadItems ruft am Ende loadCategoryOrder() auf
@@ -863,9 +873,12 @@ onUnmounted(() => {
               <div class="card-text-area">
                 <span class="item-name">{{ item.name }}</span>
                 <span class="item-quantity" v-if="formatQuantity(item)">{{ formatQuantity(item) }}</span>
-                <div v-if="parseTags(item.tags).length > 0" class="item-tags">
+                <span class="item-regular-tags" v-if="getRegularTags(item.tags).length > 0">
+                  {{ getRegularTags(item.tags).join(', ') }}
+                </span>
+                <div v-if="getUrgencyTags(item.tags).length > 0" class="item-tags">
                   <span
-                    v-for="tag in parseTags(item.tags)"
+                    v-for="tag in getUrgencyTags(item.tags)"
                     :key="tag"
                     class="tag-pill"
                     :style="{ background: getTagStyle(tag).bg, color: getTagStyle(tag).color }"
@@ -1100,6 +1113,7 @@ onUnmounted(() => {
 }
 .item-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px; justify-content: center; }
 .tag-pill { font-size: 10px; background: var(--ks-surface-4); padding: 2px 6px; border-radius: 8px; color: var(--ks-text-muted); }
+.item-regular-tags { font-size: 11px; color: var(--ks-text-muted); margin-top: 4px; line-height: 1.2; word-break: break-word; }
 
 .delete-btn {
   position: absolute; top: -8px; right: -8px;
