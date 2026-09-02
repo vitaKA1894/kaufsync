@@ -467,7 +467,12 @@ watch(() => props.isOpen, (newVal) => {
            <div class="ks-sheet__handle" style="margin: 8px auto 16px auto; width: 40px; height: 4px; background: var(--ks-border); border-radius: 2px;"></div>
            <div class="modal-header" style="justify-content: space-between; align-items: center; margin-top: 0; padding-bottom: 16px;">
               <div style="display: flex; align-items: center; gap: 12px;">
-                 <!-- Empty placeholder for alignment if we don't need back button, or back button if needed, wait, the design doesn't show a back button, but has 'Eis' prominently on the left. Ah, actually in the new design we don't have a back button. But let's keep selectedItem = null functionality. I'll make the title itself clickable or just remove it if not needed? Actually, the request says 'Eis' as h2 and 'Fertig' on the right. -->
+                 <CategoryIcon
+                   :name="selectedItem.name"
+                   :category="selectedItem.category"
+                   size="32"
+                   :style="{ color: getCategoryDef(selectedItem.category).color }"
+                 />
                  <h2 style="margin:0; font-size: 24px; font-weight: bold;">{{ selectedItem.name }}</h2>
               </div>
               <button class="ks-btn-text" @click="confirmSelection(false)" style="font-size: 16px; font-weight: 600; padding: 0;">Fertig</button>
