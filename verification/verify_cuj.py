@@ -5,7 +5,7 @@ import os
 
 def start_servers():
     print("Starting backend...")
-    backend = subprocess.Popen(["python", "-m", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"], cwd=os.path.join(os.getcwd(), 'backend'), stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    backend = subprocess.Popen(["python", "-m", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"], cwd=os.path.join(os.path.dirname(os.getcwd()), 'backend'), stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
     print("Starting frontend...")
     frontend = subprocess.Popen(["npm", "run", "dev", "--prefix", "frontend"], cwd=os.getcwd(), stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
