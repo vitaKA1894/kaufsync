@@ -1042,6 +1042,7 @@ onUnmounted(() => {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
   gap: 8px;
+  align-items: start;
 }
 
 .grid-card {
@@ -1111,9 +1112,9 @@ onUnmounted(() => {
   display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; 
   overflow: hidden; line-height: 1.2; color: inherit;
 }
-.item-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px; justify-content: center; }
+.item-tags { position: absolute; top: 4px; left: 4px; display: flex; flex-direction: column; gap: 2px; align-items: flex-start; z-index: 2; pointer-events: none; }
 .tag-pill { font-size: 10px; background: var(--ks-surface-4); padding: 2px 6px; border-radius: 8px; color: var(--ks-text-muted); }
-.item-regular-tags { font-size: 11px; color: var(--ks-text-muted); margin-top: 4px; line-height: 1.2; word-break: break-word; }
+.item-regular-tags { font-size: 11px; color: inherit; opacity: 0.8; margin-top: 4px; line-height: 1.2; word-break: break-word; }
 
 .delete-btn {
   position: absolute; top: -8px; right: -8px;

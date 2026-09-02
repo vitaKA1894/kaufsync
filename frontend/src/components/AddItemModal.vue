@@ -471,7 +471,6 @@ watch(() => props.isOpen, (newVal) => {
                    :name="selectedItem.name"
                    :category="selectedItem.category"
                    size="32"
-                   :style="{ color: getCategoryDef(selectedItem.category).color }"
                  />
                  <h2 style="margin:0; font-size: 24px; font-weight: bold;">{{ selectedItem.name }}</h2>
               </div>
