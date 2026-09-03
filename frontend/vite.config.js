@@ -19,8 +19,8 @@ export default defineConfig({
         name: 'KaufSync',
         short_name: 'KaufSync',
         title: 'KaufSync',
-        theme_color: '#08060d',
-        background_color: '#08060d',
+        theme_color: '#0f1115',
+        background_color: '#0f1115',
         display: 'standalone',
         orientation: 'portrait',
         icons: [
