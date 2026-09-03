@@ -123,7 +123,7 @@ img {
   width: min(100%, var(--ks-page-width));
   margin: 0 auto;
   min-height: 100svh;
-  padding: 16px 16px 112px;
+  padding: max(16px, env(safe-area-inset-top)) 16px max(112px, calc(112px + env(safe-area-inset-bottom)));
 }
 
 .page-topbar {
@@ -256,7 +256,7 @@ img {
   border: 1px solid var(--ks-border);
   border-bottom: none;
   border-radius: 28px 28px 0 0;
-  padding: 12px 14px 28px;
+  padding: 12px 14px max(28px, calc(28px + env(safe-area-inset-bottom)));
   box-shadow: var(--ks-shadow-2);
 }
 
@@ -374,7 +374,7 @@ img {
   position: fixed;
   left: 16px;
   right: 16px;
-  bottom: 18px;
+  bottom: max(18px, calc(18px + env(safe-area-inset-bottom)));
   z-index: 40;
 }
 
@@ -442,14 +442,14 @@ img {
 @media (max-width: 640px) {
   .page-shell {
     padding-inline: 12px;
-    padding-top: 12px;
-    padding-bottom: 108px;
+    padding-top: max(12px, env(safe-area-inset-top));
+    padding-bottom: max(108px, calc(108px + env(safe-area-inset-bottom)));
   }
 
   .ks-fab-bar {
     left: 12px;
     right: 12px;
-    bottom: 12px;
+    bottom: max(12px, calc(12px + env(safe-area-inset-bottom)));
   }
 
   .ks-sheet {
