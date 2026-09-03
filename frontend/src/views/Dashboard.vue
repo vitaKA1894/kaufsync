@@ -115,11 +115,9 @@ const setupWebSockets = () => {
             if (targetList && targetList.items) {
               const index = targetList.items.findIndex(i => i.id === incomingItem.id);
               if (index !== -1) {
-                targetList.items[index].status = incomingItem.status;
-                targetList.items[index].quantity = incomingItem.quantity;
-                targetList.items[index].name = incomingItem.name;
-                targetList.items[index].unit = incomingItem.unit;
-                targetList.items[index].tags = incomingItem.tags;
+                // Re-assign the entire object to reliably trigger reactivity
+                targetList.items[index] = { ...targetList.items[index], ...incomingItem };
+
                 if (incomingItem.category) targetList.items[index].category = incomingItem.category;
               } else {
                 targetList.items.push(incomingItem);
