@@ -38,6 +38,12 @@ const changelogFilter = ref('all'); // 'all', 'added', 'completed'
 let ws = null;
 const isOnline = ref(navigator.onLine);
 
+const isCompactView = ref(localStorage.getItem('ks_compact_view') === 'true');
+const toggleCompactView = () => {
+  isCompactView.value = !isCompactView.value;
+  localStorage.setItem('ks_compact_view', isCompactView.value);
+};
+
 const formatCategoryName = (name) => {
   if (!name) return '';
   return name.length > 13 ? name.substring(0, 13) + '.' : name;
@@ -664,6 +670,14 @@ const groupedActiveItems = computed(() => {
   });
 });
 
+const sortedActiveItems = computed(() => {
+  return groupedActiveItems.value.reduce((acc, group) => {
+    // Add the group def to each item so it can be easily accessed in the flat list
+    const itemsWithDef = group.items.map(item => ({...item, _groupDef: group.def}));
+    return acc.concat(itemsWithDef);
+  }, []);
+});
+
 const completedItems = computed(() => items.value.filter(i => i.status === 'completed').map(item => {
   let catName = item.category || 'Sonstiges';
   return { ...item, category: mapLegacyCategory(catName) };
@@ -710,6 +724,10 @@ onUnmounted(() => {
 
         <button class="ks-icon-btn" @click.stop="openChangelog" aria-label="Aktivitätenprotokoll">
            <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+        </button>
+        <button class="ks-icon-btn" @click.stop="toggleCompactView" aria-label="Ansicht anpassen">
+           <svg v-if="isCompactView" viewBox="0 0 24 24"><path d="M3 3v8h8V3H3zm6 6H5V5h4v4zm-6 4v8h8v-8H3zm6 6H5v-4h4v4zm4-16v8h8V3h-8zm6 6h-4V5h4v4zm-6 4v8h8v-8h-8zm6 6h-4v-4h4v4z"/></svg>
+           <svg v-else viewBox="0 0 24 24"><path d="M4 18h17v-6H4v6zM4 5v6h17V5H4z"/></svg>
         </button>
         <button class="ks-icon-btn" @click.stop="showSortSheet = !showSortSheet" aria-label="Kategorien sortieren">
            <svg viewBox="0 0 24 24"><path d="M3 18v-2h6v2H3Zm0-5v-2h12v2H3Zm0-5V6h18v2H3Z"/></svg>
@@ -849,17 +867,51 @@ onUnmounted(() => {
     <!-- GRUPPIERTE AKTIVE ARTIKEL -->
     <div class="list-scroll-area">
       <template v-if="groupedActiveItems.length > 0">
-        <section v-for="group in groupedActiveItems" :key="group.name" class="category-group"
-                 :style="{ background: `linear-gradient(to right, color-mix(in srgb, ${group.def.bg} 15%, transparent) 0%, transparent 100%)` }">
-          
-          <div class="category-lane" :style="{ backgroundColor: group.def.bg, color: group.def.color }">
-            <span class="category-name">{{ formatCategoryName(group.name) }}</span>
-            <span class="category-count" style="margin-top: 8px;">{{ group.items.length }}</span>
-          </div>
+        <template v-if="!isCompactView">
+          <section v-for="group in groupedActiveItems" :key="group.name" class="category-group"
+                   :style="{ background: `linear-gradient(to right, color-mix(in srgb, ${group.def.bg} 15%, transparent) 0%, transparent 100%)` }">
 
-          <transition-group name="list" tag="div" class="ks-grid items-grid">
-            <div v-for="item in group.items" :key="item.id" class="grid-card active" :id="'item-' + item.id"
-                 :style="{ background: group.def.bg, color: group.def.color }"
+            <div class="category-lane" :style="{ backgroundColor: group.def.bg, color: group.def.color }">
+              <span class="category-name">{{ formatCategoryName(group.name) }}</span>
+              <span class="category-count" style="margin-top: 8px;">{{ group.items.length }}</span>
+            </div>
+
+            <transition-group name="list" tag="div" class="ks-grid items-grid">
+              <div v-for="item in group.items" :key="item.id" class="grid-card active" :id="'item-' + item.id"
+                   :style="{ background: group.def.bg, color: group.def.color }"
+                   @click="toggleItemStatus(item)"
+                   @mousedown="startPress(item, $event)"
+                   @touchstart="startPress(item, $event)"
+                   @mouseup="cancelPress"
+                   @mouseleave="cancelPress"
+                   @touchend="cancelPress"
+                   @touchmove="cancelPress">
+                <div class="card-icon-area">
+                  <CategoryIcon class="icon-svg" :name="item.name" :category="item.category" size="64" />
+                </div>
+                <div class="card-text-area">
+                  <span class="item-name">{{ item.name }}</span>
+                  <span class="item-quantity" v-if="formatQuantity(item)">{{ formatQuantity(item) }}</span>
+                  <span class="item-regular-tags" v-if="getRegularTags(item.tags).length > 0">
+                    {{ getRegularTags(item.tags).join(', ') }}
+                  </span>
+                  <div v-if="getUrgencyTags(item.tags).length > 0" class="item-tags">
+                    <span
+                      v-for="tag in getUrgencyTags(item.tags)"
+                      :key="tag"
+                      class="tag-pill"
+                      :style="{ background: getTagStyle(tag).bg, color: getTagStyle(tag).color }"
+                    >{{ tag }}</span>
+                  </div>
+                </div>
+              </div>
+            </transition-group>
+          </section>
+        </template>
+        <template v-else>
+          <transition-group name="list" tag="div" class="ks-grid items-grid" style="padding-top: 0;">
+            <div v-for="item in sortedActiveItems" :key="item.id" class="grid-card active" :id="'item-' + item.id"
+                 :style="{ background: item._groupDef.bg, color: item._groupDef.color }"
                  @click="toggleItemStatus(item)"
                  @mousedown="startPress(item, $event)"
                  @touchstart="startPress(item, $event)"
@@ -887,7 +939,7 @@ onUnmounted(() => {
               </div>
             </div>
           </transition-group>
-        </section>
+        </template>
       </template>
 
       <div v-if="groupedActiveItems.length === 0 && completedItems.length === 0" class="empty-state">
