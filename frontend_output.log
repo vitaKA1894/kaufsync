@@ -1,0 +1,16 @@
+
+> frontend@0.0.2 dev
+> vite
+
+
+  VITE v8.1.3  ready in 779 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: http://192.168.0.2:5173/
+6:54:57 PM [vite] (client) [optimizer] bundling dependencies...
+[1m[33m[@vue/compiler-sfc][0m[33m `defineProps` is a compiler macro and no longer needs to be imported.[0m
+
+[1m[33m[@vue/compiler-sfc][0m[33m `defineEmits` is a compiler macro and no longer needs to be imported.[0m
+
+6:56:17 PM [vite] (client) [optimizer] bundling dependencies...
+6:56:18 PM [vite] (client) dependency optimized: qrcode.vue
