@@ -267,11 +267,9 @@ const setupWebSocket = () => {
         const incomingItem = data.payload.item;
         const index = items.value.findIndex(i => i.id === incomingItem.id);
         if (index !== -1) {
-          items.value[index].status = incomingItem.status;
-          items.value[index].quantity = incomingItem.quantity;
-          items.value[index].name = incomingItem.name;
-          items.value[index].unit = incomingItem.unit;
-          items.value[index].tags = incomingItem.tags;
+          // Re-assign the entire object to trigger reactivity reliably
+          items.value[index] = { ...items.value[index], ...incomingItem };
+
           // Kategorie Fallback, falls via WS nicht gesendet
           if (incomingItem.category) items.value[index].category = incomingItem.category;
         } else {
