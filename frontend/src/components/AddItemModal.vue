@@ -51,11 +51,7 @@ const handleScan = async (barcode) => {
     showScanner.value = false;
 
     try {
-        const response = await fetch(`https://world.openfoodfacts.org/api/v3/product/${barcode}`, {
-            headers: {
-                'User-Agent': 'Kaufsync/1.0 (deine@email.de)'
-            }
-        });
+        const response = await fetch(`https://world.openfoodfacts.org/api/v3/product/${barcode}`);
 
         if (response.ok) {
             const data = await response.json();
