@@ -259,23 +259,39 @@ const confirmSelection = (bypassWarning = false) => {
     }
   }
 
+
   let quantity = 1;
   let unit = 'Stk';
 
+  // Extract selected quantity tag
+  const quantTags = enhancedQuantities.value;
+  const selectedQuantTag = activeTags.value.find(t => quantTags.includes(t));
 
-  // Process Menge
-  if (manualQuantity.value && manualQuantity.value.trim() !== '') {
-      const parsed = parseQuantity(manualQuantity.value);
+  if (selectedQuantTag) {
+      const parsed = parseQuantity(selectedQuantTag);
       quantity = parsed.quantity;
       unit = parsed.unit;
-  } else {
-      const quantTags = enhancedQuantities.value;
-      const selectedQuantTag = activeTags.value.find(t => quantTags.includes(t));
+      activeTags.value = activeTags.value.filter(t => t !== selectedQuantTag);
+  }
+
+  // Process Menge input field
+  if (manualQuantity.value && manualQuantity.value.trim() !== '') {
+      const str = manualQuantity.value.trim();
+
+      // If a tag was already selected, treat input as description/tags
       if (selectedQuantTag) {
-          const parsed = parseQuantity(selectedQuantTag);
-          quantity = parsed.quantity;
-          unit = parsed.unit;
-          activeTags.value = activeTags.value.filter(t => t !== selectedQuantTag);
+          activeTags.value.push(str);
+      } else {
+          // Check if input looks like a quantity
+          const match = str.match(/^([\d.,]+)\s*(.*)$/);
+          if (match) {
+              const parsed = parseQuantity(str);
+              quantity = parsed.quantity;
+              unit = parsed.unit;
+          } else {
+              // Otherwise, treat as description
+              activeTags.value.push(str);
+          }
       }
   }
 
