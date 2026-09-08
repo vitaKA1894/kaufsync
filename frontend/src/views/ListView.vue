@@ -1097,12 +1097,15 @@ onUnmounted(() => {
 
 .grid-card {
   display: flex; flex-direction: column;
-  border-radius: var(--ks-radius-sm); padding: 8px 4px;
+  border-radius: var(--ks-radius-sm); padding: 4px;
   cursor: pointer; text-align: center;
   transition: transform 0.1s, opacity 0.2s, background 0.2s, border-color 0.3s;
   position: relative;
   background: var(--ks-surface-2);
   border: 1px solid var(--ks-border);
+  aspect-ratio: 1 / 1;
+  min-height: 0;
+  overflow: hidden;
 }
 .flash-highlight {
   animation: flash 1s ease-out;
@@ -1144,28 +1147,41 @@ onUnmounted(() => {
 
 .card-icon-area { 
   display: flex; align-items: center; justify-content: center; 
-  height: 64px; margin-bottom: 4px; border-radius: var(--ks-radius-xs);
+  height: 64px; margin-bottom: 2px; border-radius: var(--ks-radius-xs);
+  flex-shrink: 0;
 }
 .initials { font-size: 24px; font-weight: 700; }
 .icon-svg { display: flex; align-items: center; justify-content: center; width: 64px; height: 64px; }
 .icon-svg :deep(svg) { width: 100%; height: 100%; }
 
 .item-quantity {
-  font-size: 13px;
+  font-size: 11px;
   color: inherit;
   opacity: 0.8;
-  margin-top: 4px;
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
 }
 
-.card-text-area { display: flex; flex-direction: column; }
+.card-text-area {
+  display: flex; flex-direction: column;
+  flex: 1; min-height: 0; overflow: hidden; width: 100%;
+  justify-content: flex-start; align-items: center;
+}
 .item-name { 
   font-size: 12px; font-weight: 600;
-  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; 
+  white-space: nowrap; text-overflow: ellipsis;
   overflow: hidden; line-height: 1.2; color: inherit;
+  width: 100%;
 }
 .item-tags { position: absolute; top: 4px; left: 4px; display: flex; flex-direction: column; gap: 2px; align-items: flex-start; z-index: 2; pointer-events: none; }
 .tag-pill { font-size: 10px; background: var(--ks-surface-4); padding: 2px 6px; border-radius: 8px; color: var(--ks-text-muted); }
-.item-regular-tags { font-size: 11px; color: inherit; opacity: 0.8; margin-top: 4px; line-height: 1.2; word-break: break-word; }
+.item-regular-tags {
+  font-size: 11px; color: inherit; opacity: 0.8; margin-top: 2px; line-height: 1.2;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100%;
+}
 
 .delete-btn {
   position: absolute; top: -8px; right: -8px;
