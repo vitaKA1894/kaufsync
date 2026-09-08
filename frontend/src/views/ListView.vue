@@ -1128,14 +1128,15 @@ onUnmounted(() => {
 /* Erledigte Artikel Styles */
 .completed-section { opacity: 0.7; }
 .grid-card.completed { 
-  background: transparent; 
-  border-color: rgba(255,255,255,0.04);
+  background: rgba(34, 197, 94, 0.15); /* Transparent green */
+  border-color: rgba(34, 197, 94, 0.3);
 }
 .grid-card.completed .card-icon-area {
-  background: transparent;
+  background: transparent !important;
+  color: #4ade80 !important; /* Vivid green for icon */
 }
 .grid-card.completed .item-name {
-  text-decoration: line-through; color: var(--ks-text-muted); font-weight: 500;
+  text-decoration: line-through; color: #4ade80; font-weight: 500;
 }
 .grid-card.completed .item-quantity {
   color: var(--ks-text-muted); opacity: 1;
@@ -1277,3 +1278,18 @@ onUnmounted(() => {
 .user-email { font-size: 12px; color: var(--ks-text-muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .no-results { color: var(--ks-text-muted); font-size: 14px; margin-top: 12px; text-align: center; }
 </style>
+.list-move,
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.5s ease;
+}
+
+.list-enter-from,
+.list-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
+}
+
+.list-leave-active {
+  position: absolute;
+}
