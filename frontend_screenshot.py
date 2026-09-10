@@ -5,7 +5,7 @@ import os
 import signal
 
 print("Starting backend...")
-backend_process = subprocess.Popen(["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"], cwd="backend", stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+backend_process = subprocess.Popen(["python", "-m", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"], cwd="backend", stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
 print("Starting frontend...")
 frontend_process = subprocess.Popen(["npm", "run", "dev"], cwd="frontend", stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
