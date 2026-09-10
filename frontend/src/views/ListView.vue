@@ -46,7 +46,7 @@ const toggleCompactView = () => {
 
 const formatCategoryName = (name) => {
   if (!name) return '';
-  return name.length > 13 ? name.substring(0, 13) + '.' : name;
+  return name;
 };
 
 // --- LONG PRESS GESTURE ---
@@ -691,6 +691,13 @@ const getUrgencyTags = (tagsStr) => {
   return tags.filter(t => ['dringend', 'angebot', "wenn's passt"].includes(t.toLowerCase()));
 };
 
+const formatTags = (tagsStr) => {
+  const regular = getRegularTags(tagsStr);
+  if (regular.length === 0) return '';
+  if (regular.length <= 2) return regular.join(', ');
+  return regular.slice(0, 2).join(', ') + '...';
+};
+
 
 onMounted(() => {
   loadItems(); // loadItems ruft am Ende loadCategoryOrder() auf
@@ -891,7 +898,7 @@ onUnmounted(() => {
                   <span class="item-name">{{ item.name }}</span>
                   <span class="item-quantity" v-if="formatQuantity(item)">{{ formatQuantity(item) }}</span>
                   <span class="item-regular-tags" v-if="getRegularTags(item.tags).length > 0">
-                    {{ getRegularTags(item.tags).join(', ') }}
+                    {{ formatTags(item.tags) }}
                   </span>
                   <div v-if="getUrgencyTags(item.tags).length > 0" class="item-tags">
                     <span
@@ -924,7 +931,7 @@ onUnmounted(() => {
                 <span class="item-name">{{ item.name }}</span>
                 <span class="item-quantity" v-if="formatQuantity(item)">{{ formatQuantity(item) }}</span>
                 <span class="item-regular-tags" v-if="getRegularTags(item.tags).length > 0">
-                  {{ getRegularTags(item.tags).join(', ') }}
+                  {{ formatTags(item.tags) }}
                 </span>
                 <div v-if="getUrgencyTags(item.tags).length > 0" class="item-tags">
                   <span
@@ -1038,12 +1045,13 @@ onUnmounted(() => {
 }
 
 .category-lane {
-  flex: 0 0 36px;
+  flex: 0 0 115px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 12px 0;
+  overflow: hidden;
 }
 
 .category-name {
@@ -1053,13 +1061,20 @@ onUnmounted(() => {
   text-transform: uppercase;
   font-size: 13px;
   letter-spacing: 0.5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
   white-space: nowrap;
+  max-height: 100%;
 }
 
 .items-grid {
   flex: 1;
   padding: 12px;
   z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(115px, 1fr));
+  gap: 8px;
+  align-items: start;
 }
 
 .category-badge {
@@ -1090,7 +1105,7 @@ onUnmounted(() => {
 
 .ks-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(115px, 1fr));
   gap: 8px;
   align-items: start;
 }
