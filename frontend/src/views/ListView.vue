@@ -1072,7 +1072,7 @@ onUnmounted(() => {
   padding: 12px;
   z-index: 1;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(115px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
   gap: 8px;
   align-items: start;
 }
@@ -1105,7 +1105,7 @@ onUnmounted(() => {
 
 .ks-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(115px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
   gap: 8px;
   align-items: start;
 }
