@@ -381,6 +381,14 @@ const processOfflineQueue = async () => {
   localStorage.setItem('offlineQueue', JSON.stringify(remainingQueue));
 };
 
+const updateItemQuantity = (item, delta) => {
+  const newQty = Math.max(1, (item.quantity || 1) + delta);
+  if (newQty !== item.quantity) {
+    item.quantity = newQty;
+    handleUpdateItem({ id: item.id, quantity: newQty });
+  }
+};
+
 const toggleItemStatus = async (item) => {
   if (longPressTriggered) {
     longPressTriggered = false;
@@ -883,7 +891,7 @@ onUnmounted(() => {
 
             <transition-group name="list" tag="div" class="ks-grid items-grid">
               <div v-for="item in group.items" :key="item.id" class="grid-card active" :id="'item-' + item.id"
-                   :style="{ background: group.def.bg, color: group.def.color }"
+                   :style="{ background: 'linear-gradient(135deg, ' + group.def.bg + ', color-mix(in srgb, ' + group.def.bg + ' 40%, transparent))', color: group.def.color }"
                    @click="toggleItemStatus(item)"
                    @mousedown="startPress(item, $event)"
                    @touchstart="startPress(item, $event)"
@@ -896,7 +904,6 @@ onUnmounted(() => {
                 </div>
                 <div class="card-text-area">
                   <span class="item-name">{{ item.name }}</span>
-                  <span class="item-quantity" v-if="formatQuantity(item)">{{ formatQuantity(item) }}</span>
                   <span class="item-regular-tags" v-if="getRegularTags(item.tags).length > 0">
                     {{ formatTags(item.tags) }}
                   </span>
@@ -909,6 +916,11 @@ onUnmounted(() => {
                     >{{ tag }}</span>
                   </div>
                 </div>
+                <div class="quantity-controls" @click.stop>
+                  <button @click="updateItemQuantity(item, -1)" class="qty-btn">-</button>
+                  <span class="qty-val">{{ formatQuantity(item) }}</span>
+                  <button @click="updateItemQuantity(item, 1)" class="qty-btn">+</button>
+                </div>
               </div>
             </transition-group>
           </section>
@@ -916,7 +928,7 @@ onUnmounted(() => {
         <template v-else>
           <transition-group name="list" tag="div" class="ks-grid items-grid" style="padding-top: 0;">
             <div v-for="item in sortedActiveItems" :key="item.id" class="grid-card active" :id="'item-' + item.id"
-                 :style="{ background: item._groupDef.bg, color: item._groupDef.color }"
+                 :style="{ background: 'linear-gradient(135deg, ' + item._groupDef.bg + ', color-mix(in srgb, ' + item._groupDef.bg + ' 40%, transparent))', color: item._groupDef.color }"
                  @click="toggleItemStatus(item)"
                  @mousedown="startPress(item, $event)"
                  @touchstart="startPress(item, $event)"
@@ -929,7 +941,6 @@ onUnmounted(() => {
               </div>
               <div class="card-text-area">
                 <span class="item-name">{{ item.name }}</span>
-                <span class="item-quantity" v-if="formatQuantity(item)">{{ formatQuantity(item) }}</span>
                 <span class="item-regular-tags" v-if="getRegularTags(item.tags).length > 0">
                   {{ formatTags(item.tags) }}
                 </span>
@@ -941,6 +952,11 @@ onUnmounted(() => {
                     :style="{ background: getTagStyle(tag).bg, color: getTagStyle(tag).color }"
                   >{{ tag }}</span>
                 </div>
+              </div>
+              <div class="quantity-controls" @click.stop>
+                <button @click="updateItemQuantity(item, -1)" class="qty-btn">-</button>
+                <span class="qty-val">{{ formatQuantity(item) }}</span>
+                <button @click="updateItemQuantity(item, 1)" class="qty-btn">+</button>
               </div>
             </div>
           </transition-group>
@@ -1042,15 +1058,16 @@ onUnmounted(() => {
   margin-bottom: 8px;
   border-radius: 12px;
   overflow: hidden;
+  align-items: stretch;
 }
 
 .category-lane {
-  flex: 0 0 115px;
+  flex: 0 0 32px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 12px 0;
+  padding: 8px 0;
   overflow: hidden;
 }
 
@@ -1061,10 +1078,9 @@ onUnmounted(() => {
   text-transform: uppercase;
   font-size: 13px;
   letter-spacing: 0.5px;
-  overflow: hidden;
+  overflow: visible;
   text-overflow: ellipsis;
   white-space: nowrap;
-  max-height: 100%;
 }
 
 .items-grid {
@@ -1121,6 +1137,7 @@ onUnmounted(() => {
   aspect-ratio: 1 / 1;
   min-height: 0;
   overflow: hidden;
+  justify-content: space-between;
 }
 .flash-highlight {
   animation: flash 1s ease-out;
@@ -1194,8 +1211,39 @@ onUnmounted(() => {
 .item-tags { position: absolute; top: 4px; left: 4px; display: flex; flex-direction: column; gap: 2px; align-items: flex-start; z-index: 2; pointer-events: none; }
 .tag-pill { font-size: 10px; background: var(--ks-surface-4); padding: 2px 6px; border-radius: 8px; color: var(--ks-text-muted); }
 .item-regular-tags {
-  font-size: 11px; color: inherit; opacity: 0.8; margin-top: 2px; line-height: 1.2;
+  font-size: 11px; color: inherit; margin-top: 2px; line-height: 1.2;
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100%;
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 12px;
+  padding: 2px;
+  margin-top: 4px;
+}
+
+.qty-btn {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0, 0, 0, 0.1);
+  color: inherit;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.qty-val {
+  font-size: 11px;
+  font-weight: 600;
+  color: inherit;
 }
 
 .delete-btn {
