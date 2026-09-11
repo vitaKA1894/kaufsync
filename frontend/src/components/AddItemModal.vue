@@ -1,19 +1,21 @@
 <script setup>
 import { ref, onMounted, nextTick, computed } from 'vue';
+import { useRoute } from 'vue-router';
+
 import { searchTaxonomy, debounce } from '../utils/search';
 import CategoryIcon from './CategoryIcon.vue';
 import BarcodeScanner from './BarcodeScanner.vue';
 
 // --- KATEGORIE DEFINITIONEN ---
 const predefinedCategories = [
-  { name: 'Obst & Gemüse', color: '#1B5E20', bg: '#C8E6C9' },
-  { name: 'Brot & Backwaren', color: '#F57F17', bg: '#FFF9C4' },
-  { name: 'Fleisch & Fisch', color: '#B71C1C', bg: '#FFCDD2' },
-  { name: 'Milchprodukte & Tiefkühlkost', color: '#01579B', bg: '#B3E5FC' },
-  { name: 'Vorratskammer', color: '#E65100', bg: '#FFE0B2' },
-  { name: 'Getränke & Genussmittel', color: '#1A237E', bg: '#C5CAE9' },
-  { name: 'Drogerie, Haushalt & Tierbedarf', color: '#006064', bg: '#B2EBF2' },
-  { name: 'Sonstiges', color: '#4A148C', bg: '#E1BEE7' }
+  { name: 'Obst & Gemüse', color: '#86efac', bg: '#86efac' }, // Tailwind bg-green-300
+  { name: 'Brot & Backwaren', color: '#fef08a', bg: '#fef08a' }, // Tailwind bg-yellow-200
+  { name: 'Fleisch & Fisch', color: '#fca5a5', bg: '#fca5a5' }, // Tailwind bg-rose-300
+  { name: 'Milchprodukte & Tiefkühlkost', color: '#93c5fd', bg: '#93c5fd' }, // Tailwind bg-blue-300
+  { name: 'Vorratskammer', color: '#fdba74', bg: '#fdba74' }, // Tailwind bg-orange-300
+  { name: 'Getränke & Genussmittel', color: '#a5b4fc', bg: '#a5b4fc' }, // Tailwind bg-indigo-300
+  { name: 'Drogerie, Haushalt & Tierbedarf', color: '#5eead4', bg: '#5eead4' }, // Tailwind bg-teal-300
+  { name: 'Sonstiges', color: '#d8b4fe', bg: '#d8b4fe' } // Tailwind bg-fuchsia-300
 ];
 
 const mapLegacyCategory = (catName) => {
@@ -36,6 +38,7 @@ const props = defineProps({
 });
 
 const emit = defineEmits(['close', 'add', 'update']);
+const route = useRoute();
 
 const query = ref('');
 const duplicateWarning = ref(false);
@@ -46,6 +49,71 @@ const selectedItem = ref(null);
 
 // Scanner State
 const showScanner = ref(false);
+
+// Sheet Dragging Logic
+const sheetRef = ref(null);
+const sheetStyle = ref({});
+let startY = 0;
+let currentY = 0;
+
+const onTouchStart = (e) => {
+  startY = e.touches[0].clientY;
+  currentY = startY;
+  sheetStyle.value = { transition: 'none' };
+};
+
+const onTouchMove = (e) => {
+  const y = e.touches[0].clientY;
+  currentY = y;
+  const delta = Math.max(0, y - startY); // Only allow dragging down
+  if (delta > 0) {
+    sheetStyle.value = { transform: `translateY(${delta}px)`, transition: 'none' };
+  }
+};
+
+const onTouchEnd = () => {
+  const delta = currentY - startY;
+  if (delta > 100) {
+    closeModal();
+  } else {
+    sheetStyle.value = { transform: 'translateY(0)', transition: 'transform 0.3s ease-out' };
+  }
+};
+
+
+
+const deleteItem = async () => {
+    if (!selectedItem.value) return;
+    try {
+        const token = localStorage.getItem('token');
+        const listId = activeItems.value.length > 0 ? activeItems.value[0].list_id : route.params.id;
+
+        let itemId = selectedItem.value.id;
+        // If it's a frontend search result, find the active item
+        if (!itemId || !activeItems.value.find(i => i.id === itemId)) {
+             const existing = activeItems.value.find(i => i.name.toLowerCase() === selectedItem.value.name.toLowerCase());
+             if (existing) {
+                 itemId = existing.id;
+             } else {
+                 closeModal();
+                 return;
+             }
+        }
+
+        const res = await fetch(`/api/items/${itemId}`, {
+            method: 'DELETE',
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
+        if (res.ok) {
+            emit('update');
+            closeModal();
+        }
+    } catch (e) {
+        console.error(e);
+    }
+};
 
 const handleScan = async (barcode) => {
     showScanner.value = false;
@@ -415,7 +483,7 @@ watch(() => props.isOpen, (newVal) => {
 <template>
   <transition name="scrim-fade">
     <div v-if="isOpen" class="modal-backdrop" @click="closeModal">
-      <div class="modal-content" :class="{ 'is-details': selectedItem }" @click.stop>
+      <div class="modal-content" :class="{ 'is-details': selectedItem }" @click.stop ref="sheetRef" :style="sheetStyle">
 
         <!-- STEP 1: Search -->
         <div v-if="!selectedItem" class="search-step-container" style="flex: 1; display: flex; flex-direction: column; min-height: 0;">
@@ -475,18 +543,24 @@ watch(() => props.isOpen, (newVal) => {
         </div>
 
         <!-- STEP 2: Tags Selection -->
+
         <div v-else class="tags-step">
-           <div class="ks-sheet__handle" style="margin: 8px auto 16px auto; width: 40px; height: 4px; background: var(--ks-border); border-radius: 2px;"></div>
+           <div class="ks-sheet__handle" @touchstart="onTouchStart" @touchmove="onTouchMove" @touchend="onTouchEnd"></div>
            <div class="modal-header" style="justify-content: space-between; align-items: center; margin-top: 0; padding-bottom: 16px;">
               <div style="display: flex; align-items: center; gap: 12px;">
-                 <CategoryIcon
-                   :name="selectedItem.name"
-                   :category="selectedItem.category"
-                   size="32"
-                 />
-                 <h2 style="margin:0; font-size: 24px; font-weight: bold;">{{ selectedItem.name }}</h2>
+                 <div class="icon-svg-container" :style="{ color: getCategoryDef(selectedItem.category).color }">
+                    <CategoryIcon
+                      :name="selectedItem.name"
+                      :category="selectedItem.category"
+                      size="64"
+                      style="width: 100%; height: 100%;"
+                    />
+                 </div>
+                 <div style="display: flex; flex-direction: column;">
+                     <span style="font-size: 12px; color: var(--ks-text-muted); text-transform: uppercase; letter-spacing: 0.05em;">{{ selectedItem.category }}</span>
+                     <h2 style="margin:0; font-size: 24px; font-weight: bold;">{{ selectedItem.name }}</h2>
+                 </div>
               </div>
-              <button class="ks-btn-text" @click="confirmSelection(false)" style="font-size: 16px; font-weight: 600; padding: 0;">Fertig</button>
            </div>
 
            <div class="tags-content">
@@ -494,14 +568,12 @@ watch(() => props.isOpen, (newVal) => {
                    <input
                        type="text"
                        v-model="manualQuantity"
-                       placeholder="Menge, Beschreibung..."
+                       placeholder="Notizen..."
                        class="modal-input"
-                       style="background: var(--ks-surface-3); font-size: 16px; padding: 14px 16px; flex: 1; min-width: 0; border-radius: 8px;"
+                       style="background: #1e293b; border-color: #334155; font-size: 16px; padding: 14px 16px; flex: 1; min-width: 0; border-radius: 8px;"
                        @keyup.enter="confirmSelection(false)"
                    />
                </div>
-
-               <p class="history-label" style="margin-top: 16px; font-size: 16px;">Details zu {{ selectedItem.name }}</p>
 
                <!-- Flat List of Tags -->
                <div class="tag-group" style="margin-bottom: 24px;">
@@ -510,18 +582,18 @@ watch(() => props.isOpen, (newVal) => {
                        v-for="tag in enhancedQuantities" :key="'q-'+tag"
                        class="ks-chip tag-chip tag-quantity"
                        :class="{ active: activeTags.includes(tag) }"
+                       :style="activeTags.includes(tag) ? { background: `color-mix(in srgb, ${getCategoryDef(selectedItem.category).bg} 20%, transparent)`, color: getCategoryDef(selectedItem.category).color, borderColor: `color-mix(in srgb, ${getCategoryDef(selectedItem.category).bg} 50%, transparent)` } : { background: '#1e293b', color: '#cbd5e1', borderColor: '#334155' }"
                        @click="toggleTag(tag)"
                    >
                        {{ tag }}
                    </button>
-
-
 
                    <!-- Constellations -->
                    <button
                        v-for="tag in selectedItem.tags.constellations" :key="'c-'+tag"
                        class="ks-chip tag-chip tag-meta"
                        :class="{ active: activeTags.includes(tag) }"
+                       :style="activeTags.includes(tag) ? { background: `color-mix(in srgb, ${getCategoryDef(selectedItem.category).bg} 20%, transparent)`, color: getCategoryDef(selectedItem.category).color, borderColor: `color-mix(in srgb, ${getCategoryDef(selectedItem.category).bg} 50%, transparent)` } : { background: '#1e293b', color: '#cbd5e1', borderColor: '#334155' }"
                        @click="toggleTag(tag)"
                    >
                        {{ tag }}
@@ -532,6 +604,7 @@ watch(() => props.isOpen, (newVal) => {
                        v-for="tag in selectedItem.tags.global_meta?.filter(t => !['Dringend', 'Angebot', 'Wenn\'s passt'].includes(t))" :key="'m-'+tag"
                        class="ks-chip tag-chip tag-meta"
                        :class="{ active: activeTags.includes(tag) }"
+                       :style="activeTags.includes(tag) ? { background: `color-mix(in srgb, ${getCategoryDef(selectedItem.category).bg} 20%, transparent)`, color: getCategoryDef(selectedItem.category).color, borderColor: `color-mix(in srgb, ${getCategoryDef(selectedItem.category).bg} 50%, transparent)` } : { background: '#1e293b', color: '#cbd5e1', borderColor: '#334155' }"
                        @click="toggleTag(tag)"
                    >
                        {{ tag }}
@@ -544,6 +617,7 @@ watch(() => props.isOpen, (newVal) => {
                        v-for="tag in ['Dringend', 'Angebot', 'Wenn\'s passt']" :key="'u-'+tag"
                        class="ks-chip tag-chip tag-meta urgency-tag"
                        :class="{ active: activeTags.includes(tag) }"
+                       :style="activeTags.includes(tag) ? { background: `color-mix(in srgb, ${getCategoryDef(selectedItem.category).bg} 20%, transparent)`, color: getCategoryDef(selectedItem.category).color, borderColor: `color-mix(in srgb, ${getCategoryDef(selectedItem.category).bg} 50%, transparent)` } : { background: '#1e293b', color: '#cbd5e1', borderColor: '#334155' }"
                        @click="toggleTag(tag)"
                        style="display: flex; align-items: center; gap: 6px;"
                    >
@@ -554,17 +628,15 @@ watch(() => props.isOpen, (newVal) => {
                    </button>
                </div>
 
-               <p class="tag-label">Einstellungen</p>
-               <div class="settings-grid">
-                   <button class="settings-btn" @click="showCategorySelector = true">
-                       <svg viewBox="0 0 24 24"><path d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/></svg>
-                       <span>Kategorie ändern</span>
-                   </button>
+               <div style="display: flex; gap: 12px; margin-top: auto; padding-top: 16px;">
+                  <button class="ks-btn-filled" style="flex: 1; background: #ef4444; color: white;" @click="deleteItem">Löschen</button>
+                  <button class="ks-btn-filled" style="flex: 1; background: #f8fafc; color: #0f172a;" @click="confirmSelection(false)">Speichern</button>
                </div>
            </div>
 
 
         </div>
+
 
         <!-- Category Selector Sheet -->
         <transition name="sheet-slide">
@@ -593,35 +665,45 @@ watch(() => props.isOpen, (newVal) => {
 </template>
 
 <style scoped>
+
 .modal-backdrop {
   position: fixed;
   top: 0; left: 0; width: 100%; height: 100%;
-  background: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
   z-index: 100;
   display: flex;
-  align-items: flex-start; /* Align top */
+  align-items: flex-end; /* Align bottom for sheet */
   justify-content: center;
 }
 
 .modal-content {
-  background: var(--ks-bg);
+  background: #0f172a; /* bg-slate-900 */
   width: 100%;
   max-width: var(--ks-page-width);
-  padding: 16px;
-  padding-top: max(16px, env(safe-area-inset-top));
-  height: 100%;
+  height: 90vh; /* Fixed max height for the sheet */
   display: flex;
   flex-direction: column;
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  border-radius: 24px 24px 0 0;
+  padding: 16px;
+  padding-bottom: max(16px, env(safe-area-inset-bottom));
+  transition: transform 0.3s cubic-bezier(0.2, 0, 0, 1);
 }
 
 .modal-content.is-details {
   height: auto;
   max-height: 90vh;
-  margin-top: auto;
-  border-radius: 20px 20px 0 0;
-  padding-top: 8px; /* Less padding on top since handle takes space */
 }
+
+.ks-sheet__handle {
+  width: 48px;
+  height: 6px;
+  background: #334155; /* bg-slate-700 */
+  border-radius: 3px;
+  margin: 0 auto 16px auto;
+  flex-shrink: 0;
+}
+
 
 .search-step {
   display: flex;

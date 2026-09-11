@@ -1,5 +1,5 @@
 <template>
-  <div class="app-shell">
+  <div class="app-shell bg-slate-900 max-w-md mx-auto shadow-2xl overflow-hidden relative">
     <div class="app-shell__glow app-shell__glow--one"></div>
     <div class="app-shell__glow app-shell__glow--two"></div>
     <router-view />
