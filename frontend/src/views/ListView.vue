@@ -83,14 +83,14 @@ const cancelPress = () => {
 
 // --- KATEGORIE DEFINITIONEN ---
 const predefinedCategories = [
-  { name: 'Obst & Gemüse', color: '#1B5E20', bg: '#C8E6C9' },
-  { name: 'Brot & Backwaren', color: '#F57F17', bg: '#FFF9C4' },
-  { name: 'Fleisch & Fisch', color: '#B71C1C', bg: '#FFCDD2' },
-  { name: 'Milchprodukte & Tiefkühlkost', color: '#01579B', bg: '#B3E5FC' },
-  { name: 'Vorratskammer', color: '#E65100', bg: '#FFE0B2' },
-  { name: 'Getränke & Genussmittel', color: '#1A237E', bg: '#C5CAE9' },
-  { name: 'Drogerie, Haushalt & Tierbedarf', color: '#006064', bg: '#B2EBF2' },
-  { name: 'Sonstiges', color: '#4A148C', bg: '#E1BEE7' }
+  { name: 'Obst & Gemüse', color: '#86efac', bg: '#86efac' }, // Tailwind bg-green-300
+  { name: 'Brot & Backwaren', color: '#fef08a', bg: '#fef08a' }, // Tailwind bg-yellow-200
+  { name: 'Fleisch & Fisch', color: '#fca5a5', bg: '#fca5a5' }, // Tailwind bg-rose-300
+  { name: 'Milchprodukte & Tiefkühlkost', color: '#93c5fd', bg: '#93c5fd' }, // Tailwind bg-blue-300
+  { name: 'Vorratskammer', color: '#fdba74', bg: '#fdba74' }, // Tailwind bg-orange-300
+  { name: 'Getränke & Genussmittel', color: '#a5b4fc', bg: '#a5b4fc' }, // Tailwind bg-indigo-300
+  { name: 'Drogerie, Haushalt & Tierbedarf', color: '#5eead4', bg: '#5eead4' }, // Tailwind bg-teal-300
+  { name: 'Sonstiges', color: '#d8b4fe', bg: '#d8b4fe' } // Tailwind bg-fuchsia-300
 ];
 
 const getTagStyle = (tag) => {
@@ -884,14 +884,13 @@ onUnmounted(() => {
           <section v-for="group in groupedActiveItems" :key="group.name" class="category-group"
                    :style="{ background: `linear-gradient(to right, color-mix(in srgb, ${group.def.bg} 15%, transparent) 0%, transparent 100%)` }">
 
-            <div class="category-lane" :style="{ backgroundColor: group.def.bg, color: group.def.color }">
+            <div class="category-lane" :style="{ color: group.def.color }">
               <span class="category-name">{{ formatCategoryName(group.name) }}</span>
-              <span class="category-count" style="margin-top: 8px;">{{ group.items.length }}</span>
+              <span class="category-count" style="margin-top: 8px; font-size: 10px; font-weight: 600; background: rgba(255,255,255,0.1); padding: 2px 6px; border-radius: 999px;">{{ group.items.length }}</span>
             </div>
 
             <transition-group name="list" tag="div" class="ks-grid items-grid">
               <div v-for="item in group.items" :key="item.id" class="grid-card active" :id="'item-' + item.id"
-                   :style="{ background: 'linear-gradient(135deg, ' + group.def.bg + ', color-mix(in srgb, ' + group.def.bg + ' 40%, transparent))', color: group.def.color }"
                    @click="toggleItemStatus(item)"
                    @mousedown="startPress(item, $event)"
                    @touchstart="startPress(item, $event)"
@@ -899,52 +898,18 @@ onUnmounted(() => {
                    @mouseleave="cancelPress"
                    @touchend="cancelPress"
                    @touchmove="cancelPress">
-                <div class="card-icon-area">
-                  <CategoryIcon class="icon-svg" :name="item.name" :category="item.category" size="64" />
+              <div class="grid-card-glow" :style="{ background: group ? group.def.bg : item._groupDef.bg }"></div>
+              <div class="card-icon-area" :style="{ color: group ? group.def.color : item._groupDef.color }">
+                <div class="icon-svg-container" style="width: 64px; height: 64px; display: flex; align-items: center; justify-content: center; padding: 8px;">
+                  <CategoryIcon class="icon-svg" :name="item.name" :category="item.category" size="48" style="width: 100%; height: 100%;" />
                 </div>
-                <div class="card-text-area">
-                  <span class="item-name">{{ item.name }}</span>
-                  <span class="item-regular-tags" v-if="getRegularTags(item.tags).length > 0">
-                    {{ formatTags(item.tags) }}
-                  </span>
-                  <div v-if="getUrgencyTags(item.tags).length > 0" class="item-tags">
-                    <span
-                      v-for="tag in getUrgencyTags(item.tags)"
-                      :key="tag"
-                      class="tag-pill"
-                      :style="{ background: getTagStyle(tag).bg, color: getTagStyle(tag).color }"
-                    >{{ tag }}</span>
-                  </div>
-                </div>
-                <div class="quantity-controls" @click.stop>
-                  <button @click="updateItemQuantity(item, -1)" class="qty-btn">-</button>
-                  <span class="qty-val">{{ formatQuantity(item) }}</span>
-                  <button @click="updateItemQuantity(item, 1)" class="qty-btn">+</button>
-                </div>
-              </div>
-            </transition-group>
-          </section>
-        </template>
-        <template v-else>
-          <transition-group name="list" tag="div" class="ks-grid items-grid" style="padding-top: 0;">
-            <div v-for="item in sortedActiveItems" :key="item.id" class="grid-card active" :id="'item-' + item.id"
-                 :style="{ background: 'linear-gradient(135deg, ' + item._groupDef.bg + ', color-mix(in srgb, ' + item._groupDef.bg + ' 40%, transparent))', color: item._groupDef.color }"
-                 @click="toggleItemStatus(item)"
-                 @mousedown="startPress(item, $event)"
-                 @touchstart="startPress(item, $event)"
-                 @mouseup="cancelPress"
-                 @mouseleave="cancelPress"
-                 @touchend="cancelPress"
-                 @touchmove="cancelPress">
-              <div class="card-icon-area">
-                <CategoryIcon class="icon-svg" :name="item.name" :category="item.category" size="64" />
               </div>
               <div class="card-text-area">
                 <span class="item-name">{{ item.name }}</span>
                 <span class="item-regular-tags" v-if="getRegularTags(item.tags).length > 0">
                   {{ formatTags(item.tags) }}
                 </span>
-                <div v-if="getUrgencyTags(item.tags).length > 0" class="item-tags">
+                <div v-if="getUrgencyTags(item.tags).length > 0" class="item-tags" style="position: absolute; top: -64px; left: -4px;">
                   <span
                     v-for="tag in getUrgencyTags(item.tags)"
                     :key="tag"
@@ -954,9 +919,48 @@ onUnmounted(() => {
                 </div>
               </div>
               <div class="quantity-controls" @click.stop>
-                <button @click="updateItemQuantity(item, -1)" class="qty-btn">-</button>
+                <button @click.stop="updateItemQuantity(item, -1)" class="qty-btn" style="background: #334155;">-</button>
                 <span class="qty-val">{{ formatQuantity(item) }}</span>
-                <button @click="updateItemQuantity(item, 1)" class="qty-btn">+</button>
+                <button @click.stop="updateItemQuantity(item, 1)" class="qty-btn" :style="{ background: group ? group.def.bg : item._groupDef.bg, color: '#000' }">+</button>
+              </div>
+              </div>
+            </transition-group>
+          </section>
+        </template>
+        <template v-else>
+          <transition-group name="list" tag="div" class="ks-grid items-grid" style="padding-top: 0;">
+            <div v-for="item in sortedActiveItems" :key="item.id" class="grid-card active" :id="'item-' + item.id"
+                   @click="toggleItemStatus(item)"
+                   @mousedown="startPress(item, $event)"
+                   @touchstart="startPress(item, $event)"
+                   @mouseup="cancelPress"
+                   @mouseleave="cancelPress"
+                   @touchend="cancelPress"
+                   @touchmove="cancelPress">
+              <div class="grid-card-glow" :style="{ background: group ? group.def.bg : item._groupDef.bg }"></div>
+              <div class="card-icon-area" :style="{ color: group ? group.def.color : item._groupDef.color }">
+                <div class="icon-svg-container" style="width: 64px; height: 64px; display: flex; align-items: center; justify-content: center; padding: 8px;">
+                  <CategoryIcon class="icon-svg" :name="item.name" :category="item.category" size="48" style="width: 100%; height: 100%;" />
+                </div>
+              </div>
+              <div class="card-text-area">
+                <span class="item-name">{{ item.name }}</span>
+                <span class="item-regular-tags" v-if="getRegularTags(item.tags).length > 0">
+                  {{ formatTags(item.tags) }}
+                </span>
+                <div v-if="getUrgencyTags(item.tags).length > 0" class="item-tags" style="position: absolute; top: -64px; left: -4px;">
+                  <span
+                    v-for="tag in getUrgencyTags(item.tags)"
+                    :key="tag"
+                    class="tag-pill"
+                    :style="{ background: getTagStyle(tag).bg, color: getTagStyle(tag).color }"
+                  >{{ tag }}</span>
+                </div>
+              </div>
+              <div class="quantity-controls" @click.stop>
+                <button @click.stop="updateItemQuantity(item, -1)" class="qty-btn" style="background: #334155;">-</button>
+                <span class="qty-val">{{ formatQuantity(item) }}</span>
+                <button @click.stop="updateItemQuantity(item, 1)" class="qty-btn" :style="{ background: group ? group.def.bg : item._groupDef.bg, color: '#000' }">+</button>
               </div>
             </div>
           </transition-group>
@@ -1061,46 +1065,56 @@ onUnmounted(() => {
   align-items: stretch;
 }
 
+
 .category-lane {
-  flex: 0 0 32px;
+  width: 24px;
+  min-width: 24px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 8px 0;
-  overflow: hidden;
+  border-radius: 0 4px 4px 0;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  background: transparent !important;
+  color: var(--ks-text-muted) !important;
+  position: relative;
+  overflow: visible;
+}
+
+.category-lane::before {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 8px;
+  bottom: 8px;
+  width: 4px;
+  border-radius: 2px;
+  background: currentColor;
+  box-shadow: 0 0 10px currentColor;
 }
 
 .category-name {
-  writing-mode: vertical-rl;
-  transform: rotate(180deg);
+  font-size: 10px;
   font-weight: 700;
   text-transform: uppercase;
-  font-size: 13px;
-  letter-spacing: 0.5px;
-  overflow: visible;
-  text-overflow: ellipsis;
+  letter-spacing: 0.1em;
+  color: currentColor;
   white-space: nowrap;
 }
 
-.items-grid {
-  flex: 1;
-  padding: 12px;
-  z-index: 1;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-  gap: 8px;
-  align-items: start;
+.category-count {
+  font-size: 10px;
+  font-weight: 600;
+  color: currentColor;
+  margin-bottom: 8px;
+  background: rgba(0,0,0,0.2);
+  padding: 2px 6px;
+  border-radius: 10px;
 }
 
-.category-badge {
-  padding: 6px 12px; border-radius: var(--ks-radius-xs);
-  font-size: 13px; font-weight: 700; letter-spacing: 0.5px;
-  text-transform: uppercase;
-}
-.category-count {
-  font-size: 14px; color: var(--ks-text-muted); font-weight: 500;
-}
 
 .completed-badge {
   background: var(--ks-surface-3); color: var(--ks-text-muted);
@@ -1119,132 +1133,97 @@ onUnmounted(() => {
 }
 .clear-completed-btn svg { width: 14px; height: 14px; fill: currentColor; }
 
+
 .ks-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 8px;
   align-items: start;
 }
 
 .grid-card {
   display: flex; flex-direction: column;
-  border-radius: var(--ks-radius-sm); padding: 4px;
+  border-radius: 1rem;
+  padding: 8px;
   cursor: pointer; text-align: center;
   transition: transform 0.1s, opacity 0.2s, background 0.2s, border-color 0.3s;
   position: relative;
-  background: var(--ks-surface-2);
-  border: 1px solid var(--ks-border);
+  background: #1e293b !important;
+  border: none;
   aspect-ratio: 1 / 1;
   min-height: 0;
   overflow: hidden;
-  justify-content: space-between;
-}
-.flash-highlight {
-  animation: flash 1s ease-out;
-}
-@keyframes flash {
-  0% { border-color: var(--ks-primary); background: var(--ks-primary-container); transform: scale(1.05); }
-  100% { border-color: var(--ks-border); background: var(--ks-surface-2); transform: scale(1); }
-}
-.grid-card:active { transform: scale(0.95); }
-.grid-card:hover { background: var(--ks-surface-3); }
-
-/* List Transition Animation */
-.list-enter-active,
-.list-leave-active {
-  transition: all 0.4s ease;
-}
-.list-enter-from,
-.list-leave-to {
-  opacity: 0;
-  transform: scale(0.5);
+  justify-content: flex-start;
+  color: white !important;
 }
 
-/* Erledigte Artikel Styles */
-.completed-section { opacity: 0.7; }
-.grid-card.completed { 
-  background: rgba(34, 197, 94, 0.15); /* Transparent green */
-  border-color: rgba(34, 197, 94, 0.3);
-}
-.grid-card.completed .card-icon-area {
-  background: transparent !important;
-  color: #4ade80 !important; /* Vivid green for icon */
-}
-.grid-card.completed .item-name {
-  text-decoration: line-through; color: #4ade80; font-weight: 500;
-}
-.grid-card.completed .item-quantity {
-  color: var(--ks-text-muted); opacity: 1;
+.grid-card-glow {
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  width: 6rem;
+  height: 6rem;
+  border-radius: 50%;
+  filter: blur(24px);
+  opacity: 0.15;
+  pointer-events: none;
 }
 
-.card-icon-area { 
-  display: flex; align-items: center; justify-content: center; 
-  height: 64px; margin-bottom: 2px; border-radius: var(--ks-radius-xs);
-  flex-shrink: 0;
-}
-.initials { font-size: 24px; font-weight: 700; }
-.icon-svg { display: flex; align-items: center; justify-content: center; width: 64px; height: 64px; }
-.icon-svg :deep(svg) { width: 100%; height: 100%; }
-
-.item-quantity {
-  font-size: 11px;
-  color: inherit;
-  opacity: 0.8;
-  margin-top: 2px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+.card-icon-area {
+  display: flex; justify-content: center; align-items: center;
   width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.icon-svg-container {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
 }
 
 .card-text-area {
   display: flex; flex-direction: column;
-  flex: 1; min-height: 0; overflow: hidden; width: 100%;
-  justify-content: flex-start; align-items: center;
-}
-.item-name { 
-  font-size: 12px; font-weight: 600;
-  white-space: nowrap; text-overflow: ellipsis;
-  overflow: hidden; line-height: 1.2; color: inherit;
+  margin-top: 4px;
   width: 100%;
+  position: relative;
+  z-index: 1;
 }
-.item-tags { position: absolute; top: 4px; left: 4px; display: flex; flex-direction: column; gap: 2px; align-items: flex-start; z-index: 2; pointer-events: none; }
-.tag-pill { font-size: 10px; background: var(--ks-surface-4); padding: 2px 6px; border-radius: 8px; color: var(--ks-text-muted); }
+
+.item-name {
+  font-size: 13px; font-weight: 600; line-height: 1.2;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  color: white;
+}
+
 .item-regular-tags {
-  font-size: 11px; color: inherit; margin-top: 2px; line-height: 1.2;
-  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100%;
+  font-size: 10px; color: #94a3b8; line-height: 1.2;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  margin-top: 2px;
 }
 
 .quantity-controls {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  background: rgba(0, 0, 0, 0.05);
-  border-radius: 12px;
-  padding: 2px;
-  margin-top: 4px;
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+  margin-top: auto;
+  position: relative;
+  z-index: 1;
 }
-
 .qty-btn {
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
+  width: 2rem; height: 2rem;
+  border-radius: 999px;
   border: none;
-  background: rgba(0, 0, 0, 0.1);
-  color: inherit;
-  font-weight: bold;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background: #334155;
+  color: white;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; font-weight: bold; cursor: pointer;
+}
+.qty-val {
+  font-size: 12px; font-weight: 600; min-width: 24px; text-align: center;
 }
 
-.qty-val {
-  font-size: 11px;
-  font-weight: 600;
-  color: inherit;
-}
 
 .delete-btn {
   position: absolute; top: -8px; right: -8px;

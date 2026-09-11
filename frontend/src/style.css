@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   color-scheme: dark;
   font-family: Inter, Roboto, "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
@@ -126,12 +130,23 @@ img {
   padding: max(16px, env(safe-area-inset-top)) 16px max(112px, calc(112px + env(safe-area-inset-bottom)));
 }
 
+
 .page-topbar {
   display: flex;
   align-items: center;
   gap: 12px;
   margin-bottom: 16px;
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  padding: max(16px, env(safe-area-inset-top)) 16px 12px;
+  margin-left: -16px;
+  margin-right: -16px;
+  background: rgba(15, 23, 42, 0.9); /* bg-slate-900/90 */
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* border-b border-white/5 */
 }
+
 
 .page-panel {
   background: linear-gradient(180deg, rgba(31, 34, 41, 0.96), rgba(21, 23, 29, 0.98));
@@ -466,4 +481,10 @@ body {
 input, textarea {
   user-select: auto;
   -webkit-user-select: auto;
+}
+
+/* Hide scrollbars globally for a native app feel */
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
 }

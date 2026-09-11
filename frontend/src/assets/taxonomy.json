@@ -10,15 +10,15 @@
     "tags": {
       "quantities": [
         "1",
-        "2",
-        "250g Schale",
-        "500g Schale"
+        "2"
       ],
       "constellations": [
         "Bio",
         "Regional",
         "Süß",
-        "Gewaschen"
+        "Gewaschen",
+        "250g Schale",
+        "500g Schale"
       ],
       "global_meta": [
         "Dringend",
@@ -39,13 +39,13 @@
     "tags": {
       "quantities": [
         "1",
-        "2",
-        "125g Schale",
-        "250g Schale"
+        "2"
       ],
       "constellations": [
         "Bio",
-        "Regional"
+        "Regional",
+        "125g Schale",
+        "250g Schale"
       ],
       "global_meta": [
         "Dringend",
@@ -67,15 +67,15 @@
     "tags": {
       "quantities": [
         "1",
-        "2",
-        "125 g",
-        "300 g",
-        "500g Schale"
+        "2"
       ],
       "constellations": [
         "Bio",
         "Kulturheidelbeeren",
-        "Waldheidelbeeren"
+        "Waldheidelbeeren",
+        "125 g",
+        "300 g",
+        "500g Schale"
       ],
       "global_meta": [
         "Dringend",
@@ -96,12 +96,12 @@
     "tags": {
       "quantities": [
         "1",
-        "2",
-        "125g Schale"
+        "2"
       ],
       "constellations": [
         "Bio",
-        "Regional"
+        "Regional",
+        "125g Schale"
       ],
       "global_meta": [
         "Dringend",
@@ -122,13 +122,13 @@
     "tags": {
       "quantities": [
         "1",
-        "2",
-        "250g Schale"
+        "2"
       ],
       "constellations": [
         "Rot",
         "Schwarz",
-        "Bio"
+        "Bio",
+        "250g Schale"
       ],
       "global_meta": [
         "Dringend",
@@ -150,16 +150,16 @@
     "category": "Obst & Gemüse",
     "tags": {
       "quantities": [
-        "1",
-        "500g Schale",
-        "1 kg"
+        "1"
       ],
       "constellations": [
         "Hell",
         "Dunkel",
         "Kernlos",
         "Bio",
-        "Süß"
+        "Süß",
+        "500g Schale",
+        "1 kg"
       ],
       "global_meta": [
         "Dringend",
@@ -216,18 +216,18 @@
     "category": "Obst & Gemüse",
     "tags": {
       "quantities": [
-        "1 kg",
         "1",
-        "5 kg",
-        "2 kg",
-        "2",
-        "5kg Sack"
+        "2"
       ],
       "constellations": [
         "Bio",
         "Festkochend",
         "Vorwiegend festk.",
-        "Mehlig"
+        "Mehlig",
+        "1 kg",
+        "5 kg",
+        "2 kg",
+        "5kg Sack"
       ],
       "global_meta": [
         "Dringend",
@@ -251,15 +251,15 @@
       "quantities": [
         "1",
         "2",
-        "3",
-        "1kg Netz",
-        "2kg Netz"
+        "3"
       ],
       "constellations": [
         "Gemüsezwiebeln",
         "Rote Zwiebeln",
         "Bio",
-        "Schalotten"
+        "Schalotten",
+        "1kg Netz",
+        "2kg Netz"
       ],
       "global_meta": [
         "Dringend",
@@ -283,15 +283,15 @@
     "tags": {
       "quantities": [
         "1",
-        "2",
-        "1kg Bund",
-        "1kg Sack",
-        "2kg Sack"
+        "2"
       ],
       "constellations": [
         "Bio",
         "Bundmöhren (mit Grün)",
-        "Waschmöhren"
+        "Waschmöhren",
+        "1kg Bund",
+        "1kg Sack",
+        "2kg Sack"
       ],
       "global_meta": [
         "Dringend",
@@ -314,15 +314,15 @@
     "tags": {
       "quantities": [
         "1",
-        "2",
-        "250g Schale",
-        "400g Schale"
+        "2"
       ],
       "constellations": [
         "Weiß",
         "Braun",
         "Bio",
-        "Riesenchampignons"
+        "Riesenchampignons",
+        "250g Schale",
+        "400g Schale"
       ],
       "global_meta": [
         "Dringend",
@@ -344,13 +344,13 @@
     "tags": {
       "quantities": [
         "1",
-        "2",
-        "200 g",
-        "400g Korb"
+        "2"
       ],
       "constellations": [
         "Bio",
-        "Saison"
+        "Saison",
+        "200 g",
+        "400g Korb"
       ],
       "global_meta": [
         "Dringend",
@@ -441,14 +441,14 @@
     "tags": {
       "quantities": [
         "1",
-        "2",
-        "750 g",
-        "1 kg"
+        "2"
       ],
       "constellations": [
         "Feinschnitt",
         "Wellenschnitt",
-        "Backofen-Pommes"
+        "Backofen-Pommes",
+        "750 g",
+        "1 kg"
       ],
       "global_meta": [
         "Dringend",
@@ -473,10 +473,7 @@
       "quantities": [
         "1",
         "2",
-        "3",
-        "400 g",
-        "750 g",
-        "1 kg"
+        "3"
       ],
       "constellations": [
         "Bio",
@@ -484,7 +481,10 @@
         "Rahmspinat",
         "Junge Toastbsen",
         "Toastbsen",
-        "Spinat"
+        "Spinat",
+        "400 g",
+        "750 g",
+        "1 kg"
       ],
       "global_meta": [
         "Dringend",
@@ -510,17 +510,17 @@
       "quantities": [
         "1",
         "2",
-        "3",
-        "500ml",
-        "1 L",
-        "3er Pack"
+        "3"
       ],
       "constellations": [
         "Vanille",
         "Schoko",
         "Magnum",
         "Ben & Jerry's",
-        "Vegan"
+        "Vegan",
+        "500ml",
+        "1 L",
+        "3er Pack"
       ],
       "global_meta": [
         "Dringend",
@@ -547,14 +547,14 @@
       "quantities": [
         "1",
         "2",
-        "3",
-        "720ml (Glas)"
+        "3"
       ],
       "constellations": [
         "Cornichons",
         "Mild",
         "Scharf",
-        "Kühne (Marke)"
+        "Kühne (Marke)",
+        "720ml (Glas)"
       ],
       "global_meta": [
         "Dringend",
@@ -581,9 +581,7 @@
         "3",
         "4",
         "5",
-        "6",
-        "1kg Netz",
-        "2kg Netz"
+        "6"
       ],
       "constellations": [
         "Bio",
@@ -599,7 +597,9 @@
         "Boskoop",
         "Golden Delicious",
         "Saisonal",
-        "Obst"
+        "Obst",
+        "1kg Netz",
+        "2kg Netz"
       ],
       "global_meta": [
         "Dringend",
@@ -623,9 +623,7 @@
         "2",
         "3",
         "4",
-        "5",
-        "Staude",
-        "1 kg"
+        "5"
       ],
       "constellations": [
         "Bio",
@@ -636,7 +634,9 @@
         "Baby",
         "Koch",
         "Import",
-        "Obst"
+        "Obst",
+        "Staude",
+        "1 kg"
       ],
       "global_meta": [
         "Dringend",
@@ -659,8 +659,6 @@
         "2",
         "3",
         "4",
-        "500 g",
-        "1 kg",
         "5"
       ],
       "constellations": [
@@ -672,7 +670,9 @@
         "Williams Christ",
         "Gute Luise",
         "Saisonal",
-        "Obst"
+        "Obst",
+        "500 g",
+        "1 kg"
       ],
       "global_meta": [
         "Dringend",
@@ -693,8 +693,6 @@
     "tags": {
       "quantities": [
         "1",
-        "1/2 Stück",
-        "1/4 Stück",
         "2",
         "3",
         "4",
@@ -708,7 +706,9 @@
         "Mini",
         "Frisch",
         "Saisonal",
-        "Sommer"
+        "Sommer",
+        "1/2 Stück",
+        "1/4 Stück"
       ],
       "global_meta": [
         "Dringend",
@@ -757,9 +757,6 @@
         "1",
         "2",
         "3",
-        "1kg Netz",
-        "2kg Netz",
-        "3 kg",
         "4",
         "5"
       ],
@@ -771,7 +768,10 @@
         "Ess",
         "Blut",
         "Zitrusfrucht",
-        "Vitamin C"
+        "Vitamin C",
+        "1kg Netz",
+        "2kg Netz",
+        "3 kg"
       ],
       "global_meta": [
         "Dringend",
@@ -794,8 +794,6 @@
       "quantities": [
         "1",
         "2",
-        "1kg Netz",
-        "5kg Netz",
         "3",
         "4",
         "5"
@@ -808,7 +806,9 @@
         "Clementine",
         "Satsuma",
         "Zitrusfrucht",
-        "Winter"
+        "Winter",
+        "1kg Netz",
+        "5kg Netz"
       ],
       "global_meta": [
         "Dringend",
@@ -832,8 +832,6 @@
         "2",
         "3",
         "4",
-        "3er Netz",
-        "500 g",
         "5"
       ],
       "constellations": [
@@ -842,7 +840,9 @@
         "Saft",
         "Klassisch",
         "Zitrusfrucht",
-        "Sauer"
+        "Sauer",
+        "3er Netz",
+        "500 g"
       ],
       "global_meta": [
         "Dringend",
@@ -866,7 +866,6 @@
         "2",
         "3",
         "4",
-        "4er Netz",
         "5"
       ],
       "constellations": [
@@ -874,7 +873,8 @@
         "Unbehandelte Schale",
         "Klassisch",
         "Zitrusfrucht",
-        "Cocktail"
+        "Cocktail",
+        "4er Netz"
       ],
       "global_meta": [
         "Dringend",
@@ -931,7 +931,6 @@
         "2",
         "3",
         "4",
-        "500g Schale",
         "5"
       ],
       "constellations": [
@@ -944,7 +943,8 @@
         "Weinberg",
         "Dosen",
         "Saisonal",
-        "Steinobst"
+        "Steinobst",
+        "500g Schale"
       ],
       "global_meta": [
         "Dringend",
@@ -967,7 +967,6 @@
         "2",
         "3",
         "4",
-        "500g Schale",
         "5"
       ],
       "constellations": [
@@ -977,7 +976,8 @@
         "Klassisch",
         "Platt",
         "Saisonal",
-        "Steinobst"
+        "Steinobst",
+        "500g Schale"
       ],
       "global_meta": [
         "Dringend",
@@ -1001,8 +1001,6 @@
       "quantities": [
         "1",
         "2",
-        "500 g",
-        "1 kg",
         "3",
         "4",
         "5"
@@ -1013,7 +1011,9 @@
         "Klassisch",
         "Zwetschge",
         "Mirabelle",
-        "Saisonal"
+        "Saisonal",
+        "500 g",
+        "1 kg"
       ],
       "global_meta": [
         "Dringend",
@@ -1030,14 +1030,14 @@
     "category": "Obst & Gemüse",
     "tags": {
       "quantities": [
-        "1",
-        "500g Schale",
-        "1 kg"
+        "1"
       ],
       "constellations": [
         "Bio",
         "Regional",
-        "Knorpelkirschen"
+        "Knorpelkirschen",
+        "500g Schale",
+        "1 kg"
       ],
       "global_meta": [
         "Dringend",
@@ -1061,8 +1061,6 @@
         "2",
         "3",
         "4",
-        "4er Pack",
-        "1kg Korb",
         "5"
       ],
       "constellations": [
@@ -1072,7 +1070,9 @@
         "Essreif",
         "Gold",
         "Zitrusfrucht",
-        "Vitamin C"
+        "Vitamin C",
+        "4er Pack",
+        "1kg Korb"
       ],
       "global_meta": [
         "Dringend",
@@ -1126,7 +1126,6 @@
         "1",
         "2",
         "3",
-        "2er Netz",
         "4",
         "5"
       ],
@@ -1136,7 +1135,8 @@
         "Bio",
         "Fuerte",
         "Ready-to-eat",
-        "Superfood"
+        "Superfood",
+        "2er Netz"
       ],
       "global_meta": [
         "Dringend",
@@ -1327,8 +1327,6 @@
         "2",
         "3",
         "4",
-        "500g Rispe",
-        "1 kg",
         "5"
       ],
       "constellations": [
@@ -1341,7 +1339,9 @@
         "Cherrytomaten",
         "Roma",
         "Dosen",
-        "Gemüse"
+        "Gemüse",
+        "500g Rispe",
+        "1 kg"
       ],
       "global_meta": [
         "Dringend",
@@ -1359,15 +1359,15 @@
     "tags": {
       "quantities": [
         "1",
-        "2",
-        "250g Schale",
-        "500g Schale"
+        "2"
       ],
       "constellations": [
         "Bio",
         "Datteltomaten",
         "Süß",
-        "Snacktomaten"
+        "Snacktomaten",
+        "250g Schale",
+        "500g Schale"
       ],
       "global_meta": [
         "Dringend",
@@ -1418,7 +1418,6 @@
         "2",
         "3",
         "4",
-        "3er Mix (500g)",
         "5"
       ],
       "constellations": [
@@ -1432,7 +1431,8 @@
         "Mix-Tüte",
         "Regional",
         "Vitamin C",
-        "Gemüse"
+        "Gemüse",
+        "3er Mix (500g)"
       ],
       "global_meta": [
         "Dringend",
@@ -1455,8 +1455,6 @@
         "1",
         "2",
         "3",
-        "1 kg",
-        "Lose",
         "4",
         "5"
       ],
@@ -1464,7 +1462,9 @@
         "Bio",
         "Klassisch",
         "Import",
-        "Gesund"
+        "Gesund",
+        "1 kg",
+        "Lose"
       ],
       "global_meta": [
         "Dringend",
@@ -1487,9 +1487,6 @@
       "quantities": [
         "1",
         "2",
-        "3 Knollen",
-        "3er Netz",
-        "200 g",
         "3",
         "4",
         "5"
@@ -1502,7 +1499,10 @@
         "Frischer",
         "Solo",
         "Import",
-        "Aromatisch"
+        "Aromatisch",
+        "3 Knollen",
+        "3er Netz",
+        "200 g"
       ],
       "global_meta": [
         "Dringend",
@@ -1609,12 +1609,12 @@
     "tags": {
       "quantities": [
         "1",
-        "2",
-        "125g Schale"
+        "2"
       ],
       "constellations": [
         "Bio",
-        "Gewaschen"
+        "Gewaschen",
+        "125g Schale"
       ],
       "global_meta": [
         "Dringend",
@@ -1632,13 +1632,13 @@
     "tags": {
       "quantities": [
         "1",
-        "2",
-        "150g Schale"
+        "2"
       ],
       "constellations": [
         "Bio",
         "Gewaschen",
-        "Wurzel-frei"
+        "Wurzel-frei",
+        "150g Schale"
       ],
       "global_meta": [
         "Dringend",
@@ -1658,13 +1658,13 @@
     "tags": {
       "quantities": [
         "1",
-        "2",
-        "2er Pack",
-        "3er Pack"
+        "2"
       ],
       "constellations": [
         "Bio",
-        "Mini-Romana"
+        "Mini-Romana",
+        "2er Pack",
+        "3er Pack"
       ],
       "global_meta": [
         "Dringend",
@@ -1686,9 +1686,7 @@
     "tags": {
       "quantities": [
         "1",
-        "2",
-        "500g Beutel",
-        "250 g"
+        "2"
       ],
       "constellations": [
         "Babyspinat",
@@ -1699,7 +1697,9 @@
         "TK-Blatt",
         "Regional",
         "Gemüse",
-        "Iglo"
+        "Iglo",
+        "500g Beutel",
+        "250 g"
       ],
       "global_meta": [
         "Dringend",
@@ -1723,8 +1723,6 @@
         "2",
         "3",
         "4",
-        "500 g",
-        "1 kg",
         "5"
       ],
       "constellations": [
@@ -1733,7 +1731,9 @@
         "Grün",
         "Gelb",
         "Saisonal",
-        "Gemüse"
+        "Gemüse",
+        "500 g",
+        "1 kg"
       ],
       "global_meta": [
         "Dringend",
@@ -1787,7 +1787,6 @@
         "1",
         "2",
         "3",
-        "500 g",
         "4",
         "5"
       ],
@@ -1797,7 +1796,8 @@
         "Frisch",
         "TK",
         "Saisonal",
-        "Gemüse"
+        "Gemüse",
+        "500 g"
       ],
       "global_meta": [
         "Dringend",
@@ -2013,9 +2013,7 @@
     "tags": {
       "quantities": [
         "1",
-        "2",
-        "500g Netz",
-        "750 g"
+        "2"
       ],
       "constellations": [
         "Bio",
@@ -2024,7 +2022,9 @@
         "TK",
         "Saisonal",
         "Winter",
-        "Gemüse"
+        "Gemüse",
+        "500g Netz",
+        "750 g"
       ],
       "global_meta": [
         "Dringend",
@@ -2044,9 +2044,7 @@
     "category": "Obst & Gemüse",
     "tags": {
       "quantities": [
-        "1",
-        "500g Beutel",
-        "1kg Sack"
+        "1"
       ],
       "constellations": [
         "Bio",
@@ -2057,7 +2055,9 @@
         "Im Glas",
         "Saisonal",
         "Winter",
-        "Deftig"
+        "Deftig",
+        "500g Beutel",
+        "1kg Sack"
       ],
       "global_meta": [
         "Dringend",
@@ -2080,7 +2080,6 @@
       "quantities": [
         "1",
         "2",
-        "3 Stangen",
         "3",
         "4",
         "5"
@@ -2090,7 +2089,8 @@
         "Regional",
         "Klassisch",
         "Saisonal",
-        "Kochen"
+        "Kochen",
+        "3 Stangen"
       ],
       "global_meta": [
         "Dringend",
@@ -2155,7 +2155,6 @@
       "quantities": [
         "1",
         "2",
-        "3 Bund",
         "3",
         "4",
         "5"
@@ -2165,7 +2164,8 @@
         "Regional",
         "Bund",
         "Saisonal",
-        "Scharf"
+        "Scharf",
+        "3 Bund"
       ],
       "global_meta": [
         "Dringend",
@@ -2211,9 +2211,7 @@
     "tags": {
       "quantities": [
         "1",
-        "2",
-        "500 g",
-        "1 kg"
+        "2"
       ],
       "constellations": [
         "Bio",
@@ -2222,7 +2220,9 @@
         "Gegart vakuumiert",
         "Regional",
         "Saisonal",
-        "Gemüse"
+        "Gemüse",
+        "500 g",
+        "1 kg"
       ],
       "global_meta": [
         "Dringend",
@@ -2245,8 +2245,6 @@
       "quantities": [
         "1",
         "2",
-        "500g Bund",
-        "1 kg",
         "3",
         "4",
         "5"
@@ -2261,7 +2259,9 @@
         "Grüner",
         "Saisonal",
         "Premium",
-        "Gemüse"
+        "Gemüse",
+        "500g Bund",
+        "1 kg"
       ],
       "global_meta": [
         "Dringend",
@@ -2343,9 +2343,7 @@
     "tags": {
       "quantities": [
         "1",
-        "2",
-        "3 Bund",
-        "1 Topf"
+        "2"
       ],
       "constellations": [
         "Glatt",
@@ -2353,7 +2351,9 @@
         "Bio",
         "Regional",
         "TK",
-        "Kräuter"
+        "Kräuter",
+        "3 Bund",
+        "1 Topf"
       ],
       "global_meta": [
         "Dringend",
@@ -2373,16 +2373,16 @@
     "tags": {
       "quantities": [
         "1",
-        "2",
-        "3 Bund",
-        "1 Topf"
+        "2"
       ],
       "constellations": [
         "Bio",
         "Topf",
         "Gerebelt",
         "Kräuter",
-        "Italienisch"
+        "Italienisch",
+        "3 Bund",
+        "1 Topf"
       ],
       "global_meta": [
         "Dringend",
@@ -2403,16 +2403,16 @@
     "tags": {
       "quantities": [
         "1",
-        "2",
-        "100 g",
-        "250 g"
+        "2"
       ],
       "constellations": [
         "Bio",
         "Klassisch",
         "Scharf",
         "Superfood",
-        "Knolle"
+        "Knolle",
+        "100 g",
+        "250 g"
       ],
       "global_meta": [
         "Dringend",
@@ -2433,15 +2433,15 @@
     "tags": {
       "quantities": [
         "1",
-        "2",
-        "100 g"
+        "2"
       ],
       "constellations": [
         "Bio",
         "Gemahlen",
         "Gewürz",
         "Gesund",
-        "Gelb"
+        "Gelb",
+        "100 g"
       ],
       "global_meta": [
         "Dringend",
@@ -2462,14 +2462,14 @@
       "quantities": [
         "1",
         "2",
-        "3",
-        "50g Schale"
+        "3"
       ],
       "constellations": [
         "Rot",
         "Grün",
         "Bio",
-        "Scharf"
+        "Scharf",
+        "50g Schale"
       ],
       "global_meta": [
         "Dringend",
@@ -2494,10 +2494,7 @@
     "tags": {
       "quantities": [
         "1",
-        "2",
-        "500 g",
-        "750 g",
-        "1 kg"
+        "2"
       ],
       "constellations": [
         "Laib",
@@ -2511,7 +2508,10 @@
         "Eiweiß",
         "Frisches Holzofen",
         "Bio",
-        "Bäcker"
+        "Bäcker",
+        "500 g",
+        "750 g",
+        "1 kg"
       ],
       "global_meta": [
         "Dringend",
@@ -2531,14 +2531,14 @@
     "tags": {
       "quantities": [
         "1",
-        "2",
-        "500g Packung"
+        "2"
       ],
       "constellations": [
         "Bio",
         "Sauerteig",
         "Abgepackt",
-        "Ohne Hefe"
+        "Ohne Hefe",
+        "500g Packung"
       ],
       "global_meta": [
         "Dringend",
@@ -2558,15 +2558,15 @@
     "tags": {
       "quantities": [
         "1",
-        "2",
-        "500 g",
-        "750 g",
-        "1 kg"
+        "2"
       ],
       "constellations": [
         "Laib",
         "Geschnitten",
-        "Frisch (Bäcker)"
+        "Frisch (Bäcker)",
+        "500 g",
+        "750 g",
+        "1 kg"
       ],
       "global_meta": [
         "Dringend",
@@ -2584,16 +2584,16 @@
     "tags": {
       "quantities": [
         "1",
-        "2",
-        "250 g",
-        "500 g",
-        "750 g"
+        "2"
       ],
       "constellations": [
         "Vollkorn",
         "Buttertoast",
         "Sandwich",
-        "Dreikorn"
+        "Dreikorn",
+        "250 g",
+        "500 g",
+        "750 g"
       ],
       "global_meta": [
         "Dringend",
@@ -2623,8 +2623,7 @@
         "5",
         "6",
         "8",
-        "10",
-        "5er Pack"
+        "10"
       ],
       "constellations": [
         "Weizen",
@@ -2637,7 +2636,8 @@
         "Aufback",
         "Sonntags",
         "TK",
-        "Aufbacken"
+        "Aufbacken",
+        "5er Pack"
       ],
       "global_meta": [
         "Dringend",
@@ -2659,9 +2659,7 @@
         "3",
         "4",
         "5",
-        "6",
-        "2er Pack",
-        "TK 10er"
+        "6"
       ],
       "constellations": [
         "Frisch",
@@ -2669,7 +2667,9 @@
         "Bäcker",
         "Salz",
         "Brezel",
-        "Stange"
+        "Stange",
+        "2er Pack",
+        "TK 10er"
       ],
       "global_meta": [
         "Dringend",
@@ -2689,16 +2689,16 @@
         "1",
         "2",
         "3",
-        "4",
-        "4er Pack",
-        "6er Pack"
+        "4"
       ],
       "constellations": [
         "Butter",
         "Schoko",
         "Lauge",
         "Frisch",
-        "Aufback"
+        "Aufback",
+        "4er Pack",
+        "6er Pack"
       ],
       "global_meta": [
         "Dringend",
@@ -2719,14 +2719,14 @@
       "quantities": [
         "1",
         "2",
-        "3",
-        "2er Pack"
+        "3"
       ],
       "constellations": [
         "Französisch",
         "Aufback",
         "Knoblauch",
-        "Vollkorn"
+        "Vollkorn",
+        "2er Pack"
       ],
       "global_meta": [
         "Dringend",
@@ -2779,15 +2779,15 @@
     "tags": {
       "quantities": [
         "1",
-        "2",
-        "6er Pack",
-        "8er Pack"
+        "2"
       ],
       "constellations": [
         "Weizen",
         "Vollkorn",
         "Mais",
-        "Glutenfrei"
+        "Glutenfrei",
+        "6er Pack",
+        "8er Pack"
       ],
       "global_meta": [
         "Dringend",
@@ -2810,8 +2810,6 @@
       "quantities": [
         "1",
         "2",
-        "200 g",
-        "250g Packung",
         "3",
         "4",
         "5"
@@ -2825,7 +2823,9 @@
         "Vollkorn",
         "Müsli",
         "Knusprig",
-        "Diät"
+        "Diät",
+        "200 g",
+        "250g Packung"
       ],
       "global_meta": [
         "Dringend",
@@ -2847,8 +2847,6 @@
       "quantities": [
         "1",
         "2",
-        "250 g",
-        "500 g",
         "3",
         "4",
         "5"
@@ -2860,7 +2858,9 @@
         "Klassisch",
         "Gesund",
         "Vollkorn",
-        "Langhaltbar"
+        "Langhaltbar",
+        "250 g",
+        "500 g"
       ],
       "global_meta": [
         "Dringend",
@@ -2882,8 +2882,6 @@
       "quantities": [
         "1",
         "2",
-        "225 g",
-        "500 g",
         "3",
         "4",
         "5"
@@ -2897,7 +2895,9 @@
         "Mini- Schoko",
         "Knusprig",
         "Magen-Darm",
-        "Kinder"
+        "Kinder",
+        "225 g",
+        "500 g"
       ],
       "global_meta": [
         "Dringend",
@@ -2921,8 +2921,6 @@
       "quantities": [
         "1",
         "2",
-        "100 g",
-        "130g Rolle",
         "3",
         "4",
         "5"
@@ -2937,7 +2935,9 @@
         "Mit Vollmilchschokolade",
         "Glutenfrei",
         "Snack",
-        "Mager"
+        "Mager",
+        "100 g",
+        "130g Rolle"
       ],
       "global_meta": [
         "Dringend",
@@ -2955,15 +2955,14 @@
     ],
     "category": "Brot & Backwaren",
     "tags": {
-      "quantities": [
-        "1 Stück",
-        "Ganzer Kuchen",
-        "400 g"
-      ],
+      "quantities": [],
       "constellations": [
         "Rührkuchen",
         "Tiefkühl",
-        "Obstboden"
+        "Obstboden",
+        "1 Stück",
+        "Ganzer Kuchen",
+        "400 g"
       ],
       "global_meta": [
         "Dringend",
@@ -2987,11 +2986,7 @@
     "tags": {
       "quantities": [
         "1",
-        "2",
-        "300 g",
-        "400 g",
-        "500 g",
-        "1 kg"
+        "2"
       ],
       "constellations": [
         "Rind & Schwein",
@@ -3007,7 +3002,11 @@
         "Frisch",
         "TK",
         "Pfanne",
-        "Protein"
+        "Protein",
+        "300 g",
+        "400 g",
+        "500 g",
+        "1 kg"
       ],
       "global_meta": [
         "Dringend",
@@ -3025,16 +3024,16 @@
     "tags": {
       "quantities": [
         "1",
-        "2",
-        "400 g",
-        "500 g"
+        "2"
       ],
       "constellations": [
         "Bio",
         "Mager",
         "Haltungsform 4",
         "SB",
-        "Theke"
+        "Theke",
+        "400 g",
+        "500 g"
       ],
       "global_meta": [
         "Dringend",
@@ -3059,9 +3058,6 @@
         "2",
         "3",
         "4",
-        "400 g",
-        "500 g",
-        "2 Stk",
         "5"
       ],
       "constellations": [
@@ -3074,7 +3070,10 @@
         "Veganes Schnitzel paniert",
         "Klassiker",
         "Pfanne",
-        "Fleisch"
+        "Fleisch",
+        "400 g",
+        "500 g",
+        "2 Stk"
       ],
       "global_meta": [
         "Dringend",
@@ -3096,8 +3095,6 @@
       "quantities": [
         "1",
         "2",
-        "500 g",
-        "1 kg",
         "3",
         "4",
         "5"
@@ -3108,7 +3105,9 @@
         "Bio",
         "Frisch",
         "Zart",
-        "Mager"
+        "Mager",
+        "500 g",
+        "1 kg"
       ],
       "global_meta": [
         "Dringend",
@@ -3129,8 +3128,6 @@
     "tags": {
       "quantities": [
         "1",
-        "1 kg",
-        "5 kg",
         "2",
         "3",
         "4",
@@ -3144,7 +3141,9 @@
         "Aufschnitt",
         "Traditionell",
         "Ofen",
-        "Herzhaft"
+        "Herzhaft",
+        "1 kg",
+        "5 kg"
       ],
       "global_meta": [
         "Dringend",
@@ -3169,8 +3168,6 @@
         "2",
         "3",
         "4",
-        "200 g",
-        "400 g",
         "5"
       ],
       "constellations": [
@@ -3185,7 +3182,9 @@
         "Frisch",
         "Rind",
         "Grillen",
-        "Premium"
+        "Premium",
+        "200 g",
+        "400 g"
       ],
       "global_meta": [
         "Dringend",
@@ -3207,9 +3206,6 @@
       "quantities": [
         "1",
         "2",
-        "400 g",
-        "500 g",
-        "1 kg",
         "3",
         "4",
         "5"
@@ -3222,7 +3218,10 @@
         "TK",
         "Eintopf",
         "Deftig",
-        "Rind"
+        "Rind",
+        "400 g",
+        "500 g",
+        "1 kg"
       ],
       "global_meta": [
         "Dringend",
@@ -3239,14 +3238,14 @@
     "category": "Fleisch & Fisch",
     "tags": {
       "quantities": [
-        "1",
-        "1 kg",
-        "5 kg"
+        "1"
       ],
       "constellations": [
         "Schulter",
         "Tafelspitz",
-        "Bio"
+        "Bio",
+        "1 kg",
+        "5 kg"
       ],
       "global_meta": [
         "Dringend",
@@ -3270,9 +3269,6 @@
       "quantities": [
         "1",
         "2",
-        "400 g",
-        "600 g",
-        "1 kg",
         "3",
         "4",
         "5"
@@ -3290,7 +3286,10 @@
         "Mager",
         "High Protein",
         "Geflügel",
-        "Fleisch"
+        "Fleisch",
+        "400 g",
+        "600 g",
+        "1 kg"
       ],
       "global_meta": [
         "Dringend",
@@ -3310,14 +3309,14 @@
     "tags": {
       "quantities": [
         "1",
-        "2",
-        "600 g",
-        "1 kg"
+        "2"
       ],
       "constellations": [
         "Bio",
         "Gewürzt",
-        "Ohne Knochen"
+        "Ohne Knochen",
+        "600 g",
+        "1 kg"
       ],
       "global_meta": [
         "Dringend",
@@ -3335,15 +3334,15 @@
     "tags": {
       "quantities": [
         "1",
-        "2",
-        "1 kg",
-        "2 kg"
+        "2"
       ],
       "constellations": [
         "Bio",
         "TK",
         "Frisch",
-        "Kikok"
+        "Kikok",
+        "1 kg",
+        "2 kg"
       ],
       "global_meta": [
         "Dringend",
@@ -3368,8 +3367,6 @@
       "quantities": [
         "1",
         "2",
-        "400 g",
-        "500 g",
         "3",
         "4",
         "5"
@@ -3385,7 +3382,9 @@
         "Geflügel",
         "Mager",
         "Aufschnitt",
-        "Fleisch"
+        "Fleisch",
+        "400 g",
+        "500 g"
       ],
       "global_meta": [
         "Dringend",
@@ -3405,15 +3404,15 @@
     "tags": {
       "quantities": [
         "1",
-        "2",
-        "400 g",
-        "1 kg",
-        "Ganzer Vogel"
+        "2"
       ],
       "constellations": [
         "TK",
         "Frisch",
-        "Weihnachten (Saison)"
+        "Weihnachten (Saison)",
+        "400 g",
+        "1 kg",
+        "Ganzer Vogel"
       ],
       "global_meta": [
         "Dringend",
@@ -3433,14 +3432,14 @@
     "tags": {
       "quantities": [
         "1",
-        "2",
-        "300 g",
-        "1 kg"
+        "2"
       ],
       "constellations": [
         "Neuseeland",
         "Bio",
-        "Theke"
+        "Theke",
+        "300 g",
+        "1 kg"
       ],
       "global_meta": [
         "Dringend",
@@ -3466,9 +3465,6 @@
         "2",
         "3",
         "4",
-        "4er Pack",
-        "5er Pack",
-        "400 g",
         "5"
       ],
       "constellations": [
@@ -3484,7 +3480,10 @@
         "Rote Grillwurst",
         "Grillen",
         "Pfanne",
-        "Deftig"
+        "Deftig",
+        "4er Pack",
+        "5er Pack",
+        "400 g"
       ],
       "global_meta": [
         "Dringend",
@@ -3509,10 +3508,7 @@
     "tags": {
       "quantities": [
         "1",
-        "2",
-        "100 g",
-        "150 g",
-        "200 g"
+        "2"
       ],
       "constellations": [
         "Bio",
@@ -3529,7 +3525,10 @@
         "Aufschnitt",
         "Vesper",
         "Pizza",
-        "Dauerwurst"
+        "Dauerwurst",
+        "100 g",
+        "150 g",
+        "200 g"
       ],
       "global_meta": [
         "Dringend",
@@ -3553,9 +3552,6 @@
       "quantities": [
         "1",
         "2",
-        "100 g",
-        "150 g",
-        "200 g",
         "3",
         "4",
         "5"
@@ -3571,7 +3567,10 @@
         "Veganer Schinkenaufschnitt",
         "Aufschnitt",
         "Mager",
-        "Vesper"
+        "Vesper",
+        "100 g",
+        "150 g",
+        "200 g"
       ],
       "global_meta": [
         "Dringend",
@@ -3596,8 +3595,6 @@
       "quantities": [
         "1",
         "2",
-        "80 g",
-        "100 g",
         "3",
         "4",
         "5"
@@ -3614,7 +3611,9 @@
         "Luftgetrockneter Schinken",
         "Aufschnitt",
         "Feinkost",
-        "Aromatisch"
+        "Aromatisch",
+        "80 g",
+        "100 g"
       ],
       "global_meta": [
         "Dringend",
@@ -3637,9 +3636,6 @@
       "quantities": [
         "1",
         "2",
-        "125 g",
-        "150 g",
-        "250 g",
         "3",
         "4",
         "5"
@@ -3656,7 +3652,10 @@
         "Vegane",
         "Streichwurst",
         "Vesper",
-        "Herzhaft"
+        "Herzhaft",
+        "125 g",
+        "150 g",
+        "250 g"
       ],
       "global_meta": [
         "Dringend",
@@ -3676,16 +3675,16 @@
     "tags": {
       "quantities": [
         "1",
-        "2",
-        "1 Ring",
-        "200 g",
-        "400 g"
+        "2"
       ],
       "constellations": [
         "Geflügel",
         "Mit Knoblauch",
         "Theke",
-        "Bio"
+        "Bio",
+        "1 Ring",
+        "200 g",
+        "400 g"
       ],
       "global_meta": [
         "Dringend",
@@ -3709,8 +3708,6 @@
       "quantities": [
         "1",
         "2",
-        "100 g",
-        "150 g",
         "3",
         "4",
         "5"
@@ -3723,7 +3720,9 @@
         "Vegane",
         "Aufschnitt",
         "Kinder",
-        "Milde"
+        "Milde",
+        "100 g",
+        "150 g"
       ],
       "global_meta": [
         "Dringend",
@@ -3748,9 +3747,6 @@
       "quantities": [
         "1",
         "2",
-        "100 g",
-        "150 g",
-        "Würfel",
         "3",
         "4",
         "5"
@@ -3764,7 +3760,10 @@
         "Vegane würfel",
         "Braten",
         "Aroma",
-        "Herzhaft"
+        "Herzhaft",
+        "100 g",
+        "150 g",
+        "Würfel"
       ],
       "global_meta": [
         "Dringend",
@@ -3788,9 +3787,6 @@
       "quantities": [
         "1",
         "2",
-        "4er",
-        "6er Pack",
-        "Glas",
         "3",
         "4",
         "5"
@@ -3806,7 +3802,10 @@
         "Bockwurst",
         "Heißwürstchen",
         "Snack",
-        "Kinder"
+        "Kinder",
+        "4er",
+        "6er Pack",
+        "Glas"
       ],
       "global_meta": [
         "Dringend",
@@ -3824,13 +3823,13 @@
     "tags": {
       "quantities": [
         "1",
-        "2",
-        "4er Pack",
-        "Glas"
+        "2"
       ],
       "constellations": [
         "Bio",
-        "Geflügel"
+        "Geflügel",
+        "4er Pack",
+        "Glas"
       ],
       "global_meta": [
         "Dringend",
@@ -3852,7 +3851,6 @@
       "quantities": [
         "1",
         "2",
-        "125 g",
         "3",
         "4",
         "5"
@@ -3865,7 +3863,8 @@
         "Grobe",
         "Vegane",
         "Streichwurst",
-        "Aromatisch"
+        "Aromatisch",
+        "125 g"
       ],
       "global_meta": [
         "Dringend",
@@ -3889,8 +3888,6 @@
       "quantities": [
         "1",
         "2",
-        "150 g",
-        "200 g",
         "3",
         "4",
         "5"
@@ -3902,7 +3899,9 @@
         "Streich",
         "Eintopf",
         "Rauch",
-        "Vesper"
+        "Vesper",
+        "150 g",
+        "200 g"
       ],
       "global_meta": [
         "Dringend",
@@ -3920,17 +3919,17 @@
     "tags": {
       "quantities": [
         "1",
-        "2",
-        "200 g",
-        "250 g",
-        "500 g"
+        "2"
       ],
       "constellations": [
         "Bio",
         "ASC",
         "MSC",
         "Norwegen",
-        "Wildlachs"
+        "Wildlachs",
+        "200 g",
+        "250 g",
+        "500 g"
       ],
       "global_meta": [
         "Dringend",
@@ -3948,15 +3947,15 @@
     "tags": {
       "quantities": [
         "1",
-        "2",
-        "100 g",
-        "200 g"
+        "2"
       ],
       "constellations": [
         "Bio",
         "MSC",
         "Graved Lachs",
-        "Stremellachs"
+        "Stremellachs",
+        "100 g",
+        "200 g"
       ],
       "global_meta": [
         "Dringend",
@@ -3978,7 +3977,6 @@
         "1",
         "2",
         "3",
-        "4 Stk",
         "4",
         "5"
       ],
@@ -3989,7 +3987,8 @@
         "Geräucherte nfilets",
         "Frische Regenbogen",
         "Fisch",
-        "Heimisch"
+        "Heimisch",
+        "4 Stk"
       ],
       "global_meta": [
         "Dringend",
@@ -4011,8 +4010,6 @@
       "quantities": [
         "1",
         "2",
-        "250 g",
-        "400 g",
         "3",
         "4",
         "5"
@@ -4024,7 +4021,9 @@
         "Frisches Filet",
         "Mager",
         "Feinfisch",
-        "Pfanne"
+        "Pfanne",
+        "250 g",
+        "400 g"
       ],
       "global_meta": [
         "Dringend",
@@ -4042,14 +4041,14 @@
     "tags": {
       "quantities": [
         "1",
-        "2",
-        "400 g",
-        "800g (TK)"
+        "2"
       ],
       "constellations": [
         "MSC",
         "Paniert",
-        "Natur"
+        "Natur",
+        "400 g",
+        "800g (TK)"
       ],
       "global_meta": [
         "Dringend",
@@ -4072,8 +4071,6 @@
       "quantities": [
         "1",
         "2",
-        "10er",
-        "15er Pack (450g)",
         "3",
         "4",
         "5"
@@ -4090,7 +4087,9 @@
         "Vegane",
         "Kinder",
         "Pfanne",
-        "Schnell"
+        "Schnell",
+        "10er",
+        "15er Pack (450g)"
       ],
       "global_meta": [
         "Dringend",
@@ -4108,15 +4107,15 @@
     "tags": {
       "quantities": [
         "1",
-        "2",
-        "400 g"
+        "2"
       ],
       "constellations": [
         "TK",
         "MSC",
         "Iglo",
         "Frosta",
-        "Bordelaise"
+        "Bordelaise",
+        "400 g"
       ],
       "global_meta": [
         "Dringend",
@@ -4140,9 +4139,6 @@
       "quantities": [
         "1",
         "2",
-        "100 g",
-        "250 g",
-        "500 g",
         "3",
         "4",
         "5"
@@ -4159,7 +4155,10 @@
         "Frische Party- Knoblauch",
         "Seafood",
         "Feinkost",
-        "Protein"
+        "Protein",
+        "100 g",
+        "250 g",
+        "500 g"
       ],
       "global_meta": [
         "Dringend",
@@ -4182,7 +4181,6 @@
       "quantities": [
         "1",
         "2",
-        "500 g",
         "3",
         "4",
         "5"
@@ -4194,7 +4192,8 @@
         "TK Calamari-Ringe",
         "Frische Tuben",
         "Seafood",
-        "Mittelmeer"
+        "Mittelmeer",
+        "500 g"
       ],
       "global_meta": [
         "Dringend",
@@ -4212,15 +4211,15 @@
     "tags": {
       "quantities": [
         "1",
-        "2",
-        "1 kg",
-        "2 kg"
+        "2"
       ],
       "constellations": [
         "Frisch",
         "Vakuum",
         "Saison",
-        "Miesmuscheln"
+        "Miesmuscheln",
+        "1 kg",
+        "2 kg"
       ],
       "global_meta": [
         "Dringend",
@@ -4300,8 +4299,7 @@
         "3",
         "4",
         "6",
-        "12",
-        "1 L"
+        "12"
       ],
       "constellations": [
         "Soja",
@@ -4313,7 +4311,8 @@
         "Barista",
         "Ungesüßt",
         "Alpro/Oatly",
-        "Drink"
+        "Drink",
+        "1 L"
       ],
       "global_meta": [
         "Dringend",
@@ -4340,9 +4339,7 @@
         "1",
         "2",
         "3",
-        "4",
-        "150 g",
-        "500g Becher"
+        "4"
       ],
       "constellations": [
         "0,1%",
@@ -4360,7 +4357,9 @@
         "Soja",
         "Vegan",
         "Pflanzlich",
-        "Molkerei"
+        "Molkerei",
+        "150 g",
+        "500g Becher"
       ],
       "global_meta": [
         "Dringend",
@@ -4380,9 +4379,7 @@
         "1",
         "2",
         "3",
-        "4",
-        "150 g",
-        "250 g"
+        "4"
       ],
       "constellations": [
         "Toastdbeer",
@@ -4390,7 +4387,9 @@
         "Pfirsich",
         "Stracciatella",
         "Bio",
-        "Vegan"
+        "Vegan",
+        "150 g",
+        "250 g"
       ],
       "global_meta": [
         "Dringend",
@@ -4416,8 +4415,6 @@
         "1",
         "2",
         "3",
-        "250 g",
-        "500 g",
         "4",
         "5"
       ],
@@ -4432,7 +4429,9 @@
         "Speise 40%",
         "Vegane alternative",
         "High Protein",
-        "Cremig"
+        "Cremig",
+        "250 g",
+        "500 g"
       ],
       "global_meta": [
         "Dringend",
@@ -4454,8 +4453,6 @@
       "quantities": [
         "1",
         "2",
-        "150 g",
-        "200 g",
         "3",
         "4",
         "5"
@@ -4469,7 +4466,9 @@
         "Schnittlauchquark",
         "DIP",
         "Regional",
-        "Gekühlt"
+        "Gekühlt",
+        "150 g",
+        "200 g"
       ],
       "global_meta": [
         "Dringend",
@@ -4491,7 +4490,6 @@
         "1",
         "2",
         "3",
-        "200g Becher",
         "4",
         "5"
       ],
@@ -4502,7 +4500,8 @@
         "Kräuter",
         "Mager",
         "Kochen",
-        "Kalt"
+        "Kalt",
+        "200g Becher"
       ],
       "global_meta": [
         "Dringend",
@@ -4524,7 +4523,6 @@
         "1",
         "2",
         "3",
-        "200g Becher",
         "4",
         "5"
       ],
@@ -4536,7 +4534,8 @@
         "Gekühlt",
         "Kochen",
         "Sauerrahm",
-        "Molkerei"
+        "Molkerei",
+        "200g Becher"
       ],
       "global_meta": [
         "Dringend",
@@ -4560,7 +4559,6 @@
       "quantities": [
         "1",
         "2",
-        "150g Becher",
         "3",
         "4",
         "5"
@@ -4574,7 +4572,8 @@
         "Vegane Crème-Alternative",
         "Kochen",
         "Premium",
-        "Cremig"
+        "Cremig",
+        "150g Becher"
       ],
       "global_meta": [
         "Dringend",
@@ -4596,8 +4595,6 @@
       "quantities": [
         "1",
         "2",
-        "250 g",
-        "500 g",
         "3",
         "4",
         "5"
@@ -4609,7 +4606,9 @@
         "Veganer -Toastsatz",
         "Tiramisu",
         "Doppelrahm",
-        "Dessert"
+        "Dessert",
+        "250 g",
+        "500 g"
       ],
       "global_meta": [
         "Dringend",
@@ -4633,8 +4632,6 @@
         "1",
         "2",
         "3",
-        "500g Becher",
-        "1 L",
         "4",
         "5"
       ],
@@ -4648,7 +4645,9 @@
         "Frucht Pfirsich",
         "Frisch",
         "Gekühlt",
-        "Protein"
+        "Protein",
+        "500g Becher",
+        "1 L"
       ],
       "global_meta": [
         "Dringend",
@@ -4671,7 +4670,6 @@
         "1",
         "2",
         "3",
-        "500g Becher",
         "4",
         "5"
       ],
@@ -4681,7 +4679,8 @@
         "Himbeere",
         "Probiotisch",
         "Gekühlt",
-        "Gesund"
+        "Gesund",
+        "500g Becher"
       ],
       "global_meta": [
         "Dringend",
@@ -4706,10 +4705,7 @@
         "1",
         "2",
         "3",
-        "4",
-        "150 g",
-        "200 g",
-        "500 g"
+        "4"
       ],
       "constellations": [
         "Schoko",
@@ -4723,7 +4719,10 @@
         "Dessert",
         "Süß",
         "Kinder",
-        "Becher"
+        "Becher",
+        "150 g",
+        "200 g",
+        "500 g"
       ],
       "global_meta": [
         "Dringend",
@@ -4741,10 +4740,7 @@
     "tags": {
       "quantities": [
         "1",
-        "2",
-        "150 g",
-        "200 g",
-        "400 g"
+        "2"
       ],
       "constellations": [
         "Jung",
@@ -4753,7 +4749,10 @@
         "Scheiben",
         "Am Stück",
         "Gerieben",
-        "Bio"
+        "Bio",
+        "150 g",
+        "200 g",
+        "400 g"
       ],
       "global_meta": [
         "Dringend",
@@ -4771,16 +4770,16 @@
     "tags": {
       "quantities": [
         "1",
-        "2",
-        "150 g",
-        "200 g",
-        "400 g"
+        "2"
       ],
       "constellations": [
         "Scheiben",
         "Am Stück",
         "Gerieben",
-        "Bio"
+        "Bio",
+        "150 g",
+        "200 g",
+        "400 g"
       ],
       "global_meta": [
         "Dringend",
@@ -4800,15 +4799,15 @@
     "tags": {
       "quantities": [
         "1",
-        "2",
-        "150 g",
-        "200 g",
-        "400 g"
+        "2"
       ],
       "constellations": [
         "Scheiben",
         "Am Stück",
-        "Bio"
+        "Bio",
+        "150 g",
+        "200 g",
+        "400 g"
       ],
       "global_meta": [
         "Dringend",
@@ -4833,8 +4832,6 @@
         "2",
         "3",
         "4",
-        "125g (Kugel)",
-        "200 g",
         "5"
       ],
       "constellations": [
@@ -4849,7 +4846,9 @@
         "Gerieben",
         "Italienisch",
         "Salat",
-        "Pizza"
+        "Pizza",
+        "125g (Kugel)",
+        "200 g"
       ],
       "global_meta": [
         "Dringend",
@@ -4875,8 +4874,6 @@
         "1",
         "2",
         "3",
-        "200 g",
-        "250 g",
         "4",
         "5"
       ],
@@ -4887,7 +4884,9 @@
         "Schafskäse original",
         "Hirtenkäse (Kuhmilch)",
         "Veganer -Toastsatz",
-        "Salzlake"
+        "Salzlake",
+        "200 g",
+        "250 g"
       ],
       "global_meta": [
         "Dringend",
@@ -4906,13 +4905,13 @@
       "quantities": [
         "1",
         "2",
-        "3",
-        "200 g",
-        "250 g"
+        "3"
       ],
       "constellations": [
         "Kuhmilch (Feta-Art)",
-        "Leicht"
+        "Leicht",
+        "200 g",
+        "250 g"
       ],
       "global_meta": [
         "Dringend",
@@ -4937,9 +4936,6 @@
       "quantities": [
         "1",
         "2",
-        "125 g",
-        "200 g",
-        "250 g",
         "3",
         "4",
         "5"
@@ -4955,7 +4951,10 @@
         "Geriebener Back",
         "Weichkäse",
         "Edelschimmel",
-        "Ofen"
+        "Ofen",
+        "125 g",
+        "200 g",
+        "250 g"
       ],
       "global_meta": [
         "Dringend",
@@ -4978,8 +4977,6 @@
       "quantities": [
         "1",
         "2",
-        "150 g",
-        "200 g",
         "3",
         "4",
         "5"
@@ -4993,7 +4990,9 @@
         "Geriebener",
         "Italienisch",
         "Hartkäse",
-        "Würzmittel"
+        "Würzmittel",
+        "150 g",
+        "200 g"
       ],
       "global_meta": [
         "Dringend",
@@ -5019,9 +5018,6 @@
         "1",
         "2",
         "3",
-        "150 g",
-        "200 g",
-        "300 g",
         "4",
         "5"
       ],
@@ -5036,7 +5032,10 @@
         "Magerstufe",
         "Veganer",
         "Cremig",
-        "Streichfähig"
+        "Streichfähig",
+        "150 g",
+        "200 g",
+        "300 g"
       ],
       "global_meta": [
         "Dringend",
@@ -5059,7 +5058,6 @@
         "1",
         "2",
         "3",
-        "200g Becher",
         "4",
         "5"
       ],
@@ -5071,7 +5069,8 @@
         "Fettarm (Körnig)",
         "Körnig",
         "High Protein",
-        "Frischkäse"
+        "Frischkäse",
+        "200g Becher"
       ],
       "global_meta": [
         "Dringend",
@@ -5094,9 +5093,7 @@
         "1",
         "2",
         "3",
-        "4",
-        "6er Pack",
-        "10er Pack"
+        "4"
       ],
       "constellations": [
         "Bio (0)",
@@ -5111,7 +5108,9 @@
         "Größe S",
         "Größe L",
         "Regional",
-        "Oster"
+        "Oster",
+        "6er Pack",
+        "10er Pack"
       ],
       "global_meta": [
         "Dringend",
@@ -5139,8 +5138,6 @@
         "2",
         "3",
         "4",
-        "250 g",
-        "500 g",
         "5"
       ],
       "constellations": [
@@ -5154,7 +5151,9 @@
         "Gesalzene",
         "Premium",
         "Weide",
-        "Backen"
+        "Backen",
+        "250 g",
+        "500 g"
       ],
       "global_meta": [
         "Dringend",
@@ -5179,9 +5178,6 @@
         "1",
         "2",
         "3",
-        "250 g",
-        "500 g",
-        "750 g",
         "4",
         "5"
       ],
@@ -5195,7 +5191,10 @@
         "Vegane Back",
         "Pflanzlich",
         "Cholesterinarm",
-        "Streichfett"
+        "Streichfett",
+        "250 g",
+        "500 g",
+        "750 g"
       ],
       "global_meta": [
         "Dringend",
@@ -5214,16 +5213,16 @@
       "quantities": [
         "1",
         "2",
-        "3",
-        "200 g",
-        "400 g"
+        "3"
       ],
       "constellations": [
         "Vegan",
         "Bio",
         "Taifun (Marke)",
         "Seidentofu",
-        "Geräuchert"
+        "Geräuchert",
+        "200 g",
+        "400 g"
       ],
       "global_meta": [
         "Dringend",
@@ -5242,16 +5241,16 @@
       "quantities": [
         "1",
         "2",
-        "3",
-        "250 g",
-        "275 g",
-        "400 g"
+        "3"
       ],
       "constellations": [
         "Vegan",
         "Bio",
         "Toastbsenprotein",
-        "Sojaprotein"
+        "Sojaprotein",
+        "250 g",
+        "275 g",
+        "400 g"
       ],
       "global_meta": [
         "Dringend",
@@ -5272,13 +5271,13 @@
       "quantities": [
         "1",
         "2",
-        "3",
-        "150 g",
-        "2 Stk"
+        "3"
       ],
       "constellations": [
         "Vegan",
-        "Rügenwalder (Marke)"
+        "Rügenwalder (Marke)",
+        "150 g",
+        "2 Stk"
       ],
       "global_meta": [
         "Dringend",
@@ -5296,14 +5295,14 @@
     "tags": {
       "quantities": [
         "1",
-        "2",
-        "1 Rolle",
-        "275 g"
+        "2"
       ],
       "constellations": [
         "Frischteig",
         "Vegan",
-        "Butter"
+        "Butter",
+        "1 Rolle",
+        "275 g"
       ],
       "global_meta": [
         "Dringend",
@@ -5323,14 +5322,14 @@
     "tags": {
       "quantities": [
         "1",
-        "2",
-        "1 Rolle",
-        "400 g"
+        "2"
       ],
       "constellations": [
         "Frischteig",
         "XXL",
-        "Mit Tomatensauce (Set)"
+        "Mit Tomatensauce (Set)",
+        "1 Rolle",
+        "400 g"
       ],
       "global_meta": [
         "Dringend",
@@ -5350,9 +5349,7 @@
         "1",
         "2",
         "3",
-        "4",
-        "2er Pack",
-        "3er"
+        "4"
       ],
       "constellations": [
         "Salami",
@@ -5360,7 +5357,9 @@
         "Speciale",
         "Wagner",
         "Dr. Oetker",
-        "Vegan"
+        "Vegan",
+        "2er Pack",
+        "3er"
       ],
       "global_meta": [
         "Dringend",
@@ -5379,15 +5378,15 @@
       "quantities": [
         "1",
         "2",
-        "3",
-        "50 g",
-        "75 g"
+        "3"
       ],
       "constellations": [
         "8-Kräuter",
         "Petersilie",
         "Schnittlauch",
-        "Bio"
+        "Bio",
+        "50 g",
+        "75 g"
       ],
       "global_meta": [
         "Dringend",
@@ -5406,14 +5405,14 @@
       "quantities": [
         "1",
         "2",
-        "3",
-        "300 g",
-        "500 g"
+        "3"
       ],
       "constellations": [
         "Bio",
         "Waldbeeren",
-        "Ungesüßt"
+        "Ungesüßt",
+        "300 g",
+        "500 g"
       ],
       "global_meta": [
         "Dringend",
@@ -5432,13 +5431,13 @@
       "quantities": [
         "1",
         "2",
-        "3",
-        "1 kg",
-        "2kg Sack"
+        "3"
       ],
       "constellations": [
         "Crushed Ice",
-        "Würfel"
+        "Würfel",
+        "1 kg",
+        "2kg Sack"
       ],
       "global_meta": [
         "Dringend",
@@ -5469,8 +5468,6 @@
         "2",
         "3",
         "4",
-        "500 g",
-        "1 kg",
         "5"
       ],
       "constellations": [
@@ -5490,7 +5487,9 @@
         "Pasta",
         "Bio",
         "Vollkorn",
-        "Dinkel"
+        "Dinkel",
+        "500 g",
+        "1 kg"
       ],
       "global_meta": [
         "Dringend",
@@ -5517,9 +5516,6 @@
         "1",
         "2",
         "3",
-        "500 g",
-        "1 kg",
-        "2 kg",
         "4",
         "5"
       ],
@@ -5536,7 +5532,10 @@
         "Wild-Mischung",
         "Nährmittel",
         "Beilage",
-        "Glutenfrei"
+        "Glutenfrei",
+        "500 g",
+        "1 kg",
+        "2 kg"
       ],
       "global_meta": [
         "Dringend",
@@ -5561,8 +5560,6 @@
       "quantities": [
         "1",
         "2",
-        "500 g",
-        "1 kg",
         "3",
         "4",
         "5"
@@ -5576,7 +5573,9 @@
         "Rundkornreis trocken",
         "Dessert",
         "Süßspeise",
-        "Gekühlt"
+        "Gekühlt",
+        "500 g",
+        "1 kg"
       ],
       "global_meta": [
         "Dringend",
@@ -5601,9 +5600,7 @@
         "1",
         "2",
         "3",
-        "4",
-        "1 kg",
-        "5 kg"
+        "4"
       ],
       "constellations": [
         "Typ 405",
@@ -5623,7 +5620,9 @@
         "Weizenvollkorn",
         "Backen",
         "Teig",
-        "Basis"
+        "Basis",
+        "1 kg",
+        "5 kg"
       ],
       "global_meta": [
         "Dringend",
@@ -5650,8 +5649,6 @@
         "2",
         "3",
         "4",
-        "500 g",
-        "1 kg",
         "5"
       ],
       "constellations": [
@@ -5666,7 +5663,9 @@
         "Gelier 2:1",
         "Süßen",
         "Backen",
-        "Kochen"
+        "Kochen",
+        "500 g",
+        "1 kg"
       ],
       "global_meta": [
         "Dringend",
@@ -5692,8 +5691,6 @@
         "2",
         "3",
         "4",
-        "500 g",
-        "1 kg",
         "5"
       ],
       "constellations": [
@@ -5707,7 +5704,9 @@
         "Schmelzflocken",
         "Instant",
         "Vollkorn",
-        "Superfood"
+        "Superfood",
+        "500 g",
+        "1 kg"
       ],
       "global_meta": [
         "Dringend",
@@ -5732,8 +5731,6 @@
         "1",
         "2",
         "3",
-        "500g (Getrocknet)",
-        "400g (Dose)",
         "4",
         "5"
       ],
@@ -5748,7 +5745,9 @@
         "Gelbe",
         "Hülsenfrüchte",
         "Eintopf",
-        "Protein"
+        "Protein",
+        "500g (Getrocknet)",
+        "400g (Dose)"
       ],
       "global_meta": [
         "Dringend",
@@ -5770,8 +5769,6 @@
         "1",
         "2",
         "3",
-        "500g (Getr.)",
-        "400g (Dose)",
         "4",
         "5"
       ],
@@ -5782,7 +5779,9 @@
         "Hülsenfrüchte",
         "Protein",
         "Hummus",
-        "Kochen"
+        "Kochen",
+        "500g (Getr.)",
+        "400g (Dose)"
       ],
       "global_meta": [
         "Dringend",
@@ -5804,8 +5803,7 @@
       "quantities": [
         "1",
         "2",
-        "3",
-        "400g (Dose)"
+        "3"
       ],
       "constellations": [
         "Kidneybohnen",
@@ -5817,7 +5815,8 @@
         "Schwarze",
         "Hülsenfrüchte",
         "Protein",
-        "Kochen"
+        "Kochen",
+        "400g (Dose)"
       ],
       "global_meta": [
         "Dringend",
@@ -5840,7 +5839,6 @@
       "quantities": [
         "1",
         "2",
-        "500 g",
         "3",
         "4",
         "5"
@@ -5853,7 +5851,8 @@
         "Bunter",
         "Superfood",
         "Glutenfrei",
-        "Samen"
+        "Samen",
+        "500 g"
       ],
       "global_meta": [
         "Dringend",
@@ -5876,7 +5875,6 @@
       "quantities": [
         "1",
         "2",
-        "500 g",
         "3",
         "4",
         "5"
@@ -5887,7 +5885,8 @@
         "Vollkorn",
         "Schnell",
         "Beilage",
-        "Orientalisch"
+        "Orientalisch",
+        "500 g"
       ],
       "global_meta": [
         "Dringend",
@@ -5907,13 +5906,13 @@
     "tags": {
       "quantities": [
         "1",
-        "2",
-        "250 g",
-        "500 g"
+        "2"
       ],
       "constellations": [
         "Bio",
-        "Getrocknet"
+        "Getrocknet",
+        "250 g",
+        "500 g"
       ],
       "global_meta": [
         "Dringend",
@@ -5931,12 +5930,12 @@
     "tags": {
       "quantities": [
         "1",
-        "2",
-        "3x3 Portionen"
+        "2"
       ],
       "constellations": [
         "Bio",
-        "Pfanni (Marke)"
+        "Pfanni (Marke)",
+        "3x3 Portionen"
       ],
       "global_meta": [
         "Dringend",
@@ -5956,12 +5955,12 @@
     "tags": {
       "quantities": [
         "1",
-        "2",
-        "400 g",
-        "500 g"
+        "2"
       ],
       "constellations": [
-        "Bio"
+        "Bio",
+        "400 g",
+        "500 g"
       ],
       "global_meta": [
         "Dringend",
@@ -5984,7 +5983,6 @@
       "quantities": [
         "1",
         "2",
-        "500 g",
         "3",
         "4",
         "5"
@@ -5999,7 +5997,8 @@
         "Dinkel",
         "Kochen",
         "Brei",
-        "Suppe"
+        "Suppe",
+        "500 g"
       ],
       "global_meta": [
         "Dringend",
@@ -6023,8 +6022,6 @@
       "quantities": [
         "1",
         "2",
-        "500 g",
-        "1 kg",
         "3",
         "4",
         "5"
@@ -6041,7 +6038,9 @@
         "Kräuter classic",
         "Gewürz",
         "Kochen",
-        "Backen"
+        "Backen",
+        "500 g",
+        "1 kg"
       ],
       "global_meta": [
         "Dringend",
@@ -6065,8 +6064,6 @@
       "quantities": [
         "1",
         "2",
-        "50 g",
-        "100g (Mühle)",
         "3",
         "4",
         "5"
@@ -6083,7 +6080,9 @@
         "Cayenne",
         "Gewürz",
         "Scharf",
-        "Kochen"
+        "Kochen",
+        "50 g",
+        "100g (Mühle)"
       ],
       "global_meta": [
         "Dringend",
@@ -6106,9 +6105,6 @@
       "quantities": [
         "1",
         "2",
-        "40 g",
-        "50 g",
-        "100 g",
         "3",
         "4",
         "5"
@@ -6121,7 +6117,10 @@
         "Geräuchertes",
         "Gewürz",
         "Rot",
-        "Kochen"
+        "Kochen",
+        "40 g",
+        "50 g",
+        "100 g"
       ],
       "global_meta": [
         "Dringend",
@@ -6144,8 +6143,6 @@
       "quantities": [
         "1",
         "2",
-        "40 g",
-        "50 g",
         "3",
         "4",
         "5"
@@ -6159,7 +6156,9 @@
         "Curry scharf",
         "Gewürz",
         "Gelb",
-        "Asiatisch"
+        "Asiatisch",
+        "40 g",
+        "50 g"
       ],
       "global_meta": [
         "Dringend",
@@ -6182,8 +6181,6 @@
       "quantities": [
         "1",
         "2",
-        "15 g",
-        "20g (Glas)",
         "3",
         "4",
         "5"
@@ -6194,7 +6191,9 @@
         "Italienisch",
         "Pizza",
         "Gewürz",
-        "Getr."
+        "Getr.",
+        "15 g",
+        "20g (Glas)"
       ],
       "global_meta": [
         "Dringend",
@@ -6212,16 +6211,16 @@
     "tags": {
       "quantities": [
         "1",
-        "2",
-        "Glas",
-        "Würfel"
+        "2"
       ],
       "constellations": [
         "Bio",
         "Hefeextraktfrei",
         "Maggi/Knorr (Marke)",
         "Pulver",
-        "Gemüse, Huhn, Rind"
+        "Gemüse, Huhn, Rind",
+        "Glas",
+        "Würfel"
       ],
       "global_meta": [
         "Dringend",
@@ -6245,8 +6244,6 @@
       "quantities": [
         "1",
         "2",
-        "500ml",
-        "750ml",
         "3",
         "4",
         "5"
@@ -6262,7 +6259,9 @@
         "Fett",
         "Salat",
         "Kaltgepresst",
-        "Mediterran"
+        "Mediterran",
+        "500ml",
+        "750ml"
       ],
       "global_meta": [
         "Dringend",
@@ -6286,8 +6285,6 @@
       "quantities": [
         "1",
         "2",
-        "750ml",
-        "1 L",
         "3",
         "4",
         "5"
@@ -6300,7 +6297,9 @@
         "Fett",
         "Braten",
         "Neutral",
-        "Flasche"
+        "Flasche",
+        "750ml",
+        "1 L"
       ],
       "global_meta": [
         "Dringend",
@@ -6318,15 +6317,15 @@
     "tags": {
       "quantities": [
         "1",
-        "2",
-        "500ml"
+        "2"
       ],
       "constellations": [
         "Aceto Balsamico di Modena",
         "Bianco",
         "Bio",
         "Crema",
-        "Balsamico"
+        "Balsamico",
+        "500ml"
       ],
       "global_meta": [
         "Dringend",
@@ -6351,8 +6350,6 @@
         "1",
         "2",
         "3",
-        "500ml",
-        "800ml",
         "4",
         "5"
       ],
@@ -6367,7 +6364,9 @@
         "Süß",
         "Kinder",
         "Grillen",
-        "Flasche"
+        "Flasche",
+        "500ml",
+        "800ml"
       ],
       "global_meta": [
         "Dringend",
@@ -6392,8 +6391,6 @@
       "quantities": [
         "1",
         "2",
-        "250ml",
-        "500ml",
         "3",
         "4",
         "5"
@@ -6410,7 +6407,9 @@
         "Cremig",
         "Pommes",
         "Tube",
-        "Glas"
+        "Glas",
+        "250ml",
+        "500ml"
       ],
       "global_meta": [
         "Dringend",
@@ -6435,7 +6434,6 @@
         "1",
         "2",
         "3",
-        "200ml (Tube/Glas)",
         "4",
         "5"
       ],
@@ -6451,7 +6449,8 @@
         "Würzen",
         "Grillen",
         "Tube",
-        "Glas"
+        "Glas",
+        "200ml (Tube/Glas)"
       ],
       "global_meta": [
         "Dringend",
@@ -6474,8 +6473,6 @@
       "quantities": [
         "1",
         "2",
-        "150ml",
-        "250ml",
         "3",
         "4",
         "5"
@@ -6489,7 +6486,9 @@
         "Ketjap Manis",
         "Asiatisch",
         "Würzen",
-        "Salzig"
+        "Salzig",
+        "150ml",
+        "250ml"
       ],
       "global_meta": [
         "Dringend",
@@ -6513,7 +6512,6 @@
         "1",
         "2",
         "3",
-        "200g (Tube)",
         "4",
         "5"
       ],
@@ -6528,7 +6526,8 @@
         "Tube",
         "Konzentrat",
         "Aroma",
-        "Kochen"
+        "Kochen",
+        "200g (Tube)"
       ],
       "global_meta": [
         "Dringend",
@@ -6553,8 +6552,7 @@
         "1",
         "2",
         "3",
-        "4",
-        "500g (Tetrapak)"
+        "4"
       ],
       "constellations": [
         "Bio",
@@ -6566,7 +6564,8 @@
         "Tetra Pak",
         "Kartoniert",
         "Konserve",
-        "Basis"
+        "Basis",
+        "500g (Tetrapak)"
       ],
       "global_meta": [
         "Dringend",
@@ -6586,12 +6585,12 @@
         "1",
         "2",
         "3",
-        "4",
-        "400g (Dose)"
+        "4"
       ],
       "constellations": [
         "Bio",
-        "Mutti (Marke)"
+        "Mutti (Marke)",
+        "400g (Dose)"
       ],
       "global_meta": [
         "Dringend",
@@ -6616,7 +6615,6 @@
         "1",
         "2",
         "3",
-        "190g (Glas)",
         "4",
         "5"
       ],
@@ -6632,7 +6630,8 @@
         "Glas",
         "Pasta",
         "Schnell",
-        "Italienisch"
+        "Italienisch",
+        "190g (Glas)"
       ],
       "global_meta": [
         "Dringend",
@@ -6657,8 +6656,6 @@
         "1",
         "2",
         "3",
-        "3er Pack",
-        "4er",
         "4",
         "5"
       ],
@@ -6669,7 +6666,9 @@
         "Klassisches",
         "Weinstein",
         "Backen",
-        "Triebmittel"
+        "Triebmittel",
+        "3er Pack",
+        "4er"
       ],
       "global_meta": [
         "Dringend",
@@ -6689,13 +6688,13 @@
         "1",
         "2",
         "3",
-        "4",
-        "300 g",
-        "3x 150 g"
+        "4"
       ],
       "constellations": [
         "Bio",
-        "Supersweet"
+        "Supersweet",
+        "300 g",
+        "3x 150 g"
       ],
       "global_meta": [
         "Dringend",
@@ -6719,8 +6718,7 @@
       "quantities": [
         "1",
         "2",
-        "3",
-        "150 g"
+        "3"
       ],
       "constellations": [
         "In Sonnenblumenöl",
@@ -6732,7 +6730,8 @@
         "Protein",
         "Salat",
         "Pizza",
-        "Fisch"
+        "Fisch",
+        "150 g"
       ],
       "global_meta": [
         "Dringend",
@@ -6757,8 +6756,6 @@
         "1",
         "2",
         "3",
-        "500 g",
-        "750 g",
         "4",
         "5"
       ],
@@ -6774,7 +6771,9 @@
         "Kinder",
         "Frühstück",
         "Ballaststoffreich",
-        "Crunchy"
+        "Crunchy",
+        "500 g",
+        "750 g"
       ],
       "global_meta": [
         "Dringend",
@@ -6801,7 +6800,6 @@
         "1",
         "2",
         "3",
-        "500 g",
         "4",
         "5"
       ],
@@ -6817,7 +6815,8 @@
         "Zimt-Flakes",
         "Knusprig",
         "Frühstück",
-        "Kinder"
+        "Kinder",
+        "500 g"
       ],
       "global_meta": [
         "Dringend",
@@ -6844,8 +6843,6 @@
         "1",
         "2",
         "3",
-        "340 g",
-        "450g (Glas)",
         "4",
         "5"
       ],
@@ -6862,7 +6859,9 @@
         "Süß",
         "Brotaufstrich",
         "Fruchtig",
-        "Frühstück"
+        "Frühstück",
+        "340 g",
+        "450g (Glas)"
       ],
       "global_meta": [
         "Dringend",
@@ -6887,7 +6886,6 @@
         "1",
         "2",
         "3",
-        "500g (Glas/Spender)",
         "4",
         "5"
       ],
@@ -6903,7 +6901,8 @@
         "Manuka- Premium",
         "Naturrein",
         "Süß",
-        "Frühstück"
+        "Frühstück",
+        "500g (Glas/Spender)"
       ],
       "global_meta": [
         "Dringend",
@@ -6930,10 +6929,7 @@
       "quantities": [
         "1",
         "2",
-        "3",
-        "450 g",
-        "750 g",
-        "1 kg"
+        "3"
       ],
       "constellations": [
         "Nutella",
@@ -6948,7 +6944,10 @@
         "Süß",
         "Frühstück",
         "Nussig",
-        "Brotaufstrich"
+        "Brotaufstrich",
+        "450 g",
+        "750 g",
+        "1 kg"
       ],
       "global_meta": [
         "Dringend",
@@ -6973,9 +6972,7 @@
         "1",
         "2",
         "3",
-        "4",
-        "100 g",
-        "300 g"
+        "4"
       ],
       "constellations": [
         "Vollmilch",
@@ -6992,7 +6989,9 @@
         "Edel-Marzipan",
         "Süßwaren",
         "Kakao",
-        "Süß"
+        "Süß",
+        "100 g",
+        "300 g"
       ],
       "global_meta": [
         "Dringend",
@@ -7013,17 +7012,17 @@
       "quantities": [
         "1",
         "2",
-        "3",
-        "175 g",
-        "200 g",
-        "300 g"
+        "3"
       ],
       "constellations": [
         "Haribo",
         "Katjes",
         "Vegan",
         "Sauer",
-        "Lakritz"
+        "Lakritz",
+        "175 g",
+        "200 g",
+        "300 g"
       ],
       "global_meta": [
         "Dringend",
@@ -7050,9 +7049,6 @@
         "1",
         "2",
         "3",
-        "150 g",
-        "200 g",
-        "300 g",
         "4",
         "5"
       ],
@@ -7070,7 +7066,10 @@
         "Süßwaren",
         "Kaffee",
         "Knusprig",
-        "Gebäck"
+        "Gebäck",
+        "150 g",
+        "200 g",
+        "300 g"
       ],
       "global_meta": [
         "Dringend",
@@ -7092,16 +7091,16 @@
         "1",
         "2",
         "3",
-        "4",
-        "150 g",
-        "175 g"
+        "4"
       ],
       "constellations": [
         "Paprika",
         "Salt & Vinegar",
         "Funny Frisch",
         "Pringles",
-        "Chio"
+        "Chio",
+        "150 g",
+        "175 g"
       ],
       "global_meta": [
         "Dringend",
@@ -7125,8 +7124,6 @@
         "1",
         "2",
         "3",
-        "150 g",
-        "200g (Dose)",
         "4",
         "5"
       ],
@@ -7141,7 +7138,9 @@
         "Im Teigmantel",
         "Snack",
         "Nussig",
-        "Salzig"
+        "Salzig",
+        "150 g",
+        "200g (Dose)"
       ],
       "global_meta": [
         "Dringend",
@@ -7166,8 +7165,6 @@
         "1",
         "2",
         "3",
-        "150 g",
-        "200 g",
         "4",
         "5"
       ],
@@ -7180,7 +7177,9 @@
         "Natur ungesalzen",
         "Snack",
         "Nussig",
-        "Gesund"
+        "Gesund",
+        "150 g",
+        "200 g"
       ],
       "global_meta": [
         "Dringend",
@@ -7207,9 +7206,6 @@
       "quantities": [
         "1",
         "2",
-        "6er Träger",
-        "12er Kasten",
-        "5 L",
         "3",
         "4",
         "5"
@@ -7226,7 +7222,10 @@
         "Toastfrischung",
         "Flasche",
         "Kiste",
-        "Wasser"
+        "Wasser",
+        "6er Träger",
+        "12er Kasten",
+        "5 L"
       ],
       "global_meta": [
         "Dringend",
@@ -7245,8 +7244,7 @@
       "quantities": [
         "1",
         "2",
-        "3",
-        "6er Kasten"
+        "3"
       ],
       "constellations": [
         "Naturtrüb",
@@ -7254,7 +7252,8 @@
         "Direktsaft",
         "Konzentrat",
         "Bio",
-        "Schorle"
+        "Schorle",
+        "6er Kasten"
       ],
       "global_meta": [
         "Dringend",
@@ -7273,15 +7272,15 @@
       "quantities": [
         "1",
         "2",
-        "3",
-        "6er Kasten"
+        "3"
       ],
       "constellations": [
         "Direktsaft",
         "Mit Fruchtfleisch",
         "Bio",
         "Hohes C",
-        "Valensina"
+        "Valensina",
+        "6er Kasten"
       ],
       "global_meta": [
         "Dringend",
@@ -7306,10 +7305,7 @@
       "quantities": [
         "1",
         "2",
-        "6er Träger",
-        "5 L",
         "0",
-        "33l Dose",
         "3",
         "4",
         "5"
@@ -7327,7 +7323,10 @@
         "Koffein",
         "PET",
         "Dose",
-        "Flasche"
+        "Flasche",
+        "6er Träger",
+        "5 L",
+        "33l Dose"
       ],
       "global_meta": [
         "Dringend",
@@ -7353,9 +7352,7 @@
     "tags": {
       "quantities": [
         "1",
-        "2",
-        "6er Träger",
-        "5 L"
+        "2"
       ],
       "constellations": [
         "Orange",
@@ -7370,7 +7367,9 @@
         "Süß",
         "Toastfrischung",
         "Fruchtig",
-        "Flasche"
+        "Flasche",
+        "6er Träger",
+        "5 L"
       ],
       "global_meta": [
         "Dringend",
@@ -7395,7 +7394,6 @@
         "1",
         "2",
         "3",
-        "5l (Tetrapak)",
         "4",
         "5"
       ],
@@ -7410,7 +7408,8 @@
         "Süß",
         "Toastfrischung",
         "Sommer",
-        "Flasche"
+        "Flasche",
+        "5l (Tetrapak)"
       ],
       "global_meta": [
         "Dringend",
@@ -7429,16 +7428,16 @@
       "quantities": [
         "1",
         "2",
-        "3",
-        "500 g",
-        "1 kg"
+        "3"
       ],
       "constellations": [
         "Ganze Bohnen",
         "Gemahlen",
         "Bio",
         "Fairtrade",
-        "Entkoffeiniert"
+        "Entkoffeiniert",
+        "500 g",
+        "1 kg"
       ],
       "global_meta": [
         "Dringend",
@@ -7462,8 +7461,6 @@
       "quantities": [
         "1",
         "2",
-        "16er",
-        "36er Pack",
         "3",
         "4",
         "5"
@@ -7476,7 +7473,9 @@
         "Kräftig",
         "Kaffee",
         "Maschine",
-        "Portioniert"
+        "Portioniert",
+        "16er",
+        "36er Pack"
       ],
       "global_meta": [
         "Dringend",
@@ -7503,9 +7502,7 @@
       "quantities": [
         "1",
         "2",
-        "3",
-        "20er Packung",
-        "100 g"
+        "3"
       ],
       "constellations": [
         "Kamille",
@@ -7520,7 +7517,9 @@
         "Fenchel-Anis-Kümmel",
         "Heißgetränk",
         "Beruhigend",
-        "Beutel"
+        "Beutel",
+        "20er Packung",
+        "100 g"
       ],
       "global_meta": [
         "Dringend",
@@ -7540,16 +7539,16 @@
     "tags": {
       "quantities": [
         "1",
-        "2",
-        "400 g",
-        "500 g",
-        "800 g"
+        "2"
       ],
       "constellations": [
         "Bio",
         "Fairtrade",
         "Nesquik",
-        "Kaba"
+        "Kaba",
+        "400 g",
+        "500 g",
+        "800 g"
       ],
       "global_meta": [
         "Dringend",
@@ -7576,12 +7575,7 @@
       "quantities": [
         "1",
         "2",
-        "6er Träger",
-        "20er Kasten",
-        "24er",
         "0",
-        "5 L",
-        "33 L",
         "3",
         "4",
         "5"
@@ -7598,7 +7592,12 @@
         "Alkohol",
         "Hopfen",
         "Kiste",
-        "Flasche"
+        "Flasche",
+        "6er Träger",
+        "20er Kasten",
+        "24er",
+        "5 L",
+        "33 L"
       ],
       "global_meta": [
         "Dringend",
@@ -7626,8 +7625,7 @@
         "2",
         "3",
         "6",
-        "0",
-        "75 L"
+        "0"
       ],
       "constellations": [
         "Trocken",
@@ -7646,7 +7644,8 @@
         "Rosé trocken",
         "Alkohol",
         "Flasche",
-        "Traube"
+        "Traube",
+        "75 L"
       ],
       "global_meta": [
         "Dringend",
@@ -7675,7 +7674,6 @@
         "3",
         "6",
         "0",
-        "75 L",
         "4",
         "5"
       ],
@@ -7692,7 +7690,8 @@
         "Alkohol",
         "Feier",
         "Prickelnd",
-        "Flasche"
+        "Flasche",
+        "75 L"
       ],
       "global_meta": [
         "Dringend",
@@ -7719,7 +7718,6 @@
         "1",
         "2",
         "0",
-        "7 L",
         "3",
         "4",
         "5"
@@ -7733,7 +7731,8 @@
         "Lemon Premix",
         "Spirituose",
         "Alkohol",
-        "Mixgetränk"
+        "Mixgetränk",
+        "7 L"
       ],
       "global_meta": [
         "Dringend",
@@ -7758,8 +7757,6 @@
       "quantities": [
         "1",
         "2",
-        "Mega-Pack",
-        "Jumbo-Pack",
         "3",
         "4",
         "5"
@@ -7778,7 +7775,9 @@
         "Windelpants",
         "Baby",
         "Hygiene",
-        "Saugfähig"
+        "Saugfähig",
+        "Mega-Pack",
+        "Jumbo-Pack"
       ],
       "global_meta": [
         "Dringend",
@@ -7803,9 +7802,7 @@
         "1",
         "2",
         "3",
-        "4",
-        "4er Pack",
-        "80er"
+        "4"
       ],
       "constellations": [
         "Sensitiv",
@@ -7817,7 +7814,9 @@
         "Reise- klein",
         "Reinigung",
         "Unterwegs",
-        "Hygiene"
+        "Hygiene",
+        "4er Pack",
+        "80er"
       ],
       "global_meta": [
         "Dringend",
@@ -7837,9 +7836,7 @@
         "1",
         "2",
         "3",
-        "4",
-        "190 g",
-        "600 g"
+        "4"
       ],
       "constellations": [
         "Bio",
@@ -7847,7 +7844,9 @@
         "Folgemilch 1",
         "Ab 4. Monat",
         "Hipp",
-        "Gläschen"
+        "Gläschen",
+        "190 g",
+        "600 g"
       ],
       "global_meta": [
         "Dringend",
@@ -7873,8 +7872,6 @@
         "1",
         "2",
         "3",
-        "250ml",
-        "300ml",
         "4",
         "5"
       ],
@@ -7891,7 +7888,9 @@
         "Körperpflege",
         "Bad",
         "Duft",
-        "Reinigung"
+        "Reinigung",
+        "250ml",
+        "300ml"
       ],
       "global_meta": [
         "Dringend",
@@ -7918,8 +7917,6 @@
         "1",
         "2",
         "3",
-        "250ml",
-        "300ml",
         "4",
         "5"
       ],
@@ -7932,7 +7929,9 @@
         "& Spülung 2-in-1",
         "Haarpflege",
         "Bad",
-        "Haare"
+        "Haare",
+        "250ml",
+        "300ml"
       ],
       "global_meta": [
         "Dringend",
@@ -7951,15 +7950,15 @@
       "quantities": [
         "1",
         "2",
-        "3",
-        "300ml (Spender)",
-        "500ml (Nachfüll)",
-        "100 g"
+        "3"
       ],
       "constellations": [
         "Arztseife",
         "Sensitiv",
-        "Bio"
+        "Bio",
+        "300ml (Spender)",
+        "500ml (Nachfüll)",
+        "100 g"
       ],
       "global_meta": [
         "Dringend",
@@ -7986,9 +7985,7 @@
       "quantities": [
         "1",
         "2",
-        "3",
-        "150ml (Spray)",
-        "50ml (Roll-on)"
+        "3"
       ],
       "constellations": [
         "Ohne Aluminium",
@@ -8002,7 +7999,9 @@
         "Hygiene",
         "Frische",
         "Duft",
-        "Schweißschutz"
+        "Schweißschutz",
+        "150ml (Spray)",
+        "50ml (Roll-on)"
       ],
       "global_meta": [
         "Dringend",
@@ -8022,15 +8021,15 @@
     "tags": {
       "quantities": [
         "1",
-        "2",
-        "4er",
-        "8er Pack"
+        "2"
       ],
       "constellations": [
         "Männer",
         "Frauen",
         "Gillette",
-        "Venus"
+        "Venus",
+        "4er",
+        "8er Pack"
       ],
       "global_meta": [
         "Dringend",
@@ -8059,8 +8058,6 @@
         "2",
         "3",
         "4",
-        "75ml",
-        "100ml",
         "5"
       ],
       "constellations": [
@@ -8074,7 +8071,9 @@
         "Kinder",
         "Zahnpflege",
         "Mundhygiene",
-        "Frische"
+        "Frische",
+        "75ml",
+        "100ml"
       ],
       "global_meta": [
         "Dringend",
@@ -8101,8 +8100,6 @@
         "2",
         "3",
         "4",
-        "2er Pack",
-        "4er Pack",
         "5"
       ],
       "constellations": [
@@ -8117,7 +8114,9 @@
         "Zahnpflege",
         "Plastik",
         "Mundhygiene",
-        "Bad"
+        "Bad",
+        "2er Pack",
+        "4er Pack"
       ],
       "global_meta": [
         "Dringend",
@@ -8142,9 +8141,6 @@
         "1",
         "2",
         "3",
-        "8 Rollen",
-        "10 Rollen",
-        "16 Rollen",
         "4",
         "5"
       ],
@@ -8160,7 +8156,10 @@
         "Haushalt",
         "Hygiene",
         "Großpackung",
-        "Bad"
+        "Bad",
+        "8 Rollen",
+        "10 Rollen",
+        "16 Rollen"
       ],
       "global_meta": [
         "Dringend",
@@ -8187,8 +8186,6 @@
         "1",
         "2",
         "3",
-        "4 Rollen",
-        "8 Rollen",
         "4",
         "5"
       ],
@@ -8202,7 +8199,9 @@
         "Haushalt",
         "Saugen",
         "Küche",
-        "Papier"
+        "Papier",
+        "4 Rollen",
+        "8 Rollen"
       ],
       "global_meta": [
         "Dringend",
@@ -8227,9 +8226,6 @@
         "1",
         "2",
         "3",
-        "10x10er",
-        "30x10er",
-        "Box (100er)",
         "4",
         "5"
       ],
@@ -8243,7 +8239,10 @@
         "Mit Menthol-Duft",
         "Hygiene",
         "Schnupfen",
-        "Papier"
+        "Papier",
+        "10x10er",
+        "30x10er",
+        "Box (100er)"
       ],
       "global_meta": [
         "Dringend",
@@ -8269,9 +8268,6 @@
         "1",
         "2",
         "3",
-        "16er",
-        "32er",
-        "56er Pack",
         "4",
         "5"
       ],
@@ -8285,7 +8281,10 @@
         "Mini",
         "Hygiene",
         "Damen",
-        "Regel"
+        "Regel",
+        "16er",
+        "32er",
+        "56er Pack"
       ],
       "global_meta": [
         "Dringend",
@@ -8311,11 +8310,7 @@
     "tags": {
       "quantities": [
         "1",
-        "2",
-        "20 Wl",
-        "40 Wl",
-        "80 Wl",
-        "100 Wl"
+        "2"
       ],
       "constellations": [
         "Color",
@@ -8331,7 +8326,11 @@
         "Wäsche",
         "Sauberkeit",
         "Duft",
-        "Waschen"
+        "Waschen",
+        "20 Wl",
+        "40 Wl",
+        "80 Wl",
+        "100 Wl"
       ],
       "global_meta": [
         "Dringend",
@@ -8356,8 +8355,6 @@
         "1",
         "2",
         "3",
-        "1 L",
-        "5 L",
         "4",
         "5"
       ],
@@ -8369,7 +8366,9 @@
         "Blütentraum",
         "Wäsche",
         "Duft",
-        "Weichheit"
+        "Weichheit",
+        "1 L",
+        "5 L"
       ],
       "global_meta": [
         "Dringend",
@@ -8394,9 +8393,7 @@
       "quantities": [
         "1",
         "2",
-        "3",
-        "500ml",
-        "900ml"
+        "3"
       ],
       "constellations": [
         "Konzentrat",
@@ -8410,7 +8407,9 @@
         "Spülen",
         "Küche",
         "Fettlösend",
-        "Haushalt"
+        "Haushalt",
+        "500ml",
+        "900ml"
       ],
       "global_meta": [
         "Dringend",
@@ -8434,9 +8433,6 @@
       "quantities": [
         "1",
         "2",
-        "40er",
-        "60er",
-        "100er Pack",
         "3",
         "4",
         "5"
@@ -8453,7 +8449,10 @@
         "Spülmaschine",
         "Geschirr",
         "Reinheit",
-        "Haushalt"
+        "Haushalt",
+        "40er",
+        "60er",
+        "100er Pack"
       ],
       "global_meta": [
         "Dringend",
@@ -8479,9 +8478,6 @@
       "quantities": [
         "1",
         "2",
-        "1 L",
-        "500ml",
-        "750ml (Spray)",
         "3",
         "4",
         "5"
@@ -8496,7 +8492,10 @@
         "Putzen",
         "Boden",
         "Oberflächen",
-        "Haushalt"
+        "Haushalt",
+        "1 L",
+        "500ml",
+        "750ml (Spray)"
       ],
       "global_meta": [
         "Dringend",
@@ -8521,11 +8520,6 @@
         "2",
         "3",
         "4",
-        "10 L",
-        "20 L",
-        "35 L",
-        "60 L",
-        "120 L",
         "5"
       ],
       "constellations": [
@@ -8539,7 +8533,12 @@
         "Bio-Mülltüten kompostierbar",
         "Haushalt",
         "Müll",
-        "Entsorgung"
+        "Entsorgung",
+        "10 L",
+        "20 L",
+        "35 L",
+        "60 L",
+        "120 L"
       ],
       "global_meta": [
         "Dringend",
@@ -8563,9 +8562,6 @@
         "1",
         "2",
         "3",
-        "20m",
-        "30m",
-        "50m",
         "4",
         "5"
       ],
@@ -8576,7 +8572,10 @@
         "Reißfest extra breit",
         "Küche",
         "Frischhalten",
-        "Grillen"
+        "Grillen",
+        "20m",
+        "30m",
+        "50m"
       ],
       "global_meta": [
         "Dringend",
@@ -8599,8 +8598,6 @@
         "1",
         "2",
         "3",
-        "30 Zuschnitte",
-        "1 Rolle",
         "4",
         "5"
       ],
@@ -8612,7 +8609,9 @@
         "Rolle",
         "Küche",
         "Backen",
-        "Ofen"
+        "Ofen",
+        "30 Zuschnitte",
+        "1 Rolle"
       ],
       "global_meta": [
         "Dringend",
@@ -8638,8 +8637,6 @@
         "1",
         "2",
         "3",
-        "3er",
-        "6er Pack",
         "4",
         "5"
       ],
@@ -8653,7 +8650,9 @@
         "Melamin-Schmutzradierer",
         "Küche",
         "Spülen",
-        "Scheuern"
+        "Scheuern",
+        "3er",
+        "6er Pack"
       ],
       "global_meta": [
         "Dringend",
@@ -8675,9 +8674,7 @@
       "quantities": [
         "1",
         "2",
-        "3",
-        "4er",
-        "8er Pack"
+        "3"
       ],
       "constellations": [
         "Alkaline",
@@ -8690,7 +8687,9 @@
         "AAA Micro 4er Pack",
         "Knopfzelle CR2032",
         "Strom",
-        "Haushalt"
+        "Haushalt",
+        "4er",
+        "8er Pack"
       ],
       "global_meta": [
         "Dringend",
@@ -8718,10 +8717,7 @@
         "3",
         "4",
         "6",
-        "12",
-        "100 g",
-        "400 g",
-        "1 kg"
+        "12"
       ],
       "constellations": [
         "Gelee",
@@ -8738,7 +8734,10 @@
         "Katzen-Snacks",
         "Tierbedarf",
         "Katze",
-        "Nahrung"
+        "Nahrung",
+        "100 g",
+        "400 g",
+        "1 kg"
       ],
       "global_meta": [
         "Dringend",
@@ -8763,8 +8762,6 @@
         "1",
         "2",
         "3",
-        "10 L",
-        "20 L",
         "4",
         "5"
       ],
@@ -8778,7 +8775,9 @@
         "Öko-Holzstreu biologisch abbaubar",
         "Tierbedarf",
         "Katze",
-        "Hygiene"
+        "Hygiene",
+        "10 L",
+        "20 L"
       ],
       "global_meta": [
         "Dringend",
@@ -8805,10 +8804,7 @@
         "2",
         "3",
         "4",
-        "6",
-        "400 g",
-        "800 g",
-        "5 kg"
+        "6"
       ],
       "constellations": [
         "Rind",
@@ -8824,7 +8820,10 @@
         "Hunde-Kauknochen",
         "Tierbedarf",
         "Hund",
-        "Nahrung"
+        "Nahrung",
+        "400 g",
+        "800 g",
+        "5 kg"
       ],
       "global_meta": [
         "Dringend",
@@ -8843,15 +8842,15 @@
       "quantities": [
         "1",
         "2",
-        "3",
-        "50 g",
-        "100 g",
-        "200 g"
+        "3"
       ],
       "constellations": [
         "Zahnpflege (Dentastix)",
         "Kausnack",
-        "Sticks"
+        "Sticks",
+        "50 g",
+        "100 g",
+        "200 g"
       ],
       "global_meta": [
         "Dringend",
@@ -8871,13 +8870,13 @@
     "tags": {
       "quantities": [
         "1",
-        "2",
-        "1 Packung"
+        "2"
       ],
       "constellations": [
         "Wasserfest",
         "Sensitiv",
-        "Kinderpflaster"
+        "Kinderpflaster",
+        "1 Packung"
       ],
       "global_meta": [
         "Dringend",
@@ -8897,16 +8896,16 @@
     "tags": {
       "quantities": [
         "1",
-        "2",
-        "30 Stk",
-        "60 Stk",
-        "Brausetabletten"
+        "2"
       ],
       "constellations": [
         "Vitamin C",
         "Magnesium",
         "Zink",
-        "Multivitamin"
+        "Multivitamin",
+        "30 Stk",
+        "60 Stk",
+        "Brausetabletten"
       ],
       "global_meta": [
         "Dringend",
@@ -8973,12 +8972,12 @@
       "quantities": [
         "1",
         "2",
-        "3",
-        "10er Set"
+        "3"
       ],
       "constellations": [
         "Standardbrief",
-        "Postkarte"
+        "Postkarte",
+        "10er Set"
       ],
       "global_meta": [
         "Dringend",
@@ -9031,12 +9030,12 @@
         "1",
         "2",
         "3",
-        "4",
-        "1 Schachtel"
+        "4"
       ],
       "constellations": [
         "Filter",
-        "Stopftabak"
+        "Stopftabak",
+        "1 Schachtel"
       ],
       "global_meta": [
         "Dringend",
@@ -9084,12 +9083,12 @@
       "quantities": [
         "1",
         "2",
-        "3",
-        "1 Rolle"
+        "3"
       ],
       "constellations": [
         "Gelber Sack",
-        "Restmüll"
+        "Restmüll",
+        "1 Rolle"
       ],
       "global_meta": [
         "Dringend",
@@ -9135,13 +9134,13 @@
       "quantities": [
         "1",
         "2",
-        "3",
-        "5 kg"
+        "3"
       ],
       "constellations": [
         "Briketts",
         "Holzkohle",
-        "FSC-Zertifiziert"
+        "FSC-Zertifiziert",
+        "5 kg"
       ],
       "global_meta": [
         "Dringend",
@@ -9159,11 +9158,12 @@
     "tags": {
       "quantities": [
         "1",
-        "2",
+        "2"
+      ],
+      "constellations": [
         "5 kg",
         "10 kg"
       ],
-      "constellations": [],
       "global_meta": [
         "Dringend",
         "Angebot",
