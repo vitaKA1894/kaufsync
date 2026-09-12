@@ -906,13 +906,17 @@ onUnmounted(() => {
                 <span class="item-regular-tags" v-if="getRegularTags(item.tags).length > 0">
                   {{ formatTags(item.tags) }}
                 </span>
-                <div v-if="getUrgencyTags(item.tags).length > 0" class="item-tags" style="position: absolute; top: -64px; left: -4px;">
+                <div v-if="getUrgencyTags(item.tags).length > 0" class="item-tags" style="position: absolute; top: -76px; left: -12px;">
                   <span
                     v-for="tag in getUrgencyTags(item.tags)"
                     :key="tag"
-                    class="tag-pill"
-                    :style="{ background: getTagStyle(tag).bg, color: getTagStyle(tag).color }"
-                  >{{ tag }}</span>
+                    class="tag-pill-icon"
+                    :style="{ color: getTagStyle(tag).color, background: getTagStyle(tag).bg }"
+                  >
+                    <svg v-if="tag === 'Dringend'" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                    <svg v-else-if="tag === 'Angebot'" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
+                    <svg v-else viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                  </span>
                 </div>
               </div>
               <div class="quantity-controls" style="display: flex; align-items: center; justify-content: space-between; width: 100%; margin-top: auto; padding-top: 12px;" @click.stop>
@@ -944,13 +948,17 @@ onUnmounted(() => {
                 <span class="item-regular-tags" v-if="getRegularTags(item.tags).length > 0">
                   {{ formatTags(item.tags) }}
                 </span>
-                <div v-if="getUrgencyTags(item.tags).length > 0" class="item-tags" style="position: absolute; top: -64px; left: -4px;">
+                <div v-if="getUrgencyTags(item.tags).length > 0" class="item-tags" style="position: absolute; top: -76px; left: -12px;">
                   <span
                     v-for="tag in getUrgencyTags(item.tags)"
                     :key="tag"
-                    class="tag-pill"
-                    :style="{ background: getTagStyle(tag).bg, color: getTagStyle(tag).color }"
-                  >{{ tag }}</span>
+                    class="tag-pill-icon"
+                    :style="{ color: getTagStyle(tag).color, background: getTagStyle(tag).bg }"
+                  >
+                    <svg v-if="tag === 'Dringend'" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                    <svg v-else-if="tag === 'Angebot'" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
+                    <svg v-else viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                  </span>
                 </div>
               </div>
               <div class="quantity-controls" style="display: flex; align-items: center; justify-content: space-between; width: 100%; margin-top: auto; padding-top: 12px;" @click.stop>
@@ -1135,7 +1143,7 @@ onUnmounted(() => {
 
 .ks-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
   gap: 8px;
   align-items: start;
 }
@@ -1149,10 +1157,10 @@ onUnmounted(() => {
   position: relative;
   background: #1e293b !important;
   border: none;
-  aspect-ratio: 1 / 1;
   min-height: 0;
   overflow: hidden;
   justify-content: flex-start;
+  align-items: center;
   color: white !important;
 }
 
@@ -1305,6 +1313,7 @@ onUnmounted(() => {
 .tag-group { display: flex; flex-wrap: wrap; gap: 8px; }
 .tag-chip { padding: 8px 16px; border-radius: 20px; background: var(--ks-surface-2); border: 1px solid transparent; color: var(--ks-text); cursor: pointer; font-size: 14px; font-weight: 500; }
 .tag-chip.active { background: var(--ks-primary-container); color: var(--ks-primary); border-color: var(--ks-primary); }
+.tag-pill-icon { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 50%; box-shadow: 0 2px 4px rgba(0,0,0,0.2); margin-right: 4px; }
 
 /* Sort List */
 .sort-list {

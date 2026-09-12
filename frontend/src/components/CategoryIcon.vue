@@ -21,7 +21,7 @@ const props = defineProps({
   },
   strokeWidth: {
     type: [Number, String],
-    default: 2
+    default: 2.5
   },
   color: {
     type: String,
@@ -254,6 +254,7 @@ const onImageError = (event) => {
   -webkit-mask-repeat: no-repeat;
   mask-position: center;
   -webkit-mask-position: center;
+  filter: drop-shadow(0 0 1px currentColor);
 }
 
 /* Fallback Classes in case color prop isn't passed down - they align with ListView colors */
