@@ -629,7 +629,7 @@ watch(() => props.isOpen, (newVal) => {
                </div>
 
                <div style="display: flex; gap: 12px; margin-top: auto; padding-top: 16px;">
-                  <button class="ks-btn-filled" style="flex: 1; background: #ef4444; color: white;" @click="deleteItem">Löschen</button>
+                  <button v-if="editItem" class="ks-btn-filled" style="flex: 1; background: #ef4444; color: white;" @click="deleteItem">Löschen</button>
                   <button class="ks-btn-filled" style="flex: 1; background: #f8fafc; color: #0f172a;" @click="confirmSelection(false)">Speichern</button>
                </div>
            </div>
