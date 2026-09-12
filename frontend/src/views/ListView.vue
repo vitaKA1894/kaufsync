@@ -106,10 +106,7 @@ const getTagStyle = (tag) => {
 const formatQuantity = (item) => {
   if (!item.quantity) return '';
   const q = item.quantity;
-  const u = item.unit || 'Stk';
-  // Avoid printing "1 Stk" if they chose custom units, print nicely
-  const qStr = (q % 1 === 0) ? q.toString() : q.toString();
-  return `${qStr} ${u}`.trim();
+  return (q % 1 === 0) ? q.toString() : q.toString();
 };
 
 const parseTags = (tagsStr) => {
@@ -888,7 +885,7 @@ onUnmounted(() => {
                   {{ formatCategoryName(group.name) }} <span :style="{ backgroundColor: 'color-mix(in srgb, ' + group.def.color + ' 20%, transparent)', color: group.def.color }" style="padding: 2px 8px; border-radius: 9999px;">{{ group.items.length }}</span>
               </h2>
 
-            <transition-group name="list" tag="div" class="ks-grid items-grid">
+            <transition-group name="list" tag="div" class="ks-grid items-grid grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8 gap-2 w-full">
               <div v-for="item in group.items" :key="item.id" class="grid-card active" :id="'item-' + item.id"
                    @click="toggleItemStatus(item)"
                    @mousedown="startPress(item, $event)"
@@ -897,12 +894,12 @@ onUnmounted(() => {
                    @mouseleave="cancelPress"
                    @touchend="cancelPress"
                    @touchmove="cancelPress">
-              <div class="grid-card-glow" :style="{ background: group.def.bg }"></div>
-              <div class="w-16 h-16 mb-2 rounded-xl bg-slate-700/50 flex items-center justify-center p-2" :style="{ color: group.def.color, backgroundColor: 'rgba(255, 255, 255, 0.05)' }" style="width: 64px; height: 64px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 8px;">
+              <div class="absolute -top-4 -right-4 w-24 h-24 rounded-full blur-xl opacity-15 pointer-events-none" :style="{ backgroundColor: group.def.color }"></div>
+              <div class="w-16 h-16 mb-2 rounded-xl bg-slate-700/50 flex items-center justify-center p-2" :style="{ color: group.def.color }">
                 <CategoryIcon class="icon-svg" :name="item.name" :category="item.category" size="32" style="width: 100%; height: 100%;" />
               </div>
-              <div class="card-text-area">
-                <span class="item-name">{{ item.name }}</span>
+              <div class="card-text-area mb-3">
+                <span class="item-name mb-1">{{ item.name }}</span>
                 <span class="item-regular-tags" v-if="getRegularTags(item.tags).length > 0">
                   {{ formatTags(item.tags) }}
                 </span>
@@ -919,10 +916,10 @@ onUnmounted(() => {
                   </span>
                 </div>
               </div>
-              <div class="quantity-controls" style="display: flex; align-items: center; justify-content: space-between; width: 100%; margin-top: auto; padding-top: 12px;" @click.stop>
-                <button @click.stop="updateItemQuantity(item, -1)" class="qty-btn minus" style="background: #334155;">-</button>
+              <div class="quantity-controls flex items-center justify-between w-full mt-auto bg-slate-900 rounded-lg p-1" @click.stop>
+                <button @click.stop="updateItemQuantity(item, -1)" class="w-8 h-8 rounded-md bg-slate-800 text-slate-300 font-bold flex items-center justify-center">-</button>
                 <span class="qty-val" :style="{ color: group.def.color }" style="font-weight: bold;">{{ formatQuantity(item) }}</span>
-                <button @click.stop="updateItemQuantity(item, 1)" class="qty-btn plus" :style="{ background: group.def.color, color: '#000' }">+</button>
+                <button @click.stop="updateItemQuantity(item, 1)" class="w-8 h-8 rounded-md font-bold text-slate-900 flex items-center justify-center" :style="{ backgroundColor: group.def.color }">+</button>
               </div>
               </div>
             </transition-group>
@@ -930,7 +927,7 @@ onUnmounted(() => {
           </section>
         </template>
         <template v-else>
-          <transition-group name="list" tag="div" class="ks-grid items-grid" style="padding-top: 0;">
+          <transition-group name="list" tag="div" class="ks-grid items-grid grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8 gap-2 w-full" style="padding-top: 0;">
             <div v-for="item in sortedActiveItems" :key="item.id" class="grid-card active" :id="'item-' + item.id"
                    @click="toggleItemStatus(item)"
                    @mousedown="startPress(item, $event)"
@@ -939,12 +936,12 @@ onUnmounted(() => {
                    @mouseleave="cancelPress"
                    @touchend="cancelPress"
                    @touchmove="cancelPress">
-              <div class="grid-card-glow" :style="{ background: item._groupDef.bg }"></div>
-              <div class="w-16 h-16 mb-2 rounded-xl bg-slate-700/50 flex items-center justify-center p-2" :style="{ color: item._groupDef.color, backgroundColor: 'rgba(255, 255, 255, 0.05)' }" style="width: 64px; height: 64px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 8px;">
+              <div class="absolute -top-4 -right-4 w-24 h-24 rounded-full blur-xl opacity-15 pointer-events-none" :style="{ backgroundColor: item._groupDef.color }"></div>
+              <div class="w-16 h-16 mb-2 rounded-xl bg-slate-700/50 flex items-center justify-center p-2" :style="{ color: item._groupDef.color }">
                 <CategoryIcon class="icon-svg" :name="item.name" :category="item.category" size="32" style="width: 100%; height: 100%;" />
               </div>
-              <div class="card-text-area">
-                <span class="item-name">{{ item.name }}</span>
+              <div class="card-text-area mb-3">
+                <span class="item-name mb-1">{{ item.name }}</span>
                 <span class="item-regular-tags" v-if="getRegularTags(item.tags).length > 0">
                   {{ formatTags(item.tags) }}
                 </span>
@@ -961,10 +958,10 @@ onUnmounted(() => {
                   </span>
                 </div>
               </div>
-              <div class="quantity-controls" style="display: flex; align-items: center; justify-content: space-between; width: 100%; margin-top: auto; padding-top: 12px;" @click.stop>
-                <button @click.stop="updateItemQuantity(item, -1)" class="qty-btn minus" style="background: #334155;">-</button>
+              <div class="quantity-controls flex items-center justify-between w-full mt-auto bg-slate-900 rounded-lg p-1" @click.stop>
+                <button @click.stop="updateItemQuantity(item, -1)" class="w-8 h-8 rounded-md bg-slate-800 text-slate-300 font-bold flex items-center justify-center">-</button>
                 <span class="qty-val" :style="{ color: item._groupDef.color }" style="font-weight: bold;">{{ formatQuantity(item) }}</span>
-                <button @click.stop="updateItemQuantity(item, 1)" class="qty-btn plus" :style="{ background: item._groupDef.color, color: '#000' }">+</button>
+                <button @click.stop="updateItemQuantity(item, 1)" class="w-8 h-8 rounded-md font-bold text-slate-900 flex items-center justify-center" :style="{ backgroundColor: item._groupDef.color }">+</button>
               </div>
             </div>
 </transition-group>
@@ -996,12 +993,12 @@ onUnmounted(() => {
                   </button>
               </h2>
         
-        <div class="ks-grid items-grid">
+        <div class="ks-grid items-grid grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8 gap-2 w-full">
           <div v-for="item in completedItems" :key="item.id" class="grid-card completed" @click="toggleItemStatus(item)">
               <div class="w-16 h-16 mb-2 rounded-xl flex items-center justify-center p-2" :style="{ color: getCategoryDef(item.category).bg, backgroundColor: 'rgba(255, 255, 255, 0.02)' }" style="width: 64px; height: 64px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 8px;">
                 <CategoryIcon class="icon-svg" :name="item.name" :category="item.category" size="32" style="width: 100%; height: 100%; opacity: 0.5;" />
               </div>
-            <div class="card-text-area">
+            <div class="card-text-area mb-3">
               <span class="item-name" style="opacity: 0.5; text-decoration: line-through;">{{ item.name }}</span>
               <span class="item-quantity" v-if="formatQuantity(item)" style="opacity: 0.5;">{{ formatQuantity(item) }}</span>
             </div>
@@ -1143,7 +1140,7 @@ onUnmounted(() => {
 
 .ks-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+
   gap: 8px;
   align-items: start;
 }
@@ -1166,8 +1163,8 @@ onUnmounted(() => {
 
 .grid-card-glow {
   position: absolute;
-  top: -12px;
-  right: -12px;
+  top: -16px;
+  right: -16px;
   width: 6rem;
   height: 6rem;
   border-radius: 50%;

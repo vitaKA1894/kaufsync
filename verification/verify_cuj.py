@@ -1,78 +1,60 @@
-from playwright.sync_api import sync_playwright
-import time
-import subprocess
 import os
+import subprocess
+import time
+from playwright.sync_api import sync_playwright
 
 def start_servers():
     print("Starting backend...")
-    backend = subprocess.Popen(["python", "-m", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"], cwd=os.path.join(os.path.dirname(os.getcwd()), 'backend'), stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-
+    backend = subprocess.Popen(["python", "-m", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"], cwd=os.path.join(os.getcwd(), 'backend'), stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     print("Starting frontend...")
     frontend = subprocess.Popen(["npm", "run", "dev", "--prefix", "frontend"], cwd=os.getcwd(), stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-
-    time.sleep(5) # wait for servers to start
+    time.sleep(4)
     return backend, frontend
 
 def run_cuj(page):
     print("Running CUJ...")
     page.goto("http://localhost:5173")
+    page.wait_for_timeout(1000)
+
+    # Authenticate via localStorage
+    page.evaluate("localStorage.setItem('token', 'dummy');")
+    page.evaluate("localStorage.setItem('user', JSON.stringify({id: 1, email: 'test@test.com', display_name: 'Test'}));")
+    page.evaluate("localStorage.setItem('isLoggedIn', 'true');")
+
+    page.reload()
     page.wait_for_timeout(2000)
 
     try:
-        page.locator("#email").fill("test@test.com")
-        page.wait_for_timeout(500)
-        page.locator("#password").fill("test1234")
-        page.wait_for_timeout(500)
-        page.get_by_role("button", name="Einloggen").click()
-        page.wait_for_timeout(2000)
+        # Create a list if none exists
+        if page.get_by_text("Liste erstellen / beitreten").is_visible():
+            page.get_by_text("Liste erstellen / beitreten").click()
+            page.wait_for_timeout(500)
+            page.get_by_text("Neue Liste erstellen").click()
+            page.wait_for_timeout(500)
+            page.get_by_role("textbox").fill("Einkauf")
+            page.wait_for_timeout(500)
+            page.get_by_text("Erstellen", exact=True).click()
+            page.wait_for_timeout(2000)
+            if page.locator(".banner-card").count() > 0:
+                page.locator(".banner-card").first.click()
+            page.wait_for_timeout(1000)
 
-        # Dashboard -> click first list
-        page.locator(".banner-card").first.click()
+        # Click on the list
+        pass
         page.wait_for_timeout(1000)
     except Exception as e:
-        print("Login/Navigation failed, continuing with direct view if possible...", e)
+        print(f"List navigation failed: {e}")
 
-    try:
-        # Click add item
-        page.get_by_text("Neuen Artikel hinzufügen").click()
-        page.wait_for_timeout(1000)
-
-        # Type something unknown
-        page.get_by_placeholder("Artikel suchen...").fill("Gegnerischer")
-        page.wait_for_timeout(1000)
-        page.keyboard.press("Enter")
-        page.wait_for_timeout(1000)
-
-        page.screenshot(path="verification/screenshots/verification1.png")
-
-        # Change category to something else
-        page.get_by_text("Kategorie ändern").click()
-        page.wait_for_timeout(1000)
-        page.get_by_text("Obst & Gemüse").first.click()
-        page.wait_for_timeout(1000)
-
-        page.get_by_role("button", name="Zur Liste hinzufügen").click()
-        page.wait_for_timeout(2000)
-
-        # Search for "Wurst"
-        page.get_by_text("Neuen Artikel hinzufügen").click()
-        page.wait_for_timeout(1000)
-        page.get_by_placeholder("Artikel suchen...").fill("Wurst")
-        page.wait_for_timeout(1000)
-
-        page.screenshot(path="verification/screenshots/verification2.png")
-        page.wait_for_timeout(1000)
-    except Exception as e:
-        print("Failed to run full CUJ sequence.", e)
+    # We should now be on the ListView
+    page.wait_for_timeout(2000)
+    page.screenshot(path="/app/verification/list_view_verification.png")
 
 if __name__ == "__main__":
     backend, frontend = start_servers()
     try:
         with sync_playwright() as p:
             browser = p.chromium.launch(headless=True)
-            context = browser.new_context(
-                record_video_dir="verification/videos"
-            )
+            context = browser.new_context(record_video_dir="/app/verification/videos")
             page = context.new_page()
             try:
                 run_cuj(page)
@@ -81,5 +63,7 @@ if __name__ == "__main__":
                 browser.close()
     finally:
         print("Cleaning up servers...")
-        backend.kill()
-        frontend.kill()
+        backend.terminate()
+        frontend.terminate()
+        backend.wait()
+        frontend.wait()
