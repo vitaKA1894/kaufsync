@@ -304,6 +304,15 @@ const confirmSelection = (bypassWarning = false) => {
       duplicateWarning.value = true;
       return;
     }
+
+    // Custom Item Flow: Instead of emitting 'add' directly, instantiate the item and proceed to details
+    selectedItem.value = {
+        name: finalName,
+        category: 'Sonstiges',
+        tags: { quantities: [], constellations: [], global_meta: [] }
+    };
+    proceedToDetails(selectedItem.value);
+    return;
   }
 
 
@@ -477,7 +486,7 @@ watch(() => props.isOpen, (newVal) => {
         <div class="search-step" v-show="!showScanner" style="flex-direction: column-reverse;">
           <div class="results-list" style="margin-bottom: 16px;">
             <template v-if="query.length >= 1">
-              <div class="ks-grid items-grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8 gap-2" style="padding: 0 4px;">
+              <div class="ks-grid items-grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8 ga" style="padding: 0 4px;">
                 <div
                   v-for="item in results"
                   :key="item.id"
@@ -485,8 +494,8 @@ watch(() => props.isOpen, (newVal) => {
                   @click="selectItem(item)"
                 >
                   <div class="absolute -top-4 -right-4 w-24 h-24 rounded-full blur-xl opacity-15 pointer-events-none" :style="{ backgroundColor: getCategoryDef(item.category).color }"></div>
-                  <div class="w-16 h-16 mb-2 rounded-xl bg-slate-700/50 flex items-center justify-center p-2" :style="{ color: getCategoryDef(item.category).color }">
-                    <CategoryIcon class="icon-svg" :name="item.name" :category="item.category" size="32" style="width: 100%; height: 100%;" />
+                  <div class="w-[55px] h-[55px] mb-2 rounded-xl bg-slate-700/50 flex items-center justify-center p-0" :style="{ color: getCategoryDef(item.category).color }">
+                    <CategoryIcon class="icon-svg" :name="item.name" :category="item.category" size="55" />
                   </div>
                   <div class="card-text-area">
                     <span class="item-name" v-html="highlightText(item.name, query)"></span>
@@ -536,12 +545,14 @@ watch(() => props.isOpen, (newVal) => {
                     <CategoryIcon
                       :name="selectedItem.name"
                       :category="selectedItem.category"
-                      size="64"
-                      style="width: 100%; height: 100%;"
+                      size="55"
+
                     />
                  </div>
                  <div style="display: flex; flex-direction: column;">
-                     <span style="font-size: 12px; color: var(--ks-text-muted); text-transform: uppercase; letter-spacing: 0.05em;">{{ selectedItem.category }}</span>
+                     <button @click="showCategorySelector = true" style="font-size: 12px; color: var(--ks-text-muted); text-transform: uppercase; letter-spacing: 0.05em; cursor: pointer; text-align: left; background: none; border: none; padding: 0;">
+                       {{ selectedItem.category }}
+                     </button>
                      <h2 style="margin:0; font-size: 24px; font-weight: bold;">{{ selectedItem.name }}</h2>
                  </div>
               </div>
@@ -789,7 +800,7 @@ watch(() => props.isOpen, (newVal) => {
 .grid-card:hover { background: #334155 !important; }
 
 .icon-svg { display: flex; align-items: center; justify-content: center; }
-.icon-svg :deep(svg) { width: 100%; height: 100%; }
+.icon-svg :deep(svg) { width: 55px; height: 55px; }
 
 .card-text-area {
   display: flex; flex-direction: column;
