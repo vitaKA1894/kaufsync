@@ -881,13 +881,12 @@ onUnmounted(() => {
     <div class="list-scroll-area">
       <template v-if="groupedActiveItems.length > 0">
         <template v-if="!isCompactView">
-          <section v-for="group in groupedActiveItems" :key="group.name" class="category-group"
-                   :style="{ background: `linear-gradient(to right, color-mix(in srgb, ${group.def.bg} 15%, transparent) 0%, transparent 100%)` }">
-
-            <div class="category-lane" :style="{ color: group.def.color }">
-              <span class="category-name">{{ formatCategoryName(group.name) }}</span>
-              <span class="category-count" style="margin-top: 8px; font-size: 10px; font-weight: 600; background: rgba(255,255,255,0.1); padding: 2px 6px; border-radius: 999px;">{{ group.items.length }}</span>
-            </div>
+          <section v-for="group in groupedActiveItems" :key="group.name" class="flex gap-3 mb-6" style="display: flex; gap: 12px; margin-bottom: 24px;">
+            <div class="category-indicator" :style="{ color: group.def.color, backgroundColor: group.def.color }" style="width: 4px; border-radius: 9999px; flex-shrink: 0; box-shadow: 0 0 10px currentColor; opacity: 0.8;"></div>
+            <div style="flex: 1;">
+              <h2 :style="{ color: group.def.color }" style="font-weight: bold; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
+                  {{ formatCategoryName(group.name) }} <span :style="{ backgroundColor: 'color-mix(in srgb, ' + group.def.color + ' 20%, transparent)', color: group.def.color }" style="padding: 2px 8px; border-radius: 9999px;">{{ group.items.length }}</span>
+              </h2>
 
             <transition-group name="list" tag="div" class="ks-grid items-grid">
               <div v-for="item in group.items" :key="item.id" class="grid-card active" :id="'item-' + item.id"
@@ -898,11 +897,9 @@ onUnmounted(() => {
                    @mouseleave="cancelPress"
                    @touchend="cancelPress"
                    @touchmove="cancelPress">
-              <div class="grid-card-glow" :style="{ background: group ? group.def.bg : item._groupDef.bg }"></div>
-              <div class="card-icon-area" :style="{ color: group ? group.def.color : item._groupDef.color }">
-                <div class="icon-svg-container" style="width: 64px; height: 64px; display: flex; align-items: center; justify-content: center; padding: 8px;">
-                  <CategoryIcon class="icon-svg" :name="item.name" :category="item.category" size="48" style="width: 100%; height: 100%;" />
-                </div>
+              <div class="grid-card-glow" :style="{ background: group.def.bg }"></div>
+              <div class="w-16 h-16 mb-2 rounded-xl bg-slate-700/50 flex items-center justify-center p-2" :style="{ color: group.def.color, backgroundColor: 'rgba(255, 255, 255, 0.05)' }" style="width: 64px; height: 64px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 8px;">
+                <CategoryIcon class="icon-svg" :name="item.name" :category="item.category" size="32" style="width: 100%; height: 100%;" />
               </div>
               <div class="card-text-area">
                 <span class="item-name">{{ item.name }}</span>
@@ -918,13 +915,14 @@ onUnmounted(() => {
                   >{{ tag }}</span>
                 </div>
               </div>
-              <div class="quantity-controls" @click.stop>
-                <button @click.stop="updateItemQuantity(item, -1)" class="qty-btn" style="background: #334155;">-</button>
-                <span class="qty-val">{{ formatQuantity(item) }}</span>
-                <button @click.stop="updateItemQuantity(item, 1)" class="qty-btn" :style="{ background: group ? group.def.bg : item._groupDef.bg, color: '#000' }">+</button>
+              <div class="quantity-controls" style="display: flex; align-items: center; justify-content: space-between; width: 100%; margin-top: auto; padding-top: 12px;" @click.stop>
+                <button @click.stop="updateItemQuantity(item, -1)" class="qty-btn minus" style="background: #334155;">-</button>
+                <span class="qty-val" :style="{ color: group.def.color }" style="font-weight: bold;">{{ formatQuantity(item) }}</span>
+                <button @click.stop="updateItemQuantity(item, 1)" class="qty-btn plus" :style="{ background: group.def.color, color: '#000' }">+</button>
               </div>
               </div>
             </transition-group>
+            </div>
           </section>
         </template>
         <template v-else>
@@ -937,11 +935,9 @@ onUnmounted(() => {
                    @mouseleave="cancelPress"
                    @touchend="cancelPress"
                    @touchmove="cancelPress">
-              <div class="grid-card-glow" :style="{ background: group ? group.def.bg : item._groupDef.bg }"></div>
-              <div class="card-icon-area" :style="{ color: group ? group.def.color : item._groupDef.color }">
-                <div class="icon-svg-container" style="width: 64px; height: 64px; display: flex; align-items: center; justify-content: center; padding: 8px;">
-                  <CategoryIcon class="icon-svg" :name="item.name" :category="item.category" size="48" style="width: 100%; height: 100%;" />
-                </div>
+              <div class="grid-card-glow" :style="{ background: item._groupDef.bg }"></div>
+              <div class="w-16 h-16 mb-2 rounded-xl bg-slate-700/50 flex items-center justify-center p-2" :style="{ color: item._groupDef.color, backgroundColor: 'rgba(255, 255, 255, 0.05)' }" style="width: 64px; height: 64px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 8px;">
+                <CategoryIcon class="icon-svg" :name="item.name" :category="item.category" size="32" style="width: 100%; height: 100%;" />
               </div>
               <div class="card-text-area">
                 <span class="item-name">{{ item.name }}</span>
@@ -957,13 +953,13 @@ onUnmounted(() => {
                   >{{ tag }}</span>
                 </div>
               </div>
-              <div class="quantity-controls" @click.stop>
-                <button @click.stop="updateItemQuantity(item, -1)" class="qty-btn" style="background: #334155;">-</button>
-                <span class="qty-val">{{ formatQuantity(item) }}</span>
-                <button @click.stop="updateItemQuantity(item, 1)" class="qty-btn" :style="{ background: group ? group.def.bg : item._groupDef.bg, color: '#000' }">+</button>
+              <div class="quantity-controls" style="display: flex; align-items: center; justify-content: space-between; width: 100%; margin-top: auto; padding-top: 12px;" @click.stop>
+                <button @click.stop="updateItemQuantity(item, -1)" class="qty-btn minus" style="background: #334155;">-</button>
+                <span class="qty-val" :style="{ color: item._groupDef.color }" style="font-weight: bold;">{{ formatQuantity(item) }}</span>
+                <button @click.stop="updateItemQuantity(item, 1)" class="qty-btn plus" :style="{ background: item._groupDef.color, color: '#000' }">+</button>
               </div>
             </div>
-          </transition-group>
+</transition-group>
         </template>
       </template>
 
@@ -978,32 +974,35 @@ onUnmounted(() => {
       </div>
 
       <!-- ERLEDIGTE ARTIKEL -->
-      <section v-if="completedItems.length > 0" class="category-group completed-section"
-               style="background: linear-gradient(to right, rgba(255,255,255,0.02) 0%, transparent 100%); margin-top: 32px;">
+      <section v-if="completedItems.length > 0" class="flex gap-3 mb-6 completed-section"
+               style="display: flex; gap: 12px; margin-bottom: 24px; margin-top: 32px;">
 
-        <div class="category-lane" style="background-color: var(--ks-surface-3); color: var(--ks-text-muted);">
-          <span class="category-name">Erledigt</span>
-          <span class="category-count" style="margin-top: 8px;">{{ completedItems.length }}</span>
-
-          <button class="clear-completed-btn-vertical" @click="clearCompleted" aria-label="Alle erledigten löschen" style="margin-top: auto; margin-bottom: 8px; background: transparent; border: none; color: var(--ks-error); cursor: pointer; padding: 8px;">
-            <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; fill: currentColor;"><path d="M7 21q-.825 0-1.412-.587Q5 19.825 5 19V6H4V4h5V3h6v1h5v2h-1v13q0 .825-.587 1.413Q17.825 21 17 21Zm2-4h2V8H9Zm4 0h2V8h-2Z"/></svg>
-          </button>
-        </div>
+            <div class="category-indicator" style="background-color: var(--ks-surface-3); width: 4px; border-radius: 9999px; flex-shrink: 0; box-shadow: 0 0 10px rgba(0,0,0,0.5); opacity: 0.8;"></div>
+            <div style="flex: 1;">
+              <h2 style="color: var(--ks-text-muted); font-weight: bold; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; justify-content: space-between;">
+                  <div style="display: flex; align-items: center; gap: 8px;">
+                      Erledigt <span style="background-color: var(--ks-surface-3); color: var(--ks-text-muted); padding: 2px 8px; border-radius: 9999px;">{{ completedItems.length }}</span>
+                  </div>
+                  <button class="clear-completed-btn-vertical" @click="clearCompleted" aria-label="Alle erledigten löschen" style="background: transparent; border: none; color: var(--ks-error); cursor: pointer; padding: 4px;">
+                    <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; fill: currentColor;"><path d="M7 21q-.825 0-1.412-.587Q5 19.825 5 19V6H4V4h5V3h6v1h5v2h-1v13q0 .825-.587 1.413Q17.825 21 17 21Zm2-4h2V8H9Zm4 0h2V8h-2Z"/></svg>
+                  </button>
+              </h2>
         
         <div class="ks-grid items-grid">
           <div v-for="item in completedItems" :key="item.id" class="grid-card completed" @click="toggleItemStatus(item)">
-            <div class="card-icon-area" :style="{ color: getCategoryDef(item.category).bg }">
-               <CategoryIcon class="icon-svg" :name="item.name" :category="item.category" size="64" />
-            </div>
+              <div class="w-16 h-16 mb-2 rounded-xl flex items-center justify-center p-2" :style="{ color: getCategoryDef(item.category).bg, backgroundColor: 'rgba(255, 255, 255, 0.02)' }" style="width: 64px; height: 64px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 8px;">
+                <CategoryIcon class="icon-svg" :name="item.name" :category="item.category" size="32" style="width: 100%; height: 100%; opacity: 0.5;" />
+              </div>
             <div class="card-text-area">
-              <span class="item-name">{{ item.name }}</span>
-              <span class="item-quantity" v-if="formatQuantity(item)">{{ formatQuantity(item) }}</span>
+              <span class="item-name" style="opacity: 0.5; text-decoration: line-through;">{{ item.name }}</span>
+              <span class="item-quantity" v-if="formatQuantity(item)" style="opacity: 0.5;">{{ formatQuantity(item) }}</span>
             </div>
-            <button class="delete-btn" @click.stop="confirmDeleteItem(item)" aria-label="Löschen">
-              <svg viewBox="0 0 24 24"><path d="M7 21q-.825 0-1.412-.587Q5 19.825 5 19V6H4V4h5V3h6v1h5v2h-1v13q0 .825-.587 1.413Q17.825 21 17 21Zm2-4h2V8H9Zm4 0h2V8h-2Z"/></svg>
+            <button class="delete-btn" @click.stop="confirmDeleteItem(item)" aria-label="Löschen" style="margin-top: auto; padding-top: 12px; display: flex; align-items: center; justify-content: center; opacity: 0.8;">
+              <svg viewBox="0 0 24 24" style="width: 24px; height: 24px; fill: var(--ks-text-muted);"><path d="M7 21q-.825 0-1.412-.587Q5 19.825 5 19V6H4V4h5V3h6v1h5v2h-1v13q0 .825-.587 1.413Q17.825 21 17 21Zm2-4h2V8H9Zm4 0h2V8h-2Z"/></svg>
             </button>
           </div>
         </div>
+            </div>
       </section>
     </div>
 
