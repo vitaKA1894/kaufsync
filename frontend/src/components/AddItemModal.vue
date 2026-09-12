@@ -37,7 +37,7 @@ const props = defineProps({
   activeItems: { type: Array, default: () => [] }
 });
 
-const emit = defineEmits(['close', 'add', 'update']);
+const emit = defineEmits(['close', 'add', 'update', 'delete']);
 const route = useRoute();
 
 const query = ref('');
@@ -82,37 +82,20 @@ const onTouchEnd = () => {
 
 
 
-const deleteItem = async () => {
+const deleteItem = () => {
     if (!selectedItem.value) return;
-    try {
-        const token = localStorage.getItem('token');
-        const listId = activeItems.value.length > 0 ? activeItems.value[0].list_id : route.params.id;
-
-        let itemId = selectedItem.value.id;
-        // If it's a frontend search result, find the active item
-        if (!itemId || !activeItems.value.find(i => i.id === itemId)) {
-             const existing = activeItems.value.find(i => i.name.toLowerCase() === selectedItem.value.name.toLowerCase());
-             if (existing) {
-                 itemId = existing.id;
-             } else {
-                 closeModal();
-                 return;
-             }
-        }
-
-        const res = await fetch(`/api/items/${itemId}`, {
-            method: 'DELETE',
-            headers: {
-                'Authorization': `Bearer ${token}`
-            }
-        });
-        if (res.ok) {
-            emit('update');
+    let itemId = selectedItem.value.id;
+    if (!itemId || !props.activeItems.find(i => i.id === itemId)) {
+        const existing = props.activeItems.find(i => i.name.toLowerCase() === selectedItem.value.name.toLowerCase());
+        if (existing) {
+            itemId = existing.id;
+        } else {
             closeModal();
+            return;
         }
-    } catch (e) {
-        console.error(e);
     }
+    emit('delete', itemId);
+    closeModal();
 };
 
 const handleScan = async (barcode) => {
@@ -492,17 +475,18 @@ watch(() => props.isOpen, (newVal) => {
 
         <!-- STEP 1: Search -->
         <div class="search-step" v-show="!showScanner" style="flex-direction: column-reverse;">
-          <div class="results-list" style="margin-top: 16px;">
+          <div class="results-list" style="margin-bottom: 16px;">
             <template v-if="query.length >= 1">
-              <div class="ks-grid items-grid" style="padding: 0 4px;">
+              <div class="ks-grid items-grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8 gap-2" style="padding: 0 4px;">
                 <div
                   v-for="item in results"
                   :key="item.id"
                   class="grid-card"
                   @click="selectItem(item)"
                 >
-                  <div class="card-icon-area" :style="{ background: getCategoryDef(item.category).bg, color: getCategoryDef(item.category).color }">
-                    <CategoryIcon class="icon-svg" :name="item.name" :category="item.category" size="64" />
+                  <div class="absolute -top-4 -right-4 w-24 h-24 rounded-full blur-xl opacity-15 pointer-events-none" :style="{ backgroundColor: getCategoryDef(item.category).color }"></div>
+                  <div class="w-16 h-16 mb-2 rounded-xl bg-slate-700/50 flex items-center justify-center p-2" :style="{ color: getCategoryDef(item.category).color }">
+                    <CategoryIcon class="icon-svg" :name="item.name" :category="item.category" size="32" style="width: 100%; height: 100%;" />
                   </div>
                   <div class="card-text-area">
                     <span class="item-name" v-html="highlightText(item.name, query)"></span>
@@ -630,6 +614,7 @@ watch(() => props.isOpen, (newVal) => {
 
                <div style="display: flex; gap: 12px; margin-top: auto; padding-top: 16px;">
                   <button v-if="editItem" class="ks-btn-filled" style="flex: 1; background: #ef4444; color: white;" @click="deleteItem">Löschen</button>
+                  <button v-else class="ks-btn-filled" style="flex: 1; background: #334155; color: white;" @click="closeModal">Abbrechen</button>
                   <button class="ks-btn-filled" style="flex: 1; background: #f8fafc; color: #0f172a;" @click="confirmSelection(false)">Speichern</button>
                </div>
            </div>
@@ -681,7 +666,7 @@ watch(() => props.isOpen, (newVal) => {
   background: #0f172a; /* bg-slate-900 */
   width: 100%;
   max-width: var(--ks-page-width);
-  height: 90vh; /* Fixed max height for the sheet */
+  max-height: 90vh; /* Fixed max height for the sheet */
   display: flex;
   flex-direction: column;
   border-radius: 24px 24px 0 0;
@@ -691,7 +676,6 @@ watch(() => props.isOpen, (newVal) => {
 }
 
 .modal-content.is-details {
-  height: auto;
   max-height: 90vh;
 }
 
@@ -782,30 +766,38 @@ watch(() => props.isOpen, (newVal) => {
 
 .ks-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-  gap: 12px;
+  gap: 8px;
+  align-items: start;
 }
 
 .grid-card {
   display: flex; flex-direction: column;
-  border-radius: var(--ks-radius-sm); padding: 8px 4px;
+  border-radius: 1rem;
+  padding: 8px;
   cursor: pointer; text-align: center;
   transition: transform 0.1s, opacity 0.2s, background 0.2s, border-color 0.3s;
   position: relative;
-  background: var(--ks-surface-2);
-  border: 1px solid var(--ks-border);
+  background: #1e293b !important;
+  border: none;
+  min-height: 0;
+  overflow: hidden;
+  justify-content: flex-start;
+  align-items: center;
+  color: white !important;
 }
 .grid-card:active { transform: scale(0.95); }
-.grid-card:hover { background: var(--ks-surface-3); }
+.grid-card:hover { background: #334155 !important; }
 
-.card-icon-area {
-  display: flex; align-items: center; justify-content: center;
-  height: 64px; margin-bottom: 12px; border-radius: var(--ks-radius-xs);
-}
-.icon-svg { display: flex; align-items: center; justify-content: center; width: 64px; height: 64px; }
+.icon-svg { display: flex; align-items: center; justify-content: center; }
 .icon-svg :deep(svg) { width: 100%; height: 100%; }
 
-.card-text-area { display: flex; flex-direction: column; }
+.card-text-area {
+  display: flex; flex-direction: column;
+  margin-top: 4px;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
 .item-name {
   font-size: 12px; font-weight: 600;
   display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
