@@ -258,12 +258,12 @@ const onImageError = (event) => {
 }
 
 /* Fallback Classes in case color prop isn't passed down - they align with ListView colors */
-.cat-obst-gemuese { color: #1B5E20; }
-.cat-brot-backwaren { color: #F57F17; }
-.cat-fleisch-fisch { color: #B71C1C; }
-.cat-milch-tiefkuehl { color: #01579B; }
-.cat-vorratskammer { color: #E65100; }
-.cat-getraenke-genuss { color: #1A237E; }
-.cat-drogerie-haushalt { color: #006064; }
-.cat-sonstiges { color: #4A148C; }
+.cat-obst-gemuese { color: #86efac; }
+.cat-brot-backwaren { color: #fef08a; }
+.cat-fleisch-fisch { color: #fca5a5; }
+.cat-milch-tiefkuehl { color: #93c5fd; }
+.cat-vorratskammer { color: #fdba74; }
+.cat-getraenke-genuss { color: #a5b4fc; }
+.cat-drogerie-haushalt { color: #5eead4; }
+.cat-sonstiges { color: #d8b4fe; }
 </style>
