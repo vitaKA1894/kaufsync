@@ -187,7 +187,7 @@ watch(showSortSheet, async (newVal) => {
     await nextTick();
     if (sortListRef.value && !sortableInstance) {
       sortableInstance = new Sortable(sortListRef.value, {
-        handle: '.drag-handle',
+        handle: '.sort-item',
         animation: 150,
         onEnd: (evt) => {
           const itemEl = evt.item;
@@ -847,12 +847,12 @@ onUnmounted(() => {
         <p class="sheet-support">Sortiere die Kategorien, damit sie deinem Weg durch den Markt entsprechen.</p>
         
         <div class="sort-list" ref="sortListRef">
-          <div v-for="(catName, index) in categoryOrder" :key="catName" class="sort-item" :data-id="catName" :style="{ background: getCategoryDef(catName).bg, color: getCategoryDef(catName).color, border: 'none' }">
+          <div v-for="(catName, index) in categoryOrder" :key="catName" class="sort-item" :data-id="catName" :style="{ background: getCategoryDef(catName).bg, color: '#0f172a', border: 'none' }">
             <div class="sort-info">
                <span>{{ catName }}</span>
             </div>
             <div class="sort-actions">
-              <span class="drag-handle" style="cursor: grab; display: flex; align-items: center; justify-content: center; width: 32px; height: 32px;">
+              <span class="drag-handle" style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px;">
                  <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M3 15v-2h18v2H3Zm0-4V9h18v2H3Z"/></svg>
               </span>
             </div>
@@ -885,7 +885,7 @@ onUnmounted(() => {
                   {{ formatCategoryName(group.name) }} <span :style="{ backgroundColor: 'color-mix(in srgb, ' + group.def.color + ' 20%, transparent)', color: group.def.color }" style="padding: 2px 8px; border-radius: 9999px;">{{ group.items.length }}</span>
               </h2>
 
-            <transition-group name="list" tag="div" class="ks-grid items-grid grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8 gap-2 w-full">
+            <transition-group name="list" tag="div" class="ks-grid items-grid grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8 ga w-full">
               <div v-for="item in group.items" :key="item.id" class="grid-card active" :id="'item-' + item.id"
                    @click="toggleItemStatus(item)"
                    @mousedown="startPress(item, $event)"
@@ -895,8 +895,8 @@ onUnmounted(() => {
                    @touchend="cancelPress"
                    @touchmove="cancelPress">
               <div class="absolute -top-4 -right-4 w-24 h-24 rounded-full blur-xl opacity-15 pointer-events-none" :style="{ backgroundColor: group.def.color }"></div>
-              <div class="w-16 h-16 mb-2 rounded-xl bg-slate-700/50 flex items-center justify-center p-2" :style="{ color: group.def.color }">
-                <CategoryIcon class="icon-svg" :name="item.name" :category="item.category" size="32" style="width: 100%; height: 100%;" />
+              <div class="w-[55px] h-[55px] mb-2 rounded-xl bg-slate-700/50 flex items-center justify-center p-0" :style="{ color: group.def.color }">
+                <CategoryIcon class="icon-svg" :name="item.name" :category="item.category" size="55" />
               </div>
               <div v-if="getUrgencyTags(item.tags).length > 0" class="item-tags" style="position: absolute; top: 8px; left: 8px; display: flex; gap: 4px; z-index: 2;">
                 <span
@@ -926,7 +926,7 @@ onUnmounted(() => {
           </section>
         </template>
         <template v-else>
-          <transition-group name="list" tag="div" class="ks-grid items-grid grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8 gap-2 w-full" style="padding-top: 0;">
+          <transition-group name="list" tag="div" class="ks-grid items-grid grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8 ga w-full" style="padding-top: 0;">
             <div v-for="item in sortedActiveItems" :key="item.id" class="grid-card active" :id="'item-' + item.id"
                    @click="toggleItemStatus(item)"
                    @mousedown="startPress(item, $event)"
@@ -936,8 +936,8 @@ onUnmounted(() => {
                    @touchend="cancelPress"
                    @touchmove="cancelPress">
               <div class="absolute -top-4 -right-4 w-24 h-24 rounded-full blur-xl opacity-15 pointer-events-none" :style="{ backgroundColor: item._groupDef.color }"></div>
-              <div class="w-16 h-16 mb-2 rounded-xl bg-slate-700/50 flex items-center justify-center p-2" :style="{ color: item._groupDef.color }">
-                <CategoryIcon class="icon-svg" :name="item.name" :category="item.category" size="32" style="width: 100%; height: 100%;" />
+              <div class="w-[55px] h-[55px] mb-2 rounded-xl bg-slate-700/50 flex items-center justify-center p-0" :style="{ color: item._groupDef.color }">
+                <CategoryIcon class="icon-svg" :name="item.name" :category="item.category" size="55" />
               </div>
               <div v-if="getUrgencyTags(item.tags).length > 0" class="item-tags" style="position: absolute; top: 8px; left: 8px; display: flex; gap: 4px; z-index: 2;">
                 <span
@@ -991,10 +991,10 @@ onUnmounted(() => {
                   </button>
               </h2>
         
-        <div class="ks-grid items-grid grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8 gap-2 w-full">
+        <div class="ks-grid items-grid grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8 ga w-full">
           <div v-for="item in completedItems" :key="item.id" class="grid-card completed" @click="toggleItemStatus(item)">
-              <div class="w-16 h-16 mb-2 rounded-xl flex items-center justify-center p-2" :style="{ color: getCategoryDef(item.category).bg, backgroundColor: 'rgba(255, 255, 255, 0.02)' }" style="width: 64px; height: 64px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 8px;">
-                <CategoryIcon class="icon-svg" :name="item.name" :category="item.category" size="32" style="width: 100%; height: 100%; opacity: 0.5;" />
+              <div class="w-[55px] h-[55px] mb-2 rounded-xl flex items-center justify-center" :style="{ color: getCategoryDef(item.category).bg, backgroundColor: 'rgba(255, 255, 255, 0.02)' }" style="width: 55px; height: 55px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 8px;">
+                <CategoryIcon class="icon-svg" :name="item.name" :category="item.category" size="55" style="opacity: 0.5;" />
               </div>
             <div class="card-text-area mb-3">
               <span class="item-name" style="opacity: 0.5; text-decoration: line-through;">{{ item.name }}</span>
@@ -1320,6 +1320,8 @@ onUnmounted(() => {
   display: flex; align-items: center; justify-content: space-between;
   padding: 12px 16px; background: rgba(255,255,255,0.03);
   border-radius: var(--ks-radius-xs); border: 1px solid var(--ks-border);
+  cursor: grab;
+  user-select: none;
 }
 .sort-info { display: flex; align-items: center; gap: 12px; font-weight: 500; }
 .sort-actions { display: flex; gap: 4px; }
