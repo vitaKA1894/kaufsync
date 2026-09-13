@@ -49,6 +49,7 @@ const selectedItem = ref(null);
 
 // Scanner State
 const showScanner = ref(false);
+const isContinuousAdd = ref(false);
 
 // Sheet Dragging Logic
 const sheetRef = ref(null);
@@ -367,16 +368,32 @@ const confirmSelection = (bypassWarning = false) => {
 
   if (props.editItem) {
     emit('update', { id: props.editItem.id, ...payload });
+    closeModal();
   } else {
     // Only emit add if we have a valid item or query
     if (selectedItem.value || query.value.trim() !== '') {
       emit('add', payload);
+      // Seamless "Next Item" Flow
+      query.value = '';
+      results.value = [];
+      selectedItem.value = null;
+      activeTags.value = [];
+      showManualAmount.value = false;
+      manualQuantity.value = '';
+      manualUnit.value = '';
+      duplicateWarning.value = false;
+      isContinuousAdd.value = true;
+      nextTick(() => {
+         inputRef.value?.focus();
+      });
+    } else {
+      closeModal();
     }
   }
-  closeModal();
 };
 
 const closeModal = () => {
+  isContinuousAdd.value = false;
   query.value = '';
   results.value = [];
   selectedItem.value = null;
@@ -523,7 +540,7 @@ watch(() => props.isOpen, (newVal) => {
                   type="text"
                   class="modal-input"
                   :class="{ 'input-error': duplicateWarning }"
-                  placeholder="Artikel suchen..."
+                  :placeholder="isContinuousAdd ? 'Nächster Artikel ...' : 'Artikel suchen...'"
                   @keyup.enter="confirmSelection(false)"
                 />
               </div>
@@ -540,20 +557,24 @@ watch(() => props.isOpen, (newVal) => {
         <div v-else class="tags-step">
            <div class="ks-sheet__handle" @touchstart="onTouchStart" @touchmove="onTouchMove" @touchend="onTouchEnd"></div>
            <div class="modal-header" style="justify-content: space-between; align-items: center; margin-top: 0; padding-bottom: 16px;">
-              <div style="display: flex; align-items: center; gap: 12px;">
-                 <div class="icon-svg-container" :style="{ color: getCategoryDef(selectedItem.category).color }">
+              <div style="display: flex; align-items: flex-start; gap: 16px; width: 100%;">
+                 <div class="w-[55px] h-[55px] rounded-xl flex items-center justify-center p-0 flex-shrink-0" :style="{ color: getCategoryDef(selectedItem.category).color, backgroundColor: 'color-mix(in srgb, ' + getCategoryDef(selectedItem.category).bg + ' 20%, transparent)' }">
                     <CategoryIcon
                       :name="selectedItem.name"
                       :category="selectedItem.category"
                       size="55"
-
                     />
                  </div>
-                 <div style="display: flex; flex-direction: column;">
-                     <button @click="showCategorySelector = true" style="font-size: 12px; color: var(--ks-text-muted); text-transform: uppercase; letter-spacing: 0.05em; cursor: pointer; text-align: left; background: none; border: none; padding: 0;">
-                       {{ selectedItem.category }}
+                 <div style="display: flex; flex-direction: column; flex: 1; min-width: 0;">
+                     <h2 style="margin:0; font-size: 24px; font-weight: bold; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; margin-bottom: 4px;">{{ selectedItem.name }}</h2>
+                     <button @click="showCategorySelector = true"
+                             style="display: flex; align-items: center; justify-content: space-between; background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(51, 65, 85, 0.8); border-radius: 8px; padding: 6px 10px; font-size: 14px; color: #e2e8f0; width: 100%; text-align: left; box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);">
+                       <div style="display: flex; align-items: center; gap: 8px; overflow: hidden;">
+                          <div :style="{ backgroundColor: getCategoryDef(selectedItem.category).color, width: '10px', height: '10px', borderRadius: '50%', flexShrink: 0, boxShadow: '0 0 8px ' + getCategoryDef(selectedItem.category).color }"></div>
+                          <span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ selectedItem.category }}</span>
+                       </div>
+                       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; opacity: 0.7;"><polyline points="6 9 12 15 18 9"></polyline></svg>
                      </button>
-                     <h2 style="margin:0; font-size: 24px; font-weight: bold;">{{ selectedItem.name }}</h2>
                  </div>
               </div>
            </div>
