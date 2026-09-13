@@ -135,6 +135,21 @@ const isStandalone = () => {
   return window.navigator.standalone || window.matchMedia('(display-mode: standalone)').matches;
 };
 
+const urlB64ToUint8Array = (base64String) => {
+  const padding = '='.repeat((4 - base64String.length % 4) % 4);
+  const base64 = (base64String + padding)
+    .replace(/\-/g, '+')
+    .replace(/_/g, '/');
+
+  const rawData = window.atob(base64);
+  const outputArray = new Uint8Array(rawData.length);
+
+  for (let i = 0; i < rawData.length; ++i) {
+    outputArray[i] = rawData.charCodeAt(i);
+  }
+  return outputArray;
+};
+
 const enableNotifications = async () => {
   if (isIos() && !isStandalone()) {
     alert("To receive push notifications, tap Share and select 'Add to Home Screen'.");
@@ -163,10 +178,12 @@ const enableNotifications = async () => {
     // Register/Get Service Worker
     const registration = await navigator.serviceWorker.ready;
 
+    const applicationServerKey = urlB64ToUint8Array(public_key);
+
     // Subscribe to push manager
     const subscription = await registration.pushManager.subscribe({
       userVisibleOnly: true,
-      applicationServerKey: public_key
+      applicationServerKey: applicationServerKey
     });
 
     const subData = JSON.parse(JSON.stringify(subscription));
