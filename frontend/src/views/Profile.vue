@@ -7,7 +7,8 @@ const router = useRouter();
 const user = ref({
   email: '',
   display_name: '',
-  is_admin: false
+  is_admin: false,
+  settings_push_new_items: false
 });
 
 const passwordData = ref({
@@ -40,6 +41,7 @@ const loadUserProfile = async () => {
     user.value.email = data.email;
     user.value.display_name = data.display_name;
     user.value.is_admin = data.is_admin || false;
+    user.value.settings_push_new_items = data.settings_push_new_items || false;
   } catch (error) {
     console.error(error);
   }
@@ -59,7 +61,8 @@ const updateProfile = async () => {
         'Authorization': `Bearer ${token}` 
       },
       body: JSON.stringify({
-        display_name: user.value.display_name
+        display_name: user.value.display_name,
+        settings_push_new_items: user.value.settings_push_new_items
       })
     });
     
@@ -123,6 +126,78 @@ const logout = () => {
   router.push('/login');
 };
 
+const isIos = () => {
+  const userAgent = window.navigator.userAgent.toLowerCase();
+  return /iphone|ipad|ipod/.test(userAgent);
+};
+
+const isStandalone = () => {
+  return window.navigator.standalone || window.matchMedia('(display-mode: standalone)').matches;
+};
+
+const enableNotifications = async () => {
+  if (isIos() && !isStandalone()) {
+    alert("To receive push notifications, tap Share and select 'Add to Home Screen'.");
+    return;
+  }
+
+  if (!('serviceWorker' in navigator) || !('PushManager' in window)) {
+    alert('Push Notifications werden von diesem Browser nicht unterstützt.');
+    return;
+  }
+
+  try {
+    const permission = await Notification.requestPermission();
+    if (permission !== 'granted') {
+      alert('Bitte Push-Benachrichtigungen in den Browser-Einstellungen erlauben.');
+      return;
+    }
+
+    const token = localStorage.getItem('token');
+
+    // Get public key
+    const pubKeyRes = await fetch('/api/push/public-key');
+    if (!pubKeyRes.ok) throw new Error('VAPID public key konnte nicht geladen werden');
+    const { public_key } = await pubKeyRes.json();
+
+    // Register/Get Service Worker
+    const registration = await navigator.serviceWorker.ready;
+
+    // Subscribe to push manager
+    const subscription = await registration.pushManager.subscribe({
+      userVisibleOnly: true,
+      applicationServerKey: public_key
+    });
+
+    const subData = JSON.parse(JSON.stringify(subscription));
+
+    // Send to backend
+    const subRes = await fetch('/api/push/subscribe', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify({
+        endpoint: subData.endpoint,
+        p256dh: subData.keys.p256dh,
+        auth: subData.keys.auth
+      })
+    });
+
+    if (!subRes.ok) throw new Error('Fehler beim Speichern der Push-Subscription');
+
+    user.value.settings_push_new_items = true;
+    await updateProfile(); // Save the new setting
+
+    successMessage.value = 'Push-Benachrichtigungen erfolgreich aktiviert!';
+    setTimeout(() => successMessage.value = '', 3000);
+  } catch (error) {
+    console.error(error);
+    errorMessage.value = error.message;
+  }
+};
+
 const goBack = () => router.push('/');
 
 onMounted(loadUserProfile);
@@ -177,6 +252,23 @@ onMounted(loadUserProfile);
 
         <button @click="updateProfile" :disabled="isLoading" class="ks-btn-filled full-width">
           Profil speichern
+        </button>
+      </section>
+
+      <!-- Push Benachrichtigungen -->
+      <section class="page-panel settings-card">
+        <h3>Push-Benachrichtigungen</h3>
+
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px;">
+          <span>Neue Artikel in Listen</span>
+          <label class="ks-switch">
+            <input type="checkbox" v-model="user.settings_push_new_items" @change="updateProfile" />
+            <span class="ks-switch-slider"></span>
+          </label>
+        </div>
+
+        <button @click="enableNotifications" class="ks-btn-tonal full-width" style="margin-top: 0;">
+          Benachrichtigungen aktivieren
         </button>
       </section>
 
