@@ -116,8 +116,7 @@ const categoryImageMap = {
   'milchprodukte & tiefkühlkost': 'Milch.svg',
   'vorratskammer': 'Nudeln.svg',
   'getränke & genussmittel': 'Getraenke_allgemein.svg',
-  'drogerie, haushalt & tierbedarf': 'Putzmittel.svg',
-  'sonstiges': 'Allgemein.svg'
+  'drogerie, haushalt & tierbedarf': 'Putzmittel.svg'
 };
 
 const errorLevel = ref(0);
@@ -131,7 +130,6 @@ const resetState = () => {
 watch(() => props.name, resetState);
 watch(() => props.category, resetState);
 
-
 const categoryClass = computed(() => {
   if (!props.category) return '';
   const lowerCat = props.category.toLowerCase();
@@ -144,6 +142,19 @@ const categoryClass = computed(() => {
   if (lowerCat.includes('drogerie, haushalt & tierbedarf')) return 'cat-drogerie-haushalt';
   return 'cat-sonstiges';
 });
+
+const getLetterPath = (name) => {
+  if (!name) return '';
+  let firstLetter = name.charAt(0).toLowerCase();
+  const umlautMap = { 'ä': 'a', 'ö': 'o', 'ü': 'u' };
+  if (umlautMap[firstLetter]) {
+    firstLetter = umlautMap[firstLetter];
+  }
+  if (/^[a-z]$/.test(firstLetter)) {
+    return `/icons/letters/${firstLetter}.svg`;
+  }
+  return '';
+};
 
 const currentImageSrc = computed(() => {
   if (errorLevel.value === 0) {
@@ -160,11 +171,25 @@ const currentImageSrc = computed(() => {
         }
       }
     }
-    // If no category match, force the next error level by returning a path we know will trigger an error or directly advance
+    // If no category match, force the next error level by returning the letter path
+    const letterPath = getLetterPath(props.name);
+    if (letterPath) {
+      return letterPath;
+    }
+
     showSvg.value = true;
     return '';
   }
   if (errorLevel.value === 2) {
+    const letterPath = getLetterPath(props.name);
+    if (letterPath) {
+      return letterPath;
+    }
+
+    showSvg.value = true;
+    return '';
+  }
+  if (errorLevel.value === 3) {
     showSvg.value = true;
     return '';
   }
@@ -176,6 +201,8 @@ const onImageError = (event) => {
     errorLevel.value = 1;
   } else if (errorLevel.value === 1) {
     errorLevel.value = 2;
+  } else if (errorLevel.value === 2) {
+    errorLevel.value = 3;
     showSvg.value = true;
   } else {
     showSvg.value = true;
