@@ -191,17 +191,8 @@ const enhancedQuantities = computed(() => {
 const selectItem = (item) => {
   let finalItem = item;
 
-  if (item.aliases && query.value && query.value.trim() !== '') {
-    const qLower = query.value.trim().toLowerCase();
-    const nameLower = item.name.toLowerCase();
-
-    // Only replace name if the query does not match the primary name
-    if (!nameLower.includes(qLower)) {
-      const matchedAlias = item.aliases.find(a => a.toLowerCase().includes(qLower));
-      if (matchedAlias) {
-        finalItem = { ...item, name: matchedAlias };
-      }
-    }
+  if (item.matchedAlias) {
+    finalItem = { ...item, name: item.matchedAlias, originalName: item.name };
   }
 
   const isDuplicate = !props.editItem && props.activeItems.some(
@@ -243,7 +234,7 @@ const proceedToDetails = (item) => {
 
   activeTags.value = []; // Reset selected tags
   showManualAmount.value = false;
-  manualQuantity.value = '';
+  manualQuantity.value = item.originalName || '';
   manualUnit.value = '';
 };
 
@@ -515,7 +506,8 @@ watch(() => props.isOpen, (newVal) => {
                     <CategoryIcon class="icon-svg" :name="item.name" :category="item.category" size="55" />
                   </div>
                   <div class="card-text-area">
-                    <span class="item-name" v-html="highlightText(item.name, query)"></span>
+                    <span class="item-name" v-html="highlightText(item.matchedAlias || item.name, query)"></span>
+                    <span class="item-regular-tags" v-if="item.matchedAlias">{{ item.name }}</span>
                   </div>
                 </div>
               </div>
@@ -834,6 +826,12 @@ watch(() => props.isOpen, (newVal) => {
   font-size: 12px; font-weight: 600;
   display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
   overflow: hidden; line-height: 1.2; color: var(--ks-text);
+}
+
+.item-regular-tags {
+  font-size: 10px; color: #94a3b8; line-height: 1.2;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  margin-top: 2px;
 }
 
 .no-results {

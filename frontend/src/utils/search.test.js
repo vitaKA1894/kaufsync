@@ -62,6 +62,12 @@ function runTests() {
          throw new Error("Exact alias search failed for 'Frischhaltefolie'");
     }
 
+    // matchedAlias property injection test
+    const matchedAliasTest = searchTaxonomy("Ültje Erdnussbutter");
+    if (matchedAliasTest.length === 0 || matchedAliasTest[0].matchedAlias !== "Ültje Erdnussbutter") {
+         throw new Error("matchedAlias property missing or incorrect. Expected 'Ültje Erdnussbutter', got '" + (matchedAliasTest[0] ? matchedAliasTest[0].matchedAlias : 'undefined') + "'");
+    }
+
     console.log("Search tests passed!");
 
     // Basic debounce test (synchronous check is hard without proper test runner,
