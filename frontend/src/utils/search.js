@@ -56,31 +56,44 @@ export function searchTaxonomy(query) {
   // - Contains substring match: 3
 
   const results = taxonomy.map(item => {
-    let score = Infinity;
+    let nameScore = Infinity;
     const lowerName = item.name.toLowerCase();
 
     // Check primary name
     if (lowerName === lowerQuery) {
-        score = Math.min(score, 0);
+        nameScore = Math.min(nameScore, 0);
     } else if (lowerName.startsWith(lowerQuery)) {
-        score = Math.min(score, 1);
+        nameScore = Math.min(nameScore, 1);
     } else if (lowerName.includes(lowerQuery)) {
-        score = Math.min(score, 3);
+        nameScore = Math.min(nameScore, 3);
     }
+
+    let bestAliasScore = Infinity;
+    let bestAlias = null;
 
     // Check aliases
     for (const alias of item.aliases) {
         const lowerAlias = alias.toLowerCase();
+        let aliasScore = Infinity;
+
         if (lowerAlias === lowerQuery) {
-            score = Math.min(score, 0);
+            aliasScore = 0;
         } else if (lowerAlias.startsWith(lowerQuery)) {
-            score = Math.min(score, 1);
+            aliasScore = 1;
         } else if (lowerAlias.includes(lowerQuery)) {
-            score = Math.min(score, 3);
+            aliasScore = 3;
+        }
+
+        if (aliasScore < bestAliasScore) {
+            bestAliasScore = aliasScore;
+            bestAlias = alias;
         }
     }
 
-    return { item, score };
+    let finalScore = Math.min(nameScore, bestAliasScore);
+    let matchedAlias = (bestAliasScore < nameScore && bestAlias) ? bestAlias : null;
+
+    return { item: { ...item, matchedAlias }, score: finalScore };
   })
   .filter(result => result.score !== Infinity)
   .sort((a, b) => {
