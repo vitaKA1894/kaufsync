@@ -1,19 +1,21 @@
 <script setup>
 import { ref, onMounted, nextTick, computed } from 'vue';
+import { useRoute } from 'vue-router';
+
 import { searchTaxonomy, debounce } from '../utils/search';
 import CategoryIcon from './CategoryIcon.vue';
 import BarcodeScanner from './BarcodeScanner.vue';
 
 // --- KATEGORIE DEFINITIONEN ---
 const predefinedCategories = [
-  { name: 'Obst & Gemüse', color: '#1B5E20', bg: '#C8E6C9' },
-  { name: 'Brot & Backwaren', color: '#F57F17', bg: '#FFF9C4' },
-  { name: 'Fleisch & Fisch', color: '#B71C1C', bg: '#FFCDD2' },
-  { name: 'Milchprodukte & Tiefkühlkost', color: '#01579B', bg: '#B3E5FC' },
-  { name: 'Vorratskammer', color: '#E65100', bg: '#FFE0B2' },
-  { name: 'Getränke & Genussmittel', color: '#1A237E', bg: '#C5CAE9' },
-  { name: 'Drogerie, Haushalt & Tierbedarf', color: '#006064', bg: '#B2EBF2' },
-  { name: 'Sonstiges', color: 'var(--ks-text-muted)', bg: 'var(--ks-surface-3)' }
+  { name: 'Obst & Gemüse', color: '#86efac', bg: '#86efac' }, // Tailwind bg-green-300
+  { name: 'Brot & Backwaren', color: '#fef08a', bg: '#fef08a' }, // Tailwind bg-yellow-200
+  { name: 'Fleisch & Fisch', color: '#fca5a5', bg: '#fca5a5' }, // Tailwind bg-rose-300
+  { name: 'Milchprodukte & Tiefkühlkost', color: '#93c5fd', bg: '#93c5fd' }, // Tailwind bg-blue-300
+  { name: 'Vorratskammer', color: '#fdba74', bg: '#fdba74' }, // Tailwind bg-orange-300
+  { name: 'Getränke & Genussmittel', color: '#a5b4fc', bg: '#a5b4fc' }, // Tailwind bg-indigo-300
+  { name: 'Drogerie, Haushalt & Tierbedarf', color: '#5eead4', bg: '#5eead4' }, // Tailwind bg-teal-300
+  { name: 'Sonstiges', color: '#d8b4fe', bg: '#d8b4fe' } // Tailwind bg-fuchsia-300
 ];
 
 const mapLegacyCategory = (catName) => {
@@ -35,7 +37,8 @@ const props = defineProps({
   activeItems: { type: Array, default: () => [] }
 });
 
-const emit = defineEmits(['close', 'add', 'update']);
+const emit = defineEmits(['close', 'add', 'update', 'delete']);
+const route = useRoute();
 
 const query = ref('');
 const duplicateWarning = ref(false);
@@ -46,16 +49,61 @@ const selectedItem = ref(null);
 
 // Scanner State
 const showScanner = ref(false);
+const isContinuousAdd = ref(false);
+
+// Sheet Dragging Logic
+const sheetRef = ref(null);
+const sheetStyle = ref({});
+let startY = 0;
+let currentY = 0;
+
+const onTouchStart = (e) => {
+  startY = e.touches[0].clientY;
+  currentY = startY;
+  sheetStyle.value = { transition: 'none' };
+};
+
+const onTouchMove = (e) => {
+  const y = e.touches[0].clientY;
+  currentY = y;
+  const delta = Math.max(0, y - startY); // Only allow dragging down
+  if (delta > 0) {
+    sheetStyle.value = { transform: `translateY(${delta}px)`, transition: 'none' };
+  }
+};
+
+const onTouchEnd = () => {
+  const delta = currentY - startY;
+  if (delta > 100) {
+    closeModal();
+  } else {
+    sheetStyle.value = { transform: 'translateY(0)', transition: 'transform 0.3s ease-out' };
+  }
+};
+
+
+
+const deleteItem = () => {
+    if (!selectedItem.value) return;
+    let itemId = selectedItem.value.id;
+    if (!itemId || !props.activeItems.find(i => i.id === itemId)) {
+        const existing = props.activeItems.find(i => i.name.toLowerCase() === selectedItem.value.name.toLowerCase());
+        if (existing) {
+            itemId = existing.id;
+        } else {
+            closeModal();
+            return;
+        }
+    }
+    emit('delete', itemId);
+    closeModal();
+};
 
 const handleScan = async (barcode) => {
     showScanner.value = false;
 
     try {
-        const response = await fetch(`https://world.openfoodfacts.org/api/v3/product/${barcode}`, {
-            headers: {
-                'User-Agent': 'Kaufsync/1.0 (deine@email.de)'
-            }
-        });
+        const response = await fetch(`https://world.openfoodfacts.org/api/v3/product/${barcode}`);
 
         if (response.ok) {
             const data = await response.json();
@@ -108,36 +156,13 @@ const handleScan = async (barcode) => {
 const showManualAmount = ref(false);
 const manualQuantity = ref('');
 const manualUnit = ref('');
+const showCategorySelector = ref(false);
 
 // Active tags state
 const activeTags = ref([]);
-const frequentItems = ref([]);
-
-const calculateFrequentItems = () => {
-    try {
-        const cachedData = localStorage.getItem('cachedLists');
-        if (!cachedData) return [];
-        const lists = JSON.parse(cachedData);
-        const counts = {};
-        const itemsMap = {};
-
-        lists.forEach(list => {
-            list.items.forEach(item => {
-                const name = item.name.toLowerCase();
-                counts[name] = (counts[name] || 0) + 1;
-                if (!itemsMap[name]) itemsMap[name] = item;
-            });
-        });
-
-        const sorted = Object.keys(counts).sort((a, b) => counts[b] - counts[a]).slice(0, 5);
-        return sorted.map(name => itemsMap[name]);
-    } catch (e) {
-        return [];
-    }
-};
 
 const search = debounce((val) => {
-  if (val && val.length >= 3) {
+  if (val && val.length >= 1) {
     results.value = searchTaxonomy(val).reverse();
   } else {
     results.value = [];
@@ -261,6 +286,17 @@ const parseQuantity = (input) => {
 };
 
 const confirmSelection = (bypassWarning = false) => {
+  if (!selectedItem.value && query.value && query.value.trim() !== '') {
+    // If no item selected, try to find an exact match in the taxonomy
+    const qLower = query.value.trim().toLowerCase();
+    const taxonomyMatch = searchTaxonomy(query.value).find(
+      t => t.name.toLowerCase() === qLower || t.aliases.some(a => a.toLowerCase() === qLower)
+    );
+    if (taxonomyMatch) {
+      selectedItem.value = taxonomyMatch;
+    }
+  }
+
   const finalName = selectedItem.value ? selectedItem.value.name : query.value;
 
   if (!bypassWarning && !selectedItem.value && finalName.trim() !== '') {
@@ -269,25 +305,50 @@ const confirmSelection = (bypassWarning = false) => {
       duplicateWarning.value = true;
       return;
     }
+
+    // Custom Item Flow: Instead of emitting 'add' directly, instantiate the item and proceed to details
+    selectedItem.value = {
+        name: finalName,
+        category: 'Sonstiges',
+        tags: { quantities: [], constellations: [], global_meta: [] }
+    };
+    proceedToDetails(selectedItem.value);
+    return;
   }
+
 
   let quantity = 1;
   let unit = 'Stk';
 
+  // Extract selected quantity tag
+  const quantTags = enhancedQuantities.value;
+  const selectedQuantTag = activeTags.value.find(t => quantTags.includes(t));
 
-  // Process Menge
-  if (manualQuantity.value && manualQuantity.value.trim() !== '') {
-      const parsed = parseQuantity(manualQuantity.value);
+  if (selectedQuantTag) {
+      const parsed = parseQuantity(selectedQuantTag);
       quantity = parsed.quantity;
       unit = parsed.unit;
-  } else {
-      const quantTags = enhancedQuantities.value;
-      const selectedQuantTag = activeTags.value.find(t => quantTags.includes(t));
+      activeTags.value = activeTags.value.filter(t => t !== selectedQuantTag);
+  }
+
+  // Process Menge input field
+  if (manualQuantity.value && manualQuantity.value.trim() !== '') {
+      const str = manualQuantity.value.trim();
+
+      // If a tag was already selected, treat input as description/tags
       if (selectedQuantTag) {
-          const parsed = parseQuantity(selectedQuantTag);
-          quantity = parsed.quantity;
-          unit = parsed.unit;
-          activeTags.value = activeTags.value.filter(t => t !== selectedQuantTag);
+          activeTags.value.push(str);
+      } else {
+          // Check if input looks like a quantity
+          const match = str.match(/^([\d.,]+)\s*(.*)$/);
+          if (match) {
+              const parsed = parseQuantity(str);
+              quantity = parsed.quantity;
+              unit = parsed.unit;
+          } else {
+              // Otherwise, treat as description
+              activeTags.value.push(str);
+          }
       }
   }
 
@@ -307,16 +368,32 @@ const confirmSelection = (bypassWarning = false) => {
 
   if (props.editItem) {
     emit('update', { id: props.editItem.id, ...payload });
+    closeModal();
   } else {
     // Only emit add if we have a valid item or query
     if (selectedItem.value || query.value.trim() !== '') {
       emit('add', payload);
+      // Seamless "Next Item" Flow
+      query.value = '';
+      results.value = [];
+      selectedItem.value = null;
+      activeTags.value = [];
+      showManualAmount.value = false;
+      manualQuantity.value = '';
+      manualUnit.value = '';
+      duplicateWarning.value = false;
+      isContinuousAdd.value = true;
+      nextTick(() => {
+         inputRef.value?.focus();
+      });
+    } else {
+      closeModal();
     }
   }
-  closeModal();
 };
 
 const closeModal = () => {
+  isContinuousAdd.value = false;
   query.value = '';
   results.value = [];
   selectedItem.value = null;
@@ -395,7 +472,6 @@ watch(() => props.isOpen, (newVal) => {
             });
         } else {
             // Add Mode Init
-            frequentItems.value = calculateFrequentItems().reverse();
             nextTick(() => {
                 inputRef.value?.focus();
             });
@@ -416,7 +492,7 @@ watch(() => props.isOpen, (newVal) => {
 <template>
   <transition name="scrim-fade">
     <div v-if="isOpen" class="modal-backdrop" @click="closeModal">
-      <div class="modal-content" @click.stop>
+      <div class="modal-content" :class="{ 'is-details': selectedItem }" @click.stop ref="sheetRef" :style="sheetStyle">
 
         <!-- STEP 1: Search -->
         <div v-if="!selectedItem" class="search-step-container" style="flex: 1; display: flex; flex-direction: column; min-height: 0;">
@@ -424,37 +500,27 @@ watch(() => props.isOpen, (newVal) => {
         <BarcodeScanner v-if="showScanner" @close="showScanner = false" @scan="handleScan" />
 
         <!-- STEP 1: Search -->
-        <div class="search-step" v-show="!showScanner">
-          <div class="results-list">
-            <!-- Frequent Items View -->
-            <div v-if="query.length === 0 && frequentItems.length > 0">
-              <p class="history-label">Häufig gekauft</p>
-              <div
-                v-for="item in frequentItems"
-                :key="item.id"
-                class="result-item"
-                @click="selectItem(item)"
-              >
-                <CategoryIcon :name="item.name" :category="item.category" class="result-icon" size="40" :color="getCategoryDef(item.category).color" :style="{ background: getCategoryDef(item.category).bg, borderRadius: '12px', padding: '4px' }" />
-                <div class="result-text">{{ item.name }}</div>
-                <span class="result-category" :style="{ background: getCategoryDef(item.category).bg, color: getCategoryDef(item.category).color, border: `1px solid ${getCategoryDef(item.category).color}` }">{{ item.category }}</span>
-              </div>
-            </div>
-
-            <!-- Search Results View -->
-            <template v-else>
-              <div
-                v-for="item in results"
-                :key="item.id"
-                class="result-item"
-                @click="selectItem(item)"
-              >
-                <CategoryIcon :name="item.name" :category="item.category" class="result-icon" size="40" :color="getCategoryDef(item.category).color" :style="{ background: getCategoryDef(item.category).bg, borderRadius: '12px', padding: '4px' }" />
-                <div class="result-text" v-html="highlightText(item.name, query)"></div>
-                <span class="result-category" :style="{ background: getCategoryDef(item.category).bg, color: getCategoryDef(item.category).color, border: `1px solid ${getCategoryDef(item.category).color}` }">{{ item.category }}</span>
+        <div class="search-step" v-show="!showScanner" style="flex-direction: column-reverse;">
+          <div class="results-list" style="margin-bottom: 16px;">
+            <template v-if="query.length >= 1">
+              <div class="ks-grid items-grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8 ga" style="padding: 0 4px;">
+                <div
+                  v-for="item in results"
+                  :key="item.id"
+                  class="grid-card"
+                  @click="selectItem(item)"
+                >
+                  <div class="absolute -top-4 -right-4 w-24 h-24 rounded-full blur-xl opacity-15 pointer-events-none" :style="{ backgroundColor: getCategoryDef(item.category).color }"></div>
+                  <div class="w-[55px] h-[55px] mb-2 rounded-xl bg-slate-700/50 flex items-center justify-center p-0" :style="{ color: getCategoryDef(item.category).color }">
+                    <CategoryIcon class="icon-svg" :name="item.name" :category="item.category" size="55" />
+                  </div>
+                  <div class="card-text-area">
+                    <span class="item-name" v-html="highlightText(item.name, query)"></span>
+                  </div>
+                </div>
               </div>
 
-              <div v-if="query.length >= 3 && results.length === 0" class="no-results">
+              <div v-if="query.length >= 1 && results.length === 0" class="no-results">
                   Keine Vorschläge gefunden. Drücke Enter, um "{{ query }}" als eigenen Artikel hinzuzufügen.
               </div>
             </template>
@@ -474,7 +540,7 @@ watch(() => props.isOpen, (newVal) => {
                   type="text"
                   class="modal-input"
                   :class="{ 'input-error': duplicateWarning }"
-                  placeholder="Artikel suchen..."
+                  :placeholder="isContinuousAdd ? 'Nächster Artikel ...' : 'Artikel suchen...'"
                   @keyup.enter="confirmSelection(false)"
                 />
               </div>
@@ -487,87 +553,128 @@ watch(() => props.isOpen, (newVal) => {
         </div>
 
         <!-- STEP 2: Tags Selection -->
+
         <div v-else class="tags-step">
-           <div class="modal-header" style="justify-content: flex-start; gap: 12px; margin-top: 0; padding-bottom: 16px;">
-              <button class="ks-icon-btn" @click="selectedItem = null">
-                 <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
-              </button>
-              <h3 style="margin:0; font-size: 18px;">Details zu {{ selectedItem.name }}</h3>
+           <div class="ks-sheet__handle" @touchstart="onTouchStart" @touchmove="onTouchMove" @touchend="onTouchEnd"></div>
+           <div class="modal-header" style="justify-content: space-between; align-items: center; margin-top: 0; padding-bottom: 16px;">
+              <div style="display: flex; align-items: flex-start; gap: 16px; width: 100%;">
+                 <div class="w-[55px] h-[55px] rounded-xl flex items-center justify-center p-0 flex-shrink-0" :style="{ color: getCategoryDef(selectedItem.category).color, backgroundColor: 'color-mix(in srgb, ' + getCategoryDef(selectedItem.category).bg + ' 20%, transparent)' }">
+                    <CategoryIcon
+                      :name="selectedItem.name"
+                      :category="selectedItem.category"
+                      size="55"
+                    />
+                 </div>
+                 <div style="display: flex; flex-direction: column; flex: 1; min-width: 0;">
+                     <h2 style="margin:0; font-size: 24px; font-weight: bold; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; margin-bottom: 4px;">{{ selectedItem.name }}</h2>
+                     <button @click="showCategorySelector = true"
+                             style="display: flex; align-items: center; justify-content: space-between; background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(51, 65, 85, 0.8); border-radius: 8px; padding: 6px 10px; font-size: 14px; color: #e2e8f0; width: 100%; text-align: left; box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);">
+                       <div style="display: flex; align-items: center; gap: 8px; overflow: hidden;">
+                          <div :style="{ backgroundColor: getCategoryDef(selectedItem.category).color, width: '10px', height: '10px', borderRadius: '50%', flexShrink: 0, boxShadow: '0 0 8px ' + getCategoryDef(selectedItem.category).color }"></div>
+                          <span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ selectedItem.category }}</span>
+                       </div>
+                       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; opacity: 0.7;"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                     </button>
+                 </div>
+              </div>
            </div>
 
            <div class="tags-content">
-               <!-- Numerische Quantifikatoren -->
-               <div class="tag-section">
-                   <p class="tag-label">Menge</p>
-                   <div class="tag-group">
-                       <button
-                           v-for="tag in enhancedQuantities" :key="tag"
-                           class="ks-chip tag-chip"
-                           :class="{ active: activeTags.includes(tag) }"
-                           @click="toggleTag(tag)"
-                       >
-                           {{ tag }}
-                       </button>
-                   </div>
-                   <div class="manual-amount-input mt-3" style="display: flex; gap: 8px; align-items: center;">
-                       <input
-                           type="text"
-                           v-model="manualQuantity"
-                           placeholder="Menge"
-                           class="modal-input"
-                           style="background: var(--ks-surface-3); font-size: 16px; padding: 10px 14px; flex: 1; min-width: 0;"
-                           @keyup.enter="confirmSelection(false)"
-                       />
-                   </div>
+               <div class="manual-amount-input mb-3" style="display: flex; gap: 8px; align-items: center;">
+                   <input
+                       type="text"
+                       v-model="manualQuantity"
+                       placeholder="Notizen..."
+                       class="modal-input"
+                       style="background: #1e293b; border-color: #334155; font-size: 16px; padding: 14px 16px; flex: 1; min-width: 0; border-radius: 8px;"
+                       @keyup.enter="confirmSelection(false)"
+                   />
                </div>
 
-               <!-- Produktspezifische Eigenschaften -->
-               <div class="tag-section">
-                   <p class="tag-label">Ausprägung</p>
-                   <div class="tag-group" v-if="selectedItem.tags.constellations?.length > 0">
-                       <button
-                           v-for="tag in selectedItem.tags.constellations" :key="tag"
-                           class="ks-chip tag-chip"
-                           :class="{ active: activeTags.includes(tag) }"
-                           @click="toggleTag(tag)"
-                       >
-                           {{ tag }}
-                       </button>
-                   </div>
-                   <div class="manual-amount-input mt-3" style="display: flex; gap: 8px; align-items: center;">
-                       <input
-                           type="text"
-                           v-model="manualUnit"
-                           placeholder="Ausprägung"
-                           class="modal-input"
-                           style="background: var(--ks-surface-3); font-size: 16px; padding: 10px 14px; flex: 1; min-width: 0;"
-                           @keyup.enter="confirmSelection(false)"
-                       />
-                   </div>
+               <!-- Flat List of Tags -->
+               <div class="tag-group" style="margin-bottom: 24px;">
+                   <!-- Quantities -->
+                   <button
+                       v-for="tag in enhancedQuantities" :key="'q-'+tag"
+                       class="ks-chip tag-chip tag-quantity"
+                       :class="{ active: activeTags.includes(tag) }"
+                       :style="activeTags.includes(tag) ? { background: `color-mix(in srgb, ${getCategoryDef(selectedItem.category).bg} 20%, transparent)`, color: getCategoryDef(selectedItem.category).color, borderColor: `color-mix(in srgb, ${getCategoryDef(selectedItem.category).bg} 50%, transparent)` } : { background: '#1e293b', color: '#cbd5e1', borderColor: '#334155' }"
+                       @click="toggleTag(tag)"
+                   >
+                       {{ tag }}
+                   </button>
+
+                   <!-- Constellations -->
+                   <button
+                       v-for="tag in selectedItem.tags.constellations" :key="'c-'+tag"
+                       class="ks-chip tag-chip tag-meta"
+                       :class="{ active: activeTags.includes(tag) }"
+                       :style="activeTags.includes(tag) ? { background: `color-mix(in srgb, ${getCategoryDef(selectedItem.category).bg} 20%, transparent)`, color: getCategoryDef(selectedItem.category).color, borderColor: `color-mix(in srgb, ${getCategoryDef(selectedItem.category).bg} 50%, transparent)` } : { background: '#1e293b', color: '#cbd5e1', borderColor: '#334155' }"
+                       @click="toggleTag(tag)"
+                   >
+                       {{ tag }}
+                   </button>
+
+                   <!-- Meta Tags -->
+                   <button
+                       v-for="tag in selectedItem.tags.global_meta?.filter(t => !['Dringend', 'Angebot', 'Wenn\'s passt'].includes(t))" :key="'m-'+tag"
+                       class="ks-chip tag-chip tag-meta"
+                       :class="{ active: activeTags.includes(tag) }"
+                       :style="activeTags.includes(tag) ? { background: `color-mix(in srgb, ${getCategoryDef(selectedItem.category).bg} 20%, transparent)`, color: getCategoryDef(selectedItem.category).color, borderColor: `color-mix(in srgb, ${getCategoryDef(selectedItem.category).bg} 50%, transparent)` } : { background: '#1e293b', color: '#cbd5e1', borderColor: '#334155' }"
+                       @click="toggleTag(tag)"
+                   >
+                       {{ tag }}
+                   </button>
+
+                   <!-- Separator for Dringlichkeit -->
+                   <div style="flex-basis: 100%; height: 0;"></div>
+
+                   <button
+                       v-for="tag in ['Dringend', 'Angebot', 'Wenn\'s passt']" :key="'u-'+tag"
+                       class="ks-chip tag-chip tag-meta urgency-tag"
+                       :class="{ active: activeTags.includes(tag) }"
+                       :style="activeTags.includes(tag) ? { background: `color-mix(in srgb, ${getCategoryDef(selectedItem.category).bg} 20%, transparent)`, color: getCategoryDef(selectedItem.category).color, borderColor: `color-mix(in srgb, ${getCategoryDef(selectedItem.category).bg} 50%, transparent)` } : { background: '#1e293b', color: '#cbd5e1', borderColor: '#334155' }"
+                       @click="toggleTag(tag)"
+                       style="display: flex; align-items: center; gap: 6px;"
+                   >
+                       <svg v-if="tag === 'Dringend'" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 5.5c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zM9.8 8.9L7 23h2.1l1.8-8 2.1 2v6h2v-7.5l-2.1-2 .6-3C14.8 12 16.8 13 19 13v-2c-1.9 0-3.5-1-4.3-2.4l-1-1.6c-.4-.6-1-1-1.7-1-.3 0-.5.1-.8.1L6 8.3V13h2V9.6l1.8-.7"/></svg>
+                       <svg v-if="tag === 'Angebot'" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58.55 0 1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z"/></svg>
+                       <svg v-if="tag === 'Wenn\'s passt'" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 9h-2V7h-2v5H6v2h2v5h2v-5h2v-2zm4 5h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+                       {{ tag }}
+                   </button>
                </div>
 
-               <!-- Globale Meta Tags -->
-               <div class="tag-section">
-                   <p class="tag-label">Priorität</p>
-                   <div class="tag-group">
-                       <button
-                           v-for="tag in selectedItem.tags.global_meta" :key="tag"
-                           class="ks-chip tag-chip"
-                           :class="{ active: activeTags.includes(tag) }"
-                           @click="toggleTag(tag)"
-                       >
-                           {{ tag }}
-                       </button>
-                   </div>
+               <div style="display: flex; gap: 12px; margin-top: auto; padding-top: 16px;">
+                  <button v-if="editItem" class="ks-btn-filled" style="flex: 1; background: #ef4444; color: white;" @click="deleteItem">Löschen</button>
+                  <button v-else class="ks-btn-filled" style="flex: 1; background: #334155; color: white;" @click="closeModal">Abbrechen</button>
+                  <button class="ks-btn-filled" style="flex: 1; background: #f8fafc; color: #0f172a;" @click="confirmSelection(false)">Speichern</button>
                </div>
            </div>
 
-           <div class="modal-footer">
-               <button class="ks-btn-filled full-width" @click="confirmSelection(false)">
-                   {{ editItem ? 'Speichern' : 'Zur Liste hinzufügen' }}
-               </button>
-           </div>
+
         </div>
+
+
+        <!-- Category Selector Sheet -->
+        <transition name="sheet-slide">
+          <div v-if="showCategorySelector" class="ks-sheet" @click.stop style="z-index: 101;">
+            <div class="ks-sheet__handle"></div>
+            <h3 class="sheet-heading">Kategorie auswählen</h3>
+            <div class="category-list">
+              <button
+                v-for="cat in predefinedCategories"
+                :key="cat.name"
+                class="category-list-item"
+                @click="selectedItem.category = cat.name; showCategorySelector = false"
+              >
+                <span class="cat-color-dot" :style="{ backgroundColor: cat.color }"></span>
+                <span class="cat-name">{{ cat.name }}</span>
+                <svg v-if="selectedItem.category === cat.name" class="check-icon" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+              </button>
+            </div>
+            <button class="ks-btn-text full-width mt-3" @click="showCategorySelector = false">Abbrechen</button>
+          </div>
+        </transition>
 
       </div>
     </div>
@@ -575,26 +682,44 @@ watch(() => props.isOpen, (newVal) => {
 </template>
 
 <style scoped>
+
 .modal-backdrop {
   position: fixed;
   top: 0; left: 0; width: 100%; height: 100%;
-  background: rgba(0,0,0,0.6);
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
   z-index: 100;
   display: flex;
-  align-items: flex-end;
+  align-items: flex-end; /* Align bottom for sheet */
   justify-content: center;
 }
 
 .modal-content {
-  background: var(--ks-bg);
+  background: #0f172a; /* bg-slate-900 */
   width: 100%;
   max-width: var(--ks-page-width);
-  border-radius: 20px 20px 0 0;
-  padding: 16px;
-  max-height: 90vh;
+  max-height: 90vh; /* Fixed max height for the sheet */
   display: flex;
   flex-direction: column;
+  border-radius: 24px 24px 0 0;
+  padding: 16px;
+  padding-bottom: max(16px, env(safe-area-inset-bottom));
+  transition: transform 0.3s cubic-bezier(0.2, 0, 0, 1);
 }
+
+.modal-content.is-details {
+  max-height: 90vh;
+}
+
+.ks-sheet__handle {
+  width: 48px;
+  height: 6px;
+  background: #334155; /* bg-slate-700 */
+  border-radius: 3px;
+  margin: 0 auto 16px auto;
+  flex-shrink: 0;
+}
+
 
 .search-step {
   display: flex;
@@ -607,8 +732,7 @@ watch(() => props.isOpen, (newVal) => {
 .modal-header {
   display: flex;
   align-items: center;
-  margin-top: auto; /* Push down to bottom */
-  padding-bottom: env(safe-area-inset-bottom);
+  margin-bottom: 16px; /* Space below header instead of pushing down */
 }
 
 .modal-input {
@@ -668,45 +792,48 @@ watch(() => props.isOpen, (newVal) => {
   flex-direction: column;
   overflow-y: auto;
   gap: 8px;
-  max-height: 50vh;
-  position: absolute;
-  bottom: 100%;
-  left: 0;
-  right: 0;
-  margin-bottom: 16px;
-}
-
-.result-item {
-  display: flex;
-  align-items: center;
-  padding: 16px;
-  background: var(--ks-surface-2);
-  border-radius: 12px;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-.result-item:active {
-  background: var(--ks-surface-3);
-}
-
-.result-icon {
-  width: 24px; height: 24px;
-  margin-right: 12px;
-  color: var(--ks-text-muted);
-}
-
-.result-text {
   flex: 1;
-  font-size: 16px;
-  color: var(--ks-text);
+  min-height: 0;
 }
 
-.result-category {
-  font-size: 12px;
-  color: var(--ks-text-muted);
-  background: var(--ks-surface-4);
-  padding: 4px 8px;
-  border-radius: 12px;
+.ks-grid {
+  display: grid;
+  gap: 8px;
+  align-items: start;
+}
+
+.grid-card {
+  display: flex; flex-direction: column;
+  border-radius: 1rem;
+  padding: 8px;
+  cursor: pointer; text-align: center;
+  transition: transform 0.1s, opacity 0.2s, background 0.2s, border-color 0.3s;
+  position: relative;
+  background: #1e293b !important;
+  border: none;
+  min-height: 0;
+  overflow: hidden;
+  justify-content: flex-start;
+  align-items: center;
+  color: white !important;
+}
+.grid-card:active { transform: scale(0.95); }
+.grid-card:hover { background: #334155 !important; }
+
+.icon-svg { display: flex; align-items: center; justify-content: center; }
+.icon-svg :deep(svg) { width: 55px; height: 55px; }
+
+.card-text-area {
+  display: flex; flex-direction: column;
+  margin-top: 4px;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+.item-name {
+  font-size: 12px; font-weight: 600;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+  overflow: hidden; line-height: 1.2; color: var(--ks-text);
 }
 
 .no-results {
@@ -756,6 +883,42 @@ watch(() => props.isOpen, (newVal) => {
     color: var(--ks-primary);
     border-color: var(--ks-primary);
 }
+.tag-meta {
+    background: var(--ks-surface-3); /* Slightly different background for meta tags */
+}
+.settings-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+.settings-btn {
+    background: var(--ks-surface-2);
+    border: none;
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: var(--ks-text);
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+}
+.settings-btn svg { width: 24px; height: 24px; fill: currentColor; }
+
+.category-list {
+  display: flex; flex-direction: column; gap: 4px; max-height: 40vh; overflow-y: auto; margin-top: 12px;
+}
+.category-list-item {
+  display: flex; align-items: center; padding: 12px 16px;
+  background: var(--ks-surface-2); border: none; border-radius: 12px;
+  cursor: pointer; color: var(--ks-text); font-size: 16px; text-align: left;
+}
+.cat-color-dot { width: 12px; height: 12px; border-radius: 50%; margin-right: 12px; }
+.cat-name { flex: 1; }
+.check-icon { width: 20px; height: 20px; fill: var(--ks-primary); }
+
 .history-label {
     font-size: 14px;
     font-weight: 600;

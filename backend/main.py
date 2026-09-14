@@ -1,5 +1,5 @@
 import os
-from fastapi import FastAPI, Depends, HTTPException, WebSocket, WebSocketDisconnect, Response
+from fastapi import FastAPI, Depends, HTTPException, WebSocket, WebSocketDisconnect, Response, BackgroundTasks
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 from typing import List, Dict
@@ -9,11 +9,39 @@ from pydantic import BaseModel
 
 import models, schemas, auth
 from database import engine, get_db
+import json
+from pywebpush import webpush, WebPushException
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Erstellt alle Tabellen in der Datenbank
 models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="KaufSync API", version="1.0.0")
+
+VAPID_PRIVATE_KEY = os.getenv("VAPID_PRIVATE_KEY")
+VAPID_PUBLIC_KEY = os.getenv("VAPID_PUBLIC_KEY")
+VAPID_CLAIMS = {"sub": "mailto:admin@kaufsync.com"}
+
+def send_push_notification(subscription_info: dict, payload: dict):
+    try:
+        webpush(
+            subscription_info=subscription_info,
+            data=json.dumps(payload),
+            vapid_private_key=VAPID_PRIVATE_KEY,
+            vapid_claims=VAPID_CLAIMS
+        )
+    except WebPushException as ex:
+        print("I'm sorry, Dave, I'm afraid I can't do that: {}", repr(ex))
+        # Mozilla returns additional information in the body of the response.
+        if ex.response and ex.response.json():
+            extra = ex.response.json()
+            print("Remote service replied with a {}:{}, {}",
+                  extra.code,
+                  extra.errno,
+                  extra.message
+                  )
 
 # --- CORS KONFIGURATION ---
 app.add_middleware(
@@ -98,8 +126,10 @@ def health_check():
     
 # --- AUTHENTIFIZIERUNG ---
 
+from fastapi import BackgroundTasks
+
 @app.post("/api/auth/register", response_model=schemas.UserResponse)
-def register(user_data: schemas.UserCreate, db: Session = Depends(get_db)):
+def register(user_data: schemas.UserCreate, background_tasks: BackgroundTasks, db: Session = Depends(get_db)):
     # Prüfen ob Email schon existiert
     db_user = db.query(models.User).filter(models.User.email == user_data.email).first()
     if db_user:
@@ -114,11 +144,47 @@ def register(user_data: schemas.UserCreate, db: Session = Depends(get_db)):
         email=user_data.email, 
         password_hash=hashed_password, 
         display_name=user_data.display_name,
-        is_admin=is_first_user
+        is_admin=is_first_user,
+        status="active" if is_first_user else "pending"
     )
     db.add(new_user)
     db.commit()
     db.refresh(new_user)
+
+    if new_user.status == "pending":
+        admins = db.query(models.User).filter(
+            models.User.is_admin == True,
+            models.User.settings_push_admin_pending_users == True
+        ).all()
+
+        for admin in admins:
+            # Create notification
+            notification = models.Notification(
+                user_id=admin.id,
+                title="Neuer Nutzer wartet auf Freigabe",
+                body=f"Der Nutzer {new_user.display_name} hat sich registriert und wartet auf Freigabe.",
+                action_url="/admin"
+            )
+            db.add(notification)
+
+            # Send push notification
+            subscriptions = db.query(models.PushSubscription).filter(models.PushSubscription.user_id == admin.id).all()
+            for sub in subscriptions:
+                sub_info = {
+                    "endpoint": sub.endpoint,
+                    "keys": {
+                        "p256dh": sub.p256dh,
+                        "auth": sub.auth
+                    }
+                }
+                payload = {
+                    "title": notification.title,
+                    "body": notification.body,
+                    "url": notification.action_url
+                }
+                background_tasks.add_task(send_push_notification, sub_info, payload)
+        db.commit()
+
     return new_user
 
 @app.post("/api/auth/login")
@@ -138,13 +204,17 @@ def login(login_data: schemas.LoginRequest, db: Session = Depends(get_db)):
     return {
         "access_token": access_token, 
         "token_type": "bearer",
-        "user": {"id": user.id, "name": user.display_name}
+        "user": {"id": user.id, "name": user.display_name, "status": user.status}
     }
 # --- ADMIN ENDPUNKTE ---
 def get_admin_user(current_user: models.User = Depends(auth.get_current_user)):
     if not current_user.is_admin:
         raise HTTPException(status_code=403, detail="Keine Admin-Rechte")
     return current_user
+
+@app.get("/api/push/public-key")
+def get_push_public_key():
+    return {"public_key": VAPID_PUBLIC_KEY}
 
 @app.get("/api/admin/stats")
 def get_admin_stats(db: Session = Depends(get_db), admin: models.User = Depends(get_admin_user)):
@@ -159,24 +229,108 @@ def get_admin_stats(db: Session = Depends(get_db), admin: models.User = Depends(
         "lists": list_count,
         "users": user_count,
         "items": item_count,
-        "user_list": [{"id": u.id, "email": u.email, "display_name": u.display_name, "is_admin": u.is_admin} for u in users]
+        "user_list": [{"id": u.id, "email": u.email, "display_name": u.display_name, "is_admin": u.is_admin, "status": u.status} for u in users]
     }
 
-@app.patch("/api/admin/users/{user_id}/promote")
-def promote_user(user_id: str, db: Session = Depends(get_db), admin: models.User = Depends(get_admin_user)):
+class UserRoleUpdate(BaseModel):
+    is_admin: bool
+
+@app.patch("/api/admin/users/{user_id}/role")
+def change_user_role(user_id: str, payload: UserRoleUpdate, db: Session = Depends(get_db), admin: models.User = Depends(get_admin_user)):
     user = db.query(models.User).filter(models.User.id == user_id).first()
     if not user:
         raise HTTPException(status_code=404, detail="Benutzer nicht gefunden")
-    user.is_admin = True
+    if user.id == admin.id:
+        raise HTTPException(status_code=400, detail="Du kannst deine eigenen Rechte nicht entziehen.")
+    user.is_admin = payload.is_admin
     db.commit()
-    return {"status": "ok", "message": f"{user.display_name} ist nun Admin."}
+    return {"status": "ok", "message": f"{user.display_name} ist nun {'Admin' if user.is_admin else 'kein Admin mehr'}."}
+
+from pydantic import BaseModel
+
+class UserStatusUpdate(BaseModel):
+    status: str
+
+@app.patch("/api/admin/users/{user_id}/status")
+def change_user_status(user_id: str, payload: UserStatusUpdate, db: Session = Depends(get_db), admin: models.User = Depends(get_admin_user)):
+    if payload.status not in ["pending", "active", "locked"]:
+        raise HTTPException(status_code=400, detail="Ungültiger Status")
+    user = db.query(models.User).filter(models.User.id == user_id).first()
+    if not user:
+        raise HTTPException(status_code=404, detail="Benutzer nicht gefunden")
+    if user.id == admin.id and payload.status != "active":
+        raise HTTPException(status_code=400, detail="Du kannst dich nicht selbst sperren.")
+    user.status = payload.status
+    db.commit()
+    return {"status": "ok", "message": f"Status von {user.display_name} geändert auf {payload.status}."}
+
+@app.post("/api/admin/users/{user_id}/reset-password")
+def admin_generate_reset_token(user_id: str, db: Session = Depends(get_db), admin: models.User = Depends(get_admin_user)):
+    user = db.query(models.User).filter(models.User.id == user_id).first()
+    if not user:
+        raise HTTPException(status_code=404, detail="Benutzer nicht gefunden")
+
+    import secrets
+    from datetime import datetime, timedelta
+
+    # Invalide alte Tokens
+    db.query(models.PasswordResetToken).filter(models.PasswordResetToken.user_id == user.id).update({"is_used": True})
+
+    plain_token = secrets.token_urlsafe(32)
+
+    token_entry = models.PasswordResetToken(
+        user_id=user.id,
+        token=auth.get_password_hash(plain_token),
+        expires_at=datetime.utcnow() + timedelta(hours=24)
+    )
+    db.add(token_entry)
+    db.commit()
+
+    # Der Link enthält nun die user_id und den Token
+    return {"status": "ok", "reset_link": f"/reset-password?user_id={user.id}&token={plain_token}"}
+
+class ResetPasswordConfirm(BaseModel):
+    user_id: str
+    token: str
+    new_password: str
+
+@app.post("/api/auth/reset-password")
+def reset_password(payload: ResetPasswordConfirm, db: Session = Depends(get_db)):
+    from datetime import datetime
+    tokens = db.query(models.PasswordResetToken).filter(
+        models.PasswordResetToken.user_id == payload.user_id,
+        models.PasswordResetToken.is_used == False,
+        models.PasswordResetToken.expires_at > datetime.utcnow()
+    ).all()
+
+    valid_token = None
+    for t in tokens:
+        if auth.verify_password(payload.token, t.token):
+            valid_token = t
+            break
+
+    if not valid_token:
+        raise HTTPException(status_code=400, detail="Ungültiger oder abgelaufener Token")
+
+    user = db.query(models.User).filter(models.User.id == payload.user_id).first()
+    if not user:
+        raise HTTPException(status_code=404, detail="Benutzer nicht gefunden")
+
+    user.password_hash = auth.get_password_hash(payload.new_password)
+    valid_token.is_used = True
+    db.commit()
+
+    return {"status": "ok", "message": "Passwort erfolgreich zurückgesetzt"}
 
 # --- USER ENDPUNKTE ---
 
-class UserUpdate(schemas.BaseModel):
+class UserUpdate(BaseModel):
     display_name: str
+    settings_push_async_events: bool | None = None
+    settings_push_new_items: bool | None = None
+    settings_push_admin_pending_users: bool | None = None
 
-class PasswordUpdate(schemas.BaseModel):
+class PasswordUpdate(BaseModel):
     old_password: str
     new_password: str
 
@@ -209,11 +363,52 @@ def update_user_profile(
     db: Session = Depends(get_db),
     current_user: models.User = Depends(auth.get_current_user)
 ):
-    """Aktualisiert den Anzeigenamen des Nutzers."""
+    """Aktualisiert das Profil des Nutzers."""
     current_user.display_name = user_update.display_name
+    if user_update.settings_push_async_events is not None:
+        current_user.settings_push_async_events = user_update.settings_push_async_events
+    if user_update.settings_push_new_items is not None:
+        current_user.settings_push_new_items = user_update.settings_push_new_items
+    if user_update.settings_push_admin_pending_users is not None:
+        current_user.settings_push_admin_pending_users = user_update.settings_push_admin_pending_users
     db.commit()
     db.refresh(current_user)
     return current_user
+
+@app.get("/api/notifications", response_model=list[schemas.NotificationResponse])
+def get_notifications(db: Session = Depends(get_db), current_user: models.User = Depends(auth.get_current_user)):
+    return db.query(models.Notification).filter(models.Notification.user_id == current_user.id).order_by(models.Notification.created_at.desc()).all()
+
+@app.patch("/api/notifications/{notification_id}/read")
+def read_notification(notification_id: str, db: Session = Depends(get_db), current_user: models.User = Depends(auth.get_current_user)):
+    notification = db.query(models.Notification).filter(models.Notification.id == notification_id, models.Notification.user_id == current_user.id).first()
+    if not notification:
+        raise HTTPException(status_code=404, detail="Notification not found")
+    notification.is_read = True
+    db.commit()
+    return {"status": "ok"}
+
+@app.post("/api/push/subscribe")
+def subscribe_push(sub_data: schemas.PushSubscriptionCreate, db: Session = Depends(get_db), current_user: models.User = Depends(auth.get_current_user)):
+    # Check if subscription already exists for endpoint
+    existing = db.query(models.PushSubscription).filter(
+        models.PushSubscription.user_id == current_user.id,
+        models.PushSubscription.endpoint == sub_data.endpoint
+    ).first()
+    if not existing:
+        new_sub = models.PushSubscription(
+            user_id=current_user.id,
+            endpoint=sub_data.endpoint,
+            p256dh=sub_data.p256dh,
+            auth=sub_data.auth
+        )
+        db.add(new_sub)
+        db.commit()
+    else:
+        existing.p256dh = sub_data.p256dh
+        existing.auth = sub_data.auth
+        db.commit()
+    return {"status": "ok"}
 
 @app.put("/api/users/me/password")
 def change_password(
@@ -323,6 +518,7 @@ async def delete_list(
 @app.post("/api/lists/join", response_model=schemas.ListResponse)
 async def join_list(
     join_data: schemas.JoinListRequest, 
+    background_tasks: BackgroundTasks,
     db: Session = Depends(get_db),
     current_user: models.User = Depends(auth.get_current_user)
 ):
@@ -347,6 +543,29 @@ async def join_list(
     db_list.members.append(current_user)
     db.commit()
     db.refresh(db_list)
+
+    # Push Notifications senden
+    # Deduplicate members to prevent sending duplicate notifications to the creator
+    members_list = db_list.members + ([db_list.creator] if db_list.creator else [])
+    members = {member.id: member for member in members_list}.values()
+    for member in members:
+        if member.id != current_user.id:
+            notif = models.Notification(
+                user_id=member.id,
+                title="Neues Mitglied",
+                body=f"{current_user.display_name} ist der Liste '{db_list.name}' beigetreten.",
+                action_url=f"/list/{db_list.id}"
+            )
+            db.add(notif)
+            if member.settings_push_async_events:
+                subs = db.query(models.PushSubscription).filter(models.PushSubscription.user_id == member.id).all()
+                for sub in subs:
+                    background_tasks.add_task(
+                        send_push_notification,
+                        {"endpoint": sub.endpoint, "keys": {"p256dh": sub.p256dh, "auth": sub.auth}},
+                        {"title": notif.title, "body": notif.body, "url": notif.action_url}
+                    )
+    db.commit()
 
     await manager.broadcast_user(str(current_user.id), {
         "event": "LIST_UPDATED"
@@ -445,6 +664,7 @@ async def respond_to_invitation(
 async def create_item(
     list_id: str, 
     item_data: schemas.ItemCreate, 
+    background_tasks: BackgroundTasks,
     db: Session = Depends(get_db),
     current_user: models.User = Depends(auth.get_current_user) # SCHUTZ
 ):
@@ -472,6 +692,29 @@ async def create_item(
     db.add(log_entry)
     db.commit()
 
+    # Push Notification für neue Items
+    # Deduplicate members to prevent sending duplicate notifications to the creator
+    members_list = db_list.members + ([db_list.creator] if db_list.creator else [])
+    members = {member.id: member for member in members_list}.values()
+    for member in members:
+        if member.id != current_user.id:
+            notif = models.Notification(
+                user_id=member.id,
+                title="Neuer Artikel",
+                body=f"{current_user.display_name} hat {new_item.name} zu '{db_list.name}' hinzugefügt.",
+                action_url=f"/list/{db_list.id}"
+            )
+            db.add(notif)
+            if member.settings_push_new_items:
+                subs = db.query(models.PushSubscription).filter(models.PushSubscription.user_id == member.id).all()
+                for sub in subs:
+                    background_tasks.add_task(
+                        send_push_notification,
+                        {"endpoint": sub.endpoint, "keys": {"p256dh": sub.p256dh, "auth": sub.auth}},
+                        {"title": notif.title, "body": notif.body, "url": notif.action_url}
+                    )
+    db.commit()
+
     # WEBSOCKET BROADCAST - Jetzt inklusive Kategorie
     await manager.broadcast(list_id, {
         "event": "ITEM_UPDATED",
@@ -480,13 +723,58 @@ async def create_item(
             "item": { "id": new_item.id, "name": new_item.name, "status": new_item.status, "quantity": new_item.quantity, "unit": new_item.unit, "category": new_item.category, "tags": new_item.tags }
         }
     })
-    
+
     await manager.broadcast(list_id, {
         "event": "CHANGELOG_UPDATED",
         "payload": {}
     })
 
     return new_item
+
+@app.post("/api/lists/{list_id}/start-shopping")
+async def start_shopping(
+    list_id: str,
+    background_tasks: BackgroundTasks,
+    db: Session = Depends(get_db),
+    current_user: models.User = Depends(auth.get_current_user)
+):
+    db_list = db.query(models.List).filter(models.List.id == list_id).first()
+    if not db_list:
+        raise HTTPException(status_code=404, detail="Liste nicht gefunden")
+
+    # LOG ACTIVITY
+    log_entry = models.ActivityLog(
+        list_id=list_id,
+        user_id=current_user.id,
+        action_type="started",
+        item_name="Einkauf gestartet" # Placeholder
+    )
+    db.add(log_entry)
+    db.commit()
+
+    # Push Notification für Einkaufsstart an Listenmitglieder (nicht den der startet)
+    # Deduplicate members to prevent sending duplicate notifications to the creator
+    members_list = db_list.members + ([db_list.creator] if db_list.creator else [])
+    members = {member.id: member for member in members_list}.values()
+    for member in members:
+        if member.id != current_user.id:
+            notif = models.Notification(
+                user_id=member.id,
+                title="Einkauf gestartet",
+                body=f"{current_user.display_name} hat den Einkauf für '{db_list.name}' gestartet.",
+                action_url=f"/list/{db_list.id}"
+            )
+            db.add(notif)
+            if member.settings_push_async_events:
+                subs = db.query(models.PushSubscription).filter(models.PushSubscription.user_id == member.id).all()
+                for sub in subs:
+                    background_tasks.add_task(
+                        send_push_notification,
+                        {"endpoint": sub.endpoint, "keys": {"p256dh": sub.p256dh, "auth": sub.auth}},
+                        {"title": notif.title, "body": notif.body, "url": notif.action_url}
+                    )
+    db.commit()
+    return {"status": "ok"}
 
 @app.get("/api/lists/{list_id}/changelog", response_model=List[schemas.ActivityLogResponse])
 async def get_list_changelog(

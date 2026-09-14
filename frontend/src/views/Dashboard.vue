@@ -18,6 +18,22 @@ const selectedListForOptions = ref(null);
 const newListName = ref('');
 const selectedIcon = ref(''); 
 const shareCodeInput = ref('');
+const showScanner = ref(false);
+
+const handleScanCode = (scannedValue) => {
+  showScanner.value = false;
+  // Fall 1: Es ist ein kompletter Share-Link (z.B. https://kaufsync.app/join?code=XYZ)
+  const urlMatch = scannedValue.match(/code=([^&]+)/);
+  if (urlMatch) {
+    shareCodeInput.value = urlMatch[1];
+  } else {
+    // Fall 2: Es ist nur der raw Code aus dem Scanner
+    // Wir filtern alles raus, was kein Alphanumerischer Code ist
+    shareCodeInput.value = scannedValue.replace(/[^a-zA-Z0-9]/g, '').toUpperCase();
+  }
+
+  if (shareCodeInput.value) joinList();
+};
 
 // --- ECHTE WIKIPEDIA LOGOS (Alphabetisch sortiert) ---
 const predefinedStores = [
@@ -99,11 +115,9 @@ const setupWebSockets = () => {
             if (targetList && targetList.items) {
               const index = targetList.items.findIndex(i => i.id === incomingItem.id);
               if (index !== -1) {
-                targetList.items[index].status = incomingItem.status;
-                targetList.items[index].quantity = incomingItem.quantity;
-                targetList.items[index].name = incomingItem.name;
-                targetList.items[index].unit = incomingItem.unit;
-                targetList.items[index].tags = incomingItem.tags;
+                // Re-assign the entire object to reliably trigger reactivity
+                targetList.items[index] = { ...targetList.items[index], ...incomingItem };
+
                 if (incomingItem.category) targetList.items[index].category = incomingItem.category;
               } else {
                 targetList.items.push(incomingItem);
@@ -327,12 +341,14 @@ onUnmounted(() => {
         <img src="/android-chrome-512x512.png" alt="Logo" style="height: 48px; object-fit: contain;" />
         <h1 style="margin: 0; font-size: 22px;">Meine Listen</h1>
       </div>
-      <button class="ks-icon-btn profile-btn" @click.stop="goToProfile" aria-label="Profil">
-        <div v-if="currentUser" class="member-avatar creator" style="width: 32px; height: 32px; font-size: 14px;">
-          {{ getInitial(currentUser.display_name) }}
-        </div>
-        <svg v-else viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 4c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm0 14c-2.03 0-4.43-.82-6.14-2.88C7.55 15.8 9.68 15 12 15s4.45.8 6.14 2.12C16.43 19.18 14.03 20 12 20z"/></svg>
-      </button>
+      <div style="display: flex; align-items: center; gap: 4px;">
+        <button class="ks-icon-btn profile-btn" @click.stop="goToProfile" aria-label="Profil">
+          <div v-if="currentUser" class="member-avatar creator" style="width: 32px; height: 32px; font-size: 14px;">
+            {{ getInitial(currentUser.display_name) }}
+          </div>
+          <svg v-else viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 4c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm0 14c-2.03 0-4.43-.82-6.14-2.88C7.55 15.8 9.68 15 12 15s4.45.8 6.14 2.12C16.43 19.18 14.03 20 12 20z"/></svg>
+        </button>
+      </div>
     </header>
 
     <div class="ks-snackbar-stack">
@@ -617,6 +633,23 @@ onUnmounted(() => {
 .store-logo-img { width: 100%; height: 100%; object-fit: contain; padding: 4px; }
 
 .card-title { font-size: 17px; font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+.ks-badge {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    background: var(--ks-error, #F44336);
+    color: white;
+    font-size: 10px;
+    font-weight: 700;
+    min-width: 16px;
+    height: 16px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 4px;
+}
 
 .profile-btn { padding: 4px; display: flex; align-items: center; justify-content: center; }
 .member-indicators { display: flex; align-items: center; }

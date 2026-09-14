@@ -21,7 +21,7 @@ const props = defineProps({
   },
   strokeWidth: {
     type: [Number, String],
-    default: 2
+    default: 2.5
   },
   color: {
     type: String,
@@ -116,8 +116,7 @@ const categoryImageMap = {
   'milchprodukte & tiefkühlkost': 'Milch.svg',
   'vorratskammer': 'Nudeln.svg',
   'getränke & genussmittel': 'Getraenke_allgemein.svg',
-  'drogerie, haushalt & tierbedarf': 'Putzmittel.svg',
-  'sonstiges': 'Allgemein.svg'
+  'drogerie, haushalt & tierbedarf': 'Putzmittel.svg'
 };
 
 const errorLevel = ref(0);
@@ -131,7 +130,6 @@ const resetState = () => {
 watch(() => props.name, resetState);
 watch(() => props.category, resetState);
 
-
 const categoryClass = computed(() => {
   if (!props.category) return '';
   const lowerCat = props.category.toLowerCase();
@@ -144,6 +142,19 @@ const categoryClass = computed(() => {
   if (lowerCat.includes('drogerie, haushalt & tierbedarf')) return 'cat-drogerie-haushalt';
   return 'cat-sonstiges';
 });
+
+const getLetterPath = (name) => {
+  if (!name) return '';
+  let firstLetter = name.charAt(0).toLowerCase();
+  const umlautMap = { 'ä': 'a', 'ö': 'o', 'ü': 'u' };
+  if (umlautMap[firstLetter]) {
+    firstLetter = umlautMap[firstLetter];
+  }
+  if (/^[a-z]$/.test(firstLetter)) {
+    return `/icons/letters/${firstLetter}.svg`;
+  }
+  return '';
+};
 
 const currentImageSrc = computed(() => {
   if (errorLevel.value === 0) {
@@ -160,12 +171,27 @@ const currentImageSrc = computed(() => {
         }
       }
     }
-    // If no category match, force the next error level by returning a path we know will trigger an error or directly advance
-    // Returning `sonstiges.png` here handles it natively.
-    return '/icons/Allgemein.svg';
+    // If no category match, force the next error level by returning the letter path
+    const letterPath = getLetterPath(props.name);
+    if (letterPath) {
+      return letterPath;
+    }
+
+    showSvg.value = true;
+    return '';
   }
   if (errorLevel.value === 2) {
-    return '/icons/Allgemein.svg';
+    const letterPath = getLetterPath(props.name);
+    if (letterPath) {
+      return letterPath;
+    }
+
+    showSvg.value = true;
+    return '';
+  }
+  if (errorLevel.value === 3) {
+    showSvg.value = true;
+    return '';
   }
   return '';
 });
@@ -175,6 +201,9 @@ const onImageError = (event) => {
     errorLevel.value = 1;
   } else if (errorLevel.value === 1) {
     errorLevel.value = 2;
+  } else if (errorLevel.value === 2) {
+    errorLevel.value = 3;
+    showSvg.value = true;
   } else {
     showSvg.value = true;
   }
@@ -183,33 +212,56 @@ const onImageError = (event) => {
 </script>
 
 <template>
-  <component
-    v-if="showSvg || !name"
-    :is="iconComponent"
-    :size="size"
-    :stroke-width="strokeWidth"
-    :color="color"
-    class="lucide-icon"
-    :class="categoryClass"
-  />
-  <div
-    v-else
-    class="item-icon-svg"
-    :class="categoryClass"
-    :style="{
-      '--icon-src': `url(${currentImageSrc})`,
-      'background-color': color || 'currentColor',
-      width: typeof size === 'number' ? `${size}px` : size,
-      height: typeof size === 'number' ? `${size}px` : size
-    }"
-    :title="name"
-  >
-    <img
-      :src="currentImageSrc"
-      @error="onImageError"
-      style="display: none;"
-      :alt="name"
+  <div class="icon-wrapper flex items-center justify-center shrink-0">
+    <div
+      v-if="showSvg && name"
+      class="fallback-initial-icon"
+      :class="categoryClass"
+      :style="{
+        backgroundColor: color === 'currentColor' ? 'var(--ks-surface-4)' : color,
+        color: 'white',
+        width: !isNaN(size) ? `${size}px` : size,
+        height: !isNaN(size) ? `${size}px` : size,
+        borderRadius: '50%',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        fontSize: !isNaN(size) ? `${size * 0.55}px` : '1em',
+        fontWeight: 'bold',
+        opacity: 0.8
+      }"
+      :title="name"
+    >
+      {{ name.charAt(0).toUpperCase() }}
+    </div>
+    <component
+      v-else-if="!name"
+      :is="iconComponent"
+      :size="size"
+      :stroke-width="strokeWidth"
+      :color="color"
+      class="lucide-icon"
+      :class="categoryClass"
     />
+    <div
+      v-else
+      class="item-icon-svg"
+      :class="categoryClass"
+      :style="{
+        '--icon-src': `url(${currentImageSrc})`,
+        'background-color': color && color !== 'currentColor' ? color : 'currentColor',
+        width: !isNaN(size) ? `${size}px` : size,
+        height: !isNaN(size) ? `${size}px` : size
+      }"
+      :title="name"
+    >
+      <img
+        :src="currentImageSrc"
+        @error="onImageError"
+        style="display: none;"
+        :alt="name"
+      />
+    </div>
   </div>
 </template>
 
@@ -229,15 +281,16 @@ const onImageError = (event) => {
   -webkit-mask-repeat: no-repeat;
   mask-position: center;
   -webkit-mask-position: center;
+  filter: drop-shadow(0 0 1px currentColor);
 }
 
 /* Fallback Classes in case color prop isn't passed down - they align with ListView colors */
-.cat-obst-gemuese { color: #1B5E20; }
-.cat-brot-backwaren { color: #F57F17; }
-.cat-fleisch-fisch { color: #B71C1C; }
-.cat-milch-tiefkuehl { color: #01579B; }
-.cat-vorratskammer { color: #E65100; }
-.cat-getraenke-genuss { color: #1A237E; }
-.cat-drogerie-haushalt { color: #006064; }
-.cat-sonstiges { color: var(--ks-text-muted); }
+.cat-obst-gemuese { color: #86efac; }
+.cat-brot-backwaren { color: #fef08a; }
+.cat-fleisch-fisch { color: #fca5a5; }
+.cat-milch-tiefkuehl { color: #93c5fd; }
+.cat-vorratskammer { color: #fdba74; }
+.cat-getraenke-genuss { color: #a5b4fc; }
+.cat-drogerie-haushalt { color: #5eead4; }
+.cat-sonstiges { color: #d8b4fe; }
 </style>

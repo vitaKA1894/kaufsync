@@ -5,6 +5,7 @@ import CategoryIcon from '../components/CategoryIcon.vue';
 import AddItemModal from '../components/AddItemModal.vue';
 import ConfirmModal from '../components/ConfirmModal.vue';
 import Sortable from 'sortablejs';
+import QrcodeVue from 'qrcode.vue';
 
 const route = useRoute();
 const router = useRouter();
@@ -36,6 +37,17 @@ const changelogFilter = ref('all'); // 'all', 'added', 'completed'
 
 let ws = null;
 const isOnline = ref(navigator.onLine);
+
+const isCompactView = ref(localStorage.getItem('ks_compact_view') === 'true');
+const toggleCompactView = () => {
+  isCompactView.value = !isCompactView.value;
+  localStorage.setItem('ks_compact_view', isCompactView.value);
+};
+
+const formatCategoryName = (name) => {
+  if (!name) return '';
+  return name;
+};
 
 // --- LONG PRESS GESTURE ---
 let pressTimer = null;
@@ -71,14 +83,14 @@ const cancelPress = () => {
 
 // --- KATEGORIE DEFINITIONEN ---
 const predefinedCategories = [
-  { name: 'Obst & Gemüse', color: '#1B5E20', bg: '#C8E6C9' },
-  { name: 'Brot & Backwaren', color: '#F57F17', bg: '#FFF9C4' },
-  { name: 'Fleisch & Fisch', color: '#B71C1C', bg: '#FFCDD2' },
-  { name: 'Milchprodukte & Tiefkühlkost', color: '#01579B', bg: '#B3E5FC' },
-  { name: 'Vorratskammer', color: '#E65100', bg: '#FFE0B2' },
-  { name: 'Getränke & Genussmittel', color: '#1A237E', bg: '#C5CAE9' },
-  { name: 'Drogerie, Haushalt & Tierbedarf', color: '#006064', bg: '#B2EBF2' },
-  { name: 'Sonstiges', color: 'var(--ks-text-muted)', bg: 'var(--ks-surface-3)' }
+  { name: 'Obst & Gemüse', color: '#86efac', bg: '#86efac' }, // Tailwind bg-green-300
+  { name: 'Brot & Backwaren', color: '#fef08a', bg: '#fef08a' }, // Tailwind bg-yellow-200
+  { name: 'Fleisch & Fisch', color: '#fca5a5', bg: '#fca5a5' }, // Tailwind bg-rose-300
+  { name: 'Milchprodukte & Tiefkühlkost', color: '#93c5fd', bg: '#93c5fd' }, // Tailwind bg-blue-300
+  { name: 'Vorratskammer', color: '#fdba74', bg: '#fdba74' }, // Tailwind bg-orange-300
+  { name: 'Getränke & Genussmittel', color: '#a5b4fc', bg: '#a5b4fc' }, // Tailwind bg-indigo-300
+  { name: 'Drogerie, Haushalt & Tierbedarf', color: '#5eead4', bg: '#5eead4' }, // Tailwind bg-teal-300
+  { name: 'Sonstiges', color: '#d8b4fe', bg: '#d8b4fe' } // Tailwind bg-fuchsia-300
 ];
 
 const getTagStyle = (tag) => {
@@ -94,10 +106,7 @@ const getTagStyle = (tag) => {
 const formatQuantity = (item) => {
   if (!item.quantity) return '';
   const q = item.quantity;
-  const u = item.unit || 'Stk';
-  // Avoid printing "1 Stk" if they chose custom units, print nicely
-  const qStr = (q % 1 === 0) ? q.toString() : q.toString();
-  return `${qStr} ${u}`.trim();
+  return (q % 1 === 0) ? q.toString() : q.toString();
 };
 
 const parseTags = (tagsStr) => {
@@ -178,7 +187,7 @@ watch(showSortSheet, async (newVal) => {
     await nextTick();
     if (sortListRef.value && !sortableInstance) {
       sortableInstance = new Sortable(sortListRef.value, {
-        handle: '.drag-handle',
+        handle: '.sort-item',
         animation: 150,
         onEnd: (evt) => {
           const itemEl = evt.item;
@@ -255,11 +264,9 @@ const setupWebSocket = () => {
         const incomingItem = data.payload.item;
         const index = items.value.findIndex(i => i.id === incomingItem.id);
         if (index !== -1) {
-          items.value[index].status = incomingItem.status;
-          items.value[index].quantity = incomingItem.quantity;
-          items.value[index].name = incomingItem.name;
-          items.value[index].unit = incomingItem.unit;
-          items.value[index].tags = incomingItem.tags;
+          // Re-assign the entire object to trigger reactivity reliably
+          items.value[index] = { ...items.value[index], ...incomingItem };
+
           // Kategorie Fallback, falls via WS nicht gesendet
           if (incomingItem.category) items.value[index].category = incomingItem.category;
         } else {
@@ -371,6 +378,14 @@ const processOfflineQueue = async () => {
   localStorage.setItem('offlineQueue', JSON.stringify(remainingQueue));
 };
 
+const updateItemQuantity = (item, delta) => {
+  const newQty = Math.max(1, (item.quantity || 1) + delta);
+  if (newQty !== item.quantity) {
+    item.quantity = newQty;
+    handleUpdateItem({ id: item.id, quantity: newQty });
+  }
+};
+
 const toggleItemStatus = async (item) => {
   if (longPressTriggered) {
     longPressTriggered = false;
@@ -478,24 +493,57 @@ const openChangelog = () => {
 };
 
 const filteredChangelog = computed(() => {
-  if (changelogFilter.value === 'added') return changelog.value.filter(log => log.action_type === 'added');
-  if (changelogFilter.value === 'completed') return changelog.value.filter(log => log.action_type === 'completed');
-  return changelog.value;
+  let logs = changelog.value;
+  if (changelogFilter.value === 'added') logs = logs.filter(log => log.action_type === 'added');
+  if (changelogFilter.value === 'completed') logs = logs.filter(log => log.action_type === 'completed');
+
+  const grouped = [];
+
+  logs.forEach(log => {
+      const d = new Date(log.created_at + 'Z');
+      const today = new Date();
+      const yesterday = new Date(today);
+      yesterday.setDate(yesterday.getDate() - 1);
+
+      let dayKey = '';
+      if (d.toDateString() === today.toDateString()) {
+          dayKey = `Heute – ${d.toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit', year: '2-digit' })}`;
+      } else if (d.toDateString() === yesterday.toDateString()) {
+          dayKey = `Gestern – ${d.toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit', year: '2-digit' })}`;
+      } else {
+          dayKey = d.toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit', year: '2-digit' });
+      }
+
+      let dayGroup = grouped.find(g => g.day === dayKey);
+      if (!dayGroup) {
+          dayGroup = { day: dayKey, actions: [] };
+          grouped.push(dayGroup);
+      }
+
+      const userName = log.user_name || 'Unbekannt';
+      const actionType = log.action_type;
+
+      let actionGroup = dayGroup.actions.find(a => a.userName === userName && a.actionType === actionType);
+      if (!actionGroup) {
+          actionGroup = { userName, actionType, items: [] };
+          dayGroup.actions.push(actionGroup);
+      }
+
+      actionGroup.items.push(log.item_name);
+  });
+
+  return grouped;
 });
 
-const formatChangelogTime = (dateStr) => {
-  const d = new Date(dateStr + 'Z');
-  return d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) + ' Uhr';
-};
-
-const formatChangelogAction = (action) => {
+const formatChangelogActionText = (userName, actionType, count) => {
   const map = {
-    'added': 'hat hinzugefügt:',
-    'completed': 'hat abgehakt:',
-    'deleted': 'hat gelöscht:',
-    'reactivated': 'hat wiederhergestellt:'
+    'added': 'hinzugefügt',
+    'completed': 'abgehakt',
+    'deleted': 'entfernt',
+    'reactivated': 'wiederhergestellt'
   };
-  return map[action] || action;
+  const actionWord = map[actionType] || actionType;
+  return `${userName} hat ${count} Artikel ${actionWord}`;
 };
 
 const getInitial = (name) => {
@@ -506,8 +554,9 @@ const getInitial = (name) => {
 const copyToClipboard = async () => {
   if (!currentList.value) return;
   try {
-    await navigator.clipboard.writeText(currentList.value.share_code);
-    successMessage.value = "Code kopiert!";
+    const joinLink = `${window.location.origin}/join?code=${currentList.value.share_code}`;
+    await navigator.clipboard.writeText(joinLink);
+    successMessage.value = "Link kopiert!";
     setTimeout(() => successMessage.value = '', 2000);
   } catch (err) {
     console.error('Kopieren fehlgeschlagen', err);
@@ -624,10 +673,36 @@ const groupedActiveItems = computed(() => {
   });
 });
 
+const sortedActiveItems = computed(() => {
+  return groupedActiveItems.value.reduce((acc, group) => {
+    // Add the group def to each item so it can be easily accessed in the flat list
+    const itemsWithDef = group.items.map(item => ({...item, _groupDef: group.def}));
+    return acc.concat(itemsWithDef);
+  }, []);
+});
+
 const completedItems = computed(() => items.value.filter(i => i.status === 'completed').map(item => {
   let catName = item.category || 'Sonstiges';
   return { ...item, category: mapLegacyCategory(catName) };
 }));
+
+const getRegularTags = (tagsStr) => {
+  const tags = parseTags(tagsStr);
+  return tags.filter(t => !['dringend', 'angebot', "wenn's passt"].includes(t.toLowerCase()));
+};
+
+const getUrgencyTags = (tagsStr) => {
+  const tags = parseTags(tagsStr);
+  return tags.filter(t => ['dringend', 'angebot', "wenn's passt"].includes(t.toLowerCase()));
+};
+
+const formatTags = (tagsStr) => {
+  const regular = getRegularTags(tagsStr);
+  if (regular.length === 0) return '';
+  if (regular.length <= 2) return regular.join(', ');
+  return regular.slice(0, 2).join(', ') + '...';
+};
+
 
 onMounted(() => {
   loadItems(); // loadItems ruft am Ende loadCategoryOrder() auf
@@ -656,8 +731,13 @@ onUnmounted(() => {
         <h1 class="list-title">{{ currentList ? currentList.name : 'Laden...' }}</h1>
       </div>
       <div style="display: flex; gap: 8px;">
+
         <button class="ks-icon-btn" @click.stop="openChangelog" aria-label="Aktivitätenprotokoll">
            <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+        </button>
+        <button class="ks-icon-btn" @click.stop="toggleCompactView" aria-label="Ansicht anpassen">
+           <svg v-if="isCompactView" viewBox="0 0 24 24"><path d="M3 3v8h8V3H3zm6 6H5V5h4v4zm-6 4v8h8v-8H3zm6 6H5v-4h4v4zm4-16v8h8V3h-8zm6 6h-4V5h4v4zm-6 4v8h8v-8h-8zm6 6h-4v-4h4v4z"/></svg>
+           <svg v-else viewBox="0 0 24 24"><path d="M4 18h17v-6H4v6zM4 5v6h17V5H4z"/></svg>
         </button>
         <button class="ks-icon-btn" @click.stop="showSortSheet = !showSortSheet" aria-label="Kategorien sortieren">
            <svg viewBox="0 0 24 24"><path d="M3 18v-2h6v2H3Zm0-5v-2h12v2H3Zm0-5V6h18v2H3Z"/></svg>
@@ -678,11 +758,16 @@ onUnmounted(() => {
         <div class="ks-sheet__handle"></div>
         <h3 class="sheet-heading">Liste teilen</h3>
 
-        <div class="share-section">
-          <p class="section-label">Per Code einladen</p>
-          <button class="code-box" @click="copyToClipboard">
+        <div class="share-section" style="display: flex; flex-direction: column; align-items: center; gap: 16px;">
+          <p class="section-label" style="align-self: flex-start;">Per Code beitreten</p>
+          <div class="code-box" @click="copyToClipboard">
             <span class="code">{{ currentList?.share_code }}</span>
-            <svg viewBox="0 0 24 24"><path d="M9 18q-.825 0-1.412-.587Q7 16.825 7 16V4q0-.825.588-1.412Q8.175 2 9 2h9q.825 0 1.413.588Q20 3.175 20 4v12q0 .825-.587 1.413Q18.825 18 18 18Zm0-2h9V4H9v12Zm-4 6q-.825 0-1.412-.587Q3 20.825 3 20V6h2v14h11v2Z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+          </div>
+
+          <button class="ks-btn-filled full-width" style="display: flex; align-items: center; justify-content: center; gap: 8px;" @click="copyToClipboard">
+             <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M9 18q-.825 0-1.412-.587Q7 16.825 7 16V4q0-.825.588-1.412Q8.175 2 9 2h9q.825 0 1.413.588Q20 3.175 20 4v12q0 .825-.587 1.413Q18.825 18 18 18Zm0-2h9V4H9v12Zm-4 6q-.825 0-1.412-.587Q3 20.825 3 20V6h2v14h11v2Z"/></svg>
+             Link kopieren
           </button>
         </div>
 
@@ -729,16 +814,21 @@ onUnmounted(() => {
             <button class="ks-chip tag-chip" :class="{ active: changelogFilter === 'completed' }" @click="changelogFilter = 'completed'">Abgehakt</button>
         </div>
 
-        <div class="changelog-list" style="max-height: 50vh; overflow-y: auto;">
-            <div v-for="log in filteredChangelog" :key="log.id" class="changelog-item">
-                <div class="changelog-avatar">{{ getInitial(log.user_name) }}</div>
-                <div class="changelog-content">
-                    <div class="changelog-meta">
-                        <span class="changelog-user">{{ log.user_name || 'Unbekannt' }}</span>
-                        <span class="changelog-time">{{ formatChangelogTime(log.created_at) }}</span>
+        <div class="changelog-list" style="max-height: 50vh; overflow-y: auto; padding-right: 8px;">
+            <div v-for="dayGroup in filteredChangelog" :key="dayGroup.day" class="changelog-day-group">
+                <div v-for="(actionGroup, index) in dayGroup.actions" :key="index" class="changelog-action-group">
+                    <div class="changelog-group-header">
+                        <div class="changelog-avatar">{{ getInitial(actionGroup.userName) }}</div>
+                        <div class="changelog-group-title">
+                            <span class="changelog-day">{{ dayGroup.day }}</span>
+                            <span class="changelog-action-text">{{ formatChangelogActionText(actionGroup.userName, actionGroup.actionType, actionGroup.items.length) }}</span>
+                        </div>
                     </div>
-                    <div class="changelog-action">
-                        {{ formatChangelogAction(log.action_type) }} <strong>{{ log.item_name }}</strong>
+                    <div class="changelog-items-list">
+                        <div v-for="(itemName, idx) in actionGroup.items" :key="idx" class="changelog-item-row">
+                            <CategoryIcon class="changelog-item-icon" :name="itemName" size="24" color="var(--ks-text-muted)" />
+                            <span class="changelog-item-name">{{ itemName }}</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -757,12 +847,12 @@ onUnmounted(() => {
         <p class="sheet-support">Sortiere die Kategorien, damit sie deinem Weg durch den Markt entsprechen.</p>
         
         <div class="sort-list" ref="sortListRef">
-          <div v-for="(catName, index) in categoryOrder" :key="catName" class="sort-item" :data-id="catName" :style="{ background: getCategoryDef(catName).bg, color: getCategoryDef(catName).color, border: 'none' }">
+          <div v-for="(catName, index) in categoryOrder" :key="catName" class="sort-item" :data-id="catName" :style="{ background: getCategoryDef(catName).bg, color: '#0f172a', border: 'none' }">
             <div class="sort-info">
                <span>{{ catName }}</span>
             </div>
             <div class="sort-actions">
-              <span class="drag-handle" style="cursor: grab; display: flex; align-items: center; justify-content: center; width: 32px; height: 32px;">
+              <span class="drag-handle" style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px;">
                  <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M3 15v-2h18v2H3Zm0-4V9h18v2H3Z"/></svg>
               </span>
             </div>
@@ -787,42 +877,93 @@ onUnmounted(() => {
     <!-- GRUPPIERTE AKTIVE ARTIKEL -->
     <div class="list-scroll-area">
       <template v-if="groupedActiveItems.length > 0">
-        <section v-for="group in groupedActiveItems" :key="group.name" class="items-section">
-          
-          <div class="category-header">
-            <span class="category-badge" :style="{ background: group.def.bg, color: group.def.color }">
-              {{ group.name }}
-            </span>
-            <span class="category-count">{{ group.items.length }}</span>
-          </div>
+        <template v-if="!isCompactView">
+          <section v-for="group in groupedActiveItems" :key="group.name" class="flex gap-3 mb-6" style="display: flex; gap: 12px; margin-bottom: 24px;">
+            <div class="category-indicator" :style="{ color: group.def.color, backgroundColor: group.def.color }" style="width: 4px; border-radius: 9999px; flex-shrink: 0; box-shadow: 0 0 10px currentColor; opacity: 0.8;"></div>
+            <div style="flex: 1;">
+              <h2 :style="{ color: group.def.color }" style="font-weight: bold; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
+                  {{ formatCategoryName(group.name) }} <span :style="{ backgroundColor: 'color-mix(in srgb, ' + group.def.color + ' 20%, transparent)', color: group.def.color }" style="padding: 2px 8px; border-radius: 9999px;">{{ group.items.length }}</span>
+              </h2>
 
-          <div class="ks-grid">
-            <div v-for="item in group.items" :key="item.id" class="grid-card active" :id="'item-' + item.id"
-                 @click="toggleItemStatus(item)"
-                 @mousedown="startPress(item, $event)"
-                 @touchstart="startPress(item, $event)"
-                 @mouseup="cancelPress"
-                 @mouseleave="cancelPress"
-                 @touchend="cancelPress"
-                 @touchmove="cancelPress">
-              <div class="card-icon-area" :style="{ background: group.def.bg, color: group.def.color }">
-                 <CategoryIcon class="icon-svg" :name="item.name" :category="item.category" size="40" />
+            <transition-group name="list" tag="div" class="ks-grid items-grid grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8 ga w-full">
+              <div v-for="item in group.items" :key="item.id" class="grid-card active" :id="'item-' + item.id"
+                   @click="toggleItemStatus(item)"
+                   @mousedown="startPress(item, $event)"
+                   @touchstart="startPress(item, $event)"
+                   @mouseup="cancelPress"
+                   @mouseleave="cancelPress"
+                   @touchend="cancelPress"
+                   @touchmove="cancelPress">
+              <div class="absolute -top-4 -right-4 w-24 h-24 rounded-full blur-xl opacity-15 pointer-events-none" :style="{ backgroundColor: group.def.color }"></div>
+              <div class="w-[55px] h-[55px] mb-2 rounded-xl bg-slate-700/50 flex items-center justify-center p-0" :style="{ color: group.def.color }">
+                <CategoryIcon class="icon-svg" :name="item.name" :category="item.category" size="55" />
               </div>
-              <div class="card-text-area">
-                <span class="item-name">{{ item.name }}</span>
-                <span class="item-quantity" v-if="formatQuantity(item)">{{ formatQuantity(item) }}</span>
-                <div v-if="parseTags(item.tags).length > 0" class="item-tags">
-                  <span
-                    v-for="tag in parseTags(item.tags)"
-                    :key="tag"
-                    class="tag-pill"
-                    :style="{ background: getTagStyle(tag).bg, color: getTagStyle(tag).color }"
-                  >{{ tag }}</span>
-                </div>
+              <div v-if="getUrgencyTags(item.tags).length > 0" class="item-tags" style="position: absolute; top: 8px; left: 8px; display: flex; gap: 4px; z-index: 2;">
+                <span
+                  v-for="tag in getUrgencyTags(item.tags)"
+                  :key="tag"
+                  :style="{ color: group.def.color }"
+                >
+                  <svg v-if="tag === 'Dringend'" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 5.5c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zM9.8 8.9L7 23h2.1l1.8-8 2.1 2v6h2v-7.5l-2.1-2 .6-3C14.8 12 16.8 13 19 13v-2c-1.9 0-3.5-1-4.3-2.4l-1-1.6c-.4-.6-1-1-1.7-1-.3 0-.5.1-.8.1L6 8.3V13h2V9.6l1.8-.7"/></svg>
+                  <svg v-else-if="tag === 'Angebot'" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58.55 0 1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z"/></svg>
+                  <svg v-else width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 9h-2V7h-2v5H6v2h2v5h2v-5h2v-2zm4 5h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+                </span>
+              </div>
+              <div class="card-text-area mb-3">
+                <span class="item-name mb-1">{{ item.name }}</span>
+                <span class="item-regular-tags" v-if="getRegularTags(item.tags).length > 0">
+                  {{ formatTags(item.tags) }}
+                </span>
+              </div>
+              <div class="quantity-controls flex items-center justify-between w-full mt-auto bg-slate-900 rounded-lg p-1" @click.stop>
+                <button @click.stop="updateItemQuantity(item, -1)" class="w-8 h-8 rounded-md bg-slate-800 text-slate-300 font-bold flex items-center justify-center">-</button>
+                <span class="qty-val" :style="{ color: group.def.color }" style="font-weight: bold;">{{ formatQuantity(item) }}</span>
+                <button @click.stop="updateItemQuantity(item, 1)" class="w-8 h-8 rounded-md font-bold text-slate-900 flex items-center justify-center" :style="{ backgroundColor: group.def.color }">+</button>
+              </div>
+              </div>
+            </transition-group>
+            </div>
+          </section>
+        </template>
+        <template v-else>
+          <transition-group name="list" tag="div" class="ks-grid items-grid grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8 ga w-full" style="padding-top: 0;">
+            <div v-for="item in sortedActiveItems" :key="item.id" class="grid-card active" :id="'item-' + item.id"
+                   @click="toggleItemStatus(item)"
+                   @mousedown="startPress(item, $event)"
+                   @touchstart="startPress(item, $event)"
+                   @mouseup="cancelPress"
+                   @mouseleave="cancelPress"
+                   @touchend="cancelPress"
+                   @touchmove="cancelPress">
+              <div class="absolute -top-4 -right-4 w-24 h-24 rounded-full blur-xl opacity-15 pointer-events-none" :style="{ backgroundColor: item._groupDef.color }"></div>
+              <div class="w-[55px] h-[55px] mb-2 rounded-xl bg-slate-700/50 flex items-center justify-center p-0" :style="{ color: item._groupDef.color }">
+                <CategoryIcon class="icon-svg" :name="item.name" :category="item.category" size="55" />
+              </div>
+              <div v-if="getUrgencyTags(item.tags).length > 0" class="item-tags" style="position: absolute; top: 8px; left: 8px; display: flex; gap: 4px; z-index: 2;">
+                <span
+                  v-for="tag in getUrgencyTags(item.tags)"
+                  :key="tag"
+                  :style="{ color: item._groupDef.color }"
+                >
+                  <svg v-if="tag === 'Dringend'" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 5.5c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zM9.8 8.9L7 23h2.1l1.8-8 2.1 2v6h2v-7.5l-2.1-2 .6-3C14.8 12 16.8 13 19 13v-2c-1.9 0-3.5-1-4.3-2.4l-1-1.6c-.4-.6-1-1-1.7-1-.3 0-.5.1-.8.1L6 8.3V13h2V9.6l1.8-.7"/></svg>
+                  <svg v-else-if="tag === 'Angebot'" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58.55 0 1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z"/></svg>
+                  <svg v-else width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 9h-2V7h-2v5H6v2h2v5h2v-5h2v-2zm4 5h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+                </span>
+              </div>
+              <div class="card-text-area mb-3">
+                <span class="item-name mb-1">{{ item.name }}</span>
+                <span class="item-regular-tags" v-if="getRegularTags(item.tags).length > 0">
+                  {{ formatTags(item.tags) }}
+                </span>
+              </div>
+              <div class="quantity-controls flex items-center justify-between w-full mt-auto bg-slate-900 rounded-lg p-1" @click.stop>
+                <button @click.stop="updateItemQuantity(item, -1)" class="w-8 h-8 rounded-md bg-slate-800 text-slate-300 font-bold flex items-center justify-center">-</button>
+                <span class="qty-val" :style="{ color: item._groupDef.color }" style="font-weight: bold;">{{ formatQuantity(item) }}</span>
+                <button @click.stop="updateItemQuantity(item, 1)" class="w-8 h-8 rounded-md font-bold text-slate-900 flex items-center justify-center" :style="{ backgroundColor: item._groupDef.color }">+</button>
               </div>
             </div>
-          </div>
-        </section>
+</transition-group>
+        </template>
       </template>
 
       <div v-if="groupedActiveItems.length === 0 && completedItems.length === 0" class="empty-state">
@@ -836,31 +977,35 @@ onUnmounted(() => {
       </div>
 
       <!-- ERLEDIGTE ARTIKEL -->
-      <section v-if="completedItems.length > 0" class="items-section completed-section">
-        <div class="category-header" style="justify-content: space-between;">
-          <div style="display: flex; align-items: center; gap: 12px;">
-            <span class="category-badge completed-badge">Erledigt</span>
-            <span class="category-count">{{ completedItems.length }}</span>
-          </div>
-          <button class="clear-completed-btn" @click="clearCompleted" aria-label="Alle erledigten löschen">
-            Alle löschen <svg viewBox="0 0 24 24"><path d="M7 21q-.825 0-1.412-.587Q5 19.825 5 19V6H4V4h5V3h6v1h5v2h-1v13q0 .825-.587 1.413Q17.825 21 17 21Zm2-4h2V8H9Zm4 0h2V8h-2Z"/></svg>
-          </button>
-        </div>
+      <section v-if="completedItems.length > 0" class="flex gap-3 mb-6 completed-section"
+               style="display: flex; gap: 12px; margin-bottom: 24px; margin-top: 32px;">
+
+            <div class="category-indicator" style="background-color: var(--ks-surface-3); width: 4px; border-radius: 9999px; flex-shrink: 0; box-shadow: 0 0 10px rgba(0,0,0,0.5); opacity: 0.8;"></div>
+            <div style="flex: 1;">
+              <h2 style="color: var(--ks-text-muted); font-weight: bold; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; justify-content: space-between;">
+                  <div style="display: flex; align-items: center; gap: 8px;">
+                      Erledigt <span style="background-color: var(--ks-surface-3); color: var(--ks-text-muted); padding: 2px 8px; border-radius: 9999px;">{{ completedItems.length }}</span>
+                  </div>
+                  <button class="clear-completed-btn-vertical" @click="clearCompleted" aria-label="Alle erledigten löschen" style="background: transparent; border: none; color: var(--ks-error); cursor: pointer; padding: 4px;">
+                    <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; fill: currentColor;"><path d="M7 21q-.825 0-1.412-.587Q5 19.825 5 19V6H4V4h5V3h6v1h5v2h-1v13q0 .825-.587 1.413Q17.825 21 17 21Zm2-4h2V8H9Zm4 0h2V8h-2Z"/></svg>
+                  </button>
+              </h2>
         
-        <div class="ks-grid">
+        <div class="ks-grid items-grid grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8 ga w-full">
           <div v-for="item in completedItems" :key="item.id" class="grid-card completed" @click="toggleItemStatus(item)">
-            <div class="card-icon-area">
-               <CategoryIcon class="icon-svg" :name="item.name" :category="item.category" size="40" style="opacity: 0.5;" />
+              <div class="w-[55px] h-[55px] mb-2 rounded-xl flex items-center justify-center" :style="{ color: getCategoryDef(item.category).bg, backgroundColor: 'rgba(255, 255, 255, 0.02)' }" style="width: 55px; height: 55px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 8px;">
+                <CategoryIcon class="icon-svg" :name="item.name" :category="item.category" size="55" style="opacity: 0.5;" />
+              </div>
+            <div class="card-text-area mb-3">
+              <span class="item-name" style="opacity: 0.5; text-decoration: line-through;">{{ item.name }}</span>
+              <span class="item-quantity" v-if="formatQuantity(item)" style="opacity: 0.5;">{{ formatQuantity(item) }}</span>
             </div>
-            <div class="card-text-area">
-              <span class="item-name">{{ item.name }}</span>
-              <span class="item-quantity" v-if="formatQuantity(item)">{{ formatQuantity(item) }}</span>
-            </div>
-            <button class="delete-btn" @click.stop="confirmDeleteItem(item)" aria-label="Löschen">
-              <svg viewBox="0 0 24 24"><path d="M7 21q-.825 0-1.412-.587Q5 19.825 5 19V6H4V4h5V3h6v1h5v2h-1v13q0 .825-.587 1.413Q17.825 21 17 21Zm2-4h2V8H9Zm4 0h2V8h-2Z"/></svg>
+            <button class="delete-btn" @click.stop="confirmDeleteItem(item)" aria-label="Löschen" style="margin-top: auto; padding-top: 12px; display: flex; align-items: center; justify-content: center; opacity: 0.8;">
+              <svg viewBox="0 0 24 24" style="width: 24px; height: 24px; fill: var(--ks-text-muted);"><path d="M7 21q-.825 0-1.412-.587Q5 19.825 5 19V6H4V4h5V3h6v1h5v2h-1v13q0 .825-.587 1.413Q17.825 21 17 21Zm2-4h2V8H9Zm4 0h2V8h-2Z"/></svg>
             </button>
           </div>
         </div>
+            </div>
       </section>
     </div>
 
@@ -871,8 +1016,10 @@ onUnmounted(() => {
                 <svg viewBox="0 0 24 24"><path d="M11 19v-6H5v-2h6V5h2v6h6v2h-6v6Z"/></svg>
                 Neuen Artikel hinzufügen
             </button>
-            <button class="add-trigger-btn barcode-trigger-btn ks-icon-btn" @click="openScannerModal" style="flex-shrink: 0; width: 56px; border-radius: 50%; padding: 0;">
-                <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M3 4h4v2H5v2H3V4m14 0h4v4h-2V6h-2V4M3 20v-4h2v2h2v2H3m14 0v-2h2v-2h2v4h-4M5 10h2v4H5v-4m4 0h2v4H9v-4m4 0h2v4h-2v-4m4 0h2v4h-2v-4Z"/></svg>
+            <button class="add-trigger-btn barcode-trigger-btn" @click="openScannerModal" aria-label="Scanner öffnen">
+                <svg viewBox="0 0 24 24" fill="currentColor" class="barcode-icon">
+                  <path d="M3 4h4v2H5v2H3V4zm2 16H3v-4h2v2h2v2zm16-4h-2v2h-2v2h4v-4zm-2-12h-2V2h4v4h-2V4zM7 6h2v12H7V6zm3 0h1v12h-1V6zm2 0h3v12h-3V6zm4 0h1v12h-1V6zm2 0h1v12h-1V6z"/>
+                </svg>
             </button>
         </div>
     </div>
@@ -896,6 +1043,7 @@ onUnmounted(() => {
         @close="isAddModalOpen = false; itemToEdit = null; startScanner = false"
         @add="handleAddItem"
         @update="handleUpdateItem"
+        @delete="deleteItem"
     />
 
   </div>
@@ -911,19 +1059,65 @@ onUnmounted(() => {
 
 .items-section { margin-bottom: 32px; }
 
-.category-header {
-  display: flex; align-items: center; gap: 12px;
-  margin-bottom: 16px; padding-left: 4px;
+.category-group {
+  display: flex;
+  position: relative;
+  margin-bottom: 8px;
+  border-radius: 12px;
+  overflow: hidden;
+  align-items: stretch;
 }
 
-.category-badge {
-  padding: 6px 12px; border-radius: var(--ks-radius-xs);
-  font-size: 13px; font-weight: 700; letter-spacing: 0.5px;
+
+.category-lane {
+  width: 24px;
+  min-width: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 0;
+  border-radius: 0 4px 4px 0;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  background: transparent !important;
+  color: var(--ks-text-muted) !important;
+  position: relative;
+  overflow: visible;
+}
+
+.category-lane::before {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 8px;
+  bottom: 8px;
+  width: 4px;
+  border-radius: 2px;
+  background: currentColor;
+  box-shadow: 0 0 10px currentColor;
+}
+
+.category-name {
+  font-size: 10px;
+  font-weight: 700;
   text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: currentColor;
+  white-space: nowrap;
 }
+
 .category-count {
-  font-size: 14px; color: var(--ks-text-muted); font-weight: 500;
+  font-size: 10px;
+  font-weight: 600;
+  color: currentColor;
+  margin-bottom: 8px;
+  background: rgba(0,0,0,0.2);
+  padding: 2px 6px;
+  border-radius: 10px;
 }
+
 
 .completed-badge {
   background: var(--ks-surface-3); color: var(--ks-text-muted);
@@ -942,66 +1136,97 @@ onUnmounted(() => {
 }
 .clear-completed-btn svg { width: 14px; height: 14px; fill: currentColor; }
 
+
 .ks-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-  gap: 12px;
+
+  gap: 8px;
+  align-items: start;
 }
 
 .grid-card {
   display: flex; flex-direction: column;
-  border-radius: var(--ks-radius-sm); padding: 12px 8px;
+  border-radius: 1rem;
+  padding: 8px;
   cursor: pointer; text-align: center;
   transition: transform 0.1s, opacity 0.2s, background 0.2s, border-color 0.3s;
   position: relative;
-  background: var(--ks-surface-2);
-  border: 1px solid var(--ks-border);
-}
-.flash-highlight {
-  animation: flash 1s ease-out;
-}
-@keyframes flash {
-  0% { border-color: var(--ks-primary); background: var(--ks-primary-container); transform: scale(1.05); }
-  100% { border-color: var(--ks-border); background: var(--ks-surface-2); transform: scale(1); }
-}
-.grid-card:active { transform: scale(0.95); }
-.grid-card:hover { background: var(--ks-surface-3); }
-
-/* Erledigte Artikel Styles */
-.completed-section { opacity: 0.7; }
-.grid-card.completed { 
-  background: transparent; 
-  border-color: rgba(255,255,255,0.04);
-}
-.grid-card.completed .card-icon-area {
-  background: var(--ks-surface-4); color: var(--ks-text-muted);
-}
-.grid-card.completed .item-name {
-  text-decoration: line-through; color: var(--ks-text-muted); font-weight: 500;
+  background: #1e293b !important;
+  border: none;
+  min-height: 0;
+  overflow: hidden;
+  justify-content: flex-start;
+  align-items: center;
+  color: white !important;
 }
 
-.card-icon-area { 
-  display: flex; align-items: center; justify-content: center; 
-  height: 50px; margin-bottom: 12px; border-radius: var(--ks-radius-xs);
+.grid-card-glow {
+  position: absolute;
+  top: -16px;
+  right: -16px;
+  width: 6rem;
+  height: 6rem;
+  border-radius: 50%;
+  filter: blur(24px);
+  opacity: 0.15;
+  pointer-events: none;
 }
-.initials { font-size: 24px; font-weight: 700; }
-.icon-svg { display: flex; align-items: center; justify-content: center; width: 45px; height: 45px; }
-.icon-svg :deep(svg) { width: 100%; height: 100%; }
 
-.item-quantity {
-  font-size: 13px;
-  color: var(--ks-text-muted);
+.card-icon-area {
+  display: flex; justify-content: center; align-items: center;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.icon-svg-container {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+}
+
+.card-text-area {
+  display: flex; flex-direction: column;
   margin-top: 4px;
+  width: 100%;
+  position: relative;
+  z-index: 1;
 }
 
-.card-text-area { display: flex; flex-direction: column; }
-.item-name { 
-  font-size: 14px; font-weight: 600; 
-  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; 
-  overflow: hidden; line-height: 1.3; color: var(--ks-text);
+.item-name {
+  font-size: 13px; font-weight: 600; line-height: 1.2;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  color: white;
 }
-.item-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px; justify-content: center; }
-.tag-pill { font-size: 10px; background: var(--ks-surface-4); padding: 2px 6px; border-radius: 8px; color: var(--ks-text-muted); }
+
+.item-regular-tags {
+  font-size: 10px; color: #94a3b8; line-height: 1.2;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  margin-top: 2px;
+}
+
+.quantity-controls {
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+  margin-top: auto;
+  position: relative;
+  z-index: 1;
+}
+.qty-btn {
+  width: 2rem; height: 2rem;
+  border-radius: 999px;
+  border: none;
+  background: #334155;
+  color: white;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; font-weight: bold; cursor: pointer;
+}
+.qty-val {
+  font-size: 12px; font-weight: 600; min-width: 24px; text-align: center;
+}
+
 
 .delete-btn {
   position: absolute; top: -8px; right: -8px;
@@ -1039,10 +1264,18 @@ onUnmounted(() => {
 .add-trigger-btn svg { width: 24px; height: 24px; fill: currentColor; }
 
 .barcode-trigger-btn {
-    background: var(--ks-surface-2);
-    color: var(--ks-text);
-    border: 1px solid var(--ks-border);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    flex-shrink: 0;
+    width: 56px;
+    padding: 0;
+    border-radius: 32px;
+    background: var(--ks-surface-3);
+    color: var(--ks-primary);
+    border: none;
+    box-shadow: 0 4px 12px var(--ks-primary-container);
+}
+.barcode-trigger-btn svg {
+    width: 24px;
+    height: 24px;
 }
 
 /* Modal & Sheets */
@@ -1059,20 +1292,24 @@ onUnmounted(() => {
 .code-box svg { width: 24px; height: 24px; fill: currentColor; opacity: 0.6; }
 
 /* Changelog */
-.changelog-list { display: flex; flex-direction: column; gap: 12px; }
-.changelog-item { display: flex; align-items: flex-start; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--ks-border); }
-.changelog-item:last-child { border-bottom: none; }
-.changelog-avatar { width: 32px; height: 32px; border-radius: 50%; background: var(--ks-primary); color: var(--ks-on-primary); display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 14px; flex-shrink: 0; }
-.changelog-content { flex: 1; min-width: 0; }
-.changelog-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px; }
-.changelog-user { font-weight: 600; font-size: 14px; color: var(--ks-text); }
-.changelog-time { font-size: 12px; color: var(--ks-text-muted); }
-.changelog-action { font-size: 14px; color: var(--ks-text); line-height: 1.4; word-break: break-word; }
+.changelog-list { display: flex; flex-direction: column; gap: 24px; padding-bottom: 24px; }
+.changelog-day-group { display: flex; flex-direction: column; gap: 20px; }
+.changelog-action-group { display: flex; flex-direction: column; gap: 12px; background: var(--ks-surface-2); padding: 16px; border-radius: 12px; }
+.changelog-group-header { display: flex; align-items: center; gap: 12px; }
+.changelog-avatar { width: 40px; height: 40px; border-radius: 50%; background: #a58f84; color: white; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 18px; flex-shrink: 0; }
+.changelog-group-title { display: flex; flex-direction: column; gap: 2px; }
+.changelog-day { font-size: 13px; color: var(--ks-text-muted); }
+.changelog-action-text { font-size: 15px; font-weight: 600; color: var(--ks-text); }
+.changelog-items-list { display: flex; flex-direction: column; gap: 8px; margin-left: 12px; border-left: 2px solid var(--ks-primary); padding-left: 12px; padding-top: 4px; padding-bottom: 4px; }
+.changelog-item-row { display: flex; align-items: center; gap: 12px; }
+.changelog-item-icon { width: 24px; height: 24px; color: var(--ks-text); }
+.changelog-item-name { font-size: 15px; font-weight: 600; color: var(--ks-text); }
 
 /* Tags/Chips (reused from AddItemModal) */
 .tag-group { display: flex; flex-wrap: wrap; gap: 8px; }
 .tag-chip { padding: 8px 16px; border-radius: 20px; background: var(--ks-surface-2); border: 1px solid transparent; color: var(--ks-text); cursor: pointer; font-size: 14px; font-weight: 500; }
 .tag-chip.active { background: var(--ks-primary-container); color: var(--ks-primary); border-color: var(--ks-primary); }
+.tag-pill-icon { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 50%; box-shadow: 0 2px 4px rgba(0,0,0,0.2); margin-right: 4px; }
 
 /* Sort List */
 .sort-list {
@@ -1083,6 +1320,8 @@ onUnmounted(() => {
   display: flex; align-items: center; justify-content: space-between;
   padding: 12px 16px; background: rgba(255,255,255,0.03);
   border-radius: var(--ks-radius-xs); border: 1px solid var(--ks-border);
+  cursor: grab;
+  user-select: none;
 }
 .sort-info { display: flex; align-items: center; gap: 12px; font-weight: 500; }
 .sort-actions { display: flex; gap: 4px; }
@@ -1103,3 +1342,18 @@ onUnmounted(() => {
 .user-email { font-size: 12px; color: var(--ks-text-muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .no-results { color: var(--ks-text-muted); font-size: 14px; margin-top: 12px; text-align: center; }
 </style>
+.list-move,
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.5s ease;
+}
+
+.list-enter-from,
+.list-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
+}
+
+.list-leave-active {
+  position: absolute;
+}

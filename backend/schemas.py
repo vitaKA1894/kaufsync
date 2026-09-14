@@ -11,6 +11,9 @@ class UserCreate(BaseModel):
 # NEU: Für das Profil-Update
 class UserUpdate(BaseModel):
     display_name: str
+    settings_push_async_events: Optional[bool] = None
+    settings_push_new_items: Optional[bool] = None
+    settings_push_admin_pending_users: Optional[bool] = None
 
 # NEU: Für die Passwort-Änderung
 class PasswordUpdate(BaseModel):
@@ -22,9 +25,29 @@ class UserResponse(BaseModel):
     email: str
     display_name: str
     is_admin: Optional[bool] = False
+    status: str
+    settings_push_async_events: bool
+    settings_push_new_items: bool
+    settings_push_admin_pending_users: bool = False
+
+    class Config:
+        from_attributes = True
+
+class NotificationResponse(BaseModel):
+    id: str
+    title: str
+    body: str
+    action_url: Optional[str] = None
+    is_read: bool
+    created_at: datetime
     
     class Config:
         from_attributes = True
+
+class PushSubscriptionCreate(BaseModel):
+    endpoint: str
+    p256dh: str
+    auth: str
 
 class LoginRequest(BaseModel):
     email: str

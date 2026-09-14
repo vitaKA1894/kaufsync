@@ -30,18 +30,60 @@ const loadAdminData = async () => {
     }
 };
 
-const promoteUser = async (userId) => {
+const promoteUser = async (userId, isAdmin) => {
     try {
         const token = localStorage.getItem('token');
-        const response = await fetch(`/api/admin/users/${userId}/promote`, {
+        const response = await fetch(`/api/admin/users/${userId}/role`, {
             method: 'PATCH',
-            headers: { 'Authorization': `Bearer ${token}` }
+            headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
+            body: JSON.stringify({ is_admin: isAdmin })
         });
 
         if (!response.ok) throw new Error('Fehler beim Ändern der Rechte');
         const result = await response.json();
         successMessage.value = result.message;
         loadAdminData();
+        setTimeout(() => successMessage.value = '', 3000);
+    } catch (error) {
+        errorMessage.value = error.message;
+        setTimeout(() => errorMessage.value = '', 3000);
+    }
+};
+
+const changeStatus = async (userId, status) => {
+    try {
+        const token = localStorage.getItem('token');
+        const response = await fetch(`/api/admin/users/${userId}/status`, {
+            method: 'PATCH',
+            headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
+            body: JSON.stringify({ status: status })
+        });
+
+        if (!response.ok) throw new Error('Fehler beim Ändern des Status');
+        const result = await response.json();
+        successMessage.value = result.message;
+        loadAdminData();
+        setTimeout(() => successMessage.value = '', 3000);
+    } catch (error) {
+        errorMessage.value = error.message;
+        setTimeout(() => errorMessage.value = '', 3000);
+    }
+};
+
+const resetPasswordLink = ref('');
+
+const resetPassword = async (userId) => {
+    try {
+        const token = localStorage.getItem('token');
+        const response = await fetch(`/api/admin/users/${userId}/reset-password`, {
+            method: 'POST',
+            headers: { 'Authorization': `Bearer ${token}` }
+        });
+
+        if (!response.ok) throw new Error('Fehler beim Generieren des Links');
+        const result = await response.json();
+        resetPasswordLink.value = window.location.origin + result.reset_link;
+        successMessage.value = 'Passwort-Reset-Link generiert!';
         setTimeout(() => successMessage.value = '', 3000);
     } catch (error) {
         errorMessage.value = error.message;
@@ -87,15 +129,34 @@ onMounted(() => {
 
       <section class="users-section">
         <h2 class="section-title">Benutzerverwaltung</h2>
+
+        <div v-if="resetPasswordLink" class="success-card" style="margin-bottom: 16px; word-break: break-all;">
+            <strong>Reset-Link:</strong> <a :href="resetPasswordLink" target="_blank">{{ resetPasswordLink }}</a>
+            <button @click="resetPasswordLink = ''" class="ks-btn-text" style="padding: 4px; margin-left: 8px;">Schließen</button>
+        </div>
+
         <div class="user-list">
-            <div v-for="user in users" :key="user.id" class="user-card">
-                <div class="user-info">
-                    <span class="user-name">{{ user.display_name }}</span>
-                    <span class="user-email">{{ user.email }}</span>
+            <div v-for="user in users" :key="user.id" class="user-card" style="flex-direction: column; align-items: stretch; gap: 12px;">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                    <div class="user-info">
+                        <span class="user-name">{{ user.display_name }}</span>
+                        <span class="user-email">{{ user.email }}</span>
+                        <span class="user-status" :class="user.status">Status: {{ user.status }}</span>
+                    </div>
+                    <div>
+                        <span v-if="user.is_admin" class="admin-badge">Admin</span>
+                    </div>
                 </div>
-                <div class="user-actions">
-                    <span v-if="user.is_admin" class="admin-badge">Admin</span>
-                    <button v-else class="ks-btn-text" @click="promoteUser(user.id)" style="padding: 6px 12px; font-size: 13px;">Zum Admin machen</button>
+
+                <div class="user-actions" style="display: flex; flex-wrap: wrap; gap: 8px;">
+                    <button v-if="user.status === 'pending'" class="ks-btn-text" @click="changeStatus(user.id, 'active')" style="padding: 4px 8px; font-size: 12px;">Aktivieren</button>
+                    <button v-if="user.status === 'active'" class="ks-btn-text" @click="changeStatus(user.id, 'locked')" style="padding: 4px 8px; font-size: 12px; color: var(--ks-error);">Sperren</button>
+                    <button v-if="user.status === 'locked'" class="ks-btn-text" @click="changeStatus(user.id, 'active')" style="padding: 4px 8px; font-size: 12px;">Entsperren</button>
+
+                    <button v-if="user.is_admin" class="ks-btn-text" @click="promoteUser(user.id, false)" style="padding: 4px 8px; font-size: 12px; color: var(--ks-error);">Admin-Rechte entziehen</button>
+                    <button v-else class="ks-btn-text" @click="promoteUser(user.id, true)" style="padding: 4px 8px; font-size: 12px;">Zum Admin machen</button>
+
+                    <button class="ks-btn-text" @click="resetPassword(user.id)" style="padding: 4px 8px; font-size: 12px;">Passwort zurücksetzen</button>
                 </div>
             </div>
         </div>
@@ -184,6 +245,13 @@ onMounted(() => {
     font-size: 13px;
     color: var(--ks-text-muted);
 }
+.user-status {
+    font-size: 12px;
+    margin-top: 4px;
+}
+.user-status.active { color: var(--ks-success, #4CAF50); }
+.user-status.pending { color: var(--ks-warning, #FF9800); }
+.user-status.locked { color: var(--ks-error, #F44336); }
 .admin-badge {
     background: var(--ks-primary-container);
     color: var(--ks-primary);
