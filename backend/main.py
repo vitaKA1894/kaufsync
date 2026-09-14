@@ -11,6 +11,9 @@ import models, schemas, auth
 from database import engine, get_db
 import json
 from pywebpush import webpush, WebPushException
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Erstellt alle Tabellen in der Datenbank
 models.Base.metadata.create_all(bind=engine)
