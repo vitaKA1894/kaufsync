@@ -109,7 +109,7 @@ const handleScan = async (barcode) => {
             const data = await response.json();
             if (data.product) {
                 const product = data.product;
-                const genericName = product.generic_name_de || product.generic_name || product.product_name_de || product.product_name || '';
+                const searchString = product.product_name || product.abbreviated_product_name || product.generic_name_de || product.generic_name || product.product_name_de || '';
                 const brandsStr = product.brands || '';
                 let brand = '';
 
@@ -118,10 +118,10 @@ const handleScan = async (barcode) => {
                 }
 
                 // Set query to generic product name
-                query.value = genericName;
+                query.value = searchString;
 
                 // Do taxonomy search using generic name
-                const searchResults = searchTaxonomy(genericName);
+                const searchResults = searchTaxonomy(searchString);
 
                 let matchingItem;
                 if (searchResults && searchResults.length > 0) {
@@ -130,7 +130,7 @@ const handleScan = async (barcode) => {
                 } else {
                     // Fall B: Not found -> "Sonstiges Produkt"
                     matchingItem = {
-                        name: genericName,
+                        name: searchString,
                         category: 'Sonstiges',
                         tags: { quantities: [], constellations: [], global_meta: [] }
                     };
