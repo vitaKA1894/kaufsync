@@ -178,6 +178,11 @@ const enableNotifications = async () => {
     // Register/Get Service Worker
     const registration = await navigator.serviceWorker.ready;
 
+    if (!public_key) {
+      console.warn('VAPID public key is missing or null. Push notifications cannot be enabled. Please ensure VAPID keys are configured in the backend.');
+      throw new Error('Push-Benachrichtigungen können nicht aktiviert werden, da der VAPID Key fehlt.');
+    }
+
     const convertedKey = urlBase64ToUint8Array(public_key);
 
     // Subscribe to push manager
