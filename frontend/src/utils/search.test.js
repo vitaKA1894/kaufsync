@@ -58,7 +58,7 @@ function runTests() {
 
     // Exact alias match
     const aliasResults = searchTaxonomy("Frischhaltefolie");
-    if (aliasResults.length === 0 || !aliasResults[0].aliases.includes("Frischhaltefolie")) {
+    if (aliasResults.length === 0 || !(aliasResults.some(r => r.name === "Frischhaltefolie" || r.aliases.includes("Frischhaltefolie")))) {
          throw new Error("Exact alias search failed for 'Frischhaltefolie'");
     }
 

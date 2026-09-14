@@ -44,65 +44,38 @@ export function levenshteinDistance(a, b) {
 }
 
 import taxonomy from '../assets/taxonomy.json' with { type: 'json' };
+import Fuse from 'fuse.js';
+
+const fuseOptions = {
+  keys: [
+    { name: 'name', weight: 0.7 },
+    { name: 'aliases', weight: 0.3 }
+  ],
+  threshold: 0.3,
+  ignoreLocation: true,
+  minMatchCharLength: 2,
+  includeMatches: true
+};
+
+const fuse = new Fuse(taxonomy, fuseOptions);
 
 export function searchTaxonomy(query) {
-  if (!query || query.length < 1) return [];
+  if (!query || query.length < 2) return [];
 
-  const lowerQuery = query.toLowerCase();
+  const results = fuse.search(query);
 
-  // Scoring function (Strict matching only):
-  // - Exact match in primary name or aliases: 0
-  // - Prefix match (e.g. "Mil" in "Milch"): 1
-  // - Contains substring match: 3
+  return results.slice(0, 4).map(result => {
+    let matchedAlias = null;
 
-  const results = taxonomy.map(item => {
-    let nameScore = Infinity;
-    const lowerName = item.name.toLowerCase();
-
-    // Check primary name
-    if (lowerName === lowerQuery) {
-        nameScore = Math.min(nameScore, 0);
-    } else if (lowerName.startsWith(lowerQuery)) {
-        nameScore = Math.min(nameScore, 1);
-    } else if (lowerName.includes(lowerQuery)) {
-        nameScore = Math.min(nameScore, 3);
+    // Check if the match was on an alias
+    if (result.matches && result.matches.length > 0) {
+      // Find a match that is in the 'aliases' key
+      const aliasMatch = result.matches.find(m => m.key === 'aliases');
+      if (aliasMatch) {
+        matchedAlias = aliasMatch.value;
+      }
     }
 
-    let bestAliasScore = Infinity;
-    let bestAlias = null;
-
-    // Check aliases
-    for (const alias of item.aliases) {
-        const lowerAlias = alias.toLowerCase();
-        let aliasScore = Infinity;
-
-        if (lowerAlias === lowerQuery) {
-            aliasScore = 0;
-        } else if (lowerAlias.startsWith(lowerQuery)) {
-            aliasScore = 1;
-        } else if (lowerAlias.includes(lowerQuery)) {
-            aliasScore = 3;
-        }
-
-        if (aliasScore < bestAliasScore) {
-            bestAliasScore = aliasScore;
-            bestAlias = alias;
-        }
-    }
-
-    let finalScore = Math.min(nameScore, bestAliasScore);
-    let matchedAlias = (bestAliasScore < nameScore && bestAlias) ? bestAlias : null;
-
-    return { item: { ...item, matchedAlias }, score: finalScore };
-  })
-  .filter(result => result.score !== Infinity)
-  .sort((a, b) => {
-    if (a.score !== b.score) return a.score - b.score;
-    // Tie-breaker: Shorter names first
-    return a.item.name.length - b.item.name.length;
-  })
-  .map(result => result.item)
-  .slice(0, 4);
-
-  return results;
+    return { ...result.item, matchedAlias };
+  });
 }
