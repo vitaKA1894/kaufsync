@@ -8,7 +8,7 @@ self.addEventListener('push', function(event) {
         const options = {
             body: data.body,
             icon: '/android-chrome-192x192.png',
-            badge: '/android-chrome-192x192.png',
+            badge: '/badge.png',
             data: {
                 url: data.url
             }
