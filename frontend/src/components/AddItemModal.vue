@@ -393,8 +393,6 @@ const closeModal = () => {
   manualQuantity.value = '';
   manualUnit.value = '';
   duplicateWarning.value = false;
-  sheetStyle.value = {};
-  isDraggingSheet = false;
   emit('close');
 };
 
@@ -417,9 +415,6 @@ onMounted(() => {
 // Watch isOpen prop to focus input when modal is opened
 import { watch } from 'vue';
 watch(() => props.isOpen, (newVal) => {
-    sheetStyle.value = {};
-    isDraggingSheet = false;
-
     if (newVal) {
         showScanner.value = props.startWithScanner;
 
